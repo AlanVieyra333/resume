@@ -18,6 +18,9 @@
 \RequirePackage{pgffor}
 \RequirePackage{marvosym}
 \RequirePackage{parskip}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{fontawesome}
+\RequirePackage{dashrule}
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
@@ -31,6 +34,11 @@
 \definecolor{sidecolor}{HTML}{E7E7E7}
 \definecolor{mainblue}{HTML}{0E5484}
 \definecolor{maingray}{HTML}{B9B9B9}
+
+\colorlet{heading}{mainblue}
+\colorlet{accent}{blue!70!black}
+\colorlet{emphasis}{black}
+\colorlet{body}{black!80!white}
 
 %----------------------------------------------------------------------------------------
 %	 MISC CONFIGURATIONS
@@ -75,18 +83,21 @@
 \newcommand{\profilepic}[1]{\renewcommand{\profilepic}{#1}}
 \newcommand{\cvname}[1]{\renewcommand{\cvname}{#1}}
 \newcommand{\cvjobtitle}[1]{\renewcommand{\cvjobtitle}{#1}}
+\newcommand{\cvfb}[1]{\renewcommand{\cvfb}{#1}}
+\newcommand{\cvgithub}[1]{\renewcommand{\cvgithub}{#1}}
+\newcommand{\cvlinkedin}[1]{\renewcommand{\cvlinkedin}{#1}}
 
 % Command for printing the contact information icons
-\newcommand*\icon[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=1pt, fill=mainblue,mainblue,text=white] (char) {#1};}}
+\newcommand*\icon[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=1pt, fill=heading,heading,text=white] (char) {#1};}}
 
 % Command for printing skill progress bars
 \newcommand\skills[1]{ 
 	\renewcommand{\skills}{
 		\begin{tikzpicture}
 			\foreach [count=\i] \x/\y in {#1}{
-				\draw[fill=maingray,maingray] (0,\i) rectangle (6,\i+0.4);
-				\draw[fill=white,mainblue](0,\i) rectangle (\y,\i+0.4);
-				\node [above right] at (0,\i+0.4) {\x};
+				\draw[fill=maingray,maingray] (0,-\i) rectangle (6,-\i+0.4);
+				\draw[fill=white,heading] (0,-\i) rectangle (6*\y/10,-\i+0.4);
+				\node [above right] at (0,-\i+0.4) {\x};
 			}
 		\end{tikzpicture}
 	}
@@ -96,12 +107,26 @@
 \newcommand\skillstext[1]{ 
 	\renewcommand{\skillstext}{
 		\begin{flushleft}
-			\foreach [count=\i] \x/\y in {#1}{ 
-				\x$ \star $\y
+			\foreach [count=\i] \x in {#1}{ 
+				\x
 			}
 		\end{flushleft}
 	}
 }
+
+% Command for printing languages progress bars
+\newcommand\languages[1]{ 
+	\renewcommand{\languages}{
+		\begin{tikzpicture}
+		\foreach [count=\i] \x/\y in {#1}{
+			\draw[fill=maingray,maingray] (0,-\i) rectangle (6,-\i+0.4);
+			\draw[fill=white,heading] (0,-\i) rectangle (6*\y/10,-\i+0.4);
+			\node [above right] at (0,-\i+0.4) {\x};
+		}
+		\end{tikzpicture}
+	}
+}
+
 
 %----------------------------------------------------------------------------------------
 %	 SIDEBAR LAYOUT
@@ -129,7 +154,7 @@
 
 		%------------------------------------------------
 
-		{\Huge\color{mainblue}\cvname}
+		{\Huge\color{heading}\cvname}
 
 		%------------------------------------------------
 
@@ -142,14 +167,17 @@
 			\ifthenelse{\equal{\cvdate}{}}{}{\textsc{\Large\icon{\Info}} & \cvdate\\}
 			\ifthenelse{\equal{\cvaddress}{}}{}{\textsc{\Large\icon{\Letter}} & \cvaddress\\}
 			\ifthenelse{\equal{\cvnumberphone}{}}{}{\textsc{\Large\icon{\Telefon}} & \cvnumberphone\\}
-			\ifthenelse{\equal{\cvsite}{}}{}{\textsc{\Large\icon{\Mundus}} & \cvsite\\}
-			\ifthenelse{\equal{\cvmail}{}}{}{\textsc{\large\icon{@}} & \href{mailto:\cvmail}{\cvmail}}
+			\ifthenelse{\equal{\cvmail}{}}{}{\textsc{\large\icon{@}} & \href{mailto:\cvmail}{\cvmail}\\}
+			\ifthenelse{\equal{\cvsite}{}}{}{\textsc{\Large\icon{\Mundus}} & \url{\cvsite}\\}
+			\ifthenelse{\equal{\cvlinkedin}{}}{}{\textsc{\Large\icon{\faLinkedin}} & \url{\cvlinkedin}\\}
+			\ifthenelse{\equal{\cvgithub}{}}{}{\textsc{\Large\icon{\faGithub}} & \url{\cvgithub}\\}
+			\ifthenelse{\equal{\cvfb}{}}{}{\textsc{\Large\icon{\faFacebook}} & \url{\cvfb}\\}
 		\end{tabular}
 
 		%------------------------------------------------
 		
 		\ifthenelse{\equal{\aboutme}{}}{}{
-			\profilesection{About me}
+			\profilesection{Acerca de mi}
 			\begin{flushleft}
 				\aboutme
 			\end{flushleft}
@@ -157,13 +185,18 @@
 
 		%------------------------------------------------
 
-		\profilesection{Skills}
+		\profilesection{Habilidades}
 
 		\skills
 		\skillstext
 		\scriptsize
-		(*)[The skill scale is from 0 (Fundamental Awareness) to 6 (Expert).]
+%		(*)[The skill scale is from 0 (Fundamental Awareness) to 6 (Expert).]
 			
+		%------------------------------------------------
+		
+		\profilesection{Idiomas}
+		\languages
+	
 		%------------------------------------------------
 			
 	\end{textblock}
@@ -182,18 +215,7 @@
 \newcommand{\sectioncolor}[1]{%
 	{%
 		\round{#1}{
-			\ifcase\value{colorCounter}%
-			maingray\or%
-			mainblue\or%
-			maingray\or%
-			mainblue\or%
-			maingray\or%
-			mainblue\or%
-			maingray\or%
-			mainblue\or%
- 			maingray\or%
-			mainblue\else%
-			maingray\fi%
+			heading
 		}%
 	}%
 	\stepcounter{colorCounter}%
@@ -211,6 +233,22 @@
 		\large\color{gray} #1%
 	}
 	\par\vspace{.25\parskip}%
+}
+
+\newcommand{\cvsection}[1]{%
+	\bigskip%
+	{\color{heading}\LARGE\bfseries\MakeUppercase{#1}}\\[-1ex]%
+	{\color{heading}\rule{\linewidth}{2pt}\par}\medskip
+}
+
+\newcommand{\cvevent}[4]{%
+	{\large\color{emphasis}#1\par}
+	\smallskip
+	\textbf{\color{accent}#2}\par
+	\smallskip
+	{\small\makebox[0.5\linewidth][l]{\faCalendar \hspace{0.5em}#3}%
+		\ifstrequal{#4}{}{}{\makebox[0.5\linewidth][l]{\faMapMarker\hspace{0.5em}#4}}\par}
+	\medskip
 }
 
 %----------------------------------------------------------------------------------------
@@ -253,6 +291,8 @@
 		\textbf{#2}%
 	}\\
 }
+
+\newcommand{\divider}{\textcolor{body!30}{\hdashrule{\linewidth}{0.6pt}{0.5ex}}\medskip}
 
 %----------------------------------------------------------------------------------------
 %	 MARGINS AND LINKS

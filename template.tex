@@ -27,16 +27,19 @@
 
 % If you don't need one or more of the below, just remove the content leaving the command, e.g. \cvnumberphone{}
 
-\profilepic{alice.jpeg} % Profile picture
+\profilepic{foto} % Profile picture
 
-\cvname{Alice} % Your name
-\cvjobtitle{Adventurer} % Job title/career
+\cvname{Alan Fernando\\Rincón Vieyra} % Your name
+\cvjobtitle{Analista de Sistemas Jr /\\Desarrollador Front Jr} % Job title/career
 
-\cvdate{26 November 1865} % Date of birth
-\cvaddress{United Kingdom} % Short address/location, use \newline if more than 1 line is required
-\cvnumberphone{+39 0325658974} % Phone number
-\cvsite{http://en.wikipedia.org} % Personal website
-\cvmail{alice@wonderland.com} % Email address
+\cvdate{} % Date of birth
+\cvaddress{Del. Miguel Hidalgo, CDMX, México.} % Short address/location, use \newline if more than 1 line is required
+\cvnumberphone{55272898} % Phone number
+\cvmail{alan.vieyra376@gmail.com} % Email address
+\cvsite{} % Personal website
+\cvlinkedin{https://linkedin.com/in/AlanVieyra333} % LinkedIn account
+\cvgithub{http://github.com/AlanVieyra333} % Personal website
+\cvfb{http://facebook.com/AlanVieyra333} % Facebook account
 
 %----------------------------------------------------------------------------------------
 
@@ -46,99 +49,122 @@
 %	 ABOUT ME
 %----------------------------------------------------------------------------------------
 
-\aboutme{Alice is a sensible prepubescent girl from a wealthy English family who finds herself in a strange world ruled by imagination and fantasy. Alice feels comfortable with her identity and has a strong sense that her environment is comprised of clear, logical, and consistent rules and features. Alice's familiarity with the world has led one critic to describe her as a "disembodied intellect". Alice displays great curiosity and attempts to fit her diverse experiences into a clear understanding of the world.} % To have no About Me section, just remove all the text and leave \aboutme{}
+\aboutme{} % To have no About Me section, just remove all the text and leave \aboutme{}
 
 %----------------------------------------------------------------------------------------
 %	 SKILLS
 %----------------------------------------------------------------------------------------
 
-% Skill bar section, each skill must have a value between 0 an 6 (float)
-\skills{{pursuer of rabbits/5.8},{good manners/4},{outgoing/4.3},{polite/4},{Java/0.01}}
+% Skill bar section, each skill must have a value between 0 an 10 (float)
+\skills{
+	{Java/9},
+	{Linux (Debian, Arch)/9},
+	{C, C++/8.5},
+	{Angular, JavaScript, HTML5, CSS3/8.5},
+	{Aplicaciones móviles - Android/7},
+	{C\#/6},
+	{SQL/7}}
 
 %------------------------------------------------
 
 % Skill text section, each skill must have a value between 0 an 6
-\skillstext{{lovely/4},{narcissistic/3}}
+\skillstext{{PHP,},{Python,},{Git,},{Golang,},{Lisp,},{UML,},{LaTex,},{Desarrollo de videojuegos,},{Programación de Drones,},{Programación de Microcontroldores,},{Trabajo en equipo.}}
+
+%----------------------------------------------------------------------------------------
+%	 LANGUAGES
+%----------------------------------------------------------------------------------------
+
+% Languages bar section, each language must have a value between 0 an 10 (float)
+\languages{{Inglés/7}}
 
 %----------------------------------------------------------------------------------------
 
 \makeprofile % Print the sidebar
 
 %----------------------------------------------------------------------------------------
-%	 INTERESTS
-%----------------------------------------------------------------------------------------
-
-\section{Interests}
-
-The heroine and the dreamer of Wonderland; Alice is the principal character.
-
-%----------------------------------------------------------------------------------------
 %	 EDUCATION
 %----------------------------------------------------------------------------------------
 
-\section{Education}
+\cvsection{Educación}
 
 \begin{twenty} % Environment for a list with descriptions
-	\twentyitem{since 1865}{Ph.D. {\normalfont candidate in Computer Science}}{Wonderland}{\emph{A Quantified Theory of Social Cohesion.}}
-	\twentyitem{1863-1865}{M.Sc. magna cum laude}{Wonderland}{Majoring in Computer Science}
-	\twentyitem{1861-1863}{B.Sc. magna cum laude}{Wonderland}{Majoring in Computer Science}
-	\twentyitem{1856-1861}{High school}{Wonderland}{Specializing in mathematics and physics.}
 	%\twentyitem{<dates>}{<title>}{<location>}{<description>}
-\end{twenty}
-
-\begin{twenty}
-\twentyitem{1234}{lalal}{lalala}{lalalalalalla}
+	\twentyitem{Desde 2014}{Estudiante de Ingeniería en Sistemas Computacionales - 9°}{México}{\emph{Escuela Superior de Cómputo - Instituto Politécnico Nacional}}
+	\twentyitem{2010-2014}{Certificado de bachillerato técnico}{México}{\emph{CECyT 9 “Juan de Dios Bátiz” - Instituto Politécnico Nacional}}
+	\twentyitem{2007-2010}{Certificado de secundaria}{México}{\emph{Escuela Secundaria Anexa a la Normal Superior}}
 \end{twenty}
 
 %----------------------------------------------------------------------------------------
-%	 PUBLICATIONS
+%	 COURSES
 %----------------------------------------------------------------------------------------
 
-\section{Publications}
+\section{Cursos}
 
 \begin{twentyshort} % Environment for a short list with no descriptions
-	\twentyitemshort{1865}{Chapter One, Down the Rabbit Hole.}
-	\twentyitemshort{1865}{Chapter Two, The Pool of Tears.}
-	\twentyitemshort{1865}{Chapter Three,  The Caucus Race and a Long Tale.}
-	\twentyitemshort{1865}{Chapter Four,  The Rabbit Sends a Little Bill.}
-	\twentyitemshort{1865}{Chapter Five,  Advice from a Caterpillar.}
 	%\twentyitemshort{<dates>}{<title/description>}
+	\twentyitemshort{2018}{After Effects: De zero a Master, Udemy.}
+	\twentyitemshort{2018}{Programación de drones usando Ardupilot, CINVESTAV - IPN.}
+	\twentyitemshort{2017}{Fundamentos de Inteligencia Artificial, CIC - IPN}
+	\twentyitemshort{2017}{Unity, Youtube}
+	\twentyitemshort{2016}{Redes neuronales, Stanford University, Coursera}
+	\twentyitemshort{2015}{Aplicaciones para dispositivos Android, ESCOM - IPN.}
+	\twentyitemshort{2015}{Algoritmia, ESCOM - IPN.}
+\end{twentyshort}
+
+%----------------------------------------------------------------------------------------
+%	 CERTIFICATES
+%----------------------------------------------------------------------------------------
+
+\section{Certificados}
+
+\begin{twentyshort}
+	\twentyitemshort{2018}{Scrum Fundamentals, SCRUMstudy.}
+	\twentyitemshort{2013}{Java SE, Oracle. \emph{\href{https://drive.google.com/file/d/0B7Bdg32oxtvLTzB1aHhvU3ZQWDA/view}{Ver}}}
 \end{twentyshort}
 
 %----------------------------------------------------------------------------------------
 %	 AWARDS
 %----------------------------------------------------------------------------------------
 
-\section{Awards}
+\section{Logros}
 
-\begin{twentyshort} % Environment for a short list with no descriptions
-	\twentyitemshort{1987}{All-Time Best Fantasy Novel.}
-	\twentyitemshort{1998}{All-Time Best Fantasy Novel before 1990.}
-	%\twentyitemshort{<dates>}{<title/description>}
+\begin{twentyshort}
+	\twentyitemshort{2015-2017}{Equipo competidor en la etapa de
+		selección del ACM-ICPC (International
+		Collegiate Programming Contest).}
+	\twentyitemshort{2014}{Integrante del mejor equipo de Nivel
+		Medio Superior en el 6to. Concurso
+		Anual de Programación en el marco de
+		la XIX EXPO-ESCOM.}
+	\twentyitemshort{2014}{2° lugar en la competencia Coding Rush,
+		ITAM.}
+	\twentyitemshort{2013}{2° lugar en la 18° Olimpiada Mexicana
+		de Informática, D.F.}
 \end{twentyshort}
 
 %----------------------------------------------------------------------------------------
 %	 EXPERIENCE
 %----------------------------------------------------------------------------------------
 
-\section{Experience}
+\cvsection{Experiencia}
 
-\begin{twenty} % Environment for a list with descriptions
-	\twentyitem{1900}{Alice in Wonderland-The Circra (1900's) Silent Film.}{Film}{The first Alice on film was over a hundred years ago.}
-	\twentyitem{1933}{Alice in Wonderland 1933 version.}{Film}{This film stars Ethel griffies and Charlotte Henry. It was a box office flop when it was released.}
-	\twentyitem{1951}{Disney Film.}{Film}{Walt Disney brings Lewis Carroll's fantasy story to life in this well done animated classic. Even though many elements from the book were dropped, such as the duchess with the baby pig and mock turtle, this version is without a doubt the most famous Alice adaption made.}
-	%\twentyitem{<dates>}{<title>}{<location>}{<description>}
-\end{twenty}
+\cvevent{Analista de Sistemas Jr}{Coordinación de Desarrollo Tecnológico - IPN}{Ene 2018 -- May 2018}{CDMX, México}
+\begin{itemize}
+	\item Realizar el levantamiento de \textbf{requerimientos} con el usuario.
+	\item Realizar la gestión de requerimientos, incluyendo el control y documentación de requerimientos.
+	\item Generar los entregables del proyecto de la fase de Análisis y Diseño de las solicitudes acordadas.
+	\item Manejo de diagramas \textbf{UML} para el modelado del proyecto.
+\end{itemize}
 
-%----------------------------------------------------------------------------------------
-%	 OTHER INFORMATION
-%----------------------------------------------------------------------------------------
+\divider
 
-\section{Other information}
+\cvevent{Desarrollador Front Jr}{NOVA SOLUTIONS SYSTEMS S.A. DE C.V.}{Jun 2017 -- Dic 2017}{CDMX, México}
+\begin{itemize}
+	\item Desarrollo de la banca electrónica del banco \textbf{Multiva}.
+	\item Realizar módulos y componentes de la interfaz de usuario en una aplicación web usando \textbf{Angular} como herramienta de desarrollo.
+	\item Manejo de \textbf{Git} para el control de versiones y trabajo en equipo.
+\end{itemize}
 
-\subsection{Review}
-
-Alice approaches Wonderland as an anthropologist, but maintains a strong sense of noblesse oblige that comes with her class status. She has confidence in her social position, education, and the Victorian virtue of good manners. Alice has a feeling of entitlement, particularly when comparing herself to Mabel, whom she declares has a ``poky little house," and no toys. Additionally, she flaunts her limited information base with anyone who will listen and becomes increasingly obsessed with the importance of good manners as she deals with the rude creatures of Wonderland. Alice maintains a superior attitude and behaves with solicitous indulgence toward those she believes are less privileged.
 
 %----------------------------------------------------------------------------------------
 %	 SECOND PAGE EXAMPLE
