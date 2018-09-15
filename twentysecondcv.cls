@@ -103,6 +103,19 @@
 	}
 }
 
+% Command for printing skill progress bars
+\newcommand\skillsSecond[1]{ 
+	\renewcommand{\skillsSecond}{
+		\begin{tikzpicture}
+		\foreach [count=\i] \x/\y in {#1}{
+			\draw[fill=maingray,maingray] (0,-\i) rectangle (6,-\i+0.4);
+			\draw[fill=white,heading] (0,-\i) rectangle (6*\y/10,-\i+0.4);
+			\node [above right] at (0,-\i+0.4) {\x};
+		}
+		\end{tikzpicture}
+	}
+}
+
 % Command for printing skills text
 \newcommand\skillstext[1]{ 
 	\renewcommand{\skillstext}{
@@ -184,21 +197,39 @@
 		}
 
 		%------------------------------------------------
+		
+		\profilesection{Idiomas}
+		\languages
+		
+		%------------------------------------------------
 
 		\profilesection{Habilidades}
 
 		\skills
-		\skillstext
 		\scriptsize
 %		(*)[The skill scale is from 0 (Fundamental Awareness) to 6 (Expert).]
 			
 		%------------------------------------------------
-		
-		\profilesection{Idiomas}
-		\languages
-	
-		%------------------------------------------------
 			
+	\end{textblock}
+}
+
+\newcommand{\makeprofileSecond}{
+	\begin{tikzpicture}[remember picture,overlay]
+	\node [rectangle, fill=sidecolor, anchor=north, minimum width=9cm, minimum height=\paperheight+1cm] (box) at (-5cm,0.5cm){};
+	\end{tikzpicture}
+		
+	\begin{textblock}{6}(0.5, 0.2)
+		%------------------------------------------------
+		
+		\profilesection{Habilidades}
+		
+		\skillsSecond
+		\skillstext
+		\scriptsize
+		
+		%------------------------------------------------
+		
 	\end{textblock}
 }
 
