@@ -44,7 +44,7 @@
 %	 MISC CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 
-\renewcommand{\bfseries}{\color{gray}} % Make \textbf produce coloured text instead
+%\renewcommand{\bfseries}{\color{gray}} % Make \textbf produce coloured text instead
 
 \pagestyle{empty} % Disable headers and footers
 
@@ -300,7 +300,7 @@
 		\textbf{#2}%
 		\hfill%
 		{\footnotesize#3}\\%
-		#4\vspace{\parsep}%
+		\emph{#4}\vspace{\parsep}%
 	}\\
 }
 
@@ -317,9 +317,11 @@
 	\end{tabular*}
 }
 
-\newcommand{\twentyitemshort}[2]{%
+\newcommand{\twentyitemshort}[3]{%
 	#1&\parbox[t]{0.83\textwidth}{%
-		\textbf{#2}%
+		#2%
+		\hfill%
+		{\footnotesize\emph{#3}}%
 	}\\
 }
 
@@ -331,4 +333,9 @@
 
 \RequirePackage[left=7.6cm,top=0.1cm,right=1cm,bottom=0.2cm,nohead,nofoot]{geometry}
 
-\RequirePackage{hyperref}
+
+\RequirePackage[colorlinks = true,
+            linkcolor = blue,
+            urlcolor  = blue,
+            citecolor = blue,
+            anchorcolor = blue]{hyperref}
