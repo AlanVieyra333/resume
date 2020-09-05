@@ -198,12 +198,12 @@
 
 		%------------------------------------------------
 		
-		\profilesection{Idiomas}
+		\profilesection{Languages}
 		\languages
 		
 		%------------------------------------------------
 
-		\profilesection{Habilidades}
+		\profilesection{Skills}
 
 		\skills
 		\scriptsize
@@ -222,7 +222,7 @@
 	\begin{textblock}{6}(0.5, 0.2)
 		%------------------------------------------------
 		
-		\profilesection{Habilidades}
+		\profilesection{Skills}
 		
 		\skillsSecond
 		\skillstext
