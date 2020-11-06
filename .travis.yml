@@ -1,0 +1,9 @@
+arch:
+  - arm64
+services:
+  - docker
+before_script:
+  - docker pull texlive/texlive
+script:
+  - docker run --rm -v $(pwd):/app texlive/texlive /bin/bash -c 'cd /app && make'
+  - ls -la
