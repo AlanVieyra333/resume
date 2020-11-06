@@ -1,5 +1,4 @@
-arch:
-  - arm64
+sudo: required
 services:
   - docker
 before_script:
