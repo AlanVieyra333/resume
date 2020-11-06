@@ -5,5 +5,5 @@ services:
 before_script:
   - docker pull texlive/texlive
 script:
-  - docker run texlive/texlive /bin/bash -c 'pwd && ls -la'
+  - docker run --rm --privileged -v $(pwd):/app texlive/texlive /bin/bash -c 'pwd && cd /app && ls -la && make'
   - ls -la
