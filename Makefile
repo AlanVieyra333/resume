@@ -2,7 +2,7 @@ PROJ = CV_AFRV.pdf
 MAIN = cv
 
 $(PROJ): *.tex *.cls *.png
-	pdflatex -pdf $(MAIN).tex
+	pdflatex $(MAIN).tex
 	mv $(MAIN).pdf $(PROJ)
 
 clean:
