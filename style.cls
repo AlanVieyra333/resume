@@ -176,8 +176,8 @@
 
 		%------------------------------------------------
 
-		\renewcommand{\arraystretch}{1.6}
-		\begin{tabular}{p{0.5cm} @{\hskip 0.5cm}p{5cm}}
+		\renewcommand{\arraystretch}{1.2}
+		\begin{tabular}{p{0.4cm} @{\hskip 0.5cm}p{5.2cm}}
 			\ifthenelse{\equal{\cvdate}{}}{}{\textsc{\Large\icon{*}} & \cvdate\\}
 			\ifthenelse{\equal{\cvnationality}{}}{}{\textsc{\Large\icon{\Info}} & \cvnationality\\}
 			\ifthenelse{\equal{\cvaddress}{}}{}{\textsc{\Large\icon{\Letter}} & \cvaddress\\}
@@ -192,7 +192,7 @@
 		%------------------------------------------------
 		
 		\ifthenelse{\equal{\aboutme}{}}{}{
-			\profilesection{Acerca de mi}
+			\profilesection{About me}
 			\begin{flushleft}
 				\aboutme
 			\end{flushleft}
