@@ -4,6 +4,7 @@ MAIN = cv
 $(PROJ): *.tex *.cls *.png
 	pdflatex $(MAIN).tex
 	mv $(MAIN).pdf $(PROJ)
+	@echo "\nDone!"
 
 docker-build: *.tex *.cls *.png
 	docker run -it -v `pwd`:/app -w /app texlive/texlive:latest make
