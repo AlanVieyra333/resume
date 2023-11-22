@@ -6,10 +6,10 @@ $(PROJ): *.tex *.cls *.png
 	mv $(MAIN).pdf $(PROJ)
 	@echo "\nDone!"
 
-docker-build: *.tex *.cls *.png
+docker: *.tex *.cls *.png
 	docker run -it -v `pwd`:/app -w /app texlive/texlive:latest make
 
 clean:
 	rm -rf *.log *.out *.aux *.synctex.gz *.pdf
 
-.PHONY: clean
+.PHONY: docker clean
