@@ -34,7 +34,9 @@
 
 \cvdate{23-Dec-1995} % Date of birth
 \cvnationality{Mexican}
-\cvaddress{Querétaro, Querétaro, Mexico.} % Short address/location, use \newline if more than 1 line is required
+% Short address/location, use \newline if more than 1 line is required
+\cvaddress{Querétaro, Querétaro, Mexico.}
+% \cvaddress{Miguel Hidalgo, Ciudad de México, Mexico.}
 \cvnumberphone{(+52) 5591250145} % Phone number
 \cvmail{alan.vieyra376@gmail.com} % Email address
 \cvsite{} % Personal website
@@ -60,17 +62,18 @@
 \skills{
 	{Java Spring/9.5},
 	{RESTful API/9.5},
-	{Angular 8, React.JS/9},
-	{Git, Maven/9},
-	{PostgreSQL, MySQL, SQL Oracle/8.5},
-	{Docker, OpenShift, Jenkins/8},
-	{Linux, C++/7.5}}
+	% {Angular 8, React.JS/9},
+	{Docker, OpenShift, Jenkins/8.5},
+	{Git, Maven/8.5},
+	{PostgreSQL, MongoDB/8},
+	{Linux/7.5}}
 
 % Skill bar section, each skill must have a value between 0 an 10 (float)
 \skillsSecond{
-	{Python, ML frameworks/6},
-	{AWS, GCP, Azure/5},
+	{Python/7},
+	{AWS, GCP, Azure/5.5},
 	{ELK, Splunk/5},
+	{GraphQL/5},
 	{Tomcat, WebSphere/4}}
 
 %------------------------------------------------
@@ -110,8 +113,7 @@
 \section{Courses}
 
 \begin{twentyshort} % Environment for a short list with no descriptions
-	%\twentyitemshort{<dates>}{<title/description>}
-	\twentyitemshort{2018}{Mobile app development with Flutter}{Udemy}
+	% \twentyitemshort{2018}{Mobile app development with Flutter}{Udemy}
 	\twentyitemshort{2018}{Scrum Fundamentals}{SCRUMstudy}
 	\twentyitemshort{2016}{Neural networks, Stanford University}{Coursera}
 	\twentyitemshort{2015}{Competitive programming and algorithm analysis}{ESCOM - IPN.}
@@ -149,31 +151,30 @@
 
 \cvsection{Experience}
 
-% \cvevent{Infrastructure support engineer}{IDS Comercial S.A. de C.V - Citibanamex}{January 2021 -- Present}{México, Remote work}
-% \begin{itemize}
-% 	\item Pipelines development in \textbf{Jenkins} for CI/CD, with deployment in \textbf{Nexus} repository.
-% 	\item Process automation using \textbf{bash} scripts.
-% 	\item Monitoring using \textbf{Splunk}, and infrastructure support using \textbf{Service Now}.
-% \end{itemize}
-
-\cvevent{Fullstack Software Developer Sr}{IDS Comercial S.A. de C.V - Citibanamex}{January 2021 -- Present}{México, Remote work}
+\cvevent{DevOps engineer}{Veradat Smart Network S.A. de C.V}{August 2024 -- Present}{México, Hybrid mode}
 \begin{itemize}
-	\item Develop web solutions with \textbf{Angular framework}.
-	\item Develop microservices with \textbf{Java Spring Boot} and \textbf{Node.js}.
-	\item Use of databases in \textbf{PostgreSQL}.
+	\item Pipelines development using \textbf{Azure DevOps} for CI/CD to deploy in \textbf{Kubernetes} clusters.
+	\item Infrastructure provisioning using Azure services like \textbf{AKS}, \textbf{Network groups}, \textbf{Bastion VM}, \textbf{Databases}, \textbf{MQ}.
+	\item Support of infrastructure in low environments.
 \end{itemize}
 
 \divider
 
-\cvevent{DevOps engineer}{EVERIS BPO MÉXICO, S. DE R.L. DE C.V. - TELCEL}{September 2019 -- December 2020}{Plaza Carzo, CDMX, México}
+\cvevent{DevOps engineer}{IDS Comercial S.A. de C.V - Citibanamex}{January 2021 -- August 2024}{México, Remote work}
 \begin{itemize}
-	\item \textbf{Docker} container building and handling orchestrated by \textbf{OpenShift}.
-	\item Infrastructure as code with \textbf{Ansible} to automate the configuration of environments in the \textbf {OpenShift} platform.
-	\item Pipelines development in \textbf{Jenkins} for CI/CD, with deployment in a \textbf{Nexus} repository.
-	\item Microservices development using \textbf{Spring} and \textbf{Java}.
-	\item Anomaly detection in \textbf{Elsatic} using \textbf{Python} and the \textbf{Pandas} library.
-	\item Process optimization using C++.
+	\item Pipelines development in \textbf{Jenkins} for CI/CD, with deployment in \textbf{Nexus} repository.
+	\item Process automation using \textbf{bash} scripts.
+	\item Monitoring using \textbf{Splunk}, and infrastructure support using \textbf{Service Now}.
+	\item Troubleshooting support in web services.
 \end{itemize}
+
+% \cvevent{Fullstack Software Engineer Sr}{IDS Comercial S.A. de C.V - Citibanamex}{January 2021 -- Present}{México, Remote work}
+% \begin{itemize}
+% 	\item Troubleshooting in web services.
+% 	\item Develop web solutions with \textbf{NextJS}.
+% 	\item Develop microservices with \textbf{Java Spring Boot} and \textbf{Python - DJango}.
+% 	\item Develop API \textbf{RESTful} and \textbf{GraphQL}.
+% \end{itemize}
 
 
 %----------------------------------------------------------------------------------------
@@ -183,6 +184,18 @@
 \newpage % Start a new page
 
 \makeprofileSecond % Print the sidebar
+
+\cvevent{Software Engineer}{EVERIS BPO MÉXICO, S. DE R.L. DE C.V. - TELCEL}{September 2019 -- December 2020}{Plaza Carzo, CDMX, México}
+\begin{itemize}
+	\item Microservices development using \textbf{Java Spring Boot} and \textbf{JPA}.
+	\item \textbf{Docker} container building and handling orchestrated by \textbf{OpenShift}.
+	\item Infrastructure as code with \textbf{Ansible} to automate the configuration of environments in the \textbf {OpenShift} platform.
+	\item Pipelines development in \textbf{Jenkins} for CI/CD, with deployment in a \textbf{Nexus} repository.
+	% \item Use of NoSQL databases with \textbf{MongoDB} and \textbf{DynamoDB}.
+	% \item Monitoring using \textbf{ElasticSearch, Logstash \& Kibana}.
+\end{itemize}
+
+\divider
 
 \cvevent{Fullstack Software Developer}{HITSS CONSULTING S.A. DE C.V. - TELMEX}{June 2018 -- August 2019}{CDMX, México}
 \begin{itemize}
