@@ -30,13 +30,13 @@ jobs:
           path: CV_AFRV.pdf
 
       # Save PDF as release
-      - name: Upload PDF to release
-        uses: actions/upload-release-asset@v1
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./CV_AFRV.pdf
-          asset_name: CV_AFRV.pdf
-          asset_content_type: application/pdf
+      # - name: Upload PDF to release
+      #   uses: actions/upload-release-asset@v1
+      #   with:
+      #     upload_url: ${{ steps.create_release.outputs.upload_url }}
+      #     asset_path: ./CV_AFRV.pdf
+      #     asset_name: CV_AFRV.pdf
+      #     asset_content_type: application/pdf
 
       # Deploy PDF to GitHub Pages
       - name: Deploy PDF to GitHub Pages
