@@ -26,8 +26,15 @@ jobs:
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
         with:
-          name: pdf
+          name: CV_AFRV.zip
           path: CV_AFRV.pdf
+
+      - name: Upload PDF to Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: CV_AFRV.pdf
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Save PDF as release
       # - name: Upload PDF to release
