@@ -16,6 +16,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Create Git tag
+        run: |
+          git config --global --add safe.directory $GITHUB_WORKSPACE
+          git tag v1.0.${{ github.run_number }}
+          git push origin v1.0.${{ github.run_number }}
+
       # Compile the file .tex
       - name: Compile LaTeX document
         run: |
@@ -32,6 +38,7 @@ jobs:
       - name: Upload PDF to Release
         uses: softprops/action-gh-release@v1
         with:
+          tag_name: v1.0.${{ github.run_number }}
           files: CV_AFRV.pdf
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
