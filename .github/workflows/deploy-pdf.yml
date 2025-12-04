@@ -28,13 +28,6 @@ jobs:
           latexmk -pdf -interaction=nonstopmode -halt-on-error cv.tex
           mv cv.pdf CV_AFRV.pdf
 
-      # Save PDF as artefact
-      - name: Upload PDF artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: CV_AFRV.zip
-          path: CV_AFRV.pdf
-
       - name: Upload PDF to Release
         uses: softprops/action-gh-release@v1
         with:
@@ -42,36 +35,3 @@ jobs:
           files: CV_AFRV.pdf
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # Save PDF as release
-      # - name: Upload PDF to release
-      #   uses: actions/upload-release-asset@v1
-      #   with:
-      #     upload_url: ${{ steps.create_release.outputs.upload_url }}
-      #     asset_path: ./CV_AFRV.pdf
-      #     asset_name: CV_AFRV.pdf
-      #     asset_content_type: application/pdf
-
-      # Deploy PDF to GitHub Pages
-      - name: Deploy PDF to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
-
-#curl -X POST \
-#  https://api.github.com/repos/AlanVieyra333/curriculum-vitae/releases \
-#  -H "Authorization: token <TOKEN>" \
-#  -d '{"tag_name":"v1.0"}'
-
-#curl -X POST \
-#  https://uploads.github.com/repos/AlanVieyra333/curriculum-vitae/releases/33771530/assets?name=CV_AFRV.pdf \
-#  -H "Authorization: token <TOKEN>" \
-#  -H "Content-Type: application/pdf" \
-#  --upload-file CV_AFRV.pdf
-
-#curl -X POST \
-#  https://alanvieyra333.github.io/curriculum-vitae/CV_AFRV.pdf \
-#  -H "Authorization: token <TOKEN>" \
-#  -H "Content-Type: application/pdf" \
-#  --upload-file CV_AFRV.pdf
