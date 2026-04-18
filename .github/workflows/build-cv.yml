@@ -1,0 +1,91 @@
+name: Build CV
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    container:
+      image: texlive/texlive:latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get latest tag
+        id: tag
+        run: |
+          git config --global --add safe.directory $GITHUB_WORKSPACE
+          git fetch --tags
+          LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+          echo "LAST_TAG=$LAST_TAG" >> $GITHUB_ENV
+
+      - name: Analyze commits
+        id: analyze
+        run: |
+          COMMITS=$(git log ${LAST_TAG}..HEAD --pretty=format:%s)
+
+          echo "$COMMITS"
+
+          if echo "$COMMITS" | grep -q "feat!"; then
+            echo "RELEASE_TYPE=major" >> $GITHUB_ENV
+          elif echo "$COMMITS" | grep -q "^feat:"; then
+            echo "RELEASE_TYPE=minor" >> $GITHUB_ENV
+          elif echo "$COMMITS" | grep -q "^fix:"; then
+            echo "RELEASE_TYPE=patch" >> $GITHUB_ENV
+          else
+            echo "RELEASE_TYPE=none" >> $GITHUB_ENV
+          fi
+
+      - name: Stop if no release needed
+        if: env.RELEASE_TYPE == 'none'
+        run: |
+          echo "No versionable changes detected. Skipping release."
+          exit 0
+
+      - name: Calculate next version
+        shell: bash
+        run: |
+          VERSION=${LAST_TAG#v}
+          IFS='.' read -r MAJOR MINOR PATCH <<< "$VERSION"
+
+          if [ "$RELEASE_TYPE" = "major" ]; then
+            MAJOR=$((MAJOR+1))
+            MINOR=0
+            PATCH=0
+          elif [ "$RELEASE_TYPE" = "minor" ]; then
+            MINOR=$((MINOR+1))
+            PATCH=0
+          elif [ "$RELEASE_TYPE" = "patch" ]; then
+            PATCH=$((PATCH+1))
+          fi
+
+          NEW_VERSION="v$MAJOR.$MINOR.$PATCH"
+          echo "VERSION=$NEW_VERSION" >> $GITHUB_ENV
+
+      - name: Create tag
+        run: |
+          git tag $VERSION
+          git push origin $VERSION
+
+      - name: Compile
+        run: |
+          make
+          mv cv_afrv_en.pdf cv_afrv_en_${VERSION}.pdf
+          mv cv_afrv_es.pdf cv_afrv_es_${VERSION}.pdf
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ env.VERSION }}
+          files: |
+            cv_afrv_en_${{ env.VERSION }}.pdf
+            cv_afrv_es_${{ env.VERSION }}.pdf
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

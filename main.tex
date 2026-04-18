@@ -1,0 +1,104 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Twenty Seconds Resume/CV
+% LaTeX Template
+% Version 1.1 (8/1/17)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Carmine Spagnuolo (cspagnuolo@unisa.it) with major modifications by 
+% Vel (vel@LaTeXTemplates.com)
+%
+% License:
+% The MIT License (see included LICENSE file)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[letterpaper]{style} % a4paper for A4
+
+\providecommand{\lang}{en} % default
+
+%----------------------------------------------------------------------------------------
+%	 PERSONAL INFORMATION
+%----------------------------------------------------------------------------------------
+
+% If you don't need one or more of the below, just remove the content leaving the command, e.g. \cvnumberphone{}
+
+\profilepic{profile} % Profile picture
+
+\cvname{Alan Fernando\\Rincón Vieyra} % Your name
+\cvjobtitle{Computer Systems Engineer} % Job title/career
+
+\cvdate{23-Dec-1995} % Date of birth
+\cvnationality{Mexican}
+% Short address/location, use \newline if more than 1 line is required
+\cvaddress{Mexico City, Mexico.}
+% \cvaddress{Miguel Hidalgo, Ciudad de México, Mexico.}
+\cvnumberphone{(+52) 5591250145} % Phone number
+\cvmail{alan.vieyra376@gmail.com} % Email address
+\cvsite{} % Personal website
+\cvlinkedin{https://linkedin.com/in/AlanVieyra333} % LinkedIn account
+\cvgithub{http://github.com/AlanVieyra333} % Personal website
+\cvfb{} % Facebook account
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	 ABOUT ME
+%----------------------------------------------------------------------------------------
+
+\aboutme{} % To have no About Me section, just remove all the text and leave \aboutme{}
+
+%----------------------------------------------------------------------------------------
+%	 SKILLS
+%----------------------------------------------------------------------------------------
+
+% Skill bar section, each skill must have a value between 0 an 10 (float)
+\skills{
+	{Java, Maven/9},
+	{Spring Cloud/9},
+	{RESTful API/9},
+	{React, NodeJS, Typescript, HTML, CSS/8.5},
+	{Git, GitHub/8.5},
+	{OpenShift, Kubernetes/8.5},
+	{Docker/8.5},
+	{Azure DevOps/8}}
+
+% Skill bar section, each skill must have a value between 0 an 10 (float)
+\skillsSecond{
+	{Oracle, PostgreSQL/8},
+	{Jenkins/7.5},
+	{RabbitMQ/7.5},
+	{Bash/7.5},
+	{Linux/7.5},
+	{AWS, GCP, Azure/7},
+	{ELK, Splunk/6}}
+
+%------------------------------------------------
+
+% Skill text section, each skill must have a value between 0 an 6
+% \skillstext{{Drone programming,},{Microcontrollers programming,},{Teamwork,},{Good programming practices.}}
+
+%----------------------------------------------------------------------------------------
+%	 LANGUAGES
+%----------------------------------------------------------------------------------------
+
+% Languages bar section, each language must have a value between 0 an 10 (float)
+\languages{{Spanish - Native/10}, {English - Intermediate/7}}
+
+%----------------------------------------------------------------------------------------
+
+\makeprofile % Print the sidebar
+
+
+\input{lang/\lang.tex}
+
+
+\end{document}
