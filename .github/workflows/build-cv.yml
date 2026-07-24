@@ -47,9 +47,9 @@ jobs:
         if: env.RELEASE_TYPE == 'none'
         run: |
           echo "No versionable changes detected. Skipping release."
-          exit 0
 
       - name: Calculate next version
+        if: env.RELEASE_TYPE != 'none'
         shell: bash
         run: |
           VERSION=${LAST_TAG#v}
@@ -70,17 +70,20 @@ jobs:
           echo "VERSION=$NEW_VERSION" >> $GITHUB_ENV
 
       - name: Create tag
+        if: env.RELEASE_TYPE != 'none'
         run: |
           git tag $VERSION
           git push origin $VERSION
 
       - name: Compile
+        if: env.RELEASE_TYPE != 'none'
         run: |
           make
           mv cv_afrv_en.pdf cv_afrv_en_${VERSION}.pdf
           mv cv_afrv_es.pdf cv_afrv_es_${VERSION}.pdf
 
       - name: Release
+        if: env.RELEASE_TYPE != 'none'
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ env.VERSION }}
