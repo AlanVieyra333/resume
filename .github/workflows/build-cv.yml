@@ -38,6 +38,7 @@ jobs:
           echo "LAST_TAG=$LAST_TAG" >> $GITHUB_ENV
 
       - name: Validate commit messages
+        shell: bash
         run: |
           PATTERN="^(${CONVENTIONAL_TYPES})(\([a-zA-Z0-9_-]+\))?!?: .+"
           INVALID=0
