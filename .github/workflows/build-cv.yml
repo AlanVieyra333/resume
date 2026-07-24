@@ -5,16 +5,27 @@ on:
     branches:
       - master
 
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  CONVENTIONAL_TYPES: "feat|fix|build|chore|ci|docs|style|refactor|perf|test|revert"
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     container:
-      image: texlive/texlive:latest
+      image: texlive/texlive:TL2025-historic
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           fetch-depth: 0
 
@@ -26,22 +37,50 @@ jobs:
           LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
           echo "LAST_TAG=$LAST_TAG" >> $GITHUB_ENV
 
+      - name: Validate commit messages
+        run: |
+          PATTERN="^(${CONVENTIONAL_TYPES})(\([a-zA-Z0-9_-]+\))?!?: .+"
+          INVALID=0
+
+          while IFS= read -r line; do
+            [ -z "$line" ] && continue
+            hash=${line%% *}
+            subject=${line#* }
+            if ! echo "$subject" | grep -qE "$PATTERN"; then
+              echo "::error::Commit $hash no sigue Conventional Commits: \"$subject\""
+              INVALID=1
+            fi
+          done < <(git log ${LAST_TAG}..HEAD --no-merges --pretty=format:"%h %s")
+
+          if [ "$INVALID" = "1" ]; then
+            echo ""
+            echo "Formato esperado: <tipo>[(scope)][!]: <descripción>"
+            echo "Tipos válidos: ${CONVENTIONAL_TYPES//|/, }"
+            exit 1
+          fi
+
       - name: Analyze commits
         id: analyze
         run: |
-          COMMITS=$(git log ${LAST_TAG}..HEAD --pretty=format:%s)
+          # %B trae subject + body + footers, necesario para detectar "BREAKING CHANGE:"
+          COMMITS=$(git log ${LAST_TAG}..HEAD --pretty=format:%B)
 
           echo "$COMMITS"
 
-          if echo "$COMMITS" | grep -q "feat!"; then
-            echo "RELEASE_TYPE=major" >> $GITHUB_ENV
-          elif echo "$COMMITS" | grep -q "^feat:"; then
-            echo "RELEASE_TYPE=minor" >> $GITHUB_ENV
-          elif echo "$COMMITS" | grep -q "^fix:"; then
-            echo "RELEASE_TYPE=patch" >> $GITHUB_ENV
+          # Breaking change: "!" tras un tipo válido (cualquiera, no solo feat)
+          # o footer "BREAKING CHANGE:" / "BREAKING-CHANGE:"
+          if echo "$COMMITS" | grep -qE "^(${CONVENTIONAL_TYPES})(\([^)]*\))?!:" || \
+             echo "$COMMITS" | grep -qE '^BREAKING[ -]CHANGE:'; then
+            RELEASE_TYPE="major"
+          elif echo "$COMMITS" | grep -qE '^feat(\([^)]*\))?:'; then
+            RELEASE_TYPE="minor"
+          elif echo "$COMMITS" | grep -qE '^fix(\([^)]*\))?:'; then
+            RELEASE_TYPE="patch"
           else
-            echo "RELEASE_TYPE=none" >> $GITHUB_ENV
+            RELEASE_TYPE="none"
           fi
+
+          echo "RELEASE_TYPE=$RELEASE_TYPE" >> $GITHUB_ENV
 
       - name: Stop if no release needed
         if: env.RELEASE_TYPE == 'none'
@@ -69,11 +108,51 @@ jobs:
           NEW_VERSION="v$MAJOR.$MINOR.$PATCH"
           echo "VERSION=$NEW_VERSION" >> $GITHUB_ENV
 
+      - name: Generate changelog
+        if: env.RELEASE_TYPE != 'none'
+        run: |
+          {
+            echo "## Cambios en ${VERSION}"
+            echo ""
+
+            BREAKING=$(git log ${LAST_TAG}..HEAD --no-merges --pretty=format:"- %s (%h)" | grep -E "^- (${CONVENTIONAL_TYPES})(\([^)]*\))?!:" || true)
+            FEATS=$(git log ${LAST_TAG}..HEAD --no-merges --pretty=format:"- %s (%h)" | grep -E '^- feat(\([^)]*\))?:' || true)
+            FIXES=$(git log ${LAST_TAG}..HEAD --no-merges --pretty=format:"- %s (%h)" | grep -E '^- fix(\([^)]*\))?:' || true)
+
+            if [ -n "$BREAKING" ]; then
+              echo "### ⚠ Breaking Changes"
+              echo "$BREAKING"
+              echo ""
+            fi
+            if [ -n "$FEATS" ]; then
+              echo "### Features"
+              echo "$FEATS"
+              echo ""
+            fi
+            if [ -n "$FIXES" ]; then
+              echo "### Fixes"
+              echo "$FIXES"
+              echo ""
+            fi
+          } > CHANGELOG_BODY.md
+
+          cat CHANGELOG_BODY.md
+
       - name: Create tag
         if: env.RELEASE_TYPE != 'none'
         run: |
-          git tag $VERSION
-          git push origin $VERSION
+          if git rev-parse -q --verify "refs/tags/${VERSION}" >/dev/null 2>&1; then
+            EXISTING_COMMIT=$(git rev-list -n 1 "refs/tags/${VERSION}")
+            if [ "$EXISTING_COMMIT" = "$(git rev-parse HEAD)" ]; then
+              echo "El tag ${VERSION} ya existe y apunta al commit actual (probable re-run). Se omite la creación."
+            else
+              echo "::error::El tag ${VERSION} ya existe y apunta a otro commit ($EXISTING_COMMIT). Se aborta para evitar sobrescribir un release existente."
+              exit 1
+            fi
+          else
+            git tag "$VERSION"
+            git push origin "$VERSION"
+          fi
 
       - name: Compile
         if: env.RELEASE_TYPE != 'none'
@@ -84,9 +163,10 @@ jobs:
 
       - name: Release
         if: env.RELEASE_TYPE != 'none'
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@26994186c0ac3ef5cae75ac16aa32e8153525f77 # v1
         with:
           tag_name: ${{ env.VERSION }}
+          body_path: CHANGELOG_BODY.md
           files: |
             cv_afrv_en_${{ env.VERSION }}.pdf
             cv_afrv_es_${{ env.VERSION }}.pdf

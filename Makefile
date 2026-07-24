@@ -17,7 +17,7 @@ $(PROJ)_es.pdf: **/*.tex *.cls *.jpg
 	@echo "\nDone!"
 
 docker: **/*.tex *.cls *.jpg
-	docker run -it -v `pwd`:/app -w /app texlive/texlive:latest make
+	docker run -it -v `pwd`:/app -w /app texlive/texlive:TL2025-historic make
 
 clean:
 	rm -rf *.log *.out *.aux *.synctex.gz *.fls *.fdb_latexmk *.pdf
