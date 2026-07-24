@@ -40,7 +40,7 @@ jobs:
       - name: Validate commit messages
         shell: bash
         run: |
-          PATTERN="^(${CONVENTIONAL_TYPES})(\([a-zA-Z0-9_-]+\))?!?: .+"
+          PATTERN="^(${CONVENTIONAL_TYPES})(\([^)]*\))?!?: .+"
           INVALID=0
 
           while IFS= read -r line; do
