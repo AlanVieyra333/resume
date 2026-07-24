@@ -3,7 +3,7 @@
 %----------------------------------------------------------------------------------------
 
 \cvjobtitle{Software Engineer \textbar\ DevOps \& Development}
-\cvsummary{Software engineer with 9+ years across full-stack development and DevOps: CI/CD pipelines (Azure DevOps, Jenkins), Kubernetes/OpenShift deployments, cloud infrastructure as code (Terraform, Ansible) on AWS/Azure, and Java/Spring Cloud microservices with React/TypeScript front ends.}
+\cvsummary{Software engineer with 9+ years across full-stack development and DevOps. Cut deployment time 83\% (6h to 1h) building CI/CD pipelines for 70 microservices, and reduced incident detection time 50\% by engineering Elastic Stack observability across 9 production Kubernetes/OpenShift clusters. Remediated 100\% of critical/high security vulnerabilities through systematic dependency and OS patching. Skilled in Java/Spring Cloud, React/TypeScript, and infrastructure as code (Terraform, Ansible) on AWS/Azure.}
 
 \makeheader
 
@@ -12,11 +12,14 @@
 %----------------------------------------------------------------------------------------
 
 \section*{Technical Skills}
-\skillrow{Languages \& Frameworks}{Java, Spring Cloud, JPA, RESTful APIs, Maven}
-\skillrow{Frontend}{React, Node.js, TypeScript, HTML, CSS}
-\skillrow{Cloud \& DevOps}{Azure DevOps, AWS, GCP, Azure, OpenShift, Kubernetes, Docker, Terraform, Ansible, Jenkins}
-\skillrow{Databases \& Messaging}{Oracle, PostgreSQL, Kafka, RabbitMQ}
-\skillrow{Tools \& Monitoring}{Git, GitHub, Nexus, SonarQube Cloud, Snyk, Mend, Elastic Stack (ELK), Splunk, Service Now, Linux, Bash}
+\skillrow{Languages}{Java, TypeScript, JavaScript, Bash}
+\skillrow{Frameworks}{Spring Cloud, JPA, React, Node.js, RESTful APIs}
+\skillrow{Cloud}{AWS, Azure, GCP, Route 53, IAM}
+\skillrow{Databases}{Oracle, PostgreSQL}
+\skillrow{DevOps}{Azure DevOps, Jenkins, Docker, Kubernetes, OpenShift, Terraform, Ansible, SonarQube Cloud, Snyk, Mend}
+\skillrow{Mobile}{React Native}
+\skillrow{Testing}{JUnit, Postman, JMeter}
+\skillrow{Other Technologies}{Git, GitHub, Nexus, Maven, Linux, Kafka, RabbitMQ, Elastic Stack (ELK), Splunk, Service Now}
 
 %----------------------------------------------------------------------------------------
 %	 EXPERIENCE
@@ -26,44 +29,34 @@
 
 \cventry{DevOps Engineer}{Veradat Smart Network S.A. de C.V.}{Aug 2024 -- Present}{Polanco, CDMX, Mexico}
 \begin{itemize}
-	\item Built \textbf{CI/CD pipelines} with \textbf{Azure DevOps} to deploy to \textbf{OpenShift/Kubernetes} clusters.
-	\item Built and managed \textbf{Docker} containers orchestrated by \textbf{Kubernetes}.
-	\item Configured cloud infrastructure on AWS/Azure: databases, message brokers, virtual machines, load balancers, secret management, Route 53, IAM.
-	\item Automated multi-server configuration with \textbf{Ansible}.
-	\item Implemented infrastructure as code with \textbf{Terraform}.
-	\item Ran messaging systems with \textbf{Kafka} and \textbf{RabbitMQ}.
-	\item Administered \textbf{Oracle} and \textbf{PostgreSQL} databases.
-	\item Managed Git and artifact repositories in \textbf{Azure DevOps}.
-	\item Ran code quality analysis with \textbf{SonarQube Cloud} and security scanning with \textbf{Mend} and \textbf{Snyk}.
-	\item Monitored logs with \textbf{Elastic Stack}.
+	\item Designed and maintained 10 CI/CD pipelines in \textbf{Azure DevOps} for 3 teams (frontend, backend, QA) across 70 microservices, cutting deployment time from 6 hours to 1 hour (83\% faster).
+	\item Administer 9 production clusters (1 OpenShift, 8 Kubernetes; \textasciitilde80 pods each) and implemented liveness/readiness probes, eliminating downtime during rolling deployments.
+	\item Automated configuration management for 10 servers with \textbf{Ansible}, cutting provisioning time from 2 hours to 20 minutes (83\% faster).
+	\item Remediated 100\% of critical and high-severity vulnerabilities flagged by \textbf{SonarQube Cloud}, \textbf{Snyk}, and \textbf{Mend} by upgrading OS packages and Maven dependencies.
+	\item Built \textbf{Elastic Stack} monitoring and alerting across 70+ services per cluster on all 9 clusters, cutting incident detection time from 60 to 30 minutes (50\% faster).
+	\item Provisioned AWS/Azure infrastructure as code with \textbf{Terraform} (VMs, load balancers, secrets management, Route 53, IAM) and operated \textbf{Kafka}/\textbf{RabbitMQ} messaging with Oracle/PostgreSQL databases.
 \end{itemize}
 
 \cventry{Fullstack + DevOps Engineer}{IDS Comercial S.A. de C.V. -- Citibanamex}{Jan 2021 -- Aug 2024}{Mexico (Remote)}
 \begin{itemize}
-	\item Built CI/CD pipelines in \textbf{Azure DevOps} and \textbf{Jenkins}.
-	\item Monitored systems with \textbf{Splunk} and supported infrastructure via \textbf{Service Now}.
-	\item Provided troubleshooting support for web services.
-	\item Developed microservices with \textbf{Java}, \textbf{Spring Cloud}, \textbf{JPA}, and REST APIs.
-	\item Built frontend features with \textbf{React}, \textbf{Node.js}, \textbf{TypeScript}, HTML/CSS.
-	\item Administered \textbf{Oracle} databases.
-	\item Managed Git repositories on GitHub.
+	\item Developed and maintained 10 Java/Spring Cloud microservices powering internal banking-executive workflows, processing \textasciitilde1,000 transactions/day per branch.
+	\item Built CI/CD pipelines in \textbf{Azure DevOps} and \textbf{Jenkins} to automate build and deployment for banking applications.
+	\item Reduced QA environment stability complaints by improving incident response, achieving a 2-3 hour average resolution time (up to 1 week for complex cases).
+	\item Monitored production systems with \textbf{Splunk} and resolved infrastructure tickets via \textbf{Service Now} within a 1-day SLA.
+	\item Built frontend features with React, Node.js, TypeScript and administered Oracle databases supporting the microservices layer.
 \end{itemize}
 
 \cventry{Fullstack Software Engineer}{Everis BPO México, S. de R.L. de C.V. -- Telcel}{Jun 2018 -- Dec 2020}{Plaza Carso, CDMX, Mexico}
 \begin{itemize}
-	\item Developed microservices with Java, Spring Cloud, JPA, and REST APIs.
-	\item Built frontend features with React, Node.js, TypeScript, HTML/CSS.
-	\item Administered Oracle databases.
-	\item Built and managed Docker containers orchestrated with Kubernetes.
-	\item Automated processes with Bash scripts.
-	\item Managed Git repositories on GitHub and an artifact repository on Nexus.
+	\item Built a service-bus integration layer (Java, Spring Cloud, JPA) that translated legacy telecom protocols into standardized RESTful APIs, enabling legacy systems to interoperate with modern services.
+	\item Implemented CI/CD pipelines for automated build and deployment, and containerized the service with Docker orchestrated on Kubernetes.
+	\item Developed additional microservices and React/Node.js/TypeScript frontend features; administered Oracle databases.
+	\item Automated operational processes with Bash scripts and managed Git (GitHub) and artifact (Nexus) repositories.
 \end{itemize}
 
 \cventry{Frontend Software Developer Jr.}{Nova Solutions Systems S.A. de C.V. -- Multiva}{Mar 2017 -- May 2018}{Polanco, CDMX, Mexico}
 \begin{itemize}
-	\item Developed new online banking features for Banco Multiva using React, Node.js, TypeScript, HTML/CSS.
-	\item Managed Git repositories on GitHub.
-	\item Worked within a Scrum methodology.
+	\item Developed new online banking features for Banco Multiva (React, Node.js, TypeScript) within a Scrum team.
 \end{itemize}
 
 %----------------------------------------------------------------------------------------
@@ -77,22 +70,30 @@
 \cventry{Instituto Politécnico Nacional -- Escuela Superior de Cómputo (ESCOM)}{B.Sc. in Computer Systems Engineering}{2014 -- 2018}{Mexico City, Mexico}
 
 %----------------------------------------------------------------------------------------
-%	 CERTIFICATIONS & COURSES
+%	 CERTIFICATIONS
 %----------------------------------------------------------------------------------------
 
-\section*{Certifications \& Courses}
+\section*{Certifications}
 \begin{itemize}
-	\item \textbf{Java SE} -- Oracle (2013) -- \href{https://www.youracclaim.com/badges/583548b1-06fa-4dbf-889d-419e6c6c2ec1/public_url}{credential}
-	\item \textbf{Scrum Fundamentals} -- SCRUMstudy (2018)
-	\item \textbf{Neural Networks} -- Stanford University, Coursera (2016)
-	\item \textbf{Competitive Programming and Algorithm Analysis} -- ESCOM, IPN (2015)
+	\item \textbf{Java SE} -- Oracle (2013) -- \href{https://www.youracclaim.com/badges/583548b1-06fa-4dbf-889d-419e6c6c2ec1/public_url}{Certified Associate}
 \end{itemize}
 
 %----------------------------------------------------------------------------------------
-%	 ACHIEVEMENTS
+%	 PROJECTS
 %----------------------------------------------------------------------------------------
 
-\section*{Achievements}
+\section*{Projects}
+\textbf{Subcontractor Invoice Management System} -- Client: Grupo de la Parra \textbar\ Freelance, Technical Lead\par
+\begin{itemize}
+	\item Led the technical design and architecture of a production invoice-management system for a subcontracted workforce of 5,000 employees.
+	\item Built the platform end-to-end with Angular 10, Java Spring, PostgreSQL, and REST APIs as a freelance engagement; code hosted in a private Azure DevOps repository.
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+%	 AWARDS
+%----------------------------------------------------------------------------------------
+
+\section*{Awards}
 \begin{itemize}
 	\item Participant, \textbf{Code Jam} programming competition -- Google (2019)
 	\item Competing team, selection stage of \textbf{ACM-ICPC} -- International Collegiate Programming Contest (2015 -- 2017)
@@ -106,4 +107,4 @@
 
 \section*{Languages}
 \skillrow{Spanish}{Native}
-\skillrow{English}{Intermediate}
+\skillrow{English}{B2 (Upper Intermediate)}
