@@ -1,4 +1,4 @@
-name: Build CV
+name: Build Resume
 
 on:
   push:
@@ -159,8 +159,8 @@ jobs:
         if: env.RELEASE_TYPE != 'none'
         run: |
           make
-          mv cv_afrv_en.pdf cv_afrv_en_${VERSION}.pdf
-          mv cv_afrv_es.pdf cv_afrv_es_${VERSION}.pdf
+          mv resume_afrv_en.pdf resume_afrv_en_${VERSION}.pdf
+          mv resume_afrv_es.pdf resume_afrv_es_${VERSION}.pdf
 
       - name: Release
         if: env.RELEASE_TYPE != 'none'
@@ -169,7 +169,7 @@ jobs:
           tag_name: ${{ env.VERSION }}
           body_path: CHANGELOG_BODY.md
           files: |
-            cv_afrv_en_${{ env.VERSION }}.pdf
-            cv_afrv_es_${{ env.VERSION }}.pdf
+            resume_afrv_en_${{ env.VERSION }}.pdf
+            resume_afrv_es_${{ env.VERSION }}.pdf
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

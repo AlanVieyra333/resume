@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ATS-friendly Software Engineer CV class
+% ATS-friendly Software Engineer Resume class
 %
 % Single column, no graphics/sidebars/tables-as-layout, standard fonts,
 % real selectable text only -- designed to parse cleanly through
@@ -8,7 +8,7 @@
 % License: MIT (see included LICENSE file)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\ProvidesClass{style}[2026/01/01 ATS-friendly Software Engineer CV class]
+\ProvidesClass{style}[2026/01/01 ATS-friendly Software Engineer Resume class]
 \NeedsTeXFormat{LaTeX2e}
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
@@ -67,30 +67,30 @@
 %	HEADER / CONTACT COMMANDS
 %----------------------------------------------------------------------------------------
 
-\newcommand{\cvname}[1]{\renewcommand{\cvname}{#1}}
-\newcommand{\cvjobtitle}[1]{\renewcommand{\cvjobtitle}{#1}}
-\newcommand{\cvaddress}[1]{\renewcommand{\cvaddress}{#1}}
-\newcommand{\cvnumberphone}[1]{\renewcommand{\cvnumberphone}{#1}}
-\newcommand{\cvmail}[1]{\renewcommand{\cvmail}{#1}}
-\newcommand{\cvlinkedin}[1]{\renewcommand{\cvlinkedin}{#1}}
-\newcommand{\cvgithub}[1]{\renewcommand{\cvgithub}{#1}}
-\newcommand{\cvsummary}[1]{\renewcommand{\cvsummary}{#1}}
+\newcommand{\resumename}[1]{\renewcommand{\resumename}{#1}}
+\newcommand{\resumejobtitle}[1]{\renewcommand{\resumejobtitle}{#1}}
+\newcommand{\resumeaddress}[1]{\renewcommand{\resumeaddress}{#1}}
+\newcommand{\resumenumberphone}[1]{\renewcommand{\resumenumberphone}{#1}}
+\newcommand{\resumemail}[1]{\renewcommand{\resumemail}{#1}}
+\newcommand{\resumelinkedin}[1]{\renewcommand{\resumelinkedin}{#1}}
+\newcommand{\resumegithub}[1]{\renewcommand{\resumegithub}{#1}}
+\newcommand{\resumesummary}[1]{\renewcommand{\resumesummary}{#1}}
 
 % Prints the header block: name, job title, one-line plain-text contact
 % line, and an optional professional summary paragraph.
 \newcommand{\makeheader}{%
 	\begin{center}
-		{\fontsize{22}{24}\selectfont\bfseries\color{headingcolor}\cvname}\\[3pt]
-		{\large\cvjobtitle}\\[6pt]
+		{\fontsize{22}{24}\selectfont\bfseries\color{headingcolor}\resumename}\\[3pt]
+		{\large\resumejobtitle}\\[6pt]
 		{\small
-			\mbox{\cvaddress}~\textbar~\mbox{\cvnumberphone}~\textbar~\mbox{\href{mailto:\cvmail}{\cvmail}}%
-			\ifthenelse{\equal{\cvlinkedin}{}}{}{~\textbar~\mbox{\href{https://\cvlinkedin}{\cvlinkedin}}}%
-			\ifthenelse{\equal{\cvgithub}{}}{}{~\textbar~\mbox{\href{https://\cvgithub}{\cvgithub}}}%
+			\mbox{\resumeaddress}~\textbar~\mbox{\resumenumberphone}~\textbar~\mbox{\href{mailto:\resumemail}{\resumemail}}%
+			\ifthenelse{\equal{\resumelinkedin}{}}{}{~\textbar~\mbox{\href{https://\resumelinkedin}{\resumelinkedin}}}%
+			\ifthenelse{\equal{\resumegithub}{}}{}{~\textbar~\mbox{\href{https://\resumegithub}{\resumegithub}}}%
 		}
 	\end{center}
-	\ifthenelse{\equal{\cvsummary}{}}{}{%
+	\ifthenelse{\equal{\resumesummary}{}}{}{%
 		\vspace{8pt}
-		\cvsummary
+		\resumesummary
 	}
 	\vspace{-4pt}
 }
@@ -103,7 +103,7 @@
 %	#4 Location -- right aligned
 %----------------------------------------------------------------------------------------
 
-\newcommand{\cventry}[4]{%
+\newcommand{\resumeentry}[4]{%
 	\noindent\begin{tabular*}{\linewidth}{@{}l@{\extracolsep{\fill}}r@{}}
 		\textbf{#1} & \textbf{\small #3}\\
 	\end{tabular*}\\[-1pt]

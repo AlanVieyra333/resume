@@ -1,19 +1,19 @@
-PROJ = cv_afrv
+PROJ = resume_afrv
 
 all: $(PROJ)_en.pdf $(PROJ)_es.pdf
 
 $(PROJ)_en.pdf: **/*.tex *.cls *.jpg
 	latexmk -pdf -interaction=nonstopmode -halt-on-error \
-		-jobname=cv_en \
+		-jobname=resume_en \
 		-pdflatex="pdflatex %O '\def\lang{en}\input{main.tex}'"
-	mv cv_en.pdf $(PROJ)_en.pdf
+	mv resume_en.pdf $(PROJ)_en.pdf
 	@echo "\nDone!"
 
 $(PROJ)_es.pdf: **/*.tex *.cls *.jpg
 	latexmk -pdf -interaction=nonstopmode -halt-on-error \
-		-jobname=cv_es \
+		-jobname=resume_es \
 		-pdflatex="pdflatex %O '\def\lang{es}\input{main.tex}'"
-	mv cv_es.pdf $(PROJ)_es.pdf
+	mv resume_es.pdf $(PROJ)_es.pdf
 	@echo "\nDone!"
 
 docker: **/*.tex *.cls *.jpg
