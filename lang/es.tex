@@ -1,111 +1,66 @@
-%----------------------------------------------------------------------------------------
-%	 ENCABEZADO
-%----------------------------------------------------------------------------------------
-
-\resumejobtitle{Ingeniero de Software \textbar\ DevOps \& Desarrollo}
-\resumesummary{Ingeniero de software con más de 9 años en desarrollo full-stack e infraestructura DevOps. Reduje el tiempo de despliegue 83\% (de 6h a 1h) construyendo \emph{pipelines} de CI/CD para 70 microservicios, y reduje el tiempo de detección de incidentes 50\% construyendo observabilidad con Elastic Stack en 9 clústeres productivos de Kubernetes/OpenShift. Remedié el 100\% de las vulnerabilidades críticas/altas mediante actualización sistemática de dependencias y del sistema operativo. Experiencia en Java/Spring Cloud, React/TypeScript, e infraestructura como código (Terraform, Ansible) en AWS/Azure.}
-
+% Versión en español. Mantener cifras y alcance alineados con lang/en.tex.
+\renewcommand{\resumeaddress}{Ciudad de México, México}
+\resumejobtitle{Ingeniero DevOps \textbar\ AWS, Kubernetes, CI/CD e infraestructura como código}
+\resumesummary{Ingeniero DevOps con trayectoria en desarrollo de software desde 2017 y experiencia en banca y telecomunicaciones. Aprovisioné infraestructura en AWS y Azure con Terraform; en AWS trabajé con Route~53 e IAM. Reduje de 6 horas a 1 hora el despliegue completo de 70 microservicios para 3 equipos y administro 9 clústeres de producción. Combino nube, Kubernetes/OpenShift y experiencia en Java/Spring Cloud para resolver problemas desde la aplicación hasta la infraestructura.}
 \makeheader
 
-%----------------------------------------------------------------------------------------
-%	 HABILIDADES TÉCNICAS
-%----------------------------------------------------------------------------------------
-
-\section*{Habilidades Técnicas}
-\skillrow{Lenguajes}{Java, TypeScript, JavaScript, Bash}
-\skillrow{Frameworks}{Spring Cloud, JPA, React, Node.js, APIs RESTful}
-\skillrow{Cloud}{AWS, Azure, GCP, Route 53, IAM}
-\skillrow{Bases de Datos}{Oracle, PostgreSQL}
-\skillrow{DevOps}{Azure DevOps, Jenkins, Docker, Kubernetes, Helm, OpenShift, Terraform, Ansible, SonarQube Cloud, Snyk, Mend}
-\skillrow{Móvil}{React Native}
-\skillrow{Testing}{JUnit, Postman, JMeter}
-\skillrow{Otras Tecnologías}{Git, GitHub, Nexus, Maven, Linux, Kafka, RabbitMQ, Elastic Stack (ELK), Splunk, Service Now}
-
-%----------------------------------------------------------------------------------------
-%	 EXPERIENCIA
-%----------------------------------------------------------------------------------------
+\section*{Competencias Técnicas}
+\skillrow{Plataformas y CI/CD}{Kubernetes, OpenShift, Docker, Helm, Azure DevOps, Jenkins}
+\skillrow{AWS e infraestructura}{AWS (Route~53, IAM), Terraform, Azure, Ansible, Linux, Bash}
+\skillrow{Observabilidad y seguridad}{Elastic Stack (ELK), Splunk, SonarQube Cloud, Snyk, Mend}
+\skillrow{Desarrollo}{Java, Spring Cloud, JPA, APIs REST, TypeScript, React, Node.js}
+\skillrow{Datos y herramientas}{Oracle, PostgreSQL, Kafka, RabbitMQ, Git, Maven, Nexus}
 
 \section*{Experiencia Profesional}
 
-\resumeentry{Ingeniero DevOps}{Veradat Smart Network S.A. de C.V.}{Ago 2024 -- Presente}{Polanco, CDMX, México}
+\resumeentry{Ingeniero DevOps}{Veradat Smart Network S.A. de C.V.}{Ago 2024 -- Actualidad}{Ciudad de México}
 \begin{itemize}
-	\item Diseñé y mantuve 10 \emph{pipelines} de CI/CD en \textbf{Azure DevOps} para 3 equipos (frontend, backend, QA) sobre 70 microservicios, reduciendo el tiempo de despliegue de 6 a 1 hora (83\% más rápido).
-	\item Administro 9 clústeres productivos (1 OpenShift, 8 Kubernetes; \textasciitilde80 pods cada uno) e implementé \emph{liveness}/\emph{readiness probes}, eliminando el tiempo de inactividad durante despliegues progresivos.
-	\item Diseñé y mantuve \emph{charts} de \textbf{Helm} para estandarizar y versionar los despliegues de los 70 microservicios en los 9 clústeres de Kubernetes/OpenShift.
-	\item Automaticé la configuración de 10 servidores con \textbf{Ansible}, reduciendo el tiempo de aprovisionamiento de 2 horas a 20 minutos (83\% más rápido).
-	\item Remedié el 100\% de las vulnerabilidades críticas y altas detectadas por \textbf{SonarQube Cloud}, \textbf{Snyk} y \textbf{Mend}, actualizando paquetes del sistema operativo y dependencias de Maven.
-	\item Construí monitoreo y alertas con \textbf{Elastic Stack} sobre 70+ servicios por clúster en los 9 clústeres, reduciendo el tiempo de detección de incidentes de 60 a 30 minutos (50\% más rápido).
-	\item Aprovisioné infraestructura como código en AWS/Azure con \textbf{Terraform} (VMs, balanceadores de carga, gestión de secretos, Route 53, IAM), y operé mensajería con \textbf{Kafka}/\textbf{RabbitMQ} y bases de datos Oracle/PostgreSQL.
+    \item Diseñé y mantuve \textbf{10 pipelines de CI/CD en Azure DevOps} para \textbf{3 equipos}: frontend, backend y QA. Reduje el tiempo de despliegue del conjunto completo de 70 microservicios de 6 horas a 1 hora (aproximadamente 83\% menos tiempo). Desarrollé charts de Helm para estandarizar y versionar los despliegues.
+    \item Administro \textbf{9 clústeres de producción: 8 Kubernetes y 1 OpenShift}. Implementé sondas de disponibilidad y estado (readiness/liveness probes) para controlar la incorporación de instancias al tráfico y su recuperación durante actualizaciones progresivas.
+    \item Implementé monitoreo y alertas con \textbf{Elastic Stack} en los 9 clústeres; reduje el \textbf{tiempo de detección de incidentes de 60 a 30 minutos} (50\% menos tiempo).
+    \item Aprovisioné infraestructura en \textbf{AWS y Azure con Terraform}, incluidas máquinas virtuales, balanceadores de carga y gestión de secretos; en AWS utilicé \textbf{Route~53 e IAM}. Automaticé la configuración con Ansible y reduje el aprovisionamiento del conjunto de 10 servidores de 2 horas a 20 minutos (aproximadamente 83\% menos tiempo).
+    \item Remedié vulnerabilidades críticas y altas detectadas por SonarQube Cloud, Snyk y Mend mediante actualizaciones de paquetes del sistema operativo y dependencias Maven.
 \end{itemize}
 
-\resumeentry{Ingeniero Fullstack + DevOps}{IDS Comercial S.A. de C.V. -- Citibanamex}{Ene 2021 -- Ago 2024}{México (Remoto)}
+\resumeentry{Ingeniero Fullstack + DevOps}{IDS Comercial S.A. de C.V. \textbar\ Cliente: Citibanamex}{Ene 2021 -- Ago 2024}{México, remoto}
 \begin{itemize}
-	\item Desarrollé y mantuve 10 microservicios en Java/Spring Cloud para flujos internos usados por ejecutivos del banco, procesando \textasciitilde1,000 transacciones diarias por sucursal.
-	\item Construí \emph{pipelines} de CI/CD en \textbf{Azure DevOps} y \textbf{Jenkins} para automatizar el \emph{build} y despliegue de aplicaciones bancarias.
-	\item Reduje las quejas sobre estabilidad del ambiente de QA mejorando la respuesta a incidentes, logrando un tiempo promedio de resolución de 2-3 horas (hasta 1 semana en casos complejos).
-	\item Monitoreé sistemas productivos con \textbf{Splunk} y resolví tickets de infraestructura vía \textbf{Service Now} dentro de un SLA de 1 día.
-	\item Construí funcionalidades frontend con React, Node.js, TypeScript y administré bases de datos Oracle que soportaban la capa de microservicios.
+    \item Desarrollé y mantuve \textbf{10 microservicios Java/Spring Cloud} para flujos de trabajo de ejecutivos bancarios. Esos flujos atendían aproximadamente \textbf{1,000 transacciones diarias por sucursal}.
+    \item Construí pipelines de CI/CD con \textbf{Azure DevOps y Jenkins} para automatizar la compilación y el despliegue de aplicaciones bancarias. Desarrollé funcionalidades frontend con React, Node.js y TypeScript, y administré bases de datos Oracle.
+    \item Atendí incidentes del \textbf{entorno de QA}, con un tiempo promedio de resolución de 2 a 3 horas; los casos complejos podían tomar hasta una semana. Monitoreé producción con Splunk y resolví tickets de infraestructura en ServiceNow conforme a un SLA de 1 día.
 \end{itemize}
 
-\resumeentry{Ingeniero de Software Fullstack}{Everis BPO México, S. de R.L. de C.V. -- Telcel}{Jun 2018 -- Dic 2020}{Plaza Carso, CDMX, México}
+\newpage
+\section*{Experiencia Profesional (continuación)}
+\resumeentry{Ingeniero de Software Fullstack}{Proyecto continuo para Telcel, mediante GLOBAL HITSS y Everis}{Jul 2018 -- Dic 2020}{Ciudad de México}
+\textit{GLOBAL HITSS: jul 2018 -- sep 2019; Everis: sep 2019 -- dic 2020.}\par\vspace{3pt}
 \begin{itemize}
-	\item Construí una capa de integración tipo \emph{service bus} (Java, Spring Cloud, JPA) que traducía protocolos de sistemas legados de telecomunicaciones a APIs RESTful estandarizadas, permitiendo su interoperabilidad con sistemas modernos.
-	\item Implementé \emph{pipelines} de CI/CD para \emph{build} y despliegue automatizado, y contenericé el servicio con Docker orquestado en Kubernetes.
-	\item Desarrollé microservicios adicionales y funcionalidades frontend con React/Node.js/TypeScript; administré bases de datos Oracle.
-	\item Automaticé procesos operativos con \emph{scripts} de Bash y gestioné repositorios Git (GitHub) y de artefactos (Nexus).
+    \item Construí una capa de integración con \textbf{Java, Spring Cloud y JPA} que tradujo protocolos de sistemas legados de telecomunicaciones a APIs REST para conectarlos con servicios modernos.
+    \item Implementé pipelines de CI/CD y contenericé el servicio con \textbf{Docker sobre Kubernetes}. Automaticé procesos operativos con Bash y gestioné repositorios de código y artefactos con GitHub y Nexus.
+    \item Desarrollé microservicios y funcionalidades frontend con React, Node.js y TypeScript; administré bases de datos Oracle.
 \end{itemize}
 
-\resumeentry{Desarrollador Frontend Jr.}{Nova Solutions Systems S.A. de C.V. -- Multiva}{Mar 2017 -- May 2018}{Polanco, CDMX, México}
+\resumeentry{Desarrollador Frontend Jr.}{Nova Solutions Systems S.A. de C.V. \textbar\ Cliente: Banco Multiva}{Mar 2017 -- May 2018}{Ciudad de México}
 \begin{itemize}
-	\item Desarrollé nuevas funcionalidades de banca en línea para Banco Multiva (React, Node.js, TypeScript) dentro de un equipo Scrum.
+    \item Desarrollé funcionalidades de banca en línea con React, Node.js y TypeScript dentro de un equipo Scrum.
 \end{itemize}
 
-%----------------------------------------------------------------------------------------
-%	 EDUCACIÓN
-%----------------------------------------------------------------------------------------
+\section*{Proyecto Destacado}
+\textbf{Sistema de Gestión de Facturación de Subcontratación}\par
+\textit{Grupo de la Parra \textbar\ Proyecto freelance, liderazgo técnico}\par
+\begin{itemize}
+    \item Lideré el diseño técnico y la arquitectura de una plataforma en producción para gestionar la facturación asociada a una fuerza laboral subcontratada de \textbf{5,000 empleados}.
+    \item Desarrollé la plataforma de extremo a extremo con \textbf{Angular 10, Java Spring, PostgreSQL y APIs REST}.
+\end{itemize}
 
 \section*{Educación}
+\resumeentry{IPN -- Escuela Superior de Cómputo (ESCOM)}{Ingeniería en Sistemas Computacionales}{2014 -- 2018}{Ciudad de México}
+\resumeentry{CINVESTAV -- IPN}{Estudios de Maestría en Ciencias de la Computación, área de Inteligencia Artificial. Programa no concluido; sin obtención de grado.}{2019 -- 2020}{Ciudad de México}
 
-\resumeentry{CINVESTAV -- IPN}{Maestría en Ciencias de la Computación (Inteligencia Artificial) -- Trunca}{2019 -- 2020}{Ciudad de México, México}
+\section*{Certificación e Idiomas}
+\skillrow{Certificación}{Java SE -- Oracle, Certificado Asociado (2013). \href{https://www.youracclaim.com/badges/583548b1-06fa-4dbf-889d-419e6c6c2ec1/public_url}{Credencial}}
+\skillrow{Idiomas}{Español nativo; inglés B2 (intermedio alto)}
 
-\resumeentry{Instituto Politécnico Nacional -- Escuela Superior de Cómputo (ESCOM)}{Ingeniería en Sistemas Computacionales}{2014 -- 2018}{Ciudad de México, México}
-
-%----------------------------------------------------------------------------------------
-%	 CERTIFICACIONES
-%----------------------------------------------------------------------------------------
-
-\section*{Certificaciones}
+\section*{Reconocimientos}
 \begin{itemize}
-	\item \textbf{Java SE} -- Oracle (2013) -- \href{https://www.youracclaim.com/badges/583548b1-06fa-4dbf-889d-419e6c6c2ec1/public_url}{Certificado Asociado}
+    \item 2.\textsuperscript{o} lugar, Coding Rush -- ITAM (2014); 2.\textsuperscript{o} lugar, 18.\textsuperscript{a} Olimpiada Mexicana de Informática -- CDMX (2013).
 \end{itemize}
-
-%----------------------------------------------------------------------------------------
-%	 PROYECTOS
-%----------------------------------------------------------------------------------------
-
-\section*{Proyectos}
-\textbf{Sistema de Gestión de Facturación de Subcontratación} -- Cliente: Grupo de la Parra \textbar\ Freelance, Liderazgo Técnico\par
-\begin{itemize}
-	\item Lideré el diseño técnico y la arquitectura de un sistema de gestión de facturación en producción para una fuerza laboral subcontratada de 5,000 empleados.
-	\item Construí la plataforma de extremo a extremo con Angular 10, Java Spring, PostgreSQL y APIs REST como proyecto freelance; código alojado en un repositorio privado de Azure DevOps.
-\end{itemize}
-
-%----------------------------------------------------------------------------------------
-%	 LOGROS
-%----------------------------------------------------------------------------------------
-
-\section*{Logros}
-\begin{itemize}
-	\item Participante en la competencia de programación \textbf{Code Jam} -- Google (2019)
-	\item Equipo competidor en la etapa de selección de \textbf{ACM-ICPC} -- International Collegiate Programming Contest (2015 -- 2017)
-	\item 2.\textsuperscript{o} lugar en la competencia \textbf{Coding Rush} -- ITAM (2014)
-	\item 2.\textsuperscript{o} lugar en la 18.\textsuperscript{a} Olimpiada Mexicana de Informática -- CDMX (2013)
-\end{itemize}
-
-%----------------------------------------------------------------------------------------
-%	 IDIOMAS
-%----------------------------------------------------------------------------------------
-
-\section*{Idiomas}
-\skillrow{Español}{Nativo}
-\skillrow{Inglés}{B2 (Intermedio-Alto)}

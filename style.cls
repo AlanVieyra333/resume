@@ -26,6 +26,8 @@
 
 \RequirePackage[left=1.8cm,right=1.8cm,top=1.3cm,bottom=1.3cm,nohead,nofoot]{geometry}
 \RequirePackage{array}
+\RequirePackage{tabularx}
+\RequirePackage{needspace}
 \RequirePackage{enumitem}
 \RequirePackage{etoolbox}
 \RequirePackage{titlesec}
@@ -43,6 +45,8 @@
 \color{bodygray}
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
+\linespread{1.06}
+\setlength{\emergencystretch}{2em}
 
 %----------------------------------------------------------------------------------------
 %	SECTION HEADINGS
@@ -84,7 +88,8 @@
 		{\large\resumejobtitle}\\[6pt]
 		{\small
 			\mbox{\resumeaddress}~\textbar~\mbox{\resumenumberphone}~\textbar~\mbox{\href{mailto:\resumemail}{\resumemail}}%
-			\ifthenelse{\equal{\resumelinkedin}{}}{}{~\textbar~\mbox{\href{https://\resumelinkedin}{\resumelinkedin}}}%
+			\\[3pt]
+			\ifthenelse{\equal{\resumelinkedin}{}}{}{\mbox{\href{https://\resumelinkedin}{\resumelinkedin}}}%
 			\ifthenelse{\equal{\resumegithub}{}}{}{~\textbar~\mbox{\href{https://\resumegithub}{\resumegithub}}}%
 		}
 	\end{center}
@@ -104,12 +109,11 @@
 %----------------------------------------------------------------------------------------
 
 \newcommand{\resumeentry}[4]{%
-	\noindent\begin{tabular*}{\linewidth}{@{}l@{\extracolsep{\fill}}r@{}}
+	\Needspace{6\baselineskip}%
+	\noindent\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X r@{}}
 		\textbf{#1} & \textbf{\small #3}\\
-	\end{tabular*}\\[-1pt]
-	\noindent\begin{tabular*}{\linewidth}{@{}l@{\extracolsep{\fill}}r@{}}
 		\textit{#2} & \textit{\small #4}\\
-	\end{tabular*}\\[3pt]
+	\end{tabularx}\par\vspace{3pt}%
 }
 
 %----------------------------------------------------------------------------------------
