@@ -1,0 +1,76 @@
+% English DevOps/SRE Engineer Lead profile. Tailored to lead roles centred on
+% technical debt remediation, engineering standards/governance, and hands-on
+% reliability work.
+%
+% FACT DISCIPLINE: every claim here traces to a confirmed fact recorded in
+% FACTS.md. Notably:
+%   - The hexagonal architecture at Veradat was REVIEWED, not implemented.
+%   - Microsoft Project planning was per sprint over personal activities;
+%     no dependency or milestone tracking is claimed.
+%   - The ISO 27001 role was implementing and operating controls, not
+%     auditing or certifying.
+% Keep lang/lead/es.tex aligned with this file.
+
+\renewcommand{\resumeaddress}{Mexico City, Mexico \textbar\ UTC-6 (US Central)}
+\resumejobtitle{DevOps/SRE Engineer Lead \textbar\ Technical Debt Remediation, Standards \& Compliance}
+\resumesummary{DevOps/SRE engineer with nine years of experience, including a software development background since 2017 across banking and telecommunications. Leads technical debt remediation across 10 CI/CD pipelines serving three teams, and implements and operates \textbf{ISO 27001} controls at Veradat and Banamex. Reviews team architecture decisions -- including the hexagonal architecture that decouples microservices from PostgreSQL, Oracle, RabbitMQ, Kafka, IBM~MQ and SQS -- and produces the Docker image matrix each microservice requires. Mentors engineers through code and design reviews, and carries on-call for production incidents.}
+\makeheader
+
+\section*{Technical Skills}
+\skillrow{Platforms \& Orchestration}{Kubernetes, OpenShift, Docker, Helm}
+\skillrow{Cloud \& Infrastructure as Code}{AWS (Route~53, IAM), Azure, Terraform, Ansible, Linux, Bash}
+\skillrow{CI/CD \& Delivery}{Azure DevOps, Jenkins, Nexus, GitHub, Maven}
+\skillrow{Reliability \& Incident Response}{Elastic Stack (ELK), Splunk, ServiceNow, readiness/liveness probes, on-call production support}
+\skillrow{Compliance \& Security}{ISO 27001 (control implementation and operations), SonarQube Cloud, Snyk, Mend}
+\skillrow{Architecture \& Practices}{Microservices, hexagonal architecture review, legacy-integration adapters, REST API design, Scrum, Microsoft Project}
+\skillrow{Development}{Java, Spring Cloud, JPA, Python, Go, Kafka, RabbitMQ, IBM~MQ}
+
+\section*{Professional Experience}
+
+\resumeentry{DevOps Engineer}{Veradat Smart Network S.A. de C.V.}{Aug 2024 -- Present}{Mexico City}
+\begin{itemize}
+    \item Designed and maintained \textbf{10 Azure DevOps CI/CD pipelines} for \textbf{3 teams} (frontend, backend, QA), cutting full deployment time of 70 microservices from 6 hours to 1 hour (\textasciitilde 83\% reduction). Built and promoted \textbf{Helm charts as the team's deployment standard}, standardising and versioning deployment packaging across all three teams.
+    \item Reviewed the team's \textbf{hexagonal architecture}, which decouples each microservice from its technology dependencies (PostgreSQL, Oracle, RabbitMQ, Kafka, IBM~MQ, SQS), and produced the \textbf{Docker image for every technology combination} each microservice requires.
+    \item \textbf{Implemented and operated ISO 27001 controls} across secret management, cloud access control and dependency scanning, and remediated \textbf{critical and high-severity vulnerabilities} identified by SonarQube Cloud, Snyk and Mend through OS package and Maven dependency updates.
+    \item \textbf{Mentor} engineers across the frontend, backend and QA teams through \textbf{code and design reviews}, technical decision-making, and onboarding new team members.
+    \item Managed \textbf{9 production clusters (8 Kubernetes, 1 OpenShift)}, implementing readiness/liveness probes to control traffic during rolling updates and trigger recovery. Carried \textbf{on-call for production incidents}; implemented \textbf{Elastic Stack} monitoring and alerts across all 9 clusters, cutting \textbf{incident detection time from 60 to 30 minutes} (50\% reduction).
+    \item Provisioned \textbf{AWS and Azure infrastructure using Terraform} -- virtual machines, load balancers, secrets management, Route~53 and IAM -- and automated configuration with Ansible on Linux servers, cutting provisioning for the full set of 10 servers from 2 hours to 20 minutes (\textasciitilde 83\% reduction).
+    \item Planned and prioritised infrastructure activities in \textbf{Microsoft Project} per sprint, aligned with the delivery cadence of the three teams.
+    \item Developed \textbf{Python (\textasciitilde 2 years) and Go (1 year)} automation and internal tooling for infrastructure operations and monitoring, using \textbf{Claude Code (\textasciitilde 1 year)} as a development assistant.
+\end{itemize}
+
+\resumeentry{Full Stack + DevOps Engineer}{IDS Comercial S.A. de C.V. \textbar\ Client: Banamex}{Jan 2021 -- Aug 2024}{Mexico, remote}
+\begin{itemize}
+    \item \textbf{Standardised the platform through a multi-module Maven POM parent} and shared dependency management, ensuring consistent versioning across services and reducing upgrade effort -- a direct reduction in maintenance debt.
+    \item Developed and maintained \textbf{10 production Java/Spring Cloud microservices} powering banking-executive workflows that handled \textasciitilde 1{,}000 transactions per day per branch.
+    \item Implemented and operated \textbf{ISO 27001} controls in this banking environment, and planned and prioritised infrastructure activities in \textbf{Microsoft Project} per sprint.
+    \item Built \textbf{Azure DevOps and Jenkins} CI/CD pipelines to automate builds and deployments for the banking application.
+    \item Triaged production and QA incidents under a \textbf{1-day ServiceNow SLA}, with average resolution of 2--3 hours and complex cases up to one week; monitored production with Splunk.
+\end{itemize}
+
+\resumeentry{Full Stack Software Engineer}{Continuous project for Telcel through GLOBAL HITSS and Everis}{Jul 2018 -- Dec 2020}{Mexico City}
+\textit{GLOBAL HITSS: Jul 2018 -- Sep 2019; Everis: Sep 2019 -- Dec 2020.}\par\vspace{3pt}
+\begin{itemize}
+    \item \textbf{Built an integration layer with Java, Spring Cloud and JPA} that translated legacy telecom protocols into REST APIs, connecting existing systems to modern services -- an anti-corruption layer between legacy and current estates.
+    \item \textbf{Implemented CI/CD pipelines and containerised the service with Docker on Kubernetes.} Automated operational processes with Bash; managed code and artifact repositories with GitHub and Nexus.
+\end{itemize}
+
+\section*{Selected Project}
+\resumeentry{Subcontracting Law Compliance Management System}{GDP administraci\'on S de RL de CV (Grupo de la Parra)}{Freelance project, technical lead}{Mexico City}
+\begin{itemize}
+    \item \textbf{Led the end-to-end technical design and architecture} of a production platform managing compliance with Mexico's \textbf{Federal Labor Law on Subcontracting} for a subcontracted workforce of \textbf{5{,}000 employees} across multiple supplier and recipient companies. \textbf{Mentored the client team} through the design.
+    \item Built a \textbf{compliance audit engine} validating regulatory rules (CFDI per employee vs. payment dates, IMSS/INFONAVIT/withholding receipts vs. filing calendar, employer registry with the Labor Ministry), emitting \textbf{automated alerts} for contract expirations and information-delivery deadlines.
+    \item Delivered a \textbf{compliance BI dashboard} with regulatory reports (\textbf{SAT, IMSS, INFONAVIT, STPS}) and KPI tiles (pending documents, days to filing deadline, supplier/client contracts), enabling the legal and antifraud teams to work proactively.
+\end{itemize}
+
+\section*{Education}
+\resumeentry{IPN -- Escuela Superior de C\'omputo (ESCOM)}{B.Sc. in Computer Systems Engineering}{2014 -- 2018}{Mexico City}
+
+\section*{Certification \& Languages}
+\skillrow{Certification}{Java SE -- Oracle Certified Associate (2013). \href{https://www.youracclaim.com/badges/583548b1-06fa-4dbf-889d-419e6c6c2ec1/public_url}{Credential}; Scrum Fundamentals -- SCRUMstudy (2018).}
+\skillrow{Languages}{Spanish: native; English: B2 (upper intermediate)}
+
+\section*{Awards}
+\begin{itemize}
+    \item Participant, Google Code Jam (2019); ACM-ICPC stage-selection team (2015--2017).
+\end{itemize}

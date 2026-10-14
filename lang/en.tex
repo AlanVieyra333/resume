@@ -1,70 +1,70 @@
+% English DevOps Engineer profile. Kept tuned to infrastructure/cloud roles
+% (AWS, Terraform, CI/CD). For lead roles centred on technical debt
+% remediation and governance, see lang/lead/en.tex.
+%
+% Keep metrics and scope aligned with lang/es.tex. See FACTS.md for the
+% confirmed/not-claimed boundary that every profile in this repo respects.
+
 % English version. Keep metrics and scope aligned with lang/es.tex.
 \renewcommand{\resumeaddress}{Mexico City, Mexico}
 \resumejobtitle{DevOps Engineer \textbar\ AWS, Kubernetes, CI/CD \& Infrastructure as Code}
-\resumesummary{DevOps engineer with a software development background dating to 2017 and experience in banking and telecommunications. Provisioned AWS and Azure infrastructure using Terraform; worked with Route~53 and IAM on AWS. Cut the full deployment time for 70 microservices from 6 hours to 1 hour for 3 teams and manage 9 production clusters. Combine cloud, Kubernetes/OpenShift, and Java/Spring Cloud experience to solve problems from application code to infrastructure.}
+\resumesummary{DevOps engineer with a software development background dating to 2017 and experience in banking and telecommunications. Provisioned AWS and Azure infrastructure using Terraform; worked with Route~53 and IAM on AWS. Cut the full deployment time for 70 microservices from 6 hours to 1 hour for 3 teams and manage 9 production clusters. Implement and operate \textbf{ISO 27001} controls, and build the Docker image matrix that lets microservices swap technology dependencies (PostgreSQL, Oracle, RabbitMQ, Kafka, IBM~MQ, SQS). Combine cloud, Kubernetes/OpenShift, and Java/Spring Cloud experience to solve problems from application code to infrastructure.}
 \makeheader
 
 \section*{Technical Skills}
 \skillrow{Platforms \& CI/CD}{Kubernetes, OpenShift, Docker, Helm, Azure DevOps, Jenkins}
 \skillrow{AWS \& Infrastructure}{AWS (Route~53, IAM), Terraform, Azure, Ansible, Linux, Bash, Python, Go}
-\skillrow{Observability \& Security}{Elastic Stack (ELK), Splunk, SonarQube Cloud, Snyk, Mend}
+\skillrow{Messaging \& Data}{Kafka, RabbitMQ, IBM~MQ, Oracle, PostgreSQL}
+\skillrow{Observability, Security \& Compliance}{Elastic Stack (ELK), Splunk, ServiceNow, ISO 27001 (control implementation and operations), SonarQube Cloud, Snyk, Mend}
 \skillrow{Development}{Java, Spring Cloud, JPA, REST APIs, TypeScript, React, Node.js}
-\skillrow{Data \& Tooling}{Oracle, PostgreSQL, Kafka, RabbitMQ, Git, Maven, Nexus}
+\skillrow{Delivery \& Practices}{Scrum, Microsoft Project, Git, Maven, Nexus, GitHub}
 
 \section*{Professional Experience}
 
 \resumeentry{DevOps Engineer}{Veradat Smart Network S.A. de C.V.}{Aug 2024 -- Present}{Mexico City}
 \begin{itemize}
     \item Designed and maintained \textbf{10 Azure DevOps CI/CD pipelines} for \textbf{3 teams}: frontend, backend, and QA. Cut the time to deploy the complete set of 70 microservices from 6 hours to 1 hour (approximately 83\% less time). Built Helm charts to standardize and version deployments.
+    \item Reviewed the team's \textbf{hexagonal architecture}, which decouples each microservice from its technology dependencies (PostgreSQL, Oracle, RabbitMQ, Kafka, IBM~MQ, SQS), and produced the \textbf{Docker image for every technology combination} each microservice requires.
     \item Manage \textbf{9 production clusters: 8 Kubernetes and 1 OpenShift}. Implemented readiness/liveness probes to control when instances receive traffic and trigger recovery during rolling updates.
     \item Implemented \textbf{Elastic Stack} monitoring and alerts across all 9 clusters, reducing \textbf{incident detection time from 60 to 30 minutes} (a 50\% reduction).
-    \item Provisioned \textbf{AWS and Azure infrastructure using Terraform}, including virtual machines, load balancers, and secrets management; used \textbf{Route~53 and IAM} on AWS. Automated configuration with Ansible, cutting provisioning time for the full set of 10 servers from 2 hours to 20 minutes (approximately 83\% less time).
-    \item Developed \textbf{auxiliary automation and integration scripts in Python (\textasciitilde 2 years) and Go (1 year)} to support infrastructure operations, monitoring, and internal tooling.
-    \item Used \textbf{Claude Code (\textasciitilde 1 year)} as a development assistant to accelerate scripting, automation, and infrastructure tasks in daily work.
-    \item Remediated critical and high-severity vulnerabilities identified by SonarQube Cloud, Snyk, and Mend through OS package and Maven dependency updates.
+    \item Provisioned \textbf{AWS and Azure infrastructure using Terraform}, including virtual machines, load balancers, and secrets management; used \textbf{Route~53 and IAM} on AWS. Automated configuration with Ansible on Linux servers, cutting provisioning time for the full set of 10 servers from 2 hours to 20 minutes (approximately 83\% less time).
+    \item \textbf{Implemented and operated ISO 27001 controls} across secret management, cloud access control and dependency scanning, and remediated critical and high-severity vulnerabilities identified by SonarQube Cloud, Snyk, and Mend through OS package and Maven dependency updates.
+    \item Developed \textbf{automation and integration scripts in Python (\textasciitilde 2 years) and Go (1 year)} supporting infrastructure operations, monitoring, and internal tooling, using \textbf{Claude Code (\textasciitilde 1 year)} as a development assistant.
+    \item Planned and prioritised infrastructure activities in \textbf{Microsoft Project} per sprint, aligned with the delivery cadence of the 3 teams.
 \end{itemize}
 
-\resumeentry{Fullstack + DevOps Engineer}{IDS Comercial S.A. de C.V. \textbar\ Client: Citibanamex}{Jan 2021 -- Aug 2024}{Mexico, remote}
+\resumeentry{Fullstack + DevOps Engineer}{IDS Comercial S.A. de C.V. \textbar\ Client: Banamex}{Jan 2021 -- Aug 2024}{Mexico, remote}
 \begin{itemize}
     \item Developed and maintained \textbf{10 Java/Spring Cloud microservices} for banking-executive workflows. Those workflows handled approximately \textbf{1,000 transactions per day per branch}.
+    \item \textbf{Standardised the microservices through a multi-module Maven POM parent} and shared dependency management, ensuring consistent versioning and reducing upgrade effort across all services.
+    \item \textbf{Implemented and operated ISO 27001 controls} in this banking environment, and planned and prioritised infrastructure activities in \textbf{Microsoft Project} per sprint.
     \item Built \textbf{Azure DevOps and Jenkins} CI/CD pipelines to automate banking application builds and deployments. Developed frontend features with React, Node.js, and TypeScript, and administered Oracle databases.
     \item Handled \textbf{QA environment incidents} with an average resolution time of 2 to 3 hours; complex cases could take up to one week. Monitored production with Splunk and resolved infrastructure tickets in ServiceNow under a 1-day SLA.
 \end{itemize}
 
-\newpage
-\section*{Professional Experience (continued)}
 \resumeentry{Fullstack Software Engineer}{Continuous Telcel project through GLOBAL HITSS and Everis}{Jul 2018 -- Dec 2020}{Mexico City}
 \textit{GLOBAL HITSS: Jul 2018 -- Sep 2019; Everis: Sep 2019 -- Dec 2020.}\par\vspace{3pt}
 \begin{itemize}
     \item Built an integration layer with \textbf{Java, Spring Cloud, and JPA} that translated legacy telecom protocols into REST APIs, connecting existing systems with modern services.
     \item Implemented CI/CD pipelines and containerized the service with \textbf{Docker on Kubernetes}. Automated operational processes with Bash and managed code and artifact repositories with GitHub and Nexus.
-    \item Developed microservices and frontend features with React, Node.js, and TypeScript; administered Oracle databases.
-\end{itemize}
-
-\resumeentry{Frontend Software Developer Jr.}{Nova Solutions Systems S.A. de C.V. \textbar\ Client: Banco Multiva}{Mar 2017 -- May 2018}{Mexico City}
-\begin{itemize}
-    \item Developed online banking features with React, Node.js, and TypeScript within a Scrum team.
 \end{itemize}
 
 \section*{Selected Project}
-\resumeentry{Subcontracting Law Compliance Management System}{GDP administración S de RL de CV (Grupo de la Parra)}{Freelance project, technical lead}{Mexico City}
+\resumeentry{Subcontracting Law Compliance Management System}{GDP administraci\'on S de RL de CV (Grupo de la Parra)}{Freelance project, technical lead}{Mexico City}
 \begin{itemize}
     \item Led the end-to-end technical design and architecture of a production platform that managed compliance with Mexico's \textbf{Federal Labor Law on Subcontracting} for a subcontracted workforce of \textbf{5,000 employees} across multiple supplier and recipient companies of specialized services.
     \item Built a \textbf{compliance audit engine} that validated regulatory rules (one CFDI per employee vs. payment dates, IMSS/INFONAVIT/withholding payment receipts vs. filing calendar, employer registry with the Labor Ministry) and emitted \textbf{automated alerts} for contract expirations and information-delivery deadlines.
-    \item Implemented independent modules for \textbf{suppliers, clients, and companies} with \textbf{multi-company} support, document repositories, full-text search, and a document inventory; integrated with the \textbf{Contpaqi Payroll} system to sync employee onboarding/terminations and employee CFDIs, and added \textbf{batch} processes for bulk document upload.
     \item Delivered a \textbf{compliance BI dashboard} with regulatory reports (\textbf{SAT, IMSS, INFONAVIT, STPS}) and KPI tiles (pending documents, days to filing deadline, supplier/client contracts) that enabled the legal/antifraud team to operate proactively.
-    \item Stack: \textbf{Angular 10, Java Spring, PostgreSQL, and REST APIs}.
 \end{itemize}
 
 \section*{Education}
-\resumeentry{IPN -- Escuela Superior de Cómputo (ESCOM)}{B.Sc. in Computer Systems Engineering}{2014 -- 2018}{Mexico City}
-\resumeentry{CINVESTAV -- IPN}{Graduate studies in Computer Science, Artificial Intelligence. Program not completed; no degree awarded.}{2019 -- 2020}{Mexico City}
+\resumeentry{IPN -- Escuela Superior de C\'omputo (ESCOM)}{B.Sc. in Computer Systems Engineering}{2014 -- 2018}{Mexico City}
 
 \section*{Certification \& Languages}
-\skillrow{Certification}{Java SE -- Oracle, Certified Associate (2013). \href{https://www.youracclaim.com/badges/583548b1-06fa-4dbf-889d-419e6c6c2ec1/public_url}{Credential}}
+\skillrow{Certification}{Java SE -- Oracle, Certified Associate (2013). \href{https://www.youracclaim.com/badges/583548b1-06fa-4dbf-889d-419e6c6c2ec1/public_url}{Credential}; Scrum Fundamentals -- SCRUMstudy (2018).}
 \skillrow{Languages}{Spanish: native; English: B2 (upper intermediate)}
 
 \section*{Awards}
 \begin{itemize}
-    \item 2nd place, Coding Rush -- ITAM (2014); 2nd place, 18th Mexican Informatics Olympiad -- CDMX (2013).
+    \item Participant, Google Code Jam (2019); ACM-ICPC stage-selection team (2015--2017).
 \end{itemize}

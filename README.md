@@ -6,27 +6,34 @@ Repositorio LaTeX que genera el CV de **Alan Fernando Rincón Vieyra** en dos pe
 
 ## Perfiles generados
 
-| Perfil | Inglés | Español |
-| --- | --- | --- |
-| **DevOps Engineer** | [Resume_DevOps_AFRV_EN.pdf](Resume_DevOps_AFRV_EN.pdf) | [Resume_DevOps_AFRV_ES.pdf](Resume_DevOps_AFRV_ES.pdf) |
-| **Senior Full Stack Software Engineer** | [Resume_FullStack_AFRV_EN.pdf](Resume_FullStack_AFRV_EN.pdf) | [Resume_FullStack_AFRV_ES.pdf](Resume_FullStack_AFRV_ES.pdf) |
+| Perfil | Enfoque | Inglés | Español |
+| --- | --- | --- | --- |
+| **DevOps Engineer** | Cloud e infraestructura: AWS, Terraform, CI/CD | [Resume_DevOps_AFRV_EN.pdf](Resume_DevOps_AFRV_EN.pdf) | [Resume_DevOps_AFRV_ES.pdf](Resume_DevOps_AFRV_ES.pdf) |
+| **DevOps/SRE Engineer Lead** | Deuda técnica, estándares y cumplimiento | [Resume_DevOpsLead_AFRV_EN.pdf](Resume_DevOpsLead_AFRV_EN.pdf) | [Resume_DevOpsLead_AFRV_ES.pdf](Resume_DevOpsLead_AFRV_ES.pdf) |
+| **Senior Full Stack Software Engineer** | Ownership de entrega y arquitectura de microservicios | [Resume_FullStack_AFRV_EN.pdf](Resume_FullStack_AFRV_EN.pdf) | [Resume_FullStack_AFRV_ES.pdf](Resume_FullStack_AFRV_ES.pdf) |
 
-Cada PDF se compila desde el mismo `main.tex` con un `\def\profile{...}\def\lang{...}` distinto, lo que permite mantener una sola clase (`style.cls`) y cuatro bloques de contenido aislados.
+Cada PDF se compila desde el mismo `main.tex` con un `\def\profile{...}\def\lang{...}` distinto, lo que permite mantener una sola clase (`style.cls`) y seis bloques de contenido aislados (3 perfiles × 2 idiomas).
 
 ## Estructura del repositorio
 
 ```
 .
-├── main.tex                    # Punto de entrada: enruta a lang/{es,en}.tex o lang/fullstack/{es,en}.tex
+├── main.tex                    # Punto de entrada: enruta a lang/{es,en}.tex, lang/lead/ o lang/fullstack/
 ├── style.cls                   # Clase ATS-friendly (single column, sans-serif, hyperref)
 ├── Makefile                    # Targets de compilación local y vía Docker
 ├── profile.jpg                 # Foto de perfil (no se usa en el PDF — es ATS-safe)
+├── FACTS.md                    # Fuente única de verdad: hechos confirmados, métricas y límites de lo declarable
 ├── LICENSE                     # MIT (template original)
+├── scripts/
+│   └── check-profiles.sh       # Verifica invariantes entre los 6 perfiles (make check)
 ├── LinkedIn_perfil_AFRV_propuesta.md
 │                               # Borrador de copy para LinkedIn (no se compila)
 ├── lang/
 │   ├── es.tex                  # Perfil DevOps, español
 │   ├── en.tex                  # Perfil DevOps, inglés
+│   ├── lead/
+│   │   ├── es.tex              # Perfil DevOps/SRE Lead, español
+│   │   └── en.tex              # Perfil DevOps/SRE Lead, inglés
 │   └── fullstack/
 │       ├── es.tex              # Perfil Full Stack, español
 │       └── en.tex              # Perfil Full Stack, inglés
@@ -46,10 +53,12 @@ Cada PDF se compila desde el mismo `main.tex` con un `\def\profile{...}\def\lang
 | Comando | Resultado |
 | --- | --- |
 | `make` | Compila el perfil por defecto (`devops`) en ambos idiomas. |
-| `make all` | Compila los cuatro PDFs (DevOps + Fullstack, ES + EN). |
+| `make all` | Compila los seis PDFs (DevOps + DevOps Lead + Fullstack, ES + EN). |
 | `make devops` / `make devops-es` / `make devops-en` | Solo el perfil DevOps. |
+| `make lead` / `make lead-es` / `make lead-en` | Solo el perfil DevOps/SRE Lead. |
 | `make fullstack` / `make fullstack-es` / `make fullstack-en` | Solo el perfil Full Stack. |
 | `make docker` | Compila todo dentro del contenedor `texlive/texlive:TL2025-historic`, sin instalar TeX localmente. |
+| `make check` | Verifica los invariantes entre perfiles sin compilar. |
 | `make clean` | Borra logs, `.aux`, `.out`, `.fls`, `.fdb_latexmk` y los PDFs generados. |
 
 ### Ejemplos rápidos
@@ -65,6 +74,21 @@ make docker
 make clean
 ```
 
+## Homologación entre perfiles
+
+Los seis archivos de contenido cuentan **los mismos hechos con énfasis distinto**, y no deben contradecirse. La fuente de verdad es [FACTS.md](FACTS.md): empleadores, fechas, métricas exactas, qué está confirmado y qué no se puede declarar.
+
+`scripts/check-profiles.sh` (también en el CI, antes de compilar) falla si algún perfil:
+
+- usa `Citibanamex` en lugar de `Banamex`;
+- declara SLO/SLI, error budgets, postmortems o runbooks (no confirmados);
+- afirma haber **implementado** la arquitectura hexagonal (la revisó);
+- vincula ISO 27001 con auditorías o certificaciones (su rol fue implementar y operar controles);
+- lista una herramienta en las skills que no aparece respaldada en la experiencia;
+- cambia una fecha o una métrica respecto a su hermano del otro idioma.
+
+Cuando cambies un dato, actualiza **FACTS.md primero** y después los perfiles. Cada PDF debe quedar en **2 páginas**.
+
 ## Cómo editar el contenido
 
 **Datos personales** (nombre, dirección, contacto, redes) — solo se cambian en un sitio: [main.tex](main.tex), bloque `PERSONAL INFORMATION`. Estos campos son language-independent y la clase los renderiza en ambos idiomas.
@@ -72,6 +96,7 @@ make clean
 **Resumen, skills, experiencia y proyectos** — se editan en los archivos de `lang/`:
 
 - [lang/es.tex](lang/es.tex) y [lang/en.tex](lang/en.tex) — perfil DevOps, español e inglés.
+- [lang/lead/es.tex](lang/lead/es.tex) y [lang/lead/en.tex](lang/lead/en.tex) — perfil DevOps/SRE Lead, español e inglés.
 - [lang/fullstack/es.tex](lang/fullstack/es.tex) y [lang/fullstack/en.tex](lang/fullstack/en.tex) — perfil Full Stack, español e inglés.
 
 Cada archivo sigue la misma estructura (`\resumesummary`, `\skillrow`, `\resumeentry`, secciones con `\section*{...}`). Cuando actualices métricas o descripciones, mantén las cifras y el alcance alineados entre los dos idiomas — el CI no valida este detalle y un desajuste se nota rápido en una entrevista.

@@ -1,45 +1,49 @@
 % English version of the Full Stack developer profile.
 % Keep chronology, stack, and metrics aligned with lang/fullstack/es.tex
-% and with the original DevOps profile at lang/en.tex.
+% and with the other profiles at lang/en.tex and lang/lead/en.tex.
+%
+% FACT DISCIPLINE (see FACTS.md):
+%   - The hexagonal architecture at Veradat was REVIEWED, not implemented.
+%     The Docker image work (one image per technology combination each
+%     microservice required) belongs to VERADAT, not to Banamex.
+%   - Microsoft Project planning was per sprint over personal activities.
 
+% English version. Keep metrics and scope aligned with lang/fullstack/es.tex.
 \renewcommand{\resumejobtitle}{Senior Full Stack Software Engineer \textbar\ React, TypeScript, Java/Spring Cloud, Cloud-Native}
 
-\resumesummary{Senior Full Stack Software Engineer with nine years of experience designing and delivering production applications across banking and telecommunications. Owns end-to-end delivery: from React and TypeScript interfaces to Java/Spring Cloud microservices, REST APIs, and relational data models. Introduced multi-module Maven POM parents and layered Docker images to standardise dependency management and accelerate microservice deployments; engineered the CI/CD chain that moves 70 microservices across three teams in one hour. Extends the engineering discipline naturally into infrastructure, with first-hand experience on Kubernetes, OpenShift, AWS, and Azure. Has also shipped production mobile experiences with React Native and Expo, and led the design and delivery of a freelance subcontracting-law compliance platform serving 5{,}000 subcontracted workers as technical lead.}
-
+\resumesummary{Senior Full Stack Software Engineer with nine years of experience delivering production applications across banking and telecommunications. Owns end-to-end delivery: React and TypeScript interfaces, Java/Spring Cloud microservices, REST APIs, and relational data models. Standardised ten microservices through a multi-module Maven POM parent and engineered the CI/CD chain that moves 70 microservices across three teams in one hour. Extends the engineering discipline into infrastructure, with first-hand experience on Kubernetes, OpenShift, AWS, and Azure. Has also shipped production mobile experiences with React Native and Expo. Led the design and delivery of a freelance subcontracting-law compliance platform serving 5{,}000 subcontracted workers as technical lead.}
 \makeheader
 
 \section*{Technical Skills}
 \skillrow{Languages}{TypeScript, JavaScript, Java, Python, Go, Bash, SQL}
 \skillrow{Frontend \& Mobile}{React, React Native, Expo, TypeScript, Node.js, Angular}
-\skillrow{Backend}{Java, Spring Cloud, JPA, REST APIs, Node.js}
+\skillrow{Backend \& Messaging}{Java, Spring Cloud, JPA, REST APIs, Node.js, Kafka, RabbitMQ, IBM~MQ}
 \skillrow{Data}{Oracle, PostgreSQL}
-\skillrow{Architecture \& Patterns}{Microservices, REST API design, Multi-module Maven, Layered Docker images, Legacy-integration adapters}
 \skillrow{Containerisation \& Orchestration}{Docker, Kubernetes, OpenShift, Helm}
-\skillrow{Cloud \& Infrastructure}{AWS (Route~53, IAM), Azure, Terraform, Ansible, Linux}
-\skillrow{CI/CD}{Azure DevOps, Jenkins, Nexus, GitHub Actions}
-\skillrow{Observability \& Security}{Elastic Stack (ELK), Splunk, SonarQube Cloud, Snyk, Mend}
-\skillrow{Tooling}{Git, GitHub, Maven, Claude Code (development assistant)}
+\skillrow{Cloud \& Infrastructure as Code}{AWS (Route~53, IAM), Azure, Terraform, Ansible, Linux}
+\skillrow{CI/CD \& Delivery Practices}{Azure DevOps, Jenkins, Nexus, GitHub, Git, Maven, Scrum, Microsoft Project}
+\skillrow{Observability, Security \& Compliance}{Elastic Stack (ELK), Splunk, ServiceNow, ISO 27001 (control implementation and operations), SonarQube Cloud, Snyk, Mend}
 
 \section*{Professional Experience}
 
 \resumeentry{DevOps Engineer}{Veradat Smart Network S.A. de C.V.}{Aug 2024 -- Present}{Mexico City}
 \begin{itemize}
     \item Designed and maintained \textbf{10 Azure DevOps CI/CD pipelines} for \textbf{3 teams} (frontend, backend, QA), cutting full deployment time of 70 microservices from 6 hours to 1 hour (\textasciitilde 83\% reduction). Built Helm charts to standardise deployment packaging.
+    \item Reviewed the team's \textbf{hexagonal architecture}, which decouples each microservice from its technology dependencies (PostgreSQL, Oracle, RabbitMQ, Kafka, IBM~MQ, SQS), and produced the \textbf{Docker image for every technology combination} each microservice requires.
     \item Managed \textbf{9 production clusters (8 Kubernetes, 1 OpenShift)}; implemented readiness/liveness probes to control traffic during rolling updates.
     \item Implemented \textbf{Elastic Stack} monitoring and alerts across all 9 clusters, reducing \textbf{incident detection time from 60 to 30 minutes} (50\% reduction).
-    \item Provisioned \textbf{AWS and Azure infrastructure using Terraform}, including virtual machines, load balancers, and secrets management; used AWS \textbf{Route~53 and IAM}. Automated configuration with Ansible, cutting provisioning for the full set of 10 servers from 2 hours to 20 minutes (\textasciitilde 83\% reduction).
-    \item \textbf{Engineered Python (\textasciitilde 2 years) and Go (\textasciitilde 1 year) tooling} for infrastructure operations, monitoring, and developer experience, treating infrastructure code with the same engineering rigour as application code.
-    \item \textbf{Used Claude Code (\textasciitilde 1 year) as a development assistant} to accelerate scripting, automation, and infrastructure tasks in daily work.
+    \item Provisioned \textbf{AWS and Azure infrastructure using Terraform}, including virtual machines, load balancers, and secrets management; used AWS \textbf{Route~53 and IAM}. Automated configuration with Ansible on Linux servers, cutting provisioning for the full set of 10 servers from 2 hours to 20 minutes (\textasciitilde 83\% reduction).
+    \item \textbf{Engineered Python (\textasciitilde 2 years) and Go (1 year) tooling} for infrastructure operations, monitoring, and developer experience, treating infrastructure code with the same engineering rigour as application code, and used \textbf{Claude Code (\textasciitilde 1 year)} as a development assistant.
     \item Remediated critical and high-severity vulnerabilities identified by SonarQube Cloud, Snyk, and Mend via OS package and Maven dependency updates.
 \end{itemize}
 
-\resumeentry{Full Stack + DevOps Engineer}{IDS Comercial S.A. de C.V. \textbar\ Client: Citibanamex}{Jan 2021 -- Aug 2024}{Mexico, remote}
+\resumeentry{Full Stack + DevOps Engineer}{IDS Comercial S.A. de C.V. \textbar\ Client: Banamex}{Jan 2021 -- Aug 2024}{Mexico, remote}
 \begin{itemize}
     \item \textbf{Designed, developed, and maintained 10 production Java/Spring Cloud microservices} powering banking-executive workflows that handled \textasciitilde 1{,}000 transactions per day per branch.
     \item \textbf{Standardised the microservices through a multi-module Maven POM parent} and shared dependency management, ensuring consistent versioning and reducing upgrade effort across all services.
-    \item \textbf{Implemented a layered Docker image strategy} that separated common libraries from each microservice's application code, optimising build and deploy performance across the platform.
+    \item \textbf{Implemented and operated ISO 27001 controls} in this banking environment, and planned and prioritised infrastructure activities in \textbf{Microsoft Project} per sprint.
     \item \textbf{Built frontend features with React, TypeScript, and Node.js} and \textbf{modelled and administered Oracle schemas} supporting the transactional flows.
-    \item Built CI/CD pipelines with Azure DevOps and Jenkins for the banking application. Resolved QA environment incidents (average 2--3 hours, complex cases up to one week) and ServiceNow infrastructure tickets under a 1-day SLA.
+    \item Built CI/CD pipelines with Azure DevOps and Jenkins for the banking application. Resolved QA environment incidents (average 2--3 hours, complex cases up to one week) and ServiceNow infrastructure tickets under a 1-day SLA; monitored production with Splunk.
 \end{itemize}
 
 \resumeentry{Full Stack Software Engineer}{Continuous project for Telcel through GLOBAL HITSS and Everis}{Jul 2018 -- Dec 2020}{Mexico City}
@@ -47,33 +51,25 @@
 \begin{itemize}
     \item \textbf{Built an integration layer with Java, Spring Cloud, and JPA} that translated legacy telecom protocols into REST APIs, connecting existing systems with modern services.
     \item \textbf{Implemented CI/CD pipelines and containerised the service with Docker on Kubernetes.} Automated operational processes with Bash; managed code and artifact repositories with GitHub and Nexus.
-    \item \textbf{Developed microservices and frontend features} with React, Node.js, and TypeScript; administered Oracle databases.
-\end{itemize}
-
-\resumeentry{Frontend Software Developer Jr.}{Nova Solutions Systems S.A. de C.V. \textbar\ Client: Banco Multiva}{Mar 2017 -- May 2018}{Mexico City}
-\begin{itemize}
-    \item Developed online banking features with React, Node.js, and TypeScript within a Scrum team.
 \end{itemize}
 
 \section*{Selected Project}
 \resumeentry{Subcontracting Law Compliance Management System}{GDP administración S de RL de CV (Grupo de la Parra)}{Freelance project, technical lead}{Mexico City}
 \begin{itemize}
-    \item \textbf{Led the end-to-end technical design and architecture} of a production platform that managed compliance with Mexico's \textbf{Federal Labor Law on Subcontracting} for a subcontracted workforce of \textbf{5{,}000 employees} across multiple supplier and recipient companies of specialized services.
+    \item \textbf{Led the end-to-end technical design and architecture} of a production platform that managed compliance with Mexico's \textbf{Federal Labor Law on Subcontracting} for a subcontracted workforce of \textbf{5{,}000 employees} across multiple supplier and recipient companies of specialized services. Stack: \textbf{Angular, Java Spring, PostgreSQL, and REST APIs}.
     \item Built a \textbf{compliance audit engine} that validated regulatory rules (one CFDI per employee vs. payment dates, IMSS/INFONAVIT/withholding payment receipts vs. filing calendar, employer registry with the Labor Ministry) and emitted \textbf{automated alerts} for contract expirations and information-delivery deadlines.
     \item Implemented independent modules for \textbf{suppliers, clients, and companies} with \textbf{multi-company} support, document repositories, full-text search, and a document inventory; integrated with the \textbf{Contpaqi Payroll} system to sync employee onboarding/terminations and employee CFDIs, and added \textbf{batch} processes for bulk document upload.
     \item Delivered a \textbf{compliance BI dashboard} with regulatory reports (\textbf{SAT, IMSS, INFONAVIT, STPS}) and KPI tiles (pending documents, days to filing deadline, supplier/client contracts) that enabled the legal/antifraud team to operate proactively.
-    \item Stack: \textbf{Angular, Java Spring, PostgreSQL, and REST APIs}.
 \end{itemize}
 
 \section*{Education}
-\resumeentry{IPN -- Escuela Superior de Cómputo (ESCOM)}{B.Sc. in Computer Systems Engineering}{2014 -- 2018}{Mexico City}
-\resumeentry{CINVESTAV -- IPN}{Graduate studies in Computer Science, Artificial Intelligence. Program not completed; no degree awarded.}{2019 -- 2020}{Mexico City}
+\resumeentry{IPN -- Escuela Superior de C\'omputo (ESCOM)}{B.Sc. in Computer Systems Engineering}{2014 -- 2018}{Mexico City}
 
 \section*{Certification \& Languages}
-\skillrow{Certification}{Java SE -- Oracle Certified Associate (2013). \href{https://www.youracclaim.com/badges/583548b1-06fa-4dbf-889d-419e6c6c2ec1/public_url}{Credential}}
+\skillrow{Certification}{Java SE -- Oracle Certified Associate (2013). \href{https://www.youracclaim.com/badges/583548b1-06fa-4dbf-889d-419e6c6c2ec1/public_url}{Credential}; Scrum Fundamentals -- SCRUMstudy (2018).}
 \skillrow{Languages}{Spanish: native; English: B2 (upper intermediate)}
 
 \section*{Awards}
 \begin{itemize}
-    \item 2nd place, Coding Rush -- ITAM (2014); 2nd place, 18th Mexican Informatics Olympiad -- CDMX (2013).
+    \item Participant, Google Code Jam (2019); ACM-ICPC stage-selection team (2015--2017).
 \end{itemize}

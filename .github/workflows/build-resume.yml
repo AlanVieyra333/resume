@@ -155,12 +155,19 @@ jobs:
             git push origin "$VERSION"
           fi
 
+      - name: Check profile invariants
+        run: bash scripts/check-profiles.sh
+
       - name: Compile
         if: env.RELEASE_TYPE != 'none'
         run: |
-          make
-          mv resume_afrv_en.pdf resume_afrv_en_${VERSION}.pdf
-          mv resume_afrv_es.pdf resume_afrv_es_${VERSION}.pdf
+          make all
+          for pdf in Resume_DevOps_AFRV_EN Resume_DevOps_AFRV_ES \
+                     Resume_DevOpsLead_AFRV_EN Resume_DevOpsLead_AFRV_ES \
+                     Resume_FullStack_AFRV_EN Resume_FullStack_AFRV_ES; do
+            [ -f "${pdf}.pdf" ] || { echo "::error::missing ${pdf}.pdf"; exit 1; }
+            mv "${pdf}.pdf" "${pdf}_${VERSION}.pdf"
+          done
 
       - name: Release
         if: env.RELEASE_TYPE != 'none'
@@ -169,7 +176,11 @@ jobs:
           tag_name: ${{ env.VERSION }}
           body_path: CHANGELOG_BODY.md
           files: |
-            resume_afrv_en_${{ env.VERSION }}.pdf
-            resume_afrv_es_${{ env.VERSION }}.pdf
+            Resume_DevOps_AFRV_EN_${{ env.VERSION }}.pdf
+            Resume_DevOps_AFRV_ES_${{ env.VERSION }}.pdf
+            Resume_DevOpsLead_AFRV_EN_${{ env.VERSION }}.pdf
+            Resume_DevOpsLead_AFRV_ES_${{ env.VERSION }}.pdf
+            Resume_FullStack_AFRV_EN_${{ env.VERSION }}.pdf
+            Resume_FullStack_AFRV_ES_${{ env.VERSION }}.pdf
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
