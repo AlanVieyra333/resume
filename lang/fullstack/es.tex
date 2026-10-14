@@ -1,0 +1,78 @@
+% Versión en español del perfil Full Stack.
+% Mantener cronología, stack y métricas alineados con lang/fullstack/en.tex
+% y con el perfil DevOps original en lang/es.tex.
+
+\renewcommand{\resumeaddress}{Ciudad de México, México}
+\renewcommand{\resumejobtitle}{Ingeniero de Software Senior Full Stack \textbar\ React, TypeScript, Java/Spring Cloud, Cloud-Native}
+
+\resumesummary{Ingeniero de Software Senior Full Stack con nueve años de experiencia diseñando y entregando aplicaciones en producción en banca y telecomunicaciones. Lidero el ciclo completo: desde interfaces en React y TypeScript hasta microservicios en Java/Spring Cloud, APIs REST y modelos de datos relacionales. Introduje el uso de POM parents multi-módulo en Maven e imágenes Docker en capas para estandarizar la gestión de dependencias y acelerar los despliegues de microservicios; co-diseñé el pipeline de CI/CD que mueve 70 microservicios para 3 equipos en una hora. Cómodo extendiendo la capa de aplicación hasta la infraestructura, con experiencia de primera mano en Kubernetes, OpenShift, AWS y Azure. He entregado experiencias móviles en producción con React Native y Expo, y lideré el diseño y entrega de una plataforma de facturación freelance para 5{,}000 subcontratados como líder técnico.}
+
+\makeheader
+
+\section*{Competencias Técnicas}
+\skillrow{Lenguajes}{TypeScript, JavaScript, Java, Python, Go, Bash, SQL}
+\skillrow{Frontend y móvil}{React, React Native, Expo, TypeScript, Node.js, Angular}
+\skillrow{Backend}{Java, Spring Cloud, JPA, APIs REST, Node.js}
+\skillrow{Datos}{Oracle, PostgreSQL}
+\skillrow{Arquitectura y patrones}{Microservicios, diseño de APIs REST, Maven multi-módulo, imágenes Docker en capas, adaptadores de integración legacy}
+\skillrow{Contenerización y orquestación}{Docker, Kubernetes, OpenShift, Helm}
+\skillrow{Cloud e infraestructura}{AWS (Route~53, IAM), Azure, Terraform, Ansible, Linux}
+\skillrow{CI/CD}{Azure DevOps, Jenkins, Nexus, GitHub Actions}
+\skillrow{Observabilidad y seguridad}{Elastic Stack (ELK), Splunk, SonarQube Cloud, Snyk, Mend}
+\skillrow{Herramientas}{Git, GitHub, Maven, Claude Code (asistente de desarrollo)}
+
+\section*{Experiencia Profesional}
+
+\resumeentry{Ingeniero DevOps}{Veradat Smart Network S.A. de C.V.}{Ago 2024 -- Actualidad}{Ciudad de México}
+\begin{itemize}
+    \item Diseñé y mantuve \textbf{10 pipelines de CI/CD en Azure DevOps} para \textbf{3 equipos} (frontend, backend y QA), reduciendo el tiempo de despliegue completo de 70 microservicios de 6 horas a 1 hora (\textasciitilde 83\% menos tiempo). Desarrollé charts de Helm para estandarizar el empaquetado de despliegues.
+    \item Administro \textbf{9 clústeres de producción (8 Kubernetes y 1 OpenShift)}; implementé readiness/liveness probes para controlar el tráfico durante actualizaciones progresivas.
+    \item Implementé monitoreo y alertas con \textbf{Elastic Stack} en los 9 clústeres, reduciendo el \textbf{tiempo de detección de incidentes de 60 a 30 minutos} (50\% menos tiempo).
+    \item Aprovisioné infraestructura en \textbf{AWS y Azure con Terraform}, incluidas máquinas virtuales, balanceadores de carga y gestión de secretos; en AWS utilicé \textbf{Route~53 e IAM}. Automaticé la configuración con Ansible y reduje el aprovisionamiento del conjunto de 10 servidores de 2 horas a 20 minutos (\textasciitilde 83\% menos tiempo).
+    \item \textbf{Diseñé herramientas en Python (\textasciitilde 2 años) y Go (\textasciitilde 1 año)} para operaciones de infraestructura, monitoreo y experiencia de desarrollo, tratando el código de infraestructura con el mismo rigor que el código de aplicación.
+    \item \textbf{Utilicé Claude Code (\textasciitilde 1 año) como asistente de desarrollo} para acelerar scripting, automatización y tareas de infraestructura en el trabajo diario.
+    \item Remedié vulnerabilidades críticas y altas detectadas por SonarQube Cloud, Snyk y Mend mediante actualizaciones de paquetes del sistema operativo y dependencias Maven.
+\end{itemize}
+
+\resumeentry{Ingeniero Full Stack + DevOps}{IDS Comercial S.A. de C.V. \textbar\ Cliente: Citibanamex}{Ene 2021 -- Ago 2024}{México, remoto}
+\begin{itemize}
+    \item \textbf{Diseñé, desarrollé y mantuve 10 microservicios Java/Spring Cloud en producción} que soportaron flujos de trabajo de ejecutivos bancarios atendiendo \textasciitilde 1{,}000 transacciones diarias por sucursal.
+    \item \textbf{Estandaricé los microservicios con un POM parent multi-módulo de Maven} y gestión de dependencias compartida, garantizando versionado consistente y reduciendo el esfuerzo de actualización en todos los servicios.
+    \item \textbf{Implementé una estrategia de imágenes Docker en capas} que separaba las librerías comunes del código de aplicación de cada microservicio, optimizando el rendimiento de build y deploy de toda la plataforma.
+    \item \textbf{Desarrollé funcionalidades frontend con React, TypeScript y Node.js} y \textbf{modelé y administré esquemas Oracle} que soportaban los flujos transaccionales.
+    \item Construí pipelines de CI/CD con Azure DevOps y Jenkins para la aplicación bancaria. Resolví incidentes del entorno de QA (2--3 horas promedio, hasta una semana en casos complejos) y tickets de infraestructura en ServiceNow bajo un SLA de 1 día.
+\end{itemize}
+
+\resumeentry{Ingeniero de Software Full Stack}{Proyecto continuo para Telcel, mediante GLOBAL HITSS y Everis}{Jul 2018 -- Dic 2020}{Ciudad de México}
+\textit{GLOBAL HITSS: jul 2018 -- sep 2019; Everis: sep 2019 -- dic 2020.}\par\vspace{3pt}
+\begin{itemize}
+    \item \textbf{Construí una capa de integración con Java, Spring Cloud y JPA} que traducía protocolos de sistemas legados de telecomunicaciones a APIs REST para conectarlos con servicios modernos.
+    \item \textbf{Implementé pipelines de CI/CD y contenericé el servicio con Docker sobre Kubernetes.} Automaticé procesos operativos con Bash y gestioné repositorios de código y artefactos con GitHub y Nexus.
+    \item \textbf{Desarrollé microservicios y funcionalidades frontend} con React, Node.js y TypeScript; administré bases de datos Oracle.
+\end{itemize}
+
+\resumeentry{Desarrollador Frontend Jr.}{Nova Solutions Systems S.A. de C.V. \textbar\ Cliente: Banco Multiva}{Mar 2017 -- May 2018}{Ciudad de México}
+\begin{itemize}
+    \item Desarrollé funcionalidades de banca en línea con React, Node.js y TypeScript dentro de un equipo Scrum.
+\end{itemize}
+
+\section*{Proyecto Destacado}
+\textbf{Sistema de Gestión de Facturación de Subcontratación}\par
+\textit{Grupo de la Parra \textbar\ Proyecto freelance, liderazgo técnico}\par\vspace{3pt}
+\begin{itemize}
+    \item \textbf{Lideré el diseño técnico y la arquitectura end-to-end} de una plataforma en producción que gestionó la facturación de una fuerza laboral subcontratada de \textbf{5{,}000 empleados}.
+    \item Construí la plataforma de extremo a extremo con \textbf{Angular, Java Spring, PostgreSQL y APIs REST}, siendo responsable de las decisiones clave de ingeniería.
+\end{itemize}
+
+\section*{Educación}
+\resumeentry{IPN -- Escuela Superior de Cómputo (ESCOM)}{Ingeniería en Sistemas Computacionales}{2014 -- 2018}{Ciudad de México}
+\resumeentry{CINVESTAV -- IPN}{Estudios de Maestría en Ciencias de la Computación, área de Inteligencia Artificial. Programa no concluido; sin obtención de grado.}{2019 -- 2020}{Ciudad de México}
+
+\section*{Certificación e Idiomas}
+\skillrow{Certificación}{Java SE -- Oracle, Certificado Asociado (2013). \href{https://www.youracclaim.com/badges/583548b1-06fa-4dbf-889d-419e6c6c2ec1/public_url}{Credencial}}
+\skillrow{Idiomas}{Español nativo; inglés B2 (intermedio alto)}
+
+\section*{Reconocimientos}
+\begin{itemize}
+    \item 2.\textsuperscript{o} lugar, Coding Rush -- ITAM (2014); 2.\textsuperscript{o} lugar, 18.\textsuperscript{a} Olimpiada Mexicana de Informática -- CDMX (2013).
+\end{itemize}

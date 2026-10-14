@@ -5,6 +5,12 @@
 
 \documentclass[letterpaper]{style} % a4paper for A4
 
+% Profile + language are passed on the pdflatex command line, e.g.:
+%   pdflatex '\def\profile{fullstack}\def\lang{en}\input{main.tex}'
+% Profile defaults: devops (uses lang/<lang>.tex).
+%   fullstack  -- Senior Full Stack Developer profile (lang/fullstack/<lang>.tex).
+
+\providecommand{\profile}{devops}
 \providecommand{\lang}{en} % default
 
 %----------------------------------------------------------------------------------------
@@ -22,6 +28,13 @@
 
 \begin{document}
 
-\input{lang/\lang.tex}
+% Route to the right lang file based on the profile. etoolbox (loaded by
+% style.cls) provides \ifdefstring, which compares the expansion of
+% \profile against the literal string.
+\ifdefstring{\profile}{fullstack}{%
+    \input{lang/fullstack/\lang.tex}%
+}{%
+    \input{lang/\lang.tex}%
+}
 
 \end{document}
