@@ -64,7 +64,7 @@ Aprovisioné infraestructura en AWS y Azure con Terraform, desde máquinas virtu
 
 También administro 9 clústeres: 8 Kubernetes y 1 OpenShift. Implementé monitoreo y alertas con Elastic Stack y reduje el tiempo de detección de incidentes de 60 a 30 minutos. Además, promoví charts de Helm como estándar de despliegue del equipo y generé la matriz de imágenes Docker que permite a cada microservicio cambiar de tecnología.
 
-Coordino la interlocución técnica con stakeholders del cliente (notificaciones formales de vulnerabilidades con tabla de hallazgo, plan de remediación y firma, formato recurrente con el área de seguridad del cliente a partir de reportes de Snyk) y entre los 3 equipos (frontend, backend, QA) a través de dashboards y boards de Azure DevOps (pases a QA, seguimiento de sprint, etiquetado de releases) y una wiki compartida como canal asincrónico.
+Coordino la interlocución técnica con stakeholders del cliente, incluido el reporte formal de seguridad que recibe su área de seguridad, y entre los 3 equipos (frontend, backend, QA) a través de dashboards y boards de Azure DevOps y una wiki compartida como canal asincrónico.
 
 Acompaño a ingenieros de los equipos de frontend, backend y QA: revisiones de código y diseño, decisiones técnicas e incorporación de nuevos miembros. Vengo del desarrollo de software; empecé en 2017.
 
@@ -81,7 +81,7 @@ I provisioned AWS and Azure infrastructure using Terraform, including virtual ma
 
 I also manage 9 clusters: 8 Kubernetes and 1 OpenShift. I implemented Elastic Stack monitoring and alerts, cutting incident detection time from 60 to 30 minutes. I promoted Helm charts as the team's deployment standard and produced the Docker image matrix that lets each microservice swap its technology.
 
-I coordinate technical communication with client stakeholders (formal vulnerability notifications with findings table, remediation plan, and signature -- a recurring format used with the client's security team based on Snyk reports) and across the 3 teams (frontend, backend, QA) through Azure DevOps dashboards and boards (QA promotion, sprint tracking, release tagging) and a shared wiki as an asynchronous channel.
+I coordinate technical communication with client stakeholders, including the formal security reporting the client's security team receives, and across the 3 teams (frontend, backend, QA) through Azure DevOps dashboards and boards and a shared wiki as an asynchronous channel.
 
 I mentor engineers across the frontend, backend and QA teams: code and design reviews, technical decision-making, and onboarding. I come from software development; I started in 2017.
 
@@ -105,9 +105,9 @@ Aprovisioné infraestructura en AWS y Azure con Terraform, desde máquinas virtu
 - Revisé la arquitectura hexagonal del equipo, que desacopla cada microservicio de sus dependencias tecnológicas (PostgreSQL, Oracle, RabbitMQ, Kafka, IBM MQ y SQS), y generé la imagen Docker para cada combinación tecnológica que cada microservicio requiere.
 - Implementé y operé controles ISO 27001 en gestión de secretos, control de acceso en nube y escaneo de dependencias. Remedié vulnerabilidades críticas y altas detectadas por SonarQube Cloud, Snyk y Mend mediante actualizaciones de paquetes del sistema operativo y dependencias Maven.
 - Acompaño a ingenieros de los equipos de frontend, backend y QA: revisiones de código y diseño, decisiones técnicas e incorporación de nuevos miembros al equipo.
-- Implementé monitoreo y alertas con Elastic Stack en los 9 clústeres y reduje el tiempo de detección de incidentes de 60 a 30 minutos. Incorporé readiness/liveness probes para controlar la incorporación de instancias al tráfico y su recuperación durante actualizaciones progresivas. Cubro guardia para incidentes en producción.
+- Implementé monitoreo y alertas con Elastic Stack en los 9 clústeres y reduje el tiempo de detección de incidentes de 60 a 30 minutos. Incorporé readiness/liveness probes para controlar la incorporación de instancias al tráfico y su recuperación durante actualizaciones progresivas. Cubro guardia para incidentes en producción dentro del horario laboral.
 - Automaticé la configuración con Ansible en servidores Linux. Aprovisionar el conjunto de 10 servidores pasó de tomar 2 horas a 20 minutos.
-- Coordiné la interlocución técnica con stakeholders del cliente (notificaciones formales de vulnerabilidades con tabla de hallazgo, plan de remediación y firma, formato recurrente con el área de seguridad del cliente a partir de reportes de Snyk) y entre los 3 equipos (frontend, backend, QA) a través de dashboards y boards de Azure DevOps (pases a QA, seguimiento de sprint, etiquetado de releases) y una wiki compartida como canal asincrónico. El equipo trabaja con Scrum, en el que participo como miembro.
+- Coordiné la interlocución técnica con stakeholders del cliente, incluido el reporte formal de seguridad que recibe su área de seguridad, y entre los 3 equipos (frontend, backend, QA) mediante dashboards y boards de Azure DevOps y una wiki compartida como canal asincrónico. El equipo trabaja con Scrum, en el que participo como miembro.
 ```
 
 English:
@@ -119,9 +119,9 @@ I provisioned AWS and Azure infrastructure using Terraform, including virtual ma
 - Reviewed the team's hexagonal architecture, which decouples each microservice from its technology dependencies (PostgreSQL, Oracle, RabbitMQ, Kafka, IBM MQ and SQS), and produced the Docker image for every technology combination each microservice requires.
 - Implemented and operated ISO 27001 controls across secret management, cloud access control and dependency scanning. Remediated critical and high-severity vulnerabilities identified by SonarQube Cloud, Snyk and Mend through OS package and Maven dependency updates.
 - Mentor engineers across the frontend, backend and QA teams: code and design reviews, technical decision-making, and onboarding new team members.
-- Implemented Elastic Stack monitoring and alerts across all 9 clusters, cutting incident detection time from 60 to 30 minutes. Added readiness/liveness probes to control when instances receive traffic and trigger recovery during rolling updates. Carried on-call for production incidents.
+- Implemented Elastic Stack monitoring and alerts across all 9 clusters, cutting incident detection time from 60 to 30 minutes. Added readiness/liveness probes to control when instances receive traffic and trigger recovery during rolling updates. Carried on-call for production incidents within working hours.
 - Automated configuration with Ansible on Linux servers, cutting provisioning time for the entire set of 10 servers from 2 hours to 20 minutes.
-- Coordinated technical communication with client stakeholders (formal vulnerability notifications with findings table, remediation plan, and signature -- a recurring format used with the client's security team based on Snyk reports) and across the 3 teams (frontend, backend, QA) through Azure DevOps dashboards and boards (QA promotion, sprint tracking, release tagging) and a shared wiki as an asynchronous channel. The team works in Scrum, in which I participate as a team member.
+- Coordinated technical communication with client stakeholders, including the formal security reporting the client's security team receives, and across the 3 teams (frontend, backend, QA) through Azure DevOps dashboards and boards and a shared wiki as an asynchronous channel. The team works in Scrum, in which I participate as a team member.
 ```
 
 ### Ingeniero Fullstack + DevOps / Fullstack + DevOps Engineer
@@ -135,7 +135,7 @@ Desarrollo full stack y CI/CD para aplicaciones bancarias internas de Banamex, a
 
 - Desarrollé y mantuve 10 microservicios Java/Spring Cloud para flujos de trabajo de ejecutivos bancarios. Esos flujos atendían aproximadamente 1,000 transacciones diarias por sucursal.
 - Estandaricé los microservicios con un POM padre multimódulo de Maven y gestión compartida de dependencias, garantizando un versionado consistente y reduciendo el esfuerzo de actualización en todos los servicios.
-- Implementé y operé controles ISO 27001 en ese entorno bancario, y planeé y prioricé actividades de infraestructura en Microsoft Project por sprint.
+- Me apegaba a los controles ISO 27001 en ese entorno bancario durante toda mi colaboración.
 - Construí pipelines de CI/CD con Azure DevOps y Jenkins para automatizar compilaciones y despliegues. Desarrollé funcionalidades frontend con React, Node.js y TypeScript, y administré esquemas Oracle.
 - Atendí incidentes del entorno de QA, con un tiempo promedio de resolución de 2 a 3 horas; los casos complejos podían tomar hasta una semana. Monitoreé producción con Splunk y resolví tickets de infraestructura en ServiceNow conforme a un SLA de 1 día.
 ```
@@ -147,7 +147,7 @@ Full stack development and CI/CD for internal banking applications at Banamex, t
 
 - Developed and maintained 10 Java/Spring Cloud microservices for banking-executive workflows. Those workflows handled approximately 1,000 transactions per day per branch.
 - Standardised the microservices through a multi-module Maven POM parent and shared dependency management, ensuring consistent versioning and reducing upgrade effort across all services.
-- Implemented and operated ISO 27001 controls in that banking environment, and planned and prioritised infrastructure activities in Microsoft Project per sprint.
+- Adhered to the ISO 27001 controls in that banking environment throughout the engagement.
 - Built Azure DevOps and Jenkins CI/CD pipelines to automate builds and deployments. Developed frontend features with React, Node.js, and TypeScript, and administered Oracle schemas.
 - Handled QA environment incidents with an average resolution time of 2 to 3 hours; complex cases could take up to one week. Monitored production with Splunk and resolved infrastructure tickets in ServiceNow under a 1-day SLA.
 ```
@@ -237,20 +237,20 @@ Usar una frase legible y el contacto, con espacio para la foto de perfil. La ima
 
 ## 6. Proyecto e información adicional
 
-### Sistema de Gestión de Facturación de Subcontratación
+### Sistema de Gestión de Cumplimiento de la Ley de Subcontratación
 
-**Cliente:** Grupo de la Parra · **Modalidad:** freelance · **Responsabilidad:** liderazgo técnico. El CV no indica fechas.
+**Cliente:** Grupo de la Parra · **Modalidad:** freelance · **Periodo:** junio de 2021 - diciembre de 2021 · **Responsabilidad:** liderazgo técnico. El periodo se solapa con el de Banamex (enero 2021 - agosto 2024): fue trabajo freelance paralelo.
 
 Español:
 
 ```text
-Lideré el diseño técnico y la arquitectura de una plataforma en producción para gestionar la facturación asociada a una fuerza laboral subcontratada de 5,000 empleados. Desarrollé la plataforma de extremo a extremo con Angular, Java Spring, PostgreSQL y APIs REST, y acompañé al equipo del cliente durante el diseño.
+Lideré el diseño técnico y la arquitectura de una plataforma en producción para gestionar el cumplimiento de la Ley Federal del Trabajo en materia de subcontratación, cubriendo una fuerza laboral subcontratada de 5,000 empleados. Desarrollé la plataforma de extremo a extremo con Angular, Java Spring, PostgreSQL y APIs REST, y acompañé al equipo del cliente durante el diseño.
 ```
 
 English:
 
 ```text
-Led the technical design and architecture of a production platform that managed invoicing associated with a subcontracted workforce of 5,000 employees. Built the platform end to end with Angular, Java Spring, PostgreSQL, and REST APIs, and mentored the client team through the design.
+Led the technical design and architecture of a production platform that managed compliance with Mexico's Federal Labor Law on Subcontracting, covering a subcontracted workforce of 5,000 employees. Built the platform end to end with Angular, Java Spring, PostgreSQL, and REST APIs, and mentored the client team through the design.
 ```
 
 Los 5,000 empleados describen la fuerza laboral cubierta por el sistema, sin afirmar que fueran usuarios activos o concurrentes.

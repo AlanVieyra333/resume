@@ -152,7 +152,11 @@ check_metric() {
 check_metric "70 microservices"            "70 microservices"        "70 microservicios"
 check_metric "10 CI/CD pipelines"          "10 Azure DevOps CI/CD"   "10 pipelines de CI/CD"
 check_metric "6h -> 1h deployment"         "6 hours to 1 hour"        "6 horas a 1 hora"
-check_metric "9 production clusters"       "9 production clusters"    "9 clústeres de producción"
+check_metric "9 QA clusters"               "9 QA clusters"            "9 clústeres de QA"
+# In fullstack/es.tex the "12 pre-producción clusters" figure lives only in the summary
+# to keep the Veradat bullet block from spilling to page 3 -- the Spanish profile is the
+# longest. The summary wording "12 de preproducción" is accepted as an alternative.
+check_metric "12 pre-production clusters"  "12 pre-production clusters" "(12 clústeres de preproducción|12 de preproducción)"
 check_metric "60 -> 30 min detection"      "60 to 30 minutes"         "60 a 30 minutos"
 check_metric "2h -> 20 min provisioning"   "2 hours to 20 minutes"    "2 horas a 20 minutos"
 check_metric "~1,000 transactions/day"     "1(,|\\{,\\})000 transactions" "1(,|\\{,\\})000 transacciones"
@@ -201,8 +205,14 @@ for f in $ALL_FILES; do
     while IFS= read -r row; do
         [ -z "$row" ] && continue
         cat=$(echo "$row" | sed -E 's/^\\skillrow\{([^}]*)\}.*/\1/')
+        # These rows are prose, not skills: they describe credentials, languages
+        # and competitive-programming history, so there is nothing to evidence
+        # them against in the body. "Competitive Programming"/"Programación
+        # competitiva" replaced the old "Awards"/"Reconocimientos" label in the
+        # 2026-10 pass: ACM-ICPC and Google Code Jam are programming-contest
+        # credentials, and calling them corporate awards understated them.
         case "$cat" in
-            Certification*|Certificación*|Languages|Idiomas|Awards|Reconocimientos) continue ;;
+            Certification*|Certificación*|Languages|Idiomas|Competitive\ Programming|Programación\ competitiva) continue ;;
         esac
         raw=$(echo "$row" | sed -E 's/.*\{([^}]*)\}$/\1/')
         inner=$(echo "$raw" | grep -oE '\([^)]*\)' | tr -d '()' | tr ',' '\n')
