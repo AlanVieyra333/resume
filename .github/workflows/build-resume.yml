@@ -165,8 +165,8 @@ jobs:
           for pdf in Resume_DevOps_AFRV_EN Resume_DevOps_AFRV_ES \
                      Resume_DevOpsLead_AFRV_EN Resume_DevOpsLead_AFRV_ES \
                      Resume_FullStack_AFRV_EN Resume_FullStack_AFRV_ES; do
-            [ -f "${pdf}.pdf" ] || { echo "::error::missing ${pdf}.pdf"; exit 1; }
-            mv "${pdf}.pdf" "${pdf}_${VERSION}.pdf"
+            [ -f "out/${pdf}.pdf" ] || { echo "::error::missing out/${pdf}.pdf"; exit 1; }
+            mv "out/${pdf}.pdf" "out/${pdf}_${VERSION}.pdf"
           done
 
       - name: Release
@@ -176,11 +176,11 @@ jobs:
           tag_name: ${{ env.VERSION }}
           body_path: CHANGELOG_BODY.md
           files: |
-            Resume_DevOps_AFRV_EN_${{ env.VERSION }}.pdf
-            Resume_DevOps_AFRV_ES_${{ env.VERSION }}.pdf
-            Resume_DevOpsLead_AFRV_EN_${{ env.VERSION }}.pdf
-            Resume_DevOpsLead_AFRV_ES_${{ env.VERSION }}.pdf
-            Resume_FullStack_AFRV_EN_${{ env.VERSION }}.pdf
-            Resume_FullStack_AFRV_ES_${{ env.VERSION }}.pdf
+            out/Resume_DevOps_AFRV_EN_${{ env.VERSION }}.pdf
+            out/Resume_DevOps_AFRV_ES_${{ env.VERSION }}.pdf
+            out/Resume_DevOpsLead_AFRV_EN_${{ env.VERSION }}.pdf
+            out/Resume_DevOpsLead_AFRV_ES_${{ env.VERSION }}.pdf
+            out/Resume_FullStack_AFRV_EN_${{ env.VERSION }}.pdf
+            out/Resume_FullStack_AFRV_ES_${{ env.VERSION }}.pdf
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
