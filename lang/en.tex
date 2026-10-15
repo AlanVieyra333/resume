@@ -23,23 +23,23 @@
 
 \resumeentry{DevOps Engineer}{Veradat Smart Network S.A. de C.V.}{Aug 2024 -- Present}{Mexico City}
 \begin{itemize}
-    \item Designed and maintained \textbf{10 Azure DevOps CI/CD pipelines} for \textbf{3 teams}: frontend, backend, and QA. Cut the time to deploy the complete set of 70 microservices from 6 hours to 1 hour (approximately 83\% less time). Built Helm charts to standardize and version deployments.
+    \item Designed and maintained \textbf{10 Azure DevOps CI/CD pipelines} for \textbf{3 teams}: frontend, backend, and QA, and tracked infrastructure work in \textbf{Microsoft Project} per sprint. Cut the time to deploy the complete set of 70 microservices from 6 hours to 1 hour (approximately 83\% less time). Built Helm charts to standardize and version deployments.
     \item Reviewed the team's \textbf{hexagonal architecture}, which decouples each microservice from its technology dependencies (PostgreSQL, Oracle, RabbitMQ, Kafka, IBM~MQ, SQS), and produced the \textbf{Docker image for every technology combination} each microservice requires.
     \item Manage \textbf{9 production clusters: 8 Kubernetes and 1 OpenShift}. Implemented readiness/liveness probes to control when instances receive traffic and trigger recovery during rolling updates.
     \item Implemented \textbf{Elastic Stack} monitoring and alerts across all 9 clusters, reducing \textbf{incident detection time from 60 to 30 minutes} (a 50\% reduction).
     \item Provisioned \textbf{AWS and Azure infrastructure using Terraform}, including virtual machines, load balancers, and secrets management; used \textbf{Route~53 and IAM} on AWS. Automated configuration with Ansible on Linux servers, cutting provisioning time for the full set of 10 servers from 2 hours to 20 minutes (approximately 83\% less time).
     \item \textbf{Implemented and operated ISO 27001 controls} across secret management, cloud access control and dependency scanning, and remediated critical and high-severity vulnerabilities identified by SonarQube Cloud, Snyk, and Mend through OS package and Maven dependency updates.
     \item Developed \textbf{automation and integration scripts in Python (\textasciitilde 2 years) and Go (1 year)} supporting infrastructure operations, monitoring, and internal tooling, using \textbf{Claude Code (\textasciitilde 1 year)} as a development assistant.
-    \item \textbf{Coordinated technical communication with client stakeholders} (formal vulnerability notifications with findings table, remediation plan, and signature -- Snyk, client security team) \textbf{and across the 3 teams} (frontend, backend, QA) through Azure DevOps (Cambios de Ambiente - DevOps and Tortugas Furiosas boards, *-qa and *-prod release tags on QA builds) and the Versiones de imágenes base wiki as an asynchronous channel.
+    \item \textbf{Coordinated technical communication with client stakeholders} (formal vulnerability notifications with findings table, remediation plan, and signature -- Snyk, client security team) \textbf{and across the 3 teams} (frontend, backend, QA) through \textbf{Azure DevOps dashboards and boards} (QA promotion, sprint tracking, release tagging) and a \textbf{shared wiki} as an asynchronous channel.
 \end{itemize}
 
 \resumeentry{Fullstack + DevOps Engineer}{IDS Comercial S.A. de C.V. \textbar\ Client: Banamex}{Jan 2021 -- Aug 2024}{Mexico, remote}
 \begin{itemize}
     \item Developed and maintained \textbf{10 Java/Spring Cloud microservices} for banking-executive workflows. Those workflows handled approximately \textbf{1,000 transactions per day per branch}.
     \item \textbf{Standardised the microservices through a multi-module Maven POM parent} and shared dependency management, ensuring consistent versioning and reducing upgrade effort across all services.
-    \item \textbf{Implemented and operated ISO 27001 controls} in this banking environment, and planned and prioritised infrastructure activities in \textbf{Microsoft Project} per sprint.
+    \item \textbf{Maintained compliance with ISO 27001 controls} in this banking environment throughout the engagement.
     \item Built \textbf{Azure DevOps and Jenkins} CI/CD pipelines to automate banking application builds and deployments. Developed frontend features with React, Node.js, and TypeScript, and administered Oracle databases.
-    \item Handled \textbf{QA environment incidents} with an average resolution time of 2 to 3 hours; complex cases could take up to one week. Monitored production with Splunk and resolved infrastructure tickets in ServiceNow under a 1-day SLA.
+    \item Handled \textbf{ServiceNow infrastructure tickets} under a \textbf{1-day SLA}, reviewing logs for troubleshooting and \textbf{escalating incidents to the corresponding area}. Monitored production with Splunk and supported QA environment incidents (average resolution 2--3 hours; complex cases up to one week).
 \end{itemize}
 
 \resumeentry{Fullstack Software Engineer}{Continuous Telcel project through GLOBAL HITSS and Everis}{Jul 2018 -- Dec 2020}{Mexico City}
@@ -60,11 +60,7 @@
 \section*{Education}
 \resumeentry{IPN -- Escuela Superior de C\'omputo (ESCOM)}{B.Sc. in Computer Systems Engineering}{2014 -- 2018}{Mexico City}
 
-\section*{Certification \& Languages}
+\section*{Certification, Languages \& Awards}
 \skillrow{Certification}{Java SE -- Oracle, Certified Associate (2013). \href{https://www.youracclaim.com/badges/583548b1-06fa-4dbf-889d-419e6c6c2ec1/public_url}{Credential}; Scrum Fundamentals -- SCRUMstudy (2018).}
 \skillrow{Languages}{Spanish: native; English: B2 (upper intermediate)}
-
-\section*{Awards}
-\begin{itemize}
-    \item Participant, Google Code Jam (2019); ACM-ICPC stage-selection team (2015--2017).
-\end{itemize}
+\skillrow{Awards}{Participant, Google Code Jam (2019); ACM-ICPC stage-selection team (2015--2017).}

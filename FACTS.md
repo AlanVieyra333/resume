@@ -73,19 +73,23 @@ Eliminado de los tres perfiles en la revisión 2026-10: **Nova Solutions / Banco
   (frontend, backend, QA) en Veradat. Con el cliente (área de seguridad), redacta notificaciones
   formales de vulnerabilidades a partir de reportes de Snyk con un formato recurrente: tabla de
   hallazgo, plan de remediación y firma. Entre los equipos, opera Azure DevOps como canal de
-  coordinación: board 'Cambios de Ambiente - DevOps' (pases de QA), board 'Tortugas Furiosas'
-  (sprint/iteración), tags de release *-qa y *-prod sobre builds de QA, y la wiki
-  'Versiones de imágenes base' como canal asincrónico entre equipos.
+  coordinación: dashboards y boards (pases de QA, seguimiento de sprint, etiquetado de releases)
+  y una wiki compartida como canal asincrónico entre equipos.
+  > Los identificadores internos reales (board 'Cambios de Ambiente - DevOps', board 'Tortugas
+  > Furiosas', tags `*-qa`/`*-prod`, wiki 'Versiones de imágenes base') quedan registrados aquí
+  > como hechos, pero **no se publican** en los perfiles: son artefactos de la operación interna
+  > de un cliente y no le dicen nada a un reclutador. Ver sección 4c.
 - Las seis tecnologías (Postgres, Oracle, RabbitMQ, Kafka, IBM MQ, SQS) están presentes también en
   Banamex.
 
 ### Banamex (vía IDS Comercial)
 - 10 microservicios Java/Spring Cloud en producción.
 - **POM padre multimódulo de Maven** + gestión compartida de dependencias.
-- **Implementó y operó controles ISO 27001.**
-- **Planeación en Microsoft Project por sprint.**
+- **Se apegó a los controles ISO 27001** durante toda la colaboración (no fue quien los implementó; sostuvo la operación).
 - Pipelines con Azure DevOps y Jenkins; React/Node.js/TypeScript; esquemas Oracle.
-- Splunk en producción; tickets de infraestructura en ServiceNow con SLA de 1 día.
+- Splunk en producción; **atención principal de tickets de infraestructura en ServiceNow bajo SLA de 1 día, con revisión de logs (troubleshooting) y escalamiento de incidentes al área correspondiente**.
+- Scrum se usó mínimamente; el trabajo fue mayoritariamente operativo (tickets, logs, incidentes).
+- **No usó Microsoft Project** en este puesto. Microsoft Project aplica solo a Veradat.
 
 ### Freelance (Grupo de la Parra)
 - **Lideró** el diseño técnico y la arquitectura end-to-end.
@@ -136,6 +140,34 @@ Verificado como **no confirmado**. `check-profiles.sh` falla si aparece en cualq
 [LinkedIn_perfil_AFRV_propuesta.md](LinkedIn_perfil_AFRV_propuesta.md) contiene bloques ```text
 destinados a publicarse. `scripts/check-profiles.sh` los escanea con las mismas guardarraíles que
 los perfiles, salvo el chequeo de skills huérfanas (no aplica: no hay filas de skills).
+
+---
+
+## 4c. Generalizar identificadores internos (no publicarlos)
+
+Un CV se lee desde fuera de la organización. Los nombres propios de tableros, wikis, canales,
+convenios o convenciones de etiquetado **no significan nada** para quien contrata yactive una
+alarma: o el reclutador lo pasa por alto, o —peor— lo lee como "copió texto interno de la
+empresa anterior". Se describe **la función**, no el artefacto.
+
+**Regla:** si el detalle solo sirve para que alguien de dentro lo ubique, se generaliza. Si
+describe capacidad, herramienta de mercado o dominio, se conserva.
+
+| Hecho interno (registrado en §3) | Cómo se publica |
+|---|---|
+| board 'Cambios de Ambiente - DevOps' (pases de QA) | "dashboards y boards de Azure DevOps (pases a QA…)" |
+| board 'Tortugas Furiosas' (sprint/iteración) | "…(seguimiento de sprint…)" |
+| tags de release `*-qa` / `*-prod` sobre builds de QA | "…(etiquetado de releases)" |
+| wiki 'Versiones de imágenes base' | "una wiki compartida como canal asincrónico" |
+
+**Lo que NO se generaliza** (sí aporta a quien contrata):
+
+- Herramientas de mercado yversión: Azure DevOps, Terraform, Kubernetes, Snyk, Splunk, ServiceNow.
+- Regulatory bodies del dominio: SAT, IMSS, INFONAVIT, STPS, CFDI. Dan profundidad de sector.
+- Métricas: 70 microservicios, 9 clústeres, 6 h → 1 h, 1,000 transacciones/día, 5,000 empleados.
+- Empleadores y clientelas: Veradat, IDS Comercial, GLOBAL HITSS, Everis, Banamex, Telcel.
+- Integraciones con productos de terceros en el proyecto freelance (p. ej. **Contpaqi**): evidencia
+  de trabajo real con sistemas externos.
 
 ---
 
