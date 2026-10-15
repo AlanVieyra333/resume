@@ -1,0 +1,296 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DESIGNED LAYOUT (opt-in: \documentclass[design])
+%
+% Two-column recruiter-facing layout: a full-bleed dark header band with a
+% circular photo, a light grey sidebar for the compact material, and a white
+% main column carrying a timeline rail through the work history.
+%
+% The default ATS layout in style.cls is untouched -- this file is only read
+% when the `design` class option is present.
+%
+% All decoration (band, panel, rail, photo) is painted from the shipout hook
+% rather than from the text flow, so colour reaches the paper edge without
+% fighting `geometry`, and the rail survives entries that straddle a page
+% break.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PALETTE (monochrome: high contrast, and safe when printed greyscale)
+%----------------------------------------------------------------------------------------
+
+\definecolor{designink}{HTML}{2B2B2B}       % band, headings, timeline rail
+\definecolor{designpanel}{HTML}{EDEDED}     % sidebar panel
+\definecolor{designmuted}{HTML}{5A5A5A}     % dates and locations
+\definecolor{designbandtext}{HTML}{C9C9C9}  % secondary text on the dark band
+\definecolor{designonink}{HTML}{FFFFFF}     % name and title on the dark band
+
+%----------------------------------------------------------------------------------------
+%	GEOMETRY
+%
+%	The text block IS the main column, so tabularx, titlesec and enumitem keep
+%	working untouched; only the panel, the rail and the sidebar live outside
+%	it. Margins are kept as explicit lengths because the header has to know
+%	exactly where the text block begins in order to land inside the band.
+%----------------------------------------------------------------------------------------
+
+\newlength{\designpanelw}    \setlength{\designpanelw}{0.32\paperwidth}
+\newlength{\designgutter}    \setlength{\designgutter}{0.8cm}
+\newlength{\designsideinset} \setlength{\designsideinset}{0.9cm}
+\newlength{\designsidepad}   \setlength{\designsidepad}{0.35cm}
+\newlength{\designsidew}
+	\setlength{\designsidew}{\dimexpr\designpanelw-\designsideinset-0.5cm\relax}
+\newlength{\designbandh}     \setlength{\designbandh}{4.1cm}
+\newlength{\designtopmargin} \setlength{\designtopmargin}{1.1cm}
+\newlength{\designbotmargin} \setlength{\designbotmargin}{1.0cm}
+\newlength{\designraildrop}  \setlength{\designraildrop}{0.4cm}
+\newlength{\designdotr}      \setlength{\designdotr}{0.105cm}
+\newlength{\designrailx}
+	\setlength{\designrailx}{\dimexpr\designpanelw+\designraildrop\relax}
+% Where the sidebar text starts, measured from the top of the page. Precomputed
+% as its own length because PGF's `yshift=` cannot parse `-\dimexpr...\relax`.
+\newlength{\designsideytop}
+	\setlength{\designsideytop}{\dimexpr\designbandh+\designsidepad\relax}
+% Height of the header box: exactly the run from the top of the text block down
+% to where the sidebar begins. Giving the box a fixed height is what lets the
+% main column start level with the sidebar without measuring anything.
+\newlength{\designheaderh}
+	\setlength{\designheaderh}{\dimexpr\designsideytop-\designtopmargin\relax}
+% The header hangs left of the text block to clear the photo.
+\newlength{\designheaderout} \setlength{\designheaderout}{1.9cm}
+
+%----------------------------------------------------------------------------------------
+%	SIDEBAR / MAIN COLUMN CAPTURE
+%
+%	The content files wrap their sections in \sidecol{} and \maincol{}; both
+%	are no-ops in the ATS layout. Here the content file is typeset TWICE (see
+%	\designinput): a harvest pass that fills the sidebar boxes and discards
+%	everything else, then a typeset pass that emits the main column and
+%	discards the sidebar.
+%
+%	The harvest pass is not optional. LaTeX ships page 1 as soon as the
+%	document body fills it, but Education sits at the *end* of the content
+%	source -- without harvesting it first, the sidebar on page 1 would be
+%	missing its last block.
+%----------------------------------------------------------------------------------------
+
+\newsavebox{\designsideboxA}  % Technical Skills
+\newsavebox{\designsideboxB}  % Education + Certifications
+\newcount\designsidecount \designsidecount=0
+\newif\ifdesignharvest \designharvestfalse
+\newif\ifdesigninmain   \designinmainfalse
+
+% Both column styles set \titleformat explicitly rather than relying on the
+% sidebar style staying local to its group -- titlesec's scoping is not
+% something worth depending on.
+\newcommand{\designsideheadings}{%
+	% \MakeUppercase in the format argument applies to the section title
+	% itself (titlesec puts the format immediately before it), which is what
+	% gives the sidebar the reference's spaced-caps headings.
+	\titleformat{\section}{\fontsize{7.9}{9.7}\selectfont\bfseries\color{designink}\MakeUppercase}{}{0em}{}%
+	\titlespacing*{\section}{0pt}{9pt}{3pt}%
+}
+\newcommand{\designmainheadings}{%
+	\titleformat{\section}{\large\bfseries\color{designink}}{}{0em}{}%
+		[\vspace{-6pt}{\color{designink}\rule{\linewidth}{0.9pt}}%
+			\vspace{4pt}]%
+	\titlespacing*{\section}{0pt}{12pt}{6pt}%
+}
+
+\newcommand{\designsidebasestyle}{%
+	% Sized so the tallest sidebar (Spanish FullStack) still clears the page
+	% foot: the sidebar is a single unbreakable box anchored to page 1, so
+	% anything that does not fit is simply lost rather than continued. Measured
+	% with \strip@pt on a box of \designsidebarcontent -- re-measure if you
+	% change this size or the sidebar content.
+	\fontsize{8.0}{9.9}\selectfont\color{bodygray}\raggedright
+	\hyphenpenalty=10000 \exhyphenpenalty=10000 % no PRO-GRAMMING breaks
+	\designsideheadings
+	\setlist[itemize]{leftmargin=1.1em,itemsep=1pt,topsep=1pt}%
+}
+\newcommand{\designmainbasestyle}{%
+	\raggedright
+	\setlength{\emergencystretch}{1.5em}%
+	\designmainheadings
+	\setlist[itemize]{leftmargin=1.3em,itemsep=2.5pt,topsep=1pt}%
+}
+
+\newcommand{\sidecol}[1]{%
+	\global\advance\designsidecount by 1\relax
+	\ifdesignharvest
+		\ifnum\designsidecount=1\relax
+			\sbox{\designsideboxA}{\begin{minipage}[t]{\designsidew}%
+				\designsidebasestyle #1\end{minipage}}%
+		\else
+			\sbox{\designsideboxB}{\begin{minipage}[t]{\designsidew}%
+				\designsidebasestyle #1\end{minipage}}%
+		\fi
+	\fi
+}
+
+\newcommand{\maincol}[1]{%
+	\designinmaintrue
+	\ifdesignharvest\relax\else
+		\designmainbasestyle #1%
+	\fi
+	\designinmainfalse
+}
+
+% Education is rendered with \resumeentry too, so the timeline dot is gated on
+% the main column rather than on \resumeentry itself.
+\newcommand{\designdot}{}
+
+% Typesets the content file twice: once to harvest every \sidecol block into
+% the sidebar boxes, once to lay out the main column. In the ATS layout
+% \designinput is a plain \input, so the second pass never happens.
+\newcommand{\designinput}[1]{%
+	\designharvesttrue
+	\global\designsidecount=0\relax
+	\input{#1}%
+	\designharvestfalse
+	\input{#1}%
+}
+
+% Designed \resumeentry: two \hfill lines rather than tabularx. A tabularx box
+% sits on its own centre baseline, which would misplace the timeline dot.
+% The dot goes on the SECOND header line (the location/date line), which is
+% where the reference layout puts it -- vertically centred on the two-line
+% header rather than hanging off the role title.
+\renewcommand{\resumeentry}[4]{%
+	\Needspace{6\baselineskip}%
+	\noindent\textbf{#1}\hfill{\small\bfseries\color{designmuted}#3}\par
+	\noindent\designdotmark\textit{#2}\hfill{\small\itshape\color{designmuted}#4}\par
+	\vspace{3pt}%
+}
+
+% The dot. Drawn inline on the second header line (the location/date line),
+% which is where the reference layout places it -- centred on the two-line
+% header rather than hanging off the role title. Offset left into the gutter
+% so it sits on the rail.
+\newcommand{\designdotmark}{%
+	\ifdesigninmain
+		\makebox[0pt][r]{\tikz[xshift=-\designraildrop,baseline=-0.5ex]{%
+			\fill[designink] (0,0) circle (\designdotr);}}%
+	\fi
+}
+
+\renewcommand{\skillrow}[2]{\textbf{#1:} #2\par\vspace{1.5pt}}
+
+%----------------------------------------------------------------------------------------
+%	PAINTED BACKGROUND: panel, header band, photo
+%
+%	`remember picture` is required: without it PGF cannot resolve `current
+%	page` anchors and the drawing lands at a stale offset. latexmk runs as many
+%	passes as are needed, so the two-pass requirement is handled by the build.
+%----------------------------------------------------------------------------------------
+
+\AddToHook{shipout/background}{%
+	\begin{tikzpicture}[remember picture,overlay]
+		% Sidebar panel, full page height. On page 1 the header band is painted
+		% over its top, which is what makes the panel appear to start below it.
+		\fill[designpanel]
+			(current page.north west)
+			rectangle ([xshift=\designpanelw]current page.south west);
+		% Timeline rail. On page 1 it starts below the band; on later pages at
+		% the top margin.
+		\ifnum\value{page}=1\relax
+			\draw[designink,line width=0.5pt]
+				([xshift=\designrailx,yshift=-\designbandh]current page.north west)
+				-- ([xshift=\designrailx,yshift=\designbotmargin]current page.south west);
+		\else
+			\draw[designink,line width=0.5pt]
+				([xshift=\designrailx,yshift=-\designtopmargin]current page.north west)
+				-- ([xshift=\designrailx,yshift=\designbotmargin]current page.south west);
+		\fi
+		\ifnum\value{page}=1\relax
+			% Band first, photo on top of it -- the reverse order hides the
+			% photo behind the band.
+			\fill[designink]
+				(current page.north west)
+				rectangle ([yshift=-\designbandh]current page.north east);
+			\begin{scope}
+				\clip ([xshift=3.5cm,yshift=-2.15cm]current page.north west) circle (1.5cm);
+				\node[inner sep=0pt,outer sep=0pt] at
+					([xshift=3.5cm,yshift=-2.15cm]current page.north west)
+					{\includegraphics[width=3.0cm,height=3.0cm]{profile.png}};
+			\end{scope}
+		\fi
+	\end{tikzpicture}%
+}
+
+%----------------------------------------------------------------------------------------
+%	SIDEBAR TEXT (page 1) and the TIMELINE (every page)
+%
+%	Everything the sidebar holds was collected during the harvest pass, which
+%	runs before any page is shipped out.
+%----------------------------------------------------------------------------------------
+
+\AddToHook{shipout/foreground}{%
+	\ifnum\value{page}=1\relax
+		\begin{tikzpicture}[remember picture,overlay]
+			\node[anchor=north west,inner sep=0pt,outer sep=0pt] at
+				([xshift=\designsideinset,yshift=-\designsideytop]current page.north west)
+				{\designsidebarcontent};
+		\end{tikzpicture}%
+	\fi
+}
+
+\newcommand{\designsidebarname}{}
+\newcommand{\resumesummaryheading}[1]{\renewcommand{\designsidebarname}{#1}}
+
+\newcommand{\designsidebarcontent}{%
+	\parbox[t]{\designsidew}{%
+		\designsidebasestyle
+		\ifx\designsidebarname\@empty\relax\else
+			{\bfseries\color{designink}\MakeUppercase{\designsidebarname}}\par
+			\vspace{4pt}%
+		\fi
+		\resumesummaryvalue\par
+		\vspace{7pt}%
+		\usebox{\designsideboxA}\par
+		% Breathing room before Educacion. It has to be explicit: the
+		% \titlespacing space-before is discarded at the top of a box, and
+		% \designsideboxB is a minipage, so without this the section would
+		% butt straight up against the skills list.
+		\vspace{9pt}%
+		\usebox{\designsideboxB}%
+	}%
+}
+
+%----------------------------------------------------------------------------------------
+%	HEADER
+%
+%	Name, title and contact are real flow content, so they keep the body font
+%	and stay selectable text -- only the black rectangle behind them is
+%	painted. The box is given an exact height so the main column begins level
+%	with the sidebar with no measuring.
+%----------------------------------------------------------------------------------------
+
+% hyperref colours links with the ATS navy, which is unreadable on the dark
+% band, so the link colours are overridden to match the band palette.
+\newcommand{\designcontactrow}{%
+	{\hypersetup{urlcolor=designbandtext,linkcolor=designbandtext}%
+	\begin{tabularx}{\linewidth}{@{}X l@{}}%
+		\faIcon{phone}\ \resumenumberphonevalue
+			& \faIcon{github}\ \href{https://\resumegithubvalue}{\resumegithubvalue}\\[3pt]
+		\faIcon{envelope}\ \href{mailto:\resumemailvalue}{\resumemailvalue}
+			& \faIcon{map-marker-alt}\ \resumeaddressvalue
+	\end{tabularx}}%
+}
+
+% The name and job title go through \MakeUppercase and microtype's \textls,
+% both of which expand their argument -- so they must be plain zero-argument
+% macros, which is exactly what the class's `...value` setters produce.
+\renewcommand{\makeheader}{%
+	\ifdesignharvest\else
+		\noindent\hspace*{-\designheaderout}%
+		\begin{minipage}[t][\designheaderh][t]{\dimexpr\textwidth+\designheaderout\relax}
+			{\fontsize{21}{23}\selectfont\bfseries\color{designonink}%
+				\MakeUppercase{\resumenamevalue}}\par
+			\vspace{4pt}%
+			{\color{designonink}\fontsize{9.5}{11.5}\selectfont
+				\textls[170]{\resumejobtitlevalue}}\par
+			\vspace{6pt}%
+			{\color{designbandtext}\fontsize{8}{10}\selectfont\designcontactrow}%
+		\end{minipage}\par\nointerlineskip
+	\fi
+}

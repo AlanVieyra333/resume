@@ -161,10 +161,16 @@ jobs:
       - name: Compile
         if: env.RELEASE_TYPE != 'none'
         run: |
+          # Two layout variants of the same content: the ATS-friendly single
+          # column and the designed two-column one. Both are released.
           make all
+          make design
           for pdf in Resume_DevOps_AFRV_EN Resume_DevOps_AFRV_ES \
                      Resume_DevOpsLead_AFRV_EN Resume_DevOpsLead_AFRV_ES \
-                     Resume_FullStack_AFRV_EN Resume_FullStack_AFRV_ES; do
+                     Resume_FullStack_AFRV_EN Resume_FullStack_AFRV_ES \
+                     Resume_DevOps_AFRV_EN_DESIGN Resume_DevOps_AFRV_ES_DESIGN \
+                     Resume_DevOpsLead_AFRV_EN_DESIGN Resume_DevOpsLead_AFRV_ES_DESIGN \
+                     Resume_FullStack_AFRV_EN_DESIGN Resume_FullStack_AFRV_ES_DESIGN; do
             [ -f "out/${pdf}.pdf" ] || { echo "::error::missing out/${pdf}.pdf"; exit 1; }
             mv "out/${pdf}.pdf" "out/${pdf}_${VERSION}.pdf"
           done
@@ -182,5 +188,11 @@ jobs:
             out/Resume_DevOpsLead_AFRV_ES_${{ env.VERSION }}.pdf
             out/Resume_FullStack_AFRV_EN_${{ env.VERSION }}.pdf
             out/Resume_FullStack_AFRV_ES_${{ env.VERSION }}.pdf
+            out/Resume_DevOps_AFRV_EN_DESIGN_${{ env.VERSION }}.pdf
+            out/Resume_DevOps_AFRV_ES_DESIGN_${{ env.VERSION }}.pdf
+            out/Resume_DevOpsLead_AFRV_EN_DESIGN_${{ env.VERSION }}.pdf
+            out/Resume_DevOpsLead_AFRV_ES_DESIGN_${{ env.VERSION }}.pdf
+            out/Resume_FullStack_AFRV_EN_DESIGN_${{ env.VERSION }}.pdf
+            out/Resume_FullStack_AFRV_ES_DESIGN_${{ env.VERSION }}.pdf
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

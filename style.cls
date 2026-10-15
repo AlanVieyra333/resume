@@ -12,6 +12,11 @@
 \NeedsTeXFormat{LaTeX2e}
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
+% `design` opts into the two-column recruiter-facing layout defined in
+% styledesign.tex. It is deliberately NOT forwarded to article.
+\newif\ifdesign
+\designfalse
+\DeclareOption{design}{\designtrue}
 \ProcessOptions\relax
 \LoadClass[10pt]{article}
 
@@ -24,7 +29,26 @@
 \RequirePackage{helvet}
 \renewcommand{\familydefault}{\sfdefault}
 
-\RequirePackage[left=1.8cm,right=1.8cm,top=1.3cm,bottom=1.3cm,nohead,nofoot]{geometry}
+\ifdesign
+	% The designed layout paints a sidebar panel beside the text block, so the
+	% text block is positioned as the MAIN column instead of as the full page.
+	% Geometry keeps both margins as explicit lengths because styledesign.tex
+	% needs to know where the text block starts to land the header in the band.
+	\RequirePackage{graphicx}
+	\RequirePackage{tikz}
+	\RequirePackage{microtype}
+	\RequirePackage{fontawesome5}
+	\RequirePackage[left=7.71cm,right=1.6cm,top=1.1cm,bottom=1.0cm,nohead,nofoot]{geometry}
+\else
+	\RequirePackage[left=1.8cm,right=1.8cm,top=1.3cm,bottom=1.3cm,nohead,nofoot]{geometry}
+	% Column wrappers are no-ops in the ATS layout: the content files carry the
+	% same \sidecol/\maincol markers for the designed layout and these make
+	% those files compile -- and print -- unchanged here.
+	\newcommand{\sidecol}[1]{#1}
+	\newcommand{\maincol}[1]{#1}
+	\newcommand{\resumesummaryheading}[1]{}
+	\newcommand{\designinput}[1]{\input{#1}}
+\fi
 \RequirePackage{array}
 \RequirePackage{tabularx}
 \RequirePackage{needspace}
@@ -56,7 +80,13 @@
 % and at 1.12 both Spanish profiles spilled the Awards row onto a third page.
 % 1.09 plus the wider \itemsep absorbs the white space and holds all six
 % profiles at two pages.
+\ifdesign
+	% The designed layout sets its own leading: its measure is narrower, so it
+	% runs looser than the ATS column rather than tighter.
+	\linespread{1.06}
+\else
 \linespread{1.09}
+\fi
 
 %----------------------------------------------------------------------------------------
 %	SECTION HEADINGS
@@ -81,31 +111,54 @@
 %	HEADER / CONTACT COMMANDS
 %----------------------------------------------------------------------------------------
 
-\newcommand{\resumename}[1]{\renewcommand{\resumename}{#1}}
-\newcommand{\resumejobtitle}[1]{\renewcommand{\resumejobtitle}{#1}}
-\newcommand{\resumeaddress}[1]{\renewcommand{\resumeaddress}{#1}}
-\newcommand{\resumenumberphone}[1]{\renewcommand{\resumenumberphone}{#1}}
-\newcommand{\resumemail}[1]{\renewcommand{\resumemail}{#1}}
-\newcommand{\resumelinkedin}[1]{\renewcommand{\resumelinkedin}{#1}}
-\newcommand{\resumegithub}[1]{\renewcommand{\resumegithub}{#1}}
-\newcommand{\resumesummary}[1]{\renewcommand{\resumesummary}{#1}}
+% Personal-data setters. Each stores its value in a plain, NON-argument macro
+% (`...value`) instead of redefining itself.
+%
+% The old self-redefining form cannot be used here: the designed layout
+% typesets the content file TWICE (a harvest pass that collects the sidebar,
+% then a typeset pass -- see styles/styledesign.tex). A self-redefining macro
+% takes an argument only until its first call, so on the second pass
+% `\resumesummary{X}` would expand the macro (typesetting the OLD summary) and
+% then treat `{X}` as a stray group -- printing the text twice. Storing into
+% a fixed zero-argument macro makes the setters idempotent, and lets the
+% values be passed through expanding contexts like \MakeUppercase or
+% microtype's \textls safely.
+%
+% Call them as `\resumeaddress{...}`; do NOT use \renewcommand on them.
+\newcommand{\resumename}[1]{\def\resumenamevalue{#1}}
+\newcommand{\resumejobtitle}[1]{\def\resumejobtitlevalue{#1}}
+\newcommand{\resumeaddress}[1]{\def\resumeaddressvalue{#1}}
+\newcommand{\resumenumberphone}[1]{\def\resumenumberphonevalue{#1}}
+\newcommand{\resumemail}[1]{\def\resumemailvalue{#1}}
+\newcommand{\resumelinkedin}[1]{\def\resumelinkedinvalue{#1}}
+\newcommand{\resumegithub}[1]{\def\resumegithubvalue{#1}}
+\newcommand{\resumesummary}[1]{\def\resumesummaryvalue{#1}}
+
+\def\resumenamevalue{}
+\def\resumejobtitlevalue{}
+\def\resumeaddressvalue{}
+\def\resumenumberphonevalue{}
+\def\resumemailvalue{}
+\def\resumelinkedinvalue{}
+\def\resumegithubvalue{}
+\def\resumesummaryvalue{}
 
 % Prints the header block: name, job title, one-line plain-text contact
 % line, and an optional professional summary paragraph.
 \newcommand{\makeheader}{%
 	\begin{center}
-		{\fontsize{22}{24}\selectfont\bfseries\color{headingcolor}\resumename}\\[3pt]
-		{\large\resumejobtitle}\\[6pt]
+		{\fontsize{22}{24}\selectfont\bfseries\color{headingcolor}\resumenamevalue}\\[3pt]
+		{\large\resumejobtitlevalue}\\[6pt]
 		{\small
-			\mbox{\resumeaddress}~\textbar~\mbox{\resumenumberphone}~\textbar~\mbox{\href{mailto:\resumemail}{\resumemail}}%
+			\mbox{\resumeaddressvalue}~\textbar~\mbox{\resumenumberphonevalue}~\textbar~\mbox{\href{mailto:\resumemailvalue}{\resumemailvalue}}%
 			\\[3pt]
-			\ifthenelse{\equal{\resumelinkedin}{}}{}{\mbox{\href{https://\resumelinkedin}{\resumelinkedin}}}%
-			\ifthenelse{\equal{\resumegithub}{}}{}{~\textbar~\mbox{\href{https://\resumegithub}{\resumegithub}}}%
+			\ifthenelse{\equal{\resumelinkedinvalue}{}}{}{\mbox{\href{https://\resumelinkedinvalue}{\resumelinkedinvalue}}}%
+			\ifthenelse{\equal{\resumegithubvalue}{}}{}{~\textbar~\mbox{\href{https://\resumegithubvalue}{\resumegithubvalue}}}%
 		}
 	\end{center}
-	\ifthenelse{\equal{\resumesummary}{}}{}{%
+	\ifthenelse{\equal{\resumesummaryvalue}{}}{}{%
 		\vspace{8pt}
-		\resumesummary
+		\resumesummaryvalue
 	}
 	\vspace{-4pt}
 }
@@ -137,3 +190,18 @@
 %----------------------------------------------------------------------------------------
 
 \urlstyle{same}
+
+%----------------------------------------------------------------------------------------
+%	DESIGNED LAYOUT (opt-in)
+%
+%	Loaded last so it can redefine \makeheader, \resumeentry, \skillrow and the
+%	titlesec rules, and can own the geometry-dependent lengths it needs. With
+%	the `design` option absent, none of this is read.
+%----------------------------------------------------------------------------------------
+
+\ifdesign
+	% Lives in styles/ rather than the repo root on purpose: latexmk resolves
+	% the source file by globbing *.tex in the root, and a second one there
+	% makes it refuse to build.
+	\input{styles/styledesign.tex}
+\fi

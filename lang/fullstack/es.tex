@@ -9,13 +9,16 @@
 %   - La planeación en Microsoft Project fue por sprint sobre actividades
 %     propias.
 
-\renewcommand{\resumeaddress}{Ciudad de México, México}
-\renewcommand{\resumejobtitle}{Ingeniero de Software Senior Full Stack \textbar\ React, TypeScript, Java}
+\resumeaddress{Ciudad de México, México}
+\resumejobtitle{Ingeniero de Software Senior Full Stack \textbar\ React, TypeScript, Java}
 
 \resumesummary{Ingeniero de Software Senior Full Stack con experiencia en producción en banca y telecomunicaciones, con ownership del ciclo completo: interfaces en React y TypeScript, microservicios en Java/Spring Cloud, APIs REST y modelos de datos relacionales. He entregado experiencias móviles en producción con React Native y Expo. Estandaricé diez microservicios con un POM parent multimódulo de Maven. Llevo la misma disciplina de ingeniería a la infraestructura -- Kubernetes, OpenShift, AWS, Azure -- y opero 9 clústeres de QA y 12 de preproducción (DEV, INTGR y Certificación). Lideré el diseño end-to-end de una plataforma freelance de cumplimiento que cubría una fuerza laboral subcontratada de \textbf{5{,}000 empleados}.}
 
+\resumesummaryheading{Sobre mí}
 \makeheader
 
+% Sidebar column. In the ATS layout \sidecol is a no-op and this prints inline.
+\sidecol{%
 \section*{Competencias Técnicas}
 \skillrow{Lenguajes}{TypeScript, JavaScript, Java, Python, Go, Bash, SQL}
 \skillrow{Frontend y móvil}{React, React Native, Expo, TypeScript, Node.js, Angular}
@@ -24,10 +27,13 @@
 \skillrow{Nube y contenedores}{AWS (Route~53, IAM), Azure, Terraform, Ansible, Linux, Docker, Kubernetes, OpenShift, Helm}
 \skillrow{CI/CD y prácticas de entrega}{Azure DevOps, Jenkins, Nexus, GitHub, Git, Maven, Scrum, Microsoft Project}
 \skillrow{Observabilidad, seguridad y cumplimiento}{Elastic Stack (ELK), Splunk, ServiceNow, ISO 27001 (implementación y operación de controles), SonarQube Cloud, Snyk, Mend}
+}
 
+% Main column.
+\maincol{%
 \section*{Experiencia Profesional}
 
-\resumeentry{Ingeniero DevOps}{Veradat Smart Network S.A. de C.V.}{Ago 2024 -- Actualidad}{Ciudad de México}
+\resumeentry{Ingeniero DevOps}{Veradat Smart Network S.A. de C.V.}{Ago 2024 -- Oct 2026}{Ciudad de México}
 \begin{itemize}
     \item Diseñé y mantuve \textbf{10 pipelines de CI/CD en Azure DevOps} para \textbf{3 equipos} (frontend, backend y QA), reduciendo el tiempo de despliegue del conjunto completo de \textbf{70 microservicios} de \textbf{6 horas a 1 hora} (\textasciitilde 83\% menos tiempo). Desarrollé los \textbf{charts de Helm} que los tres equipos adoptaron como estándar de despliegue, y registré el trabajo de infraestructura en \textbf{Microsoft Project} por sprint.
     \item Revisé la \textbf{arquitectura hexagonal} del equipo, que desacopla cada microservicio de sus dependencias tecnológicas (PostgreSQL, Oracle, RabbitMQ, Kafka, IBM~MQ, SQS), y generé la \textbf{imagen Docker para cada combinación tecnológica} que cada microservicio requiere.
@@ -61,7 +67,10 @@
     \item Diseñé un \textbf{motor de auditoría de cumplimiento} que valida reglas regulatorias (existencia de CFDI por empleado vs. fechas de pago, pagos de IMSS/INFONAVIT/retenciones vs. calendario, alta ante la Secretaría del Trabajo) y emite \textbf{alertas automatizadas} por vencimientos de contratos y plazos de entrega de información.
     \item Construí módulos independientes de \textbf{proveedores, clientes y empresas} con soporte \textbf{multi-empresa}, repositorios documentales, motor de búsqueda e inventario, e integré el sistema de nóminas \textbf{Contpaqi} para sincronizar altas/bajas y CFDIs de empleados. Implementé además un \textbf{panel de BI de cumplimiento} con reportes regulatorios (\textbf{SAT, IMSS, INFONAVIT, STPS}) y un dashboard con KPIs (documentos pendientes, días para entrega, contratos por proveedor/cliente) que permitió al área legal/antifraude operar de forma proactiva.
 \end{itemize}
+}
 
+% Back to the sidebar.
+\sidecol{%
 \section*{Educación}
 \resumeentry{IPN -- Escuela Superior de Cómputo (ESCOM)}{Ingeniería en Sistemas Computacionales}{2014 -- 2018}{Ciudad de México}
 
@@ -69,3 +78,4 @@
 \skillrow{Certificación}{Java SE -- Oracle, Certificado Asociado (2013). \href{https://www.youracclaim.com/badges/583548b1-06fa-4dbf-889d-419e6c6c2ec1/public_url}{Credencial}; Scrum Fundamentals -- SCRUMstudy (2018).}
 \skillrow{Idiomas}{Español nativo; inglés B2 (intermedio alto)}
 \skillrow{Programación competitiva}{Participante, Google Code Jam (2019); equipo de selección de etapa de ACM-ICPC (2015--2017).}
+}
