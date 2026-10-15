@@ -48,7 +48,7 @@ Dos detalles que conviene conocer antes de tocar ese archivo:
 ├── styles/
 │   └── styledesign.tex         # Variante con diseño (banda, barra lateral, línea de tiempo)
 ├── Makefile                    # Targets de compilación local y vía Docker
-├── profile.png                 # Foto de perfil (solo se usa en la variante con diseño)
+├── profile.jpg                 # Foto de perfil (solo se usa en la variante con diseño)
 ├── out/                        # PDFs generados (gitignored; poblado por `make all`)
 ├── FACTS.md                    # Fuente única de verdad: hechos confirmados, métricas y límites de lo declarable
 ├── LICENSE                     # MIT (template original)

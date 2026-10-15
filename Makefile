@@ -45,7 +45,7 @@ PROFILE ?= devops
 # expands `**` like a single `*`, so `**/*.tex` resolves only to lang/*.tex and
 # silently misses lang/fullstack/*.tex and lang/lead/*.tex -- editing those
 # files would then produce a stale PDF with no error.
-TEXSOURCES := main.tex $(wildcard lang/*.tex lang/*/*.tex styles/*.tex) style.cls profile.png
+TEXSOURCES := main.tex $(wildcard lang/*.tex lang/*/*.tex styles/*.tex) style.cls profile.jpg
 
 # Layout variant. Command-line variables are set before this file is read, so
 # `make DESIGN=1 <target>` resolves the _DESIGN names here rather than needing
