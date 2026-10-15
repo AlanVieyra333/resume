@@ -12,7 +12,7 @@ Cuando cambies un dato, actualízalo aquí **primero** y luego en los perfiles.
 
 | Empleador | Cliente | Rol | Fechas | Ubicación |
 |---|---|---|---|---|
-| Veradat Smart Network S.A. de C.V. | — | DevOps Engineer | Ago 2024 – Actualidad | Ciudad de México |
+| Veradat Smart Network S.A. de C.V. | — | DevOps Engineer | Ago 2024 – Oct 2026 | Ciudad de México |
 | IDS Comercial S.A. de C.V. | Banamex | Fullstack + DevOps Engineer | Ene 2021 – Ago 2024 | México, remoto |
 | Proyecto continuo (GLOBAL HITSS → Everis) | Telcel | Fullstack Software Engineer | Jul 2018 – Dic 2020 | Ciudad de México |
 | GDP administración S de RL de CV (Grupo de la Parra) | — | Freelance, líder técnico | Jun 2021 – Dic 2021 | Ciudad de México |

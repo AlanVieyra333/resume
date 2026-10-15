@@ -3,7 +3,14 @@
 % Single-column, Harvard/Stanford-style layout
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[letterpaper]{style} % a4paper for A4
+% `design=1` selects the two-column recruiter-facing layout; the default 0
+% keeps the ATS-friendly single column. Like \profile and \lang it is passed
+% from the Makefile on the pdflatex command line.
+\providecommand{\design}{0} % default; \providecommand so the Makefile's \def wins
+\def\designopts{}
+\ifnum\design=1 \def\designopts{,design} \fi
+
+\documentclass[letterpaper\designopts]{style} % a4paper for A4
 
 % Profile + language are passed on the pdflatex command line, e.g.:
 %   pdflatex '\def\profile{fullstack}\def\lang{en}\input{main.tex}'
@@ -33,12 +40,12 @@
 % style.cls) provides \ifdefstring, which compares the expansion of
 % \profile against the literal string.
 \ifdefstring{\profile}{fullstack}{%
-    \input{lang/fullstack/\lang.tex}%
+    \designinput{lang/fullstack/\lang.tex}%
 }{%
     \ifdefstring{\profile}{lead}{%
-        \input{lang/lead/\lang.tex}%
+        \designinput{lang/lead/\lang.tex}%
     }{%
-        \input{lang/\lang.tex}%
+        \designinput{lang/\lang.tex}%
     }%
 }
 

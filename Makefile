@@ -22,6 +22,14 @@
 #   make check          verifies profile invariants (scripts/check-profiles.sh)
 #   make clean          removes out/ and every build artefact
 #
+# Layout variant (two axes):
+#   DESIGN=0 (default)  ATS-friendly single column -> out/Resume_*_AFRV_{EN,ES}.pdf
+#   DESIGN=1            designed two-column layout  -> out/Resume_*_AFRV_{EN,ES}_DESIGN.pdf
+#
+#   DESIGN can be combined with any target: `make DESIGN=1 devops-es` builds only
+#   the designed Spanish DevOps CV. `make design` is shorthand for building all
+#   six with DESIGN=1; both variants can therefore live side by side in out/.
+#
 # Output layout: every per-target rule writes its PDF to $(OUTDIR) (default
 # `out/`) via `latexmk -outdir`. Intermediate files produced by latexmk in the
 # repo root -- named after `-jobname`, so `resume_<profile>_<lang>.{aux,log,
@@ -37,7 +45,19 @@ PROFILE ?= devops
 # expands `**` like a single `*`, so `**/*.tex` resolves only to lang/*.tex and
 # silently misses lang/fullstack/*.tex and lang/lead/*.tex -- editing those
 # files would then produce a stale PDF with no error.
-TEXSOURCES := main.tex $(wildcard lang/*.tex lang/*/*.tex) style.cls profile.png
+TEXSOURCES := main.tex $(wildcard lang/*.tex lang/*/*.tex styles/*.tex) style.cls profile.png
+
+# Layout variant. Command-line variables are set before this file is read, so
+# `make DESIGN=1 <target>` resolves the _DESIGN names here rather than needing
+# a second set of rules.
+DESIGN ?= 0
+ifeq ($(DESIGN),1)
+	DESIGNDEF := \def\design{1}
+	PDFSUF    := _DESIGN
+else
+	DESIGNDEF :=
+	PDFSUF    :=
+endif
 
 # Final PDFs land in this directory. `latexmk -outdir=$(OUTDIR)` writes the
 # PDF directly here (and auto-creates the directory if missing); the recipe
@@ -45,7 +65,7 @@ TEXSOURCES := main.tex $(wildcard lang/*.tex lang/*/*.tex) style.cls profile.png
 OUTDIR := out
 
 .PHONY: all devops devops-en devops-es fullstack fullstack-en fullstack-es \
-        lead lead-en lead-es docker check clean
+        lead lead-en lead-es design design-docker docker check clean
 
 #-----------------------------------------------------------------------
 # Default and aggregate targets
@@ -80,17 +100,17 @@ all: fullstack lead devops
 #-----------------------------------------------------------------------
 
 define PROFILE_RULE
-$(OUTDIR)/Resume_$(3)_AFRV_$(4).pdf: $(TEXSOURCES)
+$(OUTDIR)/Resume_$(3)_AFRV_$(4)$(PDFSUF).pdf: $(TEXSOURCES)
 	latexmk -pdf -outdir=$(OUTDIR) -interaction=nonstopmode -halt-on-error \
-		-jobname=resume_$(1)_$(2) \
-		-pdflatex="pdflatex %O '\def\profile{$(1)}\def\lang{$(2)}\input{main.tex}'"
-	mv $(OUTDIR)/resume_$(1)_$(2).pdf $$@
-	rm -f $(OUTDIR)/resume_$(1)_$(2).aux \
-	      $(OUTDIR)/resume_$(1)_$(2).log \
-	      $(OUTDIR)/resume_$(1)_$(2).out \
-	      $(OUTDIR)/resume_$(1)_$(2).fls \
-	      $(OUTDIR)/resume_$(1)_$(2).fdb_latexmk \
-	      $(OUTDIR)/resume_$(1)_$(2).synctex.gz
+		-jobname=resume_$(1)_$(2)$(PDFSUF) \
+		-pdflatex="pdflatex %O '\def\profile{$(1)}\def\lang{$(2)}$(DESIGNDEF)\input{main.tex}'"
+	mv $(OUTDIR)/resume_$(1)_$(2)$(PDFSUF).pdf $$@
+	rm -f $(OUTDIR)/resume_$(1)_$(2)$(PDFSUF).aux \
+	      $(OUTDIR)/resume_$(1)_$(2)$(PDFSUF).log \
+	      $(OUTDIR)/resume_$(1)_$(2)$(PDFSUF).out \
+	      $(OUTDIR)/resume_$(1)_$(2)$(PDFSUF).fls \
+	      $(OUTDIR)/resume_$(1)_$(2)$(PDFSUF).fdb_latexmk \
+	      $(OUTDIR)/resume_$(1)_$(2)$(PDFSUF).synctex.gz
 	@echo "Built $$@"
 endef
 
@@ -105,16 +125,30 @@ $(eval $(call PROFILE_RULE,devops,es,DevOps,ES))
 # Phony per-profile convenience targets
 #-----------------------------------------------------------------------
 
-fullstack: $(OUTDIR)/Resume_FullStack_AFRV_EN.pdf $(OUTDIR)/Resume_FullStack_AFRV_ES.pdf
-lead:      $(OUTDIR)/Resume_DevOpsLead_AFRV_EN.pdf $(OUTDIR)/Resume_DevOpsLead_AFRV_ES.pdf
-devops:    $(OUTDIR)/Resume_DevOps_AFRV_EN.pdf   $(OUTDIR)/Resume_DevOps_AFRV_ES.pdf
+fullstack: $(OUTDIR)/Resume_FullStack_AFRV_EN$(PDFSUF).pdf $(OUTDIR)/Resume_FullStack_AFRV_ES$(PDFSUF).pdf
+lead:      $(OUTDIR)/Resume_DevOpsLead_AFRV_EN$(PDFSUF).pdf $(OUTDIR)/Resume_DevOpsLead_AFRV_ES$(PDFSUF).pdf
+devops:    $(OUTDIR)/Resume_DevOps_AFRV_EN$(PDFSUF).pdf   $(OUTDIR)/Resume_DevOps_AFRV_ES$(PDFSUF).pdf
 
-fullstack-en: $(OUTDIR)/Resume_FullStack_AFRV_EN.pdf
-fullstack-es: $(OUTDIR)/Resume_FullStack_AFRV_ES.pdf
-lead-en:      $(OUTDIR)/Resume_DevOpsLead_AFRV_EN.pdf
-lead-es:      $(OUTDIR)/Resume_DevOpsLead_AFRV_ES.pdf
-devops-en:    $(OUTDIR)/Resume_DevOps_AFRV_EN.pdf
-devops-es:    $(OUTDIR)/Resume_DevOps_AFRV_ES.pdf
+fullstack-en: $(OUTDIR)/Resume_FullStack_AFRV_EN$(PDFSUF).pdf
+fullstack-es: $(OUTDIR)/Resume_FullStack_AFRV_ES$(PDFSUF).pdf
+lead-en:      $(OUTDIR)/Resume_DevOpsLead_AFRV_EN$(PDFSUF).pdf
+lead-es:      $(OUTDIR)/Resume_DevOpsLead_AFRV_ES$(PDFSUF).pdf
+devops-en:    $(OUTDIR)/Resume_DevOps_AFRV_EN$(PDFSUF).pdf
+devops-es:    $(OUTDIR)/Resume_DevOps_AFRV_ES$(PDFSUF).pdf
+
+#-----------------------------------------------------------------------
+# Designed layout (two-column, recruiter-facing)
+#
+# A recursive make rather than a parallel set of rules: DESIGN has to be set
+# before the file is read, because it renames both the jobname and the target.
+#-----------------------------------------------------------------------
+
+design:
+	@$(MAKE) --no-print-directory DESIGN=1 all
+
+design-docker: $(TEXSOURCES)
+	docker run -i --rm --user $(shell id -u):$(shell id -g) \
+		-v `pwd`:/app -w /app texlive/texlive:TL2025-historic make DESIGN=1 all
 
 #-----------------------------------------------------------------------
 # Build inside the texlive Docker image used by CI

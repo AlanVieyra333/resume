@@ -1,6 +1,15 @@
 # Resume — Alan Fernando Rincón Vieyra
 
-Repositorio LaTeX que genera el CV de **Alan Fernando Rincón Vieyra** en **tres perfiles profesionales y dos idiomas** (6 PDFs en total). La compilación produce PDFs ATS-friendly (una columna, sin gráficos de maquetación, texto seleccionable) listos para enviar a bolsas de trabajo, portales de empleo y Applicant Tracking Systems.
+Repositorio LaTeX que genera el CV de **Alan Fernando Rincón Vieyra** en **tres perfiles profesionales y dos idiomas**, en **dos variantes de diseño** (12 PDFs en total).
+
+El mismo contenido se compila de dos formas, porque son dos lecturas distintas del mismo currículum:
+
+| Variante | Para qué | Cómo se genera |
+| --- | --- | --- |
+| **ATS** (por defecto) | Portales de empleo y Applicant Tracking Systems. Una columna, sin gráficos de maquetación, texto seleccionable. | `make` |
+| **Con diseño** (`DESIGN=1`) | Reclutador senior leyendo en pantalla. Banda oscura con foto, barra lateral gris y columna principal con línea de tiempo. | `make design` |
+
+Ambas variantes salen del **mismo contenido** (`lang/*.tex`); lo único que cambia es la capa visual. No hay que mantener dos currículums.
 
 > Basado en el template ATS-friendly de [Carmine Spagnuolo](https://github.com/carminesagnuolo/CV), redistribuido bajo MIT. Ver [LICENSE](LICENSE).
 
@@ -12,16 +21,34 @@ Repositorio LaTeX que genera el CV de **Alan Fernando Rincón Vieyra** en **tres
 | **DevOps/SRE Engineer Lead** | Deuda técnica, estándares y cumplimiento | [Resume_DevOpsLead_AFRV_EN.pdf](out/Resume_DevOpsLead_AFRV_EN.pdf) | [Resume_DevOpsLead_AFRV_ES.pdf](out/Resume_DevOpsLead_AFRV_ES.pdf) |
 | **Senior Full Stack Software Engineer** | Ownership de entrega y arquitectura de microservicios | [Resume_FullStack_AFRV_EN.pdf](out/Resume_FullStack_AFRV_EN.pdf) | [Resume_FullStack_AFRV_ES.pdf](out/Resume_FullStack_AFRV_ES.pdf) |
 
-Cada PDF se compila desde el mismo `main.tex` con un `\def\profile{...}\def\lang{...}` distinto, lo que permite mantener una sola clase (`style.cls`) y seis bloques de contenido aislados (3 perfiles × 2 idiomas).
+Cada PDF se compila desde el mismo `main.tex` con un `\def\profile{...}\def\lang{...}` distinto, lo que permite mantener una sola clase (`style.cls`) y seis bloques de contenido aislados (3 perfiles × 2 idiomas). Añadiendo `\def\design{1}` se obtiene la variante con diseño, cuyo nombre lleva el sufijo `_DESIGN` y convive en `out/` con la ATS.
+
+## Las dos variantes de diseño
+
+Ambas se construyen desde los mismos seis archivos de `lang/`. El contenido se marca con dos envoltorios que no hacen nada en la variante ATS:
+
+```latex
+\sidecol{ ... }   % barra lateral gris (con diseño) / texto normal (ATS)
+\maincol{ ... }   % columna principal con línea de tiempo (con diseño) / normal (ATS)
+```
+
+Con `DESIGN=1`, `style.cls` carga [styles/styledesign.tex](styles/styledesign.tex), que redefine `\makeheader`, `\resumeentry` y `\skillrow`, y pinta desde el hook `shipout` la banda del encabezado, el panel gris, la foto circular y la línea de tiempo.
+
+Dos detalles que conviene conocer antes de tocar ese archivo:
+
+- **El archivo de contenido se typeset dos veces.** La primera pasada ("harvest") recoge los bloques `\sidecol` en cajas; la segunda imprime la columna principal. Sin la primera pasada, LaTeX enviaría la página 1 a imprimir antes de llegar a Educación — que está al final del archivo — y la barra lateral saldría incompleta.
+- **La barra lateral es una caja que no se parte entre páginas.** Si su contenido no cabe en la página 1, se pierde en silencio en lugar de continuar. Al tocar tipografía conviene volver a medirla.
 
 ## Estructura del repositorio
 
 ```
 .
 ├── main.tex                    # Punto de entrada: enruta a lang/{es,en}.tex, lang/lead/ o lang/fullstack/
-├── style.cls                   # Clase ATS-friendly (single column, sans-serif, hyperref)
+├── style.cls                   # Clase base (ATS single column) + opción de clase `design`
+├── styles/
+│   └── styledesign.tex         # Variante con diseño (banda, barra lateral, línea de tiempo)
 ├── Makefile                    # Targets de compilación local y vía Docker
-├── profile.png                 # Foto de perfil (no se usa en el PDF — es ATS-safe)
+├── profile.png                 # Foto de perfil (solo se usa en la variante con diseño)
 ├── out/                        # PDFs generados (gitignored; poblado por `make all`)
 ├── FACTS.md                    # Fuente única de verdad: hechos confirmados, métricas y límites de lo declarable
 ├── LICENSE                     # MIT (template original)
@@ -54,11 +81,14 @@ Cada PDF se compila desde el mismo `main.tex` con un `\def\profile{...}\def\lang
 | Comando | Resultado |
 | --- | --- |
 | `make` | Compila el perfil por defecto (`devops`) en ambos idiomas. |
-| `make all` | Compila los seis PDFs (DevOps + DevOps Lead + Fullstack, ES + EN). |
+| `make all` | Compila los seis PDFs ATS (DevOps + DevOps Lead + Fullstack, ES + EN). |
+| `make design` | Compila los seis PDFs **con diseño** (sufijo `_DESIGN`). |
+| `make DESIGN=1 <target>` | Compila ese target concreto con diseño (p. ej. `make DESIGN=1 devops-es`). |
 | `make devops` / `make devops-es` / `make devops-en` | Solo el perfil DevOps. |
 | `make lead` / `make lead-es` / `make lead-en` | Solo el perfil DevOps/SRE Lead. |
 | `make fullstack` / `make fullstack-es` / `make fullstack-en` | Solo el perfil Full Stack. |
-| `make docker` | Compila todo dentro del contenedor `texlive/texlive:TL2025-historic`, sin instalar TeX localmente. |
+| `make docker` | Compila todo (ATS) dentro del contenedor `texlive/texlive:TL2025-historic`, sin instalar TeX localmente. |
+| `make design-docker` | Igual, pero con la variante con diseño. |
 | `make check` | Verifica los invariantes entre perfiles sin compilar. |
 | `make clean` | Borra `out/`, los PDFs generados, y los intermedios de LaTeX (`.log`, `.aux`, `.out`, `.fls`, `.fdb_latexmk`). |
 
@@ -88,7 +118,7 @@ Los seis archivos de contenido cuentan **los mismos hechos con énfasis distinto
 - lista una herramienta en las skills que no aparece respaldada en la experiencia;
 - cambia una fecha o una métrica respecto a su hermano del otro idioma.
 
-Cuando cambies un dato, actualiza **FACTS.md primero** y después los perfiles. Cada PDF debe quedar en **2 páginas**.
+Cuando cambies un dato, actualiza **FACTS.md primero** y después los perfiles. Cada PDF ATS debe quedar en **2 páginas**; los de la variante con diseño pueden llegar a 3.
 
 ## Cómo editar el contenido
 
@@ -109,6 +139,8 @@ Las macros que vas a usar:
 | `\resumeentry{Título}{Organización}{Fechas}{Ubicación}` | Cabecera de experiencia o educación. |
 | `\skillrow{Categoría}{items}` | Una fila de skills (formato `Categoría: item, item`). |
 | `\section*{...}` | Sección sin numerar (Profesional Experience, Skills, etc.). |
+| `\sidecol{...}` / `\maincol{...}` | Envolturas de columna. En la variante ATS son no-ops; con diseño mandan el bloque a la barra lateral o a la columna principal. |
+| `\resumesummaryheading{Título}` | Encabezado del resumen en la barra lateral (`About`, `Sobre mí`). No-op en ATS. |
 
 Los proyectos destacados pueden usar el mismo `\resumeentry` que las posiciones de experiencia, lo que les da el mismo tratamiento tipográfico (fechas y ubicación alineadas a la derecha).
 
