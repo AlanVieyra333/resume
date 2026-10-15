@@ -21,7 +21,7 @@ Cada PDF se compila desde el mismo `main.tex` con un `\def\profile{...}\def\lang
 ├── main.tex                    # Punto de entrada: enruta a lang/{es,en}.tex, lang/lead/ o lang/fullstack/
 ├── style.cls                   # Clase ATS-friendly (single column, sans-serif, hyperref)
 ├── Makefile                    # Targets de compilación local y vía Docker
-├── profile.jpg                 # Foto de perfil (no se usa en el PDF — es ATS-safe)
+├── profile.png                 # Foto de perfil (no se usa en el PDF — es ATS-safe)
 ├── FACTS.md                    # Fuente única de verdad: hechos confirmados, métricas y límites de lo declarable
 ├── LICENSE                     # MIT (template original)
 ├── scripts/

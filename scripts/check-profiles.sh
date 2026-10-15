@@ -53,6 +53,30 @@ else
 fi
 
 echo
+echo "== Internal identifiers are generalised, never published =="
+# Names of the client's own boards, wikis and tagging conventions say nothing to
+# a recruiter and read as copied internal text. FACTS.md section 4c records the
+# real names and the public wording each one maps to.
+INTERNAL="Tortugas Furiosas|Cambios de Ambiente|Versiones de imágenes base|Versiones de imagenes base"
+internal_fail=0
+for f in $ALL_FILES $PUBLISHED; do
+    [ -f "$f" ] || continue
+    hits=$(published_body "$f" | grep -oE "$INTERNAL" | sort -u | tr '\n' ' ')
+    if [ -n "$hits" ]; then
+        fail "$f publishes internal identifiers: $hits"
+        internal_fail=1
+    fi
+done
+# The public wording must still be there, or the bullet lost its substance.
+for f in $ALL_FILES; do
+    if ! published_body "$f" | grep -qiE "dashboards and boards|dashboards y boards"; then
+        fail "$f lost the generalised Azure DevOps coordination wording"
+        internal_fail=1
+    fi
+done
+[ "$internal_fail" -eq 0 ] && pass "no board/wiki/tag names published; coordination described generically"
+
+echo
 echo "== Unconfirmed claims must not appear =="
 # Each of these was explicitly NOT confirmed by Alan. See FACTS.md section 4.
 # Pattern is case-insensitive and matches word-ish boundaries where practical.
@@ -151,7 +175,7 @@ echo "== No skill is listed without evidence in the body =="
 # it reads as padding to a reviewer. LaTeX escapes are normalised on BOTH sides
 # so that e.g. "IBM~MQ" in the body matches "IBM MQ" in the skillrow.
 #
-# Certification/Languages rows are prose, not skills, and are skipped.
+# Certification/Languages/Awards rows are prose, not skills, and are skipped.
 #
 # ALLOW entries are legitimately implied rather than named -- each one is a
 # deliberate choice, not an oversight.
@@ -178,7 +202,7 @@ for f in $ALL_FILES; do
         [ -z "$row" ] && continue
         cat=$(echo "$row" | sed -E 's/^\\skillrow\{([^}]*)\}.*/\1/')
         case "$cat" in
-            Certification*|Certificación*|Languages|Idiomas) continue ;;
+            Certification*|Certificación*|Languages|Idiomas|Awards|Reconocimientos) continue ;;
         esac
         raw=$(echo "$row" | sed -E 's/.*\{([^}]*)\}$/\1/')
         inner=$(echo "$raw" | grep -oE '\([^)]*\)' | tr -d '()' | tr ',' '\n')

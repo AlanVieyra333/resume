@@ -29,7 +29,7 @@ PROFILE ?= devops
 # expands `**` like a single `*`, so `**/*.tex` resolves only to lang/*.tex and
 # silently misses lang/fullstack/*.tex and lang/lead/*.tex -- editing those
 # files would then produce a stale PDF with no error.
-TEXSOURCES := main.tex $(wildcard lang/*.tex lang/*/*.tex) style.cls profile.jpg
+TEXSOURCES := main.tex $(wildcard lang/*.tex lang/*/*.tex) style.cls profile.png
 
 .PHONY: all devops devops-en devops-es fullstack fullstack-en fullstack-es \
         lead lead-en lead-es docker check clean
