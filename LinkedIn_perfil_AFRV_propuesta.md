@@ -213,7 +213,7 @@ Complementarias: Continuous Integration and Continuous Delivery (CI/CD), Azure D
 | 1 | **Despliegue completo de 70 microservicios: de 6 horas a 1 hora.** Caso técnico sobre pipelines de Azure DevOps y estandarización con Helm. | Por preparar. Documentar decisiones y alcance antes de desarrollar el caso. |
 | 2 | **Arquitectura hexagonal y matriz de imágenes Docker.** Caso técnico sobre cómo desacoplar un microservicio de sus dependencias tecnológicas (PostgreSQL, Oracle, RabbitMQ, Kafka, IBM MQ, SQS) y generar una imagen por combinación. | Por preparar. Documentar la decisión de arquitectura y su efecto operativo, sin código del empleador. |
 | 3 | **Infraestructura reproducible en AWS con Terraform.** Demostración pública con Route 53 e IAM, README y pasos reproducibles, sin datos ni código de empleadores. | Por crear; documentar arquitectura, decisiones y controles de seguridad. |
-| 4 | **Alan Rincón Vieyra · DevOps Engineer.** CV actualizado con datos de contacto. | Usar el PDF generado desde la versión actual de `main.tex`. Para roles de liderazgo, usar el perfil `Resume_DevOpsLead_AFRV_{EN,ES}.pdf`. |
+| 4 | **Alan Rincón Vieyra · DevOps Engineer.** CV actualizado con datos de contacto. | Usar el PDF generado desde la versión actual de `main.tex` (queda en `out/` tras `make all`). Para roles de liderazgo, usar el perfil `out/Resume_DevOpsLead_AFRV_{EN,ES}.pdf`. |
 
 El repositorio del proyecto de Grupo de la Parra es privado, según el CV original. Su descripción puede servir como evidencia de alcance; no se presenta como demostración pública disponible. Cuando haya publicaciones y métricas propias, se podrá elegir una publicación para Destacado con base en esos resultados.
 

@@ -8,9 +8,9 @@ Repositorio LaTeX que genera el CV de **Alan Fernando Rincón Vieyra** en **tres
 
 | Perfil | Enfoque | Inglés | Español |
 | --- | --- | --- | --- |
-| **DevOps Engineer** | Cloud e infraestructura: AWS, Terraform, CI/CD | [Resume_DevOps_AFRV_EN.pdf](Resume_DevOps_AFRV_EN.pdf) | [Resume_DevOps_AFRV_ES.pdf](Resume_DevOps_AFRV_ES.pdf) |
-| **DevOps/SRE Engineer Lead** | Deuda técnica, estándares y cumplimiento | [Resume_DevOpsLead_AFRV_EN.pdf](Resume_DevOpsLead_AFRV_EN.pdf) | [Resume_DevOpsLead_AFRV_ES.pdf](Resume_DevOpsLead_AFRV_ES.pdf) |
-| **Senior Full Stack Software Engineer** | Ownership de entrega y arquitectura de microservicios | [Resume_FullStack_AFRV_EN.pdf](Resume_FullStack_AFRV_EN.pdf) | [Resume_FullStack_AFRV_ES.pdf](Resume_FullStack_AFRV_ES.pdf) |
+| **DevOps Engineer** | Cloud e infraestructura: AWS, Terraform, CI/CD | [Resume_DevOps_AFRV_EN.pdf](out/Resume_DevOps_AFRV_EN.pdf) | [Resume_DevOps_AFRV_ES.pdf](out/Resume_DevOps_AFRV_ES.pdf) |
+| **DevOps/SRE Engineer Lead** | Deuda técnica, estándares y cumplimiento | [Resume_DevOpsLead_AFRV_EN.pdf](out/Resume_DevOpsLead_AFRV_EN.pdf) | [Resume_DevOpsLead_AFRV_ES.pdf](out/Resume_DevOpsLead_AFRV_ES.pdf) |
+| **Senior Full Stack Software Engineer** | Ownership de entrega y arquitectura de microservicios | [Resume_FullStack_AFRV_EN.pdf](out/Resume_FullStack_AFRV_EN.pdf) | [Resume_FullStack_AFRV_ES.pdf](out/Resume_FullStack_AFRV_ES.pdf) |
 
 Cada PDF se compila desde el mismo `main.tex` con un `\def\profile{...}\def\lang{...}` distinto, lo que permite mantener una sola clase (`style.cls`) y seis bloques de contenido aislados (3 perfiles × 2 idiomas).
 
@@ -22,6 +22,7 @@ Cada PDF se compila desde el mismo `main.tex` con un `\def\profile{...}\def\lang
 ├── style.cls                   # Clase ATS-friendly (single column, sans-serif, hyperref)
 ├── Makefile                    # Targets de compilación local y vía Docker
 ├── profile.png                 # Foto de perfil (no se usa en el PDF — es ATS-safe)
+├── out/                        # PDFs generados (gitignored; poblado por `make all`)
 ├── FACTS.md                    # Fuente única de verdad: hechos confirmados, métricas y límites de lo declarable
 ├── LICENSE                     # MIT (template original)
 ├── scripts/
@@ -59,7 +60,7 @@ Cada PDF se compila desde el mismo `main.tex` con un `\def\profile{...}\def\lang
 | `make fullstack` / `make fullstack-es` / `make fullstack-en` | Solo el perfil Full Stack. |
 | `make docker` | Compila todo dentro del contenedor `texlive/texlive:TL2025-historic`, sin instalar TeX localmente. |
 | `make check` | Verifica los invariantes entre perfiles sin compilar. |
-| `make clean` | Borra logs, `.aux`, `.out`, `.fls`, `.fdb_latexmk` y los PDFs generados. |
+| `make clean` | Borra `out/`, los PDFs generados, y los intermedios de LaTeX (`.log`, `.aux`, `.out`, `.fls`, `.fdb_latexmk`). |
 
 ### Ejemplos rápidos
 
