@@ -45,8 +45,18 @@
 \color{bodygray}
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
-\linespread{1.06}
 \setlength{\emergencystretch}{2em}
+% Leading opened from 1.06 after the 2026-10 editorial pass trimmed body copy:
+% the shorter blocks left a visible band of white at the foot of page 2, and a
+% slightly looser leading absorbs it while improving readability. Font size,
+% margins and colours are deliberately unchanged -- ATS parsing depends on
+% plain selectable text, not on these values.
+%
+% Kept at 1.09, not the 1.12 first tried: Spanish runs ~20% longer than English,
+% and at 1.12 both Spanish profiles spilled the Awards row onto a third page.
+% 1.09 plus the wider \itemsep absorbs the white space and holds all six
+% profiles at two pages.
+\linespread{1.09}
 
 %----------------------------------------------------------------------------------------
 %	SECTION HEADINGS
@@ -64,7 +74,7 @@
 %	LISTS
 %----------------------------------------------------------------------------------------
 
-\setlist[itemize]{leftmargin=1.2em, itemsep=1pt, topsep=1pt, parsep=0pt, partopsep=0pt}
+\setlist[itemize]{leftmargin=1.2em, itemsep=2pt, topsep=1pt, parsep=0pt, partopsep=0pt}
 \AtEndEnvironment{itemize}{\vspace{5pt}}
 
 %----------------------------------------------------------------------------------------

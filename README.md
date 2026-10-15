@@ -1,6 +1,6 @@
 # Resume — Alan Fernando Rincón Vieyra
 
-Repositorio LaTeX que genera el CV de **Alan Fernando Rincón Vieyra** en dos perfiles profesionales y dos idiomas. La compilación produce cuatro PDFs ATS-friendly (una columna, sin gráficos de maquetación, texto seleccionable) listos para enviar a bolsas de trabajo, portales de empleo y Applicant Tracking Systems.
+Repositorio LaTeX que genera el CV de **Alan Fernando Rincón Vieyra** en **tres perfiles profesionales y dos idiomas** (6 PDFs en total). La compilación produce PDFs ATS-friendly (una columna, sin gráficos de maquetación, texto seleccionable) listos para enviar a bolsas de trabajo, portales de empleo y Applicant Tracking Systems.
 
 > Basado en el template ATS-friendly de [Carmine Spagnuolo](https://github.com/carminesagnuolo/CV), redistribuido bajo MIT. Ver [LICENSE](LICENSE).
 
@@ -67,7 +67,7 @@ Cada PDF se compila desde el mismo `main.tex` con un `\def\profile{...}\def\lang
 # Solo el CV DevOps en español
 make devops-es
 
-# Los cuatro PDFs, sin TeX local (Docker)
+# Los seis PDFs, sin TeX local (Docker)
 make docker
 
 # Limpiar artefactos antes de un commit
