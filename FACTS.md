@@ -69,6 +69,13 @@ Eliminado de los tres perfiles en la revisión 2026-10: **Nova Solutions / Banco
 - **Cubre guardia (on-call) para incidentes en producción.**
 - **Trabaja dentro de Scrum** como miembro del equipo.
 - **Planea y prioriza actividades de infraestructura en Microsoft Project, por sprint/iteración.**
+- **Coordina la interlocución técnica con stakeholders del cliente y entre los 3 equipos**
+  (frontend, backend, QA) en Veradat. Con el cliente (área de seguridad), redacta notificaciones
+  formales de vulnerabilidades a partir de reportes de Snyk con un formato recurrente: tabla de
+  hallazgo, plan de remediación y firma. Entre los equipos, opera Azure DevOps como canal de
+  coordinación: board 'Cambios de Ambiente - DevOps' (pases de QA), board 'Tortugas Furiosas'
+  (sprint/iteración), tags de release *-qa y *-prod sobre builds de QA, y la wiki
+  'Versiones de imágenes base' como canal asincrónico entre equipos.
 - Las seis tecnologías (Postgres, Oracle, RabbitMQ, Kafka, IBM MQ, SQS) están presentes también en
   Banamex.
 
@@ -119,9 +126,8 @@ Verificado como **no confirmado**. `check-profiles.sh` falla si aparece en cualq
 - *"Stratified Docker image strategy"* (separar librerías comunes del código de cada microservicio)
   se eliminó de los perfiles: describía un patrón de build de Banamex que no corresponde a lo
   que realmente se hizo. Lo que hay en Veradat es la matriz de imágenes por combinación tecnológica.
-- **Gestión de stakeholders** es el único Must-Have sin evidencia explícita. Los tres perfiles
-  nombran al cliente (Banamex) pero no describen interlocución con stakeholders. Si Alan confirma
-  acuerdos de alcance o coordinación con el cliente, cabe añadirlo; si no, se deja como está.
+- Gestión de stakeholders: **confirmada y publicada** en los seis archivos de contenido a partir
+  de la revisión 2026-10. Ver sección 3.
 
 ---
 

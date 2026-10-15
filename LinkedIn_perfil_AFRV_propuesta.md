@@ -64,6 +64,8 @@ Aprovisioné infraestructura en AWS y Azure con Terraform, desde máquinas virtu
 
 También administro 9 clústeres: 8 Kubernetes y 1 OpenShift. Implementé monitoreo y alertas con Elastic Stack y reduje el tiempo de detección de incidentes de 60 a 30 minutos. Además, promoví charts de Helm como estándar de despliegue del equipo y generé la matriz de imágenes Docker que permite a cada microservicio cambiar de tecnología.
 
+Coordino la interlocución técnica con stakeholders del cliente (notificaciones formales de vulnerabilidades con tabla de hallazgo, plan de remediación y firma, formato recurrente con el área de seguridad del cliente a partir de reportes de Snyk) y entre los 3 equipos (frontend, backend, QA) a través de Azure DevOps (boards 'Cambios de Ambiente - DevOps' y 'Tortugas Furiosas', tags *-qa y *-prod sobre builds de QA) y la wiki 'Versiones de imágenes base' como canal asincrónico.
+
 Acompaño a ingenieros de los equipos de frontend, backend y QA: revisiones de código y diseño, decisiones técnicas e incorporación de nuevos miembros. Vengo del desarrollo de software; empecé en 2017.
 
 Si estás incorporando un DevOps Engineer o liderando remediación de deuda técnica y estándares, conversemos por LinkedIn.
@@ -78,6 +80,8 @@ At Veradat, I cut the time to deploy the complete set of 70 microservices from 6
 I provisioned AWS and Azure infrastructure using Terraform, including virtual machines, load balancers, and secrets management. On AWS, I worked with Route 53 and IAM. I implemented and operated ISO 27001 controls at Veradat and at Banamex.
 
 I also manage 9 clusters: 8 Kubernetes and 1 OpenShift. I implemented Elastic Stack monitoring and alerts, cutting incident detection time from 60 to 30 minutes. I promoted Helm charts as the team's deployment standard and produced the Docker image matrix that lets each microservice swap its technology.
+
+I coordinate technical communication with client stakeholders (formal vulnerability notifications with findings table, remediation plan, and signature -- a recurring format used with the client's security team based on Snyk reports) and across the 3 teams (frontend, backend, QA) through Azure DevOps (Cambios de Ambiente - DevOps and Tortugas Furiosas boards, *-qa and *-prod release tags on QA builds) and the Versiones de imágenes base wiki as an asynchronous channel.
 
 I mentor engineers across the frontend, backend and QA teams: code and design reviews, technical decision-making, and onboarding. I come from software development; I started in 2017.
 
@@ -103,7 +107,7 @@ Aprovisioné infraestructura en AWS y Azure con Terraform, desde máquinas virtu
 - Acompaño a ingenieros de los equipos de frontend, backend y QA: revisiones de código y diseño, decisiones técnicas e incorporación de nuevos miembros al equipo.
 - Implementé monitoreo y alertas con Elastic Stack en los 9 clústeres y reduje el tiempo de detección de incidentes de 60 a 30 minutos. Incorporé readiness/liveness probes para controlar la incorporación de instancias al tráfico y su recuperación durante actualizaciones progresivas. Cubro guardia para incidentes en producción.
 - Automaticé la configuración con Ansible en servidores Linux. Aprovisionar el conjunto de 10 servidores pasó de tomar 2 horas a 20 minutos.
-- Planeé y prioricé actividades de infraestructura en Microsoft Project por sprint, en línea con la cadencia de entrega de los tres equipos. El equipo trabaja con Scrum, en el que participo como miembro.
+- Coordiné la interlocución técnica con stakeholders del cliente (notificaciones formales de vulnerabilidades con tabla de hallazgo, plan de remediación y firma, formato recurrente con el área de seguridad del cliente a partir de reportes de Snyk) y entre los 3 equipos (frontend, backend, QA) a través de Azure DevOps (boards 'Cambios de Ambiente - DevOps' y 'Tortugas Furiosas', tags *-qa y *-prod sobre builds de QA) y la wiki 'Versiones de imágenes base' como canal asincrónico. El equipo trabaja con Scrum, en el que participo como miembro.
 ```
 
 English:
@@ -117,7 +121,7 @@ I provisioned AWS and Azure infrastructure using Terraform, including virtual ma
 - Mentor engineers across the frontend, backend and QA teams: code and design reviews, technical decision-making, and onboarding new team members.
 - Implemented Elastic Stack monitoring and alerts across all 9 clusters, cutting incident detection time from 60 to 30 minutes. Added readiness/liveness probes to control when instances receive traffic and trigger recovery during rolling updates. Carried on-call for production incidents.
 - Automated configuration with Ansible on Linux servers, cutting provisioning time for the entire set of 10 servers from 2 hours to 20 minutes.
-- Planned and prioritised infrastructure activities in Microsoft Project per sprint, aligned with the delivery cadence of the three teams. The team works in Scrum, in which I participate as a team member.
+- Coordinated technical communication with client stakeholders (formal vulnerability notifications with findings table, remediation plan, and signature -- a recurring format used with the client's security team based on Snyk reports) and across the 3 teams (frontend, backend, QA) through Azure DevOps (Cambios de Ambiente - DevOps and Tortugas Furiosas boards, *-qa and *-prod release tags on QA builds) and the Versiones de imágenes base wiki as an asynchronous channel. The team works in Scrum, in which I participate as a team member.
 ```
 
 ### Ingeniero Fullstack + DevOps / Fullstack + DevOps Engineer
