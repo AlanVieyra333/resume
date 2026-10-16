@@ -65,7 +65,10 @@ Eliminado de los tres perfiles en la revisión 2026-10: **Nova Solutions / Banco
 - Además operó 4 clústeres de DEV, 4 de INTGR y 4 de Certificación (preproducción) — 12 en total
   sobre Kubernetes y OpenShift.
 - Monitoreo y alertas con Elastic Stack en los 9 clústeres.
-- Provisioning en AWS y Azure con Terraform; Route 53 e IAM en AWS; gestión de secretos.
+- Provisioning en AWS y Azure con Terraform; servicios de AWS usados: **EC2, S3, VPC, Security Groups, IAM, RDS, CloudWatch y Route 53**; gestión de secretos. *(Confirmado por Alan el 2026-10-16; antes del ajuste el CV solo declaraba Route 53 e IAM.)*
+- **Backups y rollbacks de bases de datos PostgreSQL y Oracle** que soportan los 70 microservicios,
+  asegurando la recuperabilidad durante despliegues y respuesta a incidentes. *(Confirmado por Alan el
+  2026-10-16.)*
 - Automatización con Ansible en servidores Linux.
 - Scripts de automatización/integración en Python y Go. (Los años de uso no se publican en
   el CV: el resto de herramientas se lista solo por nombre, sin tiempo de experiencia, y Alan
@@ -111,6 +114,8 @@ Eliminado de los tres perfiles en la revisión 2026-10: **Nova Solutions / Banco
 - **No usó Microsoft Project** en este puesto. Microsoft Project aplica solo a Veradat.
 
 ### Telcel (proyecto continuo GLOBAL HITSS → Everis)
+- **Migración de microservicios desde un servidor de aplicaciones Tomcat a OpenShift**
+  *(confirmado por Alan el 2026-10-16; antes del ajuste el CV solo declaraba "contenierización con Docker sobre Kubernetes").*
 - Capa de integración con Java, Spring Cloud y JPA que tradujo protocolos legados a APIs REST.
 - CI/CD y contenerización con Docker sobre Kubernetes. Bash para procesos operativos.
   Repositorios de código y artefactos con GitHub y Nexus.

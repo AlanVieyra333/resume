@@ -21,7 +21,7 @@
 \sidecol{%
 \section*{Technical Skills}
 \skillrow{Platforms \& Orchestration}{Kubernetes, OpenShift, Docker, Helm}
-\skillrow{Cloud \& Infrastructure as Code}{AWS (Route~53, IAM), Azure, Terraform, Ansible, Linux, Bash}
+\skillrow{Cloud \& Infrastructure as Code}{AWS (EC2, S3, VPC, Security Groups, IAM, RDS, CloudWatch, Route~53), Azure, Terraform, Ansible, Linux, Bash}
 \skillrow{CI/CD \& Delivery}{Azure DevOps, Jenkins, Nexus, GitHub, Maven}
 \skillrow{Observability \& Incident Support}{Elastic Stack (ELK), Splunk, ServiceNow, readiness/liveness probes, on-call production support}
 \skillrow{Compliance \& Security}{ISO 27001 (control implementation and operations), SonarQube Cloud, Snyk, Mend}
@@ -40,7 +40,8 @@
     \item \textbf{Implemented and operated ISO 27001 controls} across secret management, cloud access control and dependency scanning, and remediated \textbf{critical and high-severity vulnerabilities} identified by SonarQube Cloud, Snyk and Mend through OS package and Maven dependency updates.
     \item \textbf{Mentor 10 engineers} across the frontend, backend and QA teams (Veradat) through \textbf{code and design reviews}, technical decision-making, and onboarding new team members.
     \item Manage \textbf{9 QA clusters (8 Kubernetes, 1 OpenShift)} with \textbf{readiness/liveness probes} that control traffic during rolling updates and trigger recovery, and \textbf{Elastic Stack} monitoring and alerts across all 9 clusters that cut \textbf{QA incident detection time from 60 to 30 minutes} (50\% reduction). Operated \textbf{4 DEV, 4 INTGR, and 4 Certificación (pre-production) clusters} alongside the QA fleet. Carry \textbf{on-call for production incidents} within working hours.
-    \item Provisioned \textbf{AWS and Azure infrastructure using Terraform} -- virtual machines, load balancers, secrets management, Route~53 and IAM -- and automated configuration of 10 Linux servers with Ansible, cutting provisioning from \textbf{2 hours to 20 minutes} (\textasciitilde 83\% reduction). Developed the supporting automation in \textbf{Python and Go}, and used \textbf{Claude Code} as a development assistant.
+    \item Provisioned \textbf{AWS and Azure infrastructure using Terraform} -- \textbf{EC2, S3, VPC, Security Groups, IAM, RDS, CloudWatch, and Route~53} on AWS, along with virtual machines, load balancers, and secrets management across both clouds -- and automated configuration of 10 Linux servers with Ansible, cutting provisioning from \textbf{2 hours to 20 minutes} (\textasciitilde 83\% reduction). Developed the supporting automation in \textbf{Python and Go}, and used \textbf{Claude Code} as a development assistant.
+    \item Performed \textbf{backups and rollbacks of PostgreSQL and Oracle databases} supporting the 70 microservices, ensuring data recoverability during deployments and incident response.
     \item \textbf{Coordinated technical communication} with client stakeholders, including the formal security reporting the client's security team receives, and across the \textbf{3 teams} (frontend, backend, QA), through \textbf{Azure DevOps dashboards and boards} and a \textbf{shared wiki} as an asynchronous channel.
 \end{itemize}
 
@@ -56,7 +57,7 @@
 \resumeentry{Full Stack Software Engineer}{Continuous project for Telcel through GLOBAL HITSS and Everis}{Jul 2018 -- Dec 2020}{Mexico City}
 \textit{GLOBAL HITSS: Jul 2018 -- Sep 2019; Everis: Sep 2019 -- Dec 2020.}\par\vspace{3pt}
 \begin{itemize}
-    \item \textbf{Built an integration layer with Java, Spring Cloud and JPA} that translated legacy telecom protocols into REST APIs, connecting existing systems to modern services -- an anti-corruption layer between legacy and current estates.
+    \item \textbf{Migrated microservices from a Tomcat application server to OpenShift}, containerising the integration layer built with Java, Spring Cloud, and JPA that translated legacy telecom protocols into REST APIs, connecting existing systems to modern services -- an anti-corruption layer between legacy and current estates.
     \item \textbf{Implemented CI/CD pipelines and containerised the service with Docker on Kubernetes.} Automated operational processes with Bash; managed code and artifact repositories with GitHub and Nexus.
 \end{itemize}
 

@@ -60,7 +60,7 @@ DevOps Engineer | AWS, Terraform and Kubernetes | Java/Spring Cloud background |
 Si tu equipo necesita aprovisionar infraestructura en AWS, automatizar entregas y operar microservicios en producción, puedo aportar experiencia con Terraform, CI/CD y Kubernetes.
 En Veradat reduje de 6 horas a 1 hora el tiempo de despliegue del conjunto completo de 70 microservicios mediante CI/CD para 3 equipos.
 
-Aprovisioné infraestructura en AWS y Azure con Terraform, desde máquinas virtuales y balanceadores hasta gestión de secretos. En AWS trabajé con Route 53 e IAM. Implementé y operé controles ISO 27001 en Veradat y en Banamex.
+Aprovisioné infraestructura en AWS y Azure con Terraform: EC2, S3, VPC, Security Groups, IAM, RDS, CloudWatch y Route 53 en AWS, junto con máquinas virtuales, balanceadores y gestión de secretos en ambas nubes. Implementé y operé controles ISO 27001 en Veradat y en Banamex.
 
 También administro 9 clústeres: 8 Kubernetes y 1 OpenShift. Implementé monitoreo y alertas con Elastic Stack y reduje el tiempo de detección de incidentes de 60 a 30 minutos. Además, promoví charts de Helm como estándar de despliegue del equipo y generé la matriz de imágenes Docker que permite a cada microservicio cambiar de tecnología.
 
@@ -77,7 +77,7 @@ Si estás incorporando un DevOps Engineer o liderando remediación de deuda téc
 If your team needs to provision AWS infrastructure, automate delivery, and run microservices in production, I bring experience with Terraform, CI/CD, and Kubernetes.
 At Veradat, I cut the time to deploy the complete set of 70 microservices from 6 hours to 1 hour through CI/CD for 3 teams.
 
-I provisioned AWS and Azure infrastructure using Terraform, including virtual machines, load balancers, and secrets management. On AWS, I worked with Route 53 and IAM. I implemented and operated ISO 27001 controls at Veradat and at Banamex.
+I provisioned AWS and Azure infrastructure using Terraform: EC2, S3, VPC, Security Groups, IAM, RDS, CloudWatch, and Route 53 on AWS, along with virtual machines, load balancers, and secrets management across both clouds. I implemented and operated ISO 27001 controls at Veradat and at Banamex.
 
 I also manage 9 clusters: 8 Kubernetes and 1 OpenShift. I implemented Elastic Stack monitoring and alerts, cutting incident detection time from 60 to 30 minutes. I promoted Helm charts as the team's deployment standard and produced the Docker image matrix that lets each microservice swap its technology.
 
@@ -99,7 +99,7 @@ Usar el empleador en el campo Empresa y señalar al cliente en la descripción. 
 Español:
 
 ```text
-Aprovisioné infraestructura en AWS y Azure con Terraform, desde máquinas virtuales y balanceadores hasta gestión de secretos. En AWS utilicé Route 53 e IAM. También administro 9 clústeres de producción: 8 Kubernetes y 1 OpenShift.
+Aprovisioné infraestructura en AWS y Azure con Terraform: EC2, S3, VPC, Security Groups, IAM, RDS, CloudWatch y Route 53 en AWS, junto con máquinas virtuales, balanceadores y gestión de secretos en ambas nubes. También administro 9 clústeres de producción: 8 Kubernetes y 1 OpenShift.
 
 - Diseñé y mantuve 10 pipelines de CI/CD en Azure DevOps para 3 equipos: frontend, backend y QA. El tiempo de despliegue del conjunto completo de 70 microservicios pasó de 6 horas a 1 hora: aproximadamente un 83% menos. Desarrollé y promoví charts de Helm como estándar de despliegue del equipo.
 - Revisé la arquitectura hexagonal del equipo, que desacopla cada microservicio de sus dependencias tecnológicas (PostgreSQL, Oracle, RabbitMQ, Kafka, IBM MQ y SQS), y generé la imagen Docker para cada combinación tecnológica que cada microservicio requiere.
@@ -107,13 +107,14 @@ Aprovisioné infraestructura en AWS y Azure con Terraform, desde máquinas virtu
 - Acompaño a ingenieros de los equipos de frontend, backend y QA: revisiones de código y diseño, decisiones técnicas e incorporación de nuevos miembros al equipo.
 - Implementé monitoreo y alertas con Elastic Stack en los 9 clústeres y reduje el tiempo de detección de incidentes de 60 a 30 minutos. Incorporé readiness/liveness probes para controlar la incorporación de instancias al tráfico y su recuperación durante actualizaciones progresivas. Cubro guardia para incidentes en producción dentro del horario laboral.
 - Automaticé la configuración con Ansible en servidores Linux. Aprovisionar el conjunto de 10 servidores pasó de tomar 2 horas a 20 minutos.
+- Realicé backups y rollbacks de bases de datos PostgreSQL y Oracle que respaldan los 70 microservicios, asegurando la recuperabilidad de los datos durante despliegues y respuesta a incidentes.
 - Coordiné la interlocución técnica con stakeholders del cliente, incluido el reporte formal de seguridad que recibe su área de seguridad, y entre los 3 equipos (frontend, backend, QA) mediante dashboards y boards de Azure DevOps y una wiki compartida como canal asincrónico. El equipo trabaja con Scrum, en el que participo como miembro.
 ```
 
 English:
 
 ```text
-I provisioned AWS and Azure infrastructure using Terraform, including virtual machines, load balancers, and secrets management. On AWS, I worked with Route 53 and IAM. I also manage 9 production clusters: 8 Kubernetes and 1 OpenShift.
+I provisioned AWS and Azure infrastructure using Terraform: EC2, S3, VPC, Security Groups, IAM, RDS, CloudWatch, and Route 53 on AWS, along with virtual machines, load balancers, and secrets management across both clouds. I also manage 9 production clusters: 8 Kubernetes and 1 OpenShift.
 
 - Designed and maintained 10 Azure DevOps CI/CD pipelines for 3 teams: frontend, backend and QA. The time to deploy the complete set of 70 microservices fell from 6 hours to 1 hour: approximately 83% less time. Built and promoted Helm charts as the team's deployment standard.
 - Reviewed the team's hexagonal architecture, which decouples each microservice from its technology dependencies (PostgreSQL, Oracle, RabbitMQ, Kafka, IBM MQ and SQS), and produced the Docker image for every technology combination each microservice requires.
@@ -121,6 +122,7 @@ I provisioned AWS and Azure infrastructure using Terraform, including virtual ma
 - Mentor engineers across the frontend, backend and QA teams: code and design reviews, technical decision-making, and onboarding new team members.
 - Implemented Elastic Stack monitoring and alerts across all 9 clusters, cutting incident detection time from 60 to 30 minutes. Added readiness/liveness probes to control when instances receive traffic and trigger recovery during rolling updates. Carried on-call for production incidents within working hours.
 - Automated configuration with Ansible on Linux servers, cutting provisioning time for the entire set of 10 servers from 2 hours to 20 minutes.
+- Performed backups and rollbacks of PostgreSQL and Oracle databases supporting the 70 microservices, ensuring data recoverability during deployments and incident response.
 - Coordinated technical communication with client stakeholders, including the formal security reporting the client's security team receives, and across the 3 teams (frontend, backend, QA) through Azure DevOps dashboards and boards and a shared wiki as an asynchronous channel. The team works in Scrum, in which I participate as a team member.
 ```
 
@@ -165,7 +167,7 @@ Continué el proyecto de desarrollo e integración para Telcel tras cambiar de G
 
 Mi trabajo durante el proyecto completo, de julio de 2018 a diciembre de 2020, incluyó:
 
-- Construí una capa de integración con Java, Spring Cloud y JPA que tradujo protocolos de sistemas legados a APIs REST para conectarlos con servicios modernos.
+- Migré microservicios de un servidor de aplicaciones Tomcat a OpenShift, conteniendo la capa de integración con Java, Spring Cloud y JPA que traducía protocolos de sistemas legados a APIs REST para conectarlos con servicios modernos.
 - Implementé pipelines de CI/CD y contenericé el servicio con Docker sobre Kubernetes. Automaticé procesos operativos con Bash y gestioné repositorios de código y artefactos con GitHub y Nexus.
 - Desarrollé microservicios y funcionalidades frontend con React, Node.js y TypeScript; administré bases de datos Oracle.
 ```
@@ -177,7 +179,7 @@ Continued the Telcel development and integration project after transferring from
 
 My work across the full project, from July 2018 to December 2020, included:
 
-- Built an integration layer with Java, Spring Cloud, and JPA that translated legacy protocols into REST APIs, connecting existing systems with modern services.
+- Migrated microservices from a Tomcat application server to OpenShift, containerising the integration layer built with Java, Spring Cloud, and JPA that translated legacy protocols into REST APIs, connecting existing systems with modern services.
 - Implemented CI/CD pipelines and containerized the service with Docker on Kubernetes. Automated operational processes with Bash and managed code and artifact repositories with GitHub and Nexus.
 - Developed microservices and frontend features with React, Node.js, and TypeScript; administered Oracle databases.
 ```
