@@ -38,8 +38,8 @@ Eliminado de los tres perfiles en la revisión 2026-10: **Nova Solutions / Banco
 | Equipos atendidos por esos pipelines | 3 (frontend, backend, QA) | Veradat |
 | Despliegue del conjunto completo | 70 microservicios | Veradat |
 | Reducción de tiempo de despliegue | 6 h → 1 h (≈83 %) | Veradat |
-| Clústeres de QA | 9 (8 Kubernetes, 1 OpenShift) | Veradat |
-| Clústeres de preproducción | 12 (4 DEV + 4 INTGR + 4 Certificación) | Veradat |
+| Clústeres de preproducción | 21 (9 QA + 4 DEV + 4 INTGR + 4 Certificación) | Veradat |
+| Distribución por plataforma | Kubernetes: 9 QA + 4 Certificación; OpenShift: 4 DEV + 4 INTGR | Veradat |
 | Detección de incidentes | 60 min → 30 min (50 %) | Veradat |
 | Servidores aprovisionados con Ansible | 10 | Veradat |
 | Aprovisionamiento | 2 h → 20 min (≈83 %) | Veradat |
@@ -58,13 +58,18 @@ Eliminado de los tres perfiles en la revisión 2026-10: **Nova Solutions / Banco
 ### Veradat
 - Diseñó y mantiene 10 pipelines de CI/CD en Azure DevOps para 3 equipos.
 - Charts de Helmtablendo como **estándar de despliegue**, adoptado por los 3 equipos.
-- Administra 9 clústeres de **QA** (8 Kubernetes, 1 OpenShift); readiness/liveness probes. La cifra
-  corresponde al entorno de QA, no a producción. *(Corrección 2026-10: los 9 clústeres
-  publicados hasta ahora como "de producción" eran de QA; el detalle de preproducción — 4 en
-  DEV, 4 en INTGR, 4 en Certificación, 12 en total — se publica a partir de esta revisión.)*
-- Además operó 4 clústeres de DEV, 4 de INTGR y 4 de Certificación (preproducción) — 12 en total
-  sobre Kubernetes y OpenShift.
-- Monitoreo y alertas con Elastic Stack en los 9 clústeres.
+- Administra **21 clústeres de preproducción**, todos de preproducción (ninguno de producción):
+  - **9 en QA sobre Kubernetes**
+  - **4 en DEV sobre OpenShift**
+  - **4 en INTGR sobre OpenShift**
+  - **4 en Certificación sobre Kubernetes**
+- Readiness/liveness probes en los clústeres de Kubernetes; monitoreo y alertas con
+  **Elastic Stack** en los 9 clústeres de QA.
+- **Corrección 2026-10-18 (confirmada por Alan):** las versiones anteriores publicaban
+  "9 clústeres de QA (8 Kubernetes, 1 OpenShift)" y, aparte, "12 de preproducción
+  (4 DEV + 4 INTGR + 4 Certificación)". Ambas cifras eran incorrectas. El desglose real
+  es 21 clústeres, **todos de preproducción**, y QA corre 100 % en Kubernetes (no OpenShift).
+  Además DEV e INTGR corren sobre OpenShift, no sobre Kubernetes.
 - Provisioning en AWS y Azure con Terraform; servicios de AWS usados: **EC2, S3, VPC, Security Groups, IAM, RDS, CloudWatch y Route 53**; gestión de secretos. *(Confirmado por Alan el 2026-10-16; antes del ajuste el CV solo declaraba Route 53 e IAM.)*
 - **Backups y rollbacks de bases de datos PostgreSQL y Oracle** que soportan los 70 microservicios,
   asegurando la recuperabilidad durante despliegues y respuesta a incidentes. *(Confirmado por Alan el
