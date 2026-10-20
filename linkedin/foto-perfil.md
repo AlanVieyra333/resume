@@ -67,17 +67,59 @@ correcto es el que no se nota: un degradado neutro, dos pasos más oscuro que la
 
 ### Vestuario
 - Camisa de un solo color, azul medio o gris claro. Sin rayas, sin cuadros, sin estampado.
-- Sin corbata. Primer botón abierto.
+- Sin corbata, pero **con el botón superior cerrado**. El cuello abierto de par en par es
+  estética "startup 2014"; cerrarlo define la mandíbula y es lo que más envejece el look hacia
+  senior.
 - Camisa planchada: el cuello es lo primero que mira un reclutador.
 - Sin saco (ver arriba).
 
 ### Pelo
-- Bajar el volumen de arriba cerca de 1 cm y marcar una raya lateral baja.
-- Laterales y nuca más ceñidos (degradado bajo o skin fade corto): en 3 cm de círculo, un
-  contorno ancho se lee como un casco.
-- Limpiar los pelos sueltos de las sienes.
-- **Decidir la barba**: o afeitado limpio, o perilla con bordes dibujados. Hoy se ve una
-  perilla más difusa de lo que se ve bien, y ese es el punto que más "sin decidir" transmite.
+
+Diagnóstico de la foto actual: pelo negro texturizado con volumen alto, puntas separadas y
+"picadas" en la cresta, raya aproximadamente al centro y **costados más anchos que la cara**.
+En un círculo de 3 cm eso produce el efecto casco: el pelo define la silueta y el rostro se
+pierde dentro.
+
+| Zona | Qué pedir | Por qué |
+| --- | --- | --- |
+| Cresta superior | Bajar el volumen ~1 cm y **texturizar con spray mate**, eliminando las puntas separadas | Esas puntas "picadas" son lo primero que se lee como descuido a 40 px |
+| Raya | **Raya lateral baja**, nunca al centro | La raya al centro abre la frente en dos y ensancha la cara |
+| Costados | **Degradado bajo o skin fade corto** | El cambio de mayor impacto: hoy el pelo es más ancho que la cara. Al estrecharlo, la cara manda en la silueta |
+| Patillas | **Decididas: cortas y con línea limpia** | Ahora están a media altura, el estado "a medio hacer" |
+| Nuca y línea de frente | Limpias | Se ven a 40 px |
+
+Mantener el largo de arriba: da altura de cabeza y separa el pelo del fondo. Lo que sobra es
+**anchura** y **puntas sueltas**, no largo.
+
+### Barba
+
+Estado actual: bigote en sombra + una mancha oscura en el mentón (perilla), con mejillas y
+mandíbula limpias. Es el peor de los tres estados posibles: beard no. Se lee como "empecé a
+dejar barba y se me olvidó", y es el punto que más "sin decidir" transmite de toda la foto.
+
+La cara es **redonda y con mejillas anchas**, lo que juega a favor de la barba: un contorno de
+barba le da estructura diagonal a la mandíbula y resta años. La perilla actual, al contrario,
+acorta el mentón.
+
+**Recomendación: perilla completa de 3–4 mm, con borde duro en la mandíbula y la mejilla, bigote
+unido al mentón y cuello limpio.**
+
+**Condición:** tiene que tener densidad. Si a las 3 semanas se ve rala en mejillas y labio
+superior, entonces **afeitado limpio** gana — una barba completa y rala se ve peor que no
+tener barba. Prueba de decisión: déjala crecer 3 semanas a 5 mm y revisa la densidad de
+barbilla y mejillas; si hay huecos, afeita.
+
+Nunca dejar la perilla sola: o se completa o se quita.
+
+### Orden de ejecución
+
+El orden importa, y es donde la gente falla:
+
+1. **Semana 0** — corte (degradado, raya lateral baja, textura) + barba a 3 mm. No afeitar el
+   mismo día: se llega a la sesión sin barba y sin margen para que crezca.
+2. **Semana 2–3** — la barba llega a largo y el pelo se asienta. El peinado se ve bien en este
+   punto, no en el día de la peluquería.
+3. **Semana 3** — sesión de fotos, 30 min, con la camisa correcta.
 
 ### Luz
 - Ventana grande a 45° y ligeramente por encima de la línea de los ojos, del lado izquierdo de
@@ -94,9 +136,18 @@ correcto es el que no se nota: un degradado neutro, dos pasos más oscuro que la
 - Cuello relajado, hombros bajos.
 
 ### Expresión
-- Media sonrisa de boca cerrada, con las comisuras levantadas. No hace falta enseñar dientes.
-- Piensa en algo que te parezca gracioso justo antes del disparo: es lo que produce la versión
-  de "sonrisa de verdad" sin pedirla.
+
+El problema de la foto actual no es la ausencia de sonrisa: es que los **labios están
+comprimidos** y los **ojos muy abiertos con las cejas elevadas**. Eso se lee como
+"alerta/inquieto", no como serio. Una cara seria bien hecha suma; la actual transmite tensión.
+
+- **Media sonrisa de boca cerrada**, con las comisuras levantadas. No hace falta enseñar dientes:
+  en un retrato de LinkedIn una sonrisa con boca abierta se lee como foto de empresa.
+- Que la sonrisa **llegue a los ojos**: suben las mejillas y se forma el párpado inferior. Sonreír
+  solo con la boca se ve falsa.
+- **No digas "sonría"**. El fotógrafo dispara 10 fotos seguidas mientras tú vas del estado "algo
+  gracioso" al neutral, y se elige la de un segundo antes de que se borre la sonrisa: ahí está la
+  expresión natural.
 
 ### Cámara
 - 85–105 mm equivalentes. Un gran angular de cerca deforma el rostro.
@@ -119,13 +170,13 @@ tocar nada después.
 
 ### Checklist antes de salir
 
-- [ ] Camisa de un solo color, planchada, primer botón abierto
-- [ ] Barba decidida (afeitado o perilla definida)
+- [ ] Camisa de un solo color, planchada, **botón superior cerrado**
+- [ ] Barba de 3–4 mm con borde definido (o afeitado limpio, si a las 3 semanas no hay densidad)
 - [ ] Ventana a 45°, sin flash, sin aro
 - [ ] Fondo a 2 m, sin horizonte visible
 - [ ] Cámara a la altura de los ojos, 85 mm, trípode
 - [ ] Hombros girados 20–30°, barbilla adelante y abajo
-- [ ] Media sonrisa, mirada a cámara
+- [ ] Media sonrisa de boca cerrada que llegue a los ojos, mirada a cámara
 - [ ] 10 fotos como mínimo: con y sin camisa, con y sin barba
 
 ## Si aun así se quiere la vía generativa (IA de imagen)
