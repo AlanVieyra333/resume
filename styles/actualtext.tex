@@ -1,0 +1,137 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SINGLE-LINE COPY FOR BULLET LISTS
+%
+% Why: PDF text extraction is line-based. When a bullet wraps onto two
+% visual lines, every extractor hands the text back with a hard line break
+% in the middle, so pasting a job description into a text editor (or into
+% an ATS field) gives one paragraph per VISUAL line instead of one per
+% bullet. That is the difference between a readable paragraph and a wall
+% of half-sentences.
+%
+% How: PDF 32000-1 14.9.3 lets a content stream mark a span of text and
+% declare what it actually says (/ActualText). Extractors that honour the
+% span replace the whole marked run by that string, so a wrapped bullet is
+% copied back as one continuous line. This file puts every item of every
+% itemize list inside such a span, with the item's own source text as the
+% /ActualText.
+%
+% The visible PDF does not change: the span only adds marked content to the
+% content stream. The bullet label, the fonts, the line breaking and the
+% vertical spacing are exactly what LaTeX would have produced -- the
+% ORIGINAL \item is still the one that runs, so the list layout, the
+% paragraph setup and the label placement are untouched.
+%
+% Note on the readers: Poppler (pdftotext), PDFium (Chrome, Brave) and
+% Acrobat honour /ActualText. macOS Preview does not -- PDFKit copies
+% strictly what is drawn, line by line, and ignores marked content. There
+% is no way to change that from inside the PDF without turning the text
+% into outlines, which would destroy the selectable-text requirement of
+% the ATS layout.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\RequirePackage{accsupp}
+
+\makeatletter
+
+%----------------------------------------------------------------------------------------
+%	BRANCH SELECTION
+%
+%	\at@ifempty{<text>}{<empty code>}{<non-empty code>}
+%
+%	The branch is SELECTED inside the \if but EXPANDED after the \fi, on
+%	purpose: if code that runs later were still inside the conditional,
+%	the pending \fi would be captured as part of the text that follows.
+%----------------------------------------------------------------------------------------
+\def\at@empty{}
+\def\at@branchA#1#2{#1}%
+\def\at@branchB#1#2{#2}%
+\long\def\at@ifempty#1#2#3{%
+	\edef\at@tmp{\detokenize{#1}}%
+	\ifx\at@tmp\at@empty
+		\let\at@branch\at@branchA
+	\else
+		\let\at@branch\at@branchB
+	\fi
+	\at@branch{#2}{#3}%
+}
+
+%----------------------------------------------------------------------------------------
+%	EMIT ONE ITEM
+%
+%	The item is started the way LaTeX itself starts an item that has no
+%	custom label: \@noitemargtrue\@item[\@itemlabel]. Writing it that way
+%	instead of \item avoids \@ifnextchar, whose lookahead can mistake the
+%	text of an item for the optional argument of the next one. \reserved@a
+%	is cleared around the call because that is the scratch register the
+%	lookahead writes into.
+%
+%	\leavevmode starts the paragraph BEFORE the marked-content span is
+%	opened, so the opening operator (BDC) becomes part of the paragraph
+%	instead of a page-level literal. A marked-content span has to be
+%	balanced inside a single page's content stream, so a bullet that broke
+%	across two pages would leave its opening operator on one page and its
+%	closing one on the next -- malformed, and poppler says so ("Mismatched
+%	EMC operator"). The penalties below keep the bullet together on one
+%	page, which is also how a bullet that was already whole on the page
+%	would have been set.
+%
+%	The text of the item is captured as it is written: the space that
+%	follows \item is consumed by TeX's tokenizer, so the copied text
+%	starts with the first word of the bullet.
+%----------------------------------------------------------------------------------------
+\long\def\at@emititem#1{%
+	\let\reserved@a\@empty
+	\@noitemargtrue\@item[\@itemlabel]%
+	\let\reserved@a\@empty
+	\interlinepenalty=10000
+	\clubpenalty=10000
+	\widowpenalty=10000
+	\leavevmode
+	\BeginAccSupp{method=pdfstringdef,unicode=true,ActualText={#1}}%
+		#1%
+	\EndAccSupp{}%
+}
+
+%----------------------------------------------------------------------------------------
+%	SPLIT THE CAPTURED BODY ON \item
+%
+%	The body of a list is captured whole (see \at@grabbody) and then walked
+%	item by item here. The body ends with "\item\item": the second \item
+%	closes the last scan, which yields an empty chunk, and the empty chunk
+%	is what stops the walk.
+%----------------------------------------------------------------------------------------
+\def\at@split#1\item{%
+	\at@ifempty{#1}{}{\at@emititem{#1}\at@split}%
+}
+
+%----------------------------------------------------------------------------------------
+%	CAPTURE THE BODY
+%
+%	\at@grabbody grabs everything between \begin{itemize} and \end, drops the
+%	leading \item (the marker of the first item, which is re-created by
+%	\at@emititem) and appends the terminator that makes the scans stop.
+%	The \end is put back so the environment closes as usual.
+%----------------------------------------------------------------------------------------
+\long\def\at@stripitem#1\item#2\@nil{%
+	\expandafter\def\expandafter\at@rest\expandafter{#2\item\item}%
+}
+\long\def\at@grabbody#1\end{%
+	\gdef\at@body{#1}%
+	\at@ifempty{#1}{}{%
+		\expandafter\at@stripitem\at@body\@nil
+		\expandafter\at@split\at@rest
+	}%
+	\end%
+}
+
+%----------------------------------------------------------------------------------------
+%	HOOK
+%
+%	\itemize is wrapped, not replaced: the original starts the list, then
+%	the body is captured and re-emitted item by item. A list without items
+%	is left alone (nothing to mark).
+%----------------------------------------------------------------------------------------
+\let\at@origitemize\itemize
+\renewcommand{\itemize}{\at@origitemize\at@grabbody}
+
+\makeatother

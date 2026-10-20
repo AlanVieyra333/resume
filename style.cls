@@ -148,6 +148,17 @@
 \AtEndEnvironment{itemize}{\vspace{1pt}}
 
 %----------------------------------------------------------------------------------------
+%	SINGLE-LINE COPY FOR BULLET LISTS
+%
+%	Every bullet is wrapped in a marked-content span that declares what the
+%	bullet says, so a wrapped bullet is copied out of the PDF as one
+%	continuous line instead of one line per visual line. The visible layout
+%	is untouched. See styles/actualtext.tex for the details and for the
+%	readers that honour the mechanism.
+%----------------------------------------------------------------------------------------
+\input{styles/actualtext.tex}
+
+%----------------------------------------------------------------------------------------
 %	HEADER / CONTACT COMMANDS
 %----------------------------------------------------------------------------------------
 
