@@ -80,13 +80,43 @@ echo
 echo "== Unconfirmed claims must not appear =="
 # Each of these was explicitly NOT confirmed by Alan. See FACTS.md section 4.
 # Pattern is case-insensitive and matches word-ish boundaries where practical.
-FORBIDDEN="error budget|post-?mortem|root cause analysis|postmortem|\brunbooks?\b|\bSLIs?\b|error budgets"
+#
+# "runbook" is NOT in this list: the runbook ban came from the employment
+# history, where no runbook was ever confirmed. The freelance mobile
+# engagement DOES ship 12 runbooks as part of its delivery contract, so
+# runbooks are checked separately, against the employment history only.
+FORBIDDEN="error budget|post-?mortem|root cause analysis|postmortem|\bSLIs?\b|error budgets"
 for f in $ALL_FILES $PUBLISHED; do
     [ -f "$f" ] || continue
     hits=$(published_body "$f" | grep -oiE "$FORBIDDEN" | sort -u | tr '\n' ' ')
     [ -n "$hits" ] && fail "$f contains unconfirmed terms: $hits"
 done
-pass "no SLO/SLI, error budget, postmortem or runbook claims"
+pass "no SLO/SLI, error budget or postmortem claims"
+
+# The freelance mobile section is stripped out before the runbook check: the
+# runbook claim is legitimate THERE and nowhere else.
+strip_mobile_section() {
+    awk '
+        /Independent Mobile Development/ { in_mobile = 1; next }
+        /Desarrollo Móvil Freelance e Independiente/ { in_mobile = 1; next }
+        in_mobile && /^\\section/ { in_mobile = 0 }
+        !in_mobile { print }
+    ' "$1"
+}
+runbook_fail=0
+for f in $ALL_FILES $PUBLISHED; do
+    [ -f "$f" ] || continue
+    if [ "${f##*.}" = "md" ]; then
+        hits=$(published_body "$f" | grep -oiE "\brunbooks?\b" | sort -u | tr '\n' ' ')
+    else
+        hits=$(strip_mobile_section "$f" | grep -oiE "\brunbooks?\b" | sort -u | tr '\n' ' ')
+    fi
+    if [ -n "$hits" ]; then
+        fail "$f claims runbooks outside the mobile delivery contract: $hits"
+        runbook_fail=1
+    fi
+done
+[ "$runbook_fail" -eq 0 ] && pass "runbooks are only claimed in the mobile delivery contract"
 
 echo
 echo "== Hexagonal architecture is framed as REVIEWED, never implemented =="
@@ -152,17 +182,62 @@ check_metric() {
 check_metric "70 microservices"            "70 microservices"        "70 microservicios"
 check_metric "10 CI/CD pipelines"          "10 Azure DevOps CI/CD"   "10 pipelines de CI/CD"
 check_metric "6h -> 1h deployment"         "6 hours to 1 hour"        "6 horas a 1 hora"
-check_metric "9 QA clusters"               "9 QA clusters"            "9 clústeres de QA"
-# In fullstack/es.tex the "12 pre-producción clusters" figure lives only in the summary
-# to keep the Veradat bullet block from spilling to page 3 -- the Spanish profile is the
-# longest. The summary wording "12 de preproducción" is accepted as an alternative.
-check_metric "12 pre-production clusters"  "12 pre-production clusters" "(12 clústeres de preproducción|12 de preproducción)"
+check_metric "9 QA clusters"               "9 in QA on Kubernetes"    "9 en QA sobre Kubernetes"
+# The pre-production estate was consolidated to 21 clusters (9 QA, 4 DEV,
+# 4 INTGR, 4 Certificación) in the 2026-10 pass. The full breakdown now
+# lives in the Veradat bullet of every profile, so the summary wording
+# "21 de preproducción" is no longer needed as an alternative.
+check_metric "21 pre-production clusters"  "21 pre-production clusters" "21 clústeres de preproducción"
 check_metric "60 -> 30 min detection"      "60 to 30 minutes"         "60 a 30 minutos"
 check_metric "2h -> 20 min provisioning"   "2 hours to 20 minutes"    "2 horas a 20 minutos"
 check_metric "~1,000 transactions/day"     "1(,|\\{,\\})000 transactions" "1(,|\\{,\\})000 transacciones"
 check_metric "5,000 employees"             "5(,|\\{,\\})000 employees" "5(,|\\{,\\})000 empleados"
 check_metric "1-day ServiceNow SLA"        "1-day (ServiceNow )?SLA"   "SLA de 1 día"
 pass "core metrics consistent across all six profiles"
+
+echo
+echo "== Freelance mobile section: one section, React Native, no project names =="
+# The three small mobile engagements (a two-sided marketplace, an IMSS Ley 73
+# pension estimator and a retired prototype) are presented as ONE freelance
+# section per profile -- never one section per app, and never by project name.
+MOBILE_EN="Independent Mobile Development"
+MOBILE_ES="Desarrollo Móvil Freelance e Independiente"
+for f in $EN_FILES; do
+    grep -qF "$MOBILE_EN" "$f" || fail "$f has no freelance mobile section"
+    grep -q "React Native" "$f" || fail "$f does not mention React Native"
+    grep -q "Expo" "$f" || fail "$f does not mention Expo"
+    grep -q "Aug 2026 -- Present" "$f" || fail "$f does not date the mobile section"
+done
+for f in $ES_FILES; do
+    grep -qF "$MOBILE_ES" "$f" || fail "$f has no freelance mobile section"
+    grep -q "React Native" "$f" || fail "$f does not mention React Native"
+    grep -q "Expo" "$f" || fail "$f does not mention Expo"
+    grep -q "Ago 2026 -- Actualidad" "$f" || fail "$f does not date the mobile section"
+done
+for f in $ALL_FILES; do
+    n=$(grep -cE "^.section.*(Independent Mobile Development|Desarrollo Móvil Freelance)" "$f")
+    [ "$n" = "1" ] || fail "$f has $n mobile sections -- expected exactly one"
+done
+# The section must not name the individual projects.
+MOBILE_NAMES="findafriend|find a friend|mi-prension|random.?binary"
+for f in $ALL_FILES $PUBLISHED; do
+    [ -f "$f" ] || continue
+    hits=$(published_body "$f" | grep -oiE "$MOBILE_NAMES" | sort -u | tr '\n' ' ')
+    [ -n "$hits" ] && fail "$f names individual mobile projects: $hits"
+done
+pass "one mobile section per profile, React Native + Expo, no project names"
+
+echo
+echo "== Mobile section does not overclaim =="
+# The apps are not published in any store, have no users and earn no revenue.
+# See FACTS.md section 3 for what the mobile engagement may and may not say.
+MOBILE_OVERCLAIM="App Store|Play Store|Google Play|tienda de apps|descargas|downloads|usuarios activos|active users|monetiz|revenue|live payments|pagos activos"
+for f in $ALL_FILES $PUBLISHED; do
+    [ -f "$f" ] || continue
+    hits=$(published_body "$f" | grep -oiE "$MOBILE_OVERCLAIM" | sort -u | tr '\n' ' ')
+    [ -n "$hits" ] && fail "$f overclaims on the mobile work: $hits"
+done
+pass "no store publication, user-count or revenue claims"
 
 echo
 echo "== ISO 27001 role is controls, not audit or certification =="

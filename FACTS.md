@@ -16,11 +16,17 @@ Cuando cambies un dato, actualízalo aquí **primero** y luego en los perfiles.
 | IDS Comercial S.A. de C.V. | Banamex | Fullstack + DevOps Engineer | Ene 2021 – Ago 2024 | México, remoto |
 | Proyecto continuo (GLOBAL HITSS → Everis) | Telcel | Fullstack Software Engineer | Jul 2018 – Dic 2020 | Ciudad de México |
 | GDP administración S de RL de CV (Grupo de la Parra) | — | Freelance, líder técnico | Jun 2021 – Dic 2021 | Ciudad de México |
+| Proyectos freelance e independientes | — | React Native Developer / Mobile Project Lead | Ago 2026 – Actualidad | Ciudad de México |
 
 > **El freelance se solapa con IDS Comercial (Ene 2021 – Ago 2024).** Fechas confirmadas por
 > Alan el 2026-10: junio–diciembre de 2021. Fue trabajo paralelo mientras estaba contratado
 > con Banamex; ambos periodos se publican tal cual. Si un reclutador pregunta, la respuesta
 > es trabajo freelance simultáneo, no una discontinuidad laboral.
+
+> **El desarrollo móvil freelance se solapa con Veradat (Ago 2024 – Oct 2026).** Alan confirmó
+> el 2026-10 que el trabajo móvil corre en paralelo a la relación laboral con Veradat. Se publica
+> como una sección propia, "Freelance & Independent Mobile Development", y **no** se fusiona con
+> Veradat ni se presenta como un puesto employed. Es trabajo paralelo, declarado como tal.
 
 > **GLOBAL HITSS: Jul 2018 – Sep 2019; Everis: Sep 2019 – Dic 2020.**
 > Cambio de consultora a mitad del proyecto continuo.
@@ -50,6 +56,12 @@ Eliminado de los tres perfiles en la revisión 2026-10: **Nova Solutions / Banco
 | Resolución de incidentes QA | 2–3 h promedio; hasta 1 semana en casos complejos | Banamex |
 | SLA de tickets de infraestructura | 1 día (ServiceNow) | Banamex |
 | Fuerza laboral cubierta por el sistema | 5,000 empleados | Freelance |
+| Contrato de entrega del trabajo móvil | 12 ADRs, 20 specs, 12 runbooks | Freelance móvil |
+| Workflows de CI/CD del trabajo móvil | 6 (GitHub Actions) | Freelance móvil |
+| Archivos de prueba del trabajo móvil | 95 (Lead/DevOps) · 124 (Full Stack) | Freelance móvil |
+| Cobertura de pruebas (Full Stack) | 85.9 % sentencias · 95.2 % funciones | Freelance móvil |
+| Pasos del pipeline de estimación (Ley 73) | 8 funciones puras | Freelance móvil |
+| Semanas cotizadas promediadas | 250 últimas | Freelance móvil |
 
 ---
 
@@ -139,6 +151,57 @@ Eliminado de los tres perfiles en la revisión 2026-10: **Nova Solutions / Banco
 - Panel de BI con reportes SAT / IMSS / INFONAVIT / STPS.
 - **Acompañó al equipo del cliente** durante el diseño (mentoring).
 
+### Desarrollo móvil freelance (React Native) — agregado 2026-10
+
+Trabajo paralelo y propio: proyectos pequeños para terceros, en React Native. Se publica como
+**una sola sección** en los tres perfiles ("Freelance & Independent Mobile Development" /
+"Desarrollo Móvil Freelance e Independiente"), **sin nombres de proyecto**.
+
+**Proyectos cubiertos (descritos, nunca nombrados):**
+- Un marketplace de dos lados (el de "find a friend").
+- Un estimador de pensión IMSS bajo la Ley 73 (el de "mi-prensión").
+- Un tercer prototipo binario: **excluido** — se descartó por estar incompleto y sin valor
+  publicable. No se publica ni se cuenta.
+
+**Stack confirmado:** React Native 0.86 / Expo SDK 57 / TypeScript; Expo Router y React
+Navigation; `pdfjs-dist` + `expo-print`; Zod + react-hook-form; AsyncStorage;
+Jest / jest-expo / @testing-library/react-native; EAS Update; GitHub Actions.
+
+**Proceso confirmado:**
+- **Alan es líder de proyecto** del trabajo móvil: fija la dirección técnica. En el marketplace
+  el código lo genera IA bajo la cuenta del cliente; se esperan commits de Alan a partir de
+  2026-10, por lo que **no se publica autoría de código línea por línea**.
+- Monorepo con **Bun workspaces**, **Turborepo** y **Biome**; **commits convencionales**;
+  **GitHub issue tracker** numerado.
+- **Contrato de entrega: 12 ADRs, 20 specs y 12 runbooks.** Cada slice de trabajo vive en un
+  **git worktree** con su propia base de datos.
+- **6 workflows de GitHub Actions** con jobs de prueba fragmentados, **puerta de promoción**
+  entre staging y producción, **despliegue a producción con aprobación** y **canales de EAS
+  Update**. Las pruebas corren sobre tres runners.
+- El estimador IMSS es un **pipeline de 8 pasos de funciones puras**, cada paso con su propia
+  base legal, más un **pipeline de PDF totalmente local** (`pdfjs-dist` + `expo-print`) que
+  extrae semanas e historial salarial de las constancias y promedia el salario base sobre las
+  últimas **250 semanas cotizadas**. Todo se procesa **en el dispositivo** (AsyncStorage, sin
+  backend y sin login).
+- Cobertura de pruebas: **124 pruebas unitarias y de componente** con **85.9 % de sentencias** y
+  **95.2 % de funciones** (perfil Full Stack).
+
+**Lo que NO se puede afirmar del trabajo móvil:**
+- **No está publicado en App Store ni Play Store.** No se menciona tienda, descarga, rating
+  ni número de usuarios.
+- **No hay usuarios, ingresos ni monetización.** No se publica revenue, usuarios activos ni
+  pagos en producción.
+- El **flujo de pagos no está en producción**: no se afirma que la app procese pagos.
+- El camino **nativo** de extracción de PDF es un *fallback heurístico*: la ruta soportada es el
+  pipeline local con `pdfjs-dist`. No se promete extracción nativa ni cobertura de todos los
+  formatos de constancia.
+- No se nombran los proyectos, ni el cliente del marketplace.
+
+**Redacción por perfil** (mismo hecho, ángulo distinto; ver §5):
+- **DevOps** — entrega y despliegue: GitHub Actions, puertas de release, EAS Update.
+- **Lead** — liderazgo: dirección técnica, monorepo, contrato de entrega, puertas de release.
+- **Full Stack** — implementación: navegación, theming, pipeline del estimador, validación y pruebas.
+
 ### Educación y certificaciones
 - IPN – ESCOM, B.Sc. Computer Systems Engineering, 2014–2018.
 - Java SE – Oracle Certified Associate (2013), con credencial pública.
@@ -157,7 +220,8 @@ Verificado como **no confirmado**. `check-profiles.sh` falla si aparece en cualq
 | No afirmar | Por qué |
 |---|---|
 | SLO, error budgets, objetivos de disponibilidad | Solo se confirmó guardia/on-call |
-| Postmortems, RCA, runbooks | No confirmados |
+| Postmortems, RCA | No confirmados |
+| Runbooks **en la experiencia laboral** | No confirmados. Los runbooks que sí existen son los 12 del contrato de entrega móvil (§3); `check-profiles.sh` los valida solo dentro de esa sección |
 | Guardia 24/7 o en rotación | La guardia fue dentro del horario laboral y sin rotación |
 | **"Implementó arquitectura hexagonal"** | La revisó; la implementación fue de otra persona |
 | Liderar Scrum, priorizar backlog del equipo, facilitar ceremonias | Era miembro del equipo |
@@ -244,6 +308,7 @@ Cada perfil conserva su propio foco sobre los mismos hechos. **No contradecirse.
 | Mentoring / guardia | Se omite | Protagonista | Se omite |
 | POM padre Maven | Promovido (deuda técnica) | Promovido (estándar) | Se mantiene |
 | Proyecto freelance | 3 bullets, comprimido | 3 bullets, elevado (compliance) | 5 bullets, completo |
+| Sección de desarrollo móvil (una sola, sin nombres de proyecto) | 2 bullets — **énfasis en despliegue**: GitHub Actions, puertas de release, EAS Update, producción | 2 bullets — **énfasis en liderazgo**: dirección técnica, monorepo, contrato de entrega, puertas de release | 3 bullets — **éntesis en implementación**: navegación, theming, pipeline del estimador, validación y pruebas |
 
 ---
 
@@ -257,4 +322,11 @@ Comprueba: fechas y empleadores consistentes, métricas iguales entre EN y ES, a
 términos prohibidos, sin herramientas huérfanas en las filas de skills, y cero ocurrencias de
 `Citibanamex` (el nombre correcto es **Banamex**).
 
+Además, desde la revisión 2026-10 comprueba también la **sección móvil**: exactamente una
+sección freelance por perfil, con React Native y Expo, fechada Ago 2026 – Actualidad, **sin
+nombres de proyecto**, y **sin afirmaciones de publicación en tiendas, usuarios ni ingresos**.
+Los runbooks solo se aceptan dentro del contrato de entrega móvil, nunca en la experiencia
+laboral.
+
 Además, todos los PDFs deben quedar en **2 páginas** — es el criterio de aceptación de layout.
+Los seis perfiles ATS y los seis diseñados (12 PDF) quedan hoy en 2 páginas.

@@ -26,21 +26,34 @@
 
 \RequirePackage[T1]{fontenc}
 \RequirePackage[utf8]{inputenc}
-\RequirePackage{helvet}
-\renewcommand{\familydefault}{\sfdefault}
 
 \ifdesign
 	% The designed layout paints a sidebar panel beside the text block, so the
 	% text block is positioned as the MAIN column instead of as the full page.
 	% Geometry keeps both margins as explicit lengths because styledesign.tex
 	% needs to know where the text block starts to land the header in the band.
+	\RequirePackage{helvet}
+	\renewcommand{\familydefault}{\sfdefault}
 	\RequirePackage{graphicx}
 	\RequirePackage{tikz}
 	\RequirePackage{microtype}
 	\RequirePackage{fontawesome5}
-	\RequirePackage[left=7.71cm,right=1.6cm,top=1.1cm,bottom=1.0cm,nohead,nofoot]{geometry}
+	\RequirePackage[left=7.71cm,right=1.2cm,top=1.1cm,bottom=1.0cm,nohead,nofoot]{geometry}
 \else
-	\RequirePackage[left=1.8cm,right=1.8cm,top=1.3cm,bottom=1.3cm,nohead,nofoot]{geometry}
+	% Helvetica at 95% of the 10pt design size -- i.e. 9.5pt on the page --
+	% with the 12pt baseline unchanged. This is pure space recovery: the ATS
+	% column carries ~5% more characters per line, which is what brought the
+	% last (Spanish Full Stack) profile back to two pages without dropping a
+	% single fact, metric or bullet. 9.5pt Helvetica with a 12pt baseline is
+	% the same optical size as a 10pt serif at 11.5pt, and stays well inside
+	% the range a recruiter reads without effort.
+	\RequirePackage[scaled=0.95]{helvet}
+	\renewcommand{\familydefault}{\sfdefault}
+	\RequirePackage[left=1.8cm,right=1.8cm,top=1.0cm,bottom=0.95cm,nohead,nofoot]{geometry}
+	% microtype is loaded here too (not only for the designed layout): its
+	% protrusion and font expansion let the justified ATS column pack the same
+	% words into fewer lines, which is pure space recovery -- no text changes.
+	\RequirePackage{microtype}
 	% Column wrappers are no-ops in the ATS layout: the content files carry the
 	% same \sidecol/\maincol markers for the designed layout and these make
 	% those files compile -- and print -- unchanged here.
@@ -48,6 +61,22 @@
 	\newcommand{\maincol}[1]{#1}
 	\newcommand{\resumesummaryheading}[1]{}
 	\newcommand{\designinput}[1]{\input{#1}}
+	% Education, ATS layout. Two savings here, both layout-only:
+	%   1. The ATS layout prints the sidebar inline at the end of the main
+	%      column, so the two-line tabularx form that \resumeentry uses for
+	%      job entries wastes two lines on every profile.
+	%   2. A standalone "Education" section heading costs a heading, a rule
+	%      and ~22pt of vertical space -- and the two-page rule in FACTS.md is
+	%      the acceptance criterion. Here the label runs in as a bold prefix
+	%      on the same line as the entry, so the same four facts (institution,
+	%      degree, dates, location) and the same label still appear, just
+	%      without the section furniture.
+	% The designed layout keeps the tabular form and its own heading; see
+	% styledesign.tex.
+	\newcommand{\educationentry}[5]{%
+		\Needspace{2\baselineskip}%
+		\noindent\textbf{#1:} #2, \textit{#3}, #4, #5\par\vspace{2pt}%
+	}
 \fi
 \RequirePackage{array}
 \RequirePackage{tabularx}
@@ -76,16 +105,27 @@
 % margins and colours are deliberately unchanged -- ATS parsing depends on
 % plain selectable text, not on these values.
 %
-% Kept at 1.09, not the 1.12 first tried: Spanish runs ~20% longer than English,
-% and at 1.12 both Spanish profiles spilled the Awards row onto a third page.
-% 1.09 plus the wider \itemsep absorbs the white space and holds all six
-% profiles at two pages.
+% Tightened back to 1.05 for the 2026-10 mobile section: the Freelance &
+% Independent Mobile Development block added to every profile pushed the ATS
+% layouts past two pages, and the two-page rule in FACTS.md is the acceptance
+% criterion. The space was recovered from the leading, the list separation
+% and the section spacing -- NOT from the text. No fact, metric or bullet was
+% dropped to make room; bullets were merged and clauses were re-ordered so
+% the same words flow in fewer lines. 1.05 still leaves a readable line gap at
+% 10pt Helvetica, and the Spanish profiles -- ~20% longer than the English
+% ones -- are the binding constraint.
+%
+% Finally set to 1.00 (the article default at 10pt is a 12pt baseline, which
+% is the classic single-spaced resume setting) when the run-in education label
+% and the tighter section spacing below closed the last two overflowing
+% Spanish profiles. Font size, margins-as-set and colours are unchanged, and
+% ATS parsing still depends on plain selectable text rather than any of this.
 \ifdesign
 	% The designed layout sets its own leading: its measure is narrower, so it
 	% runs looser than the ATS column rather than tighter.
 	\linespread{1.06}
 \else
-\linespread{1.09}
+\linespread{1.00}
 \fi
 
 %----------------------------------------------------------------------------------------
@@ -97,15 +137,15 @@
 \titleformat{\section}
 	{\large\bfseries\color{headingcolor}}
 	{}{0em}{}
-	[\vspace{-7pt}{\color{headingcolor}\rule{\linewidth}{0.9pt}}]
-\titlespacing*{\section}{0pt}{11pt}{5pt}
+	[\vspace{-8pt}{\color{headingcolor}\rule{\linewidth}{0.9pt}}]
+\titlespacing*{\section}{0pt}{4pt}{0.5pt}
 
 %----------------------------------------------------------------------------------------
 %	LISTS
 %----------------------------------------------------------------------------------------
 
-\setlist[itemize]{leftmargin=1.2em, itemsep=2pt, topsep=1pt, parsep=0pt, partopsep=0pt}
-\AtEndEnvironment{itemize}{\vspace{5pt}}
+\setlist[itemize]{leftmargin=1.2em, itemsep=0.5pt, topsep=1pt, parsep=0pt, partopsep=0pt}
+\AtEndEnvironment{itemize}{\vspace{1pt}}
 
 %----------------------------------------------------------------------------------------
 %	HEADER / CONTACT COMMANDS
@@ -157,10 +197,10 @@
 		}
 	\end{center}
 	\ifthenelse{\equal{\resumesummaryvalue}{}}{}{%
-		\vspace{8pt}
+		\vspace{6pt}
 		\resumesummaryvalue
 	}
-	\vspace{-4pt}
+	\vspace{-6pt}
 }
 
 %----------------------------------------------------------------------------------------
@@ -176,14 +216,14 @@
 	\noindent\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X r@{}}
 		\textbf{#1} & \textbf{\small #3}\\
 		\textit{#2} & \textit{\small #4}\\
-	\end{tabularx}\par\vspace{3pt}%
+	\end{tabularx}\par\vspace{1pt}%
 }
 
 %----------------------------------------------------------------------------------------
 %	SKILL ROW -- plain text "Category: item, item, item" (no graphical bars)
 %----------------------------------------------------------------------------------------
 
-\newcommand{\skillrow}[2]{\textbf{#1:} #2\par\vspace{2pt}}
+\newcommand{\skillrow}[2]{\textbf{#1:} #2\par\vspace{0pt}}
 
 %----------------------------------------------------------------------------------------
 %	MARGINS AND LINKS

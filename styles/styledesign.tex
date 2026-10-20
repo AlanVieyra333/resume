@@ -39,9 +39,9 @@
 \newlength{\designsidepad}   \setlength{\designsidepad}{0.35cm}
 \newlength{\designsidew}
 	\setlength{\designsidew}{\dimexpr\designpanelw-\designsideinset-0.5cm\relax}
-\newlength{\designbandh}     \setlength{\designbandh}{4.1cm}
-\newlength{\designtopmargin} \setlength{\designtopmargin}{1.1cm}
-\newlength{\designbotmargin} \setlength{\designbotmargin}{1.0cm}
+\newlength{\designbandh}     \setlength{\designbandh}{3.85cm}
+\newlength{\designtopmargin} \setlength{\designtopmargin}{1.0cm}
+\newlength{\designbotmargin} \setlength{\designbotmargin}{0.9cm}
 \newlength{\designraildrop}  \setlength{\designraildrop}{0.4cm}
 \newlength{\designdotr}      \setlength{\designdotr}{0.105cm}
 \newlength{\designrailx}
@@ -91,9 +91,9 @@
 }
 \newcommand{\designmainheadings}{%
 	\titleformat{\section}{\large\bfseries\color{designink}}{}{0em}{}%
-		[\vspace{-6pt}{\color{designink}\rule{\linewidth}{0.9pt}}%
-			\vspace{4pt}]%
-	\titlespacing*{\section}{0pt}{12pt}{6pt}%
+		[\vspace{-9pt}{\color{designink}\rule{\linewidth}{0.9pt}}%
+			\vspace{2pt}]%
+	\titlespacing*{\section}{0pt}{6pt}{3pt}%
 }
 
 \newcommand{\designsidebasestyle}{%
@@ -109,9 +109,19 @@
 }
 \newcommand{\designmainbasestyle}{%
 	\raggedright
+	% The main column runs at 9.3pt (baseline 11.2pt). The column is narrow,
+	% so the mobile section pushed the longer profiles onto a third page that
+	% held almost nothing; dropping the body text from 10pt to 9.3pt -- with
+	% the section headings, the dates and the sidebar left untouched -- buys
+	% back the lines needed to keep every designed CV at two pages. No word
+	% of the content changed.
+	\fontsize{9.3}{11.2}\selectfont
 	\setlength{\emergencystretch}{1.5em}%
 	\designmainheadings
-	\setlist[itemize]{leftmargin=1.3em,itemsep=2.5pt,topsep=1pt}%
+	% itemsep was 2.5pt; the mobile section added enough bullets to push the
+	% longer profiles onto a third page that held almost nothing, so the gap
+	% between bullets is tighter now. Nothing was removed from the text.
+	\setlist[itemize]{leftmargin=1.3em,itemsep=0.5pt,topsep=1pt}%
 }
 
 \newcommand{\sidecol}[1]{%
@@ -157,10 +167,16 @@
 % header rather than hanging off the role title.
 \renewcommand{\resumeentry}[4]{%
 	\Needspace{6\baselineskip}%
-	\noindent\textbf{#1}\hfill{\small\bfseries\color{designmuted}#3}\par
-	\noindent\designdotmark\textit{#2}\hfill{\small\itshape\color{designmuted}#4}\par
-	\vspace{3pt}%
+	\noindent\textbf{#1}\hfill{\footnotesize\bfseries\color{designmuted}#3}\par
+	\noindent\designdotmark\textit{#2}\hfill{\footnotesize\itshape\color{designmuted}#4}\par
+	\vspace{1pt}%
 }
+
+% Education. The ATS layout prints the sidebar inline and uses a compact
+% run-in label plus a one-line form (see style.cls) to hold every profile to
+% two pages; the designed layout keeps its own section heading and the
+% two-line tabular form, so it reuses the designed \resumeentry above.
+\newcommand{\educationentry}[5]{\section*{#1}\resumeentry{#2}{#3}{#4}{#5}}
 
 % The dot. Drawn inline on the second header line (the location/date line),
 % which is where the reference layout places it -- centred on the two-line
