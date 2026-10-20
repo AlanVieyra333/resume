@@ -36,7 +36,7 @@ DEVOPS ENGINEER
 Scale cloud infrastructure
 with CI/CD and Kubernetes
 
-AWS · Kubernetes · Terraform · Helm · Ansible · Azure DevOps
+AWS · Docker · Terraform · Helm · Ansible · Azure DevOps
 
 +70  microservices deployed | +20  Kubernetes clusters | +20  CI/CD pipelines | +30  shell scripts automated
 ```
@@ -53,6 +53,12 @@ el "+" del banner deja de ser cierto y hay que recalcularlo.
 es una distribución de Kubernetes, así que los 21 clústeres de preproducción que administra en
 Veradat (13 sobre Kubernetes y 8 sobre OpenShift) se cuentan como clústeres de Kubernetes. El
 CV sí publica el desglose por entorno.
+
+**La cinta de herramientas dice "Docker", no "Kubernetes"** (decisión del 2026-10-20): con
+"Kubernetes" repetido en el titular y en la cinta, la palabra de mayor peso del banner se
+gastaba dos veces en 396 px. Docker ya está en la fila de skills del perfil DevOps y con
+evidencia en el cuerpo, así que el cambio suma información en vez de repetirla. Kubernetes
+sigue presente en el titular y en la tarjeta de métrica, donde es el dato que sí cuenta.
 
 El banner **no lleva correo**: la decisión es del 2026-10-19, y el contacto vive en el titular
 y en la sección "Acerca de" de `linkedin/perfil.md`.
