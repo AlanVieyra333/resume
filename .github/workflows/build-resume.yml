@@ -168,9 +168,11 @@ jobs:
           for pdf in Resume_DevOps_AFRV_EN Resume_DevOps_AFRV_ES \
                      Resume_DevOpsLead_AFRV_EN Resume_DevOpsLead_AFRV_ES \
                      Resume_FullStack_AFRV_EN Resume_FullStack_AFRV_ES \
+                     Resume_AIEngineer_AFRV_EN Resume_AIEngineer_AFRV_ES \
                      Resume_DevOps_AFRV_EN_DESIGN Resume_DevOps_AFRV_ES_DESIGN \
                      Resume_DevOpsLead_AFRV_EN_DESIGN Resume_DevOpsLead_AFRV_ES_DESIGN \
-                     Resume_FullStack_AFRV_EN_DESIGN Resume_FullStack_AFRV_ES_DESIGN; do
+                     Resume_FullStack_AFRV_EN_DESIGN Resume_FullStack_AFRV_ES_DESIGN \
+                     Resume_AIEngineer_AFRV_EN_DESIGN Resume_AIEngineer_AFRV_ES_DESIGN; do
             [ -f "out/${pdf}.pdf" ] || { echo "::error::missing out/${pdf}.pdf"; exit 1; }
             mv "out/${pdf}.pdf" "out/${pdf}_${VERSION}.pdf"
           done
@@ -188,11 +190,15 @@ jobs:
             out/Resume_DevOpsLead_AFRV_ES_${{ env.VERSION }}.pdf
             out/Resume_FullStack_AFRV_EN_${{ env.VERSION }}.pdf
             out/Resume_FullStack_AFRV_ES_${{ env.VERSION }}.pdf
+            out/Resume_AIEngineer_AFRV_EN_${{ env.VERSION }}.pdf
+            out/Resume_AIEngineer_AFRV_ES_${{ env.VERSION }}.pdf
             out/Resume_DevOps_AFRV_EN_DESIGN_${{ env.VERSION }}.pdf
             out/Resume_DevOps_AFRV_ES_DESIGN_${{ env.VERSION }}.pdf
             out/Resume_DevOpsLead_AFRV_EN_DESIGN_${{ env.VERSION }}.pdf
             out/Resume_DevOpsLead_AFRV_ES_DESIGN_${{ env.VERSION }}.pdf
             out/Resume_FullStack_AFRV_EN_DESIGN_${{ env.VERSION }}.pdf
             out/Resume_FullStack_AFRV_ES_DESIGN_${{ env.VERSION }}.pdf
+            out/Resume_AIEngineer_AFRV_EN_DESIGN_${{ env.VERSION }}.pdf
+            out/Resume_AIEngineer_AFRV_ES_DESIGN_${{ env.VERSION }}.pdf
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,27 +1,27 @@
 # Propuesta de perfil de LinkedIn - Alan Fernando Rincón Vieyra
 
-Revisión: 14 de octubre de 2026. Homologada con [main.tex](main.tex) y los seis perfiles de contenido: [lang/es.tex](lang/es.tex), [lang/en.tex](lang/en.tex), [lang/lead/es.tex](lang/lead/es.tex), [lang/lead/en.tex](lang/lead/en.tex), [lang/fullstack/es.tex](lang/fullstack/es.tex) y [lang/fullstack/en.tex](lang/fullstack/en.tex).
+Revisión: 19 de octubre de 2026. Homologada con [main.tex](main.tex) y los ocho perfiles de contenido: [lang/es.tex](lang/es.tex), [lang/en.tex](lang/en.tex), [lang/lead/es.tex](lang/lead/es.tex), [lang/lead/en.tex](lang/lead/en.tex), [lang/fullstack/es.tex](lang/fullstack/es.tex), [lang/fullstack/en.tex](lang/fullstack/en.tex), [lang/ai/es.tex](lang/ai/es.tex) y [lang/ai/en.tex](lang/ai/en.tex).
 
-Objetivo: oportunidades de DevOps, Cloud Engineering y Platform Engineering con énfasis en AWS, y roles de liderazgo técnico (DevOps/SRE Lead) donde pesa la remediación de deuda técnica, los estándares y el cumplimiento. El posicionamiento combina infraestructura como código, operación de producción, automatización de entregas, gobierno técnico y experiencia previa en desarrollo. Los cargos, las fechas y las cifras proceden del CV; las notas de revisión no forman parte del texto para publicar.
+Objetivo: oportunidades de DevOps, Cloud Engineering y Platform Engineering con énfasis en AWS, roles de liderazgo técnico (DevOps/SRE Lead) donde pesa la remediación de deuda técnica, los estándares y el cumplimiento, y posiciones de **AI Engineer** donde la señal es el uso de IA aplicada y agéntica sobre la plataforma que ya operaba (plugin de Claude Code con skills propias). El posicionamiento combina infraestructura como código, operación de producción, automatización de entregas, gobierno técnico y experiencia previa en desarrollo. Los cargos, las fechas y las cifras proceden del CV; las notas de revisión no forman parte del texto para publicar.
 
-La fuente de verdad de los hechos, las métricas y **los límites de lo declarable** está en [FACTS.md](FACTS.md). Cualquier texto de este documento debe respetar esa frontera: no se afirma SLOs ni error budgets, ni postmortems o runbooks, ni que se implementara la arquitectura hexagonal (se revisó), ni auditoría o certificación ISO 27001 (el rol fue implementar y operar controles). Las métricas de despliegue y aprovisionamiento incorporan las aclaraciones del usuario: conjunto completo de 70 microservicios y conjunto de 10 servidores, respectivamente.
+La fuente de verdad de los hechos, las métricas y **los límites de lo declarable** está en [FACTS.md](FACTS.md). Cualquier texto de este documento debe respetar esa frontera: no se afirma SLOs ni error budgets, ni postmortems, ni runbooks **en la experiencia laboral** (los 12 runbooks que sí existen son del contrato de entrega del trabajo móvil), ni que se implementara la arquitectura hexagonal (se revisó), ni auditoría o certificación ISO 27001 (el rol fue implementar y operar controles). Tampoco se insinúa machine learning: no hay entrenamiento de modelos, RAG, embeddings, MLOps ni llamadas a APIs de LLM — la IA aquí es aplicada, y se publica como tal. Las métricas de despliegue y aprovisionamiento incorporan las aclaraciones del usuario: conjunto completo de 70 microservicios y conjunto de 10 servidores, respectivamente.
 
-## 1. Titular: tres opciones
+## 1. Titular: cuatro opciones
 
-**Recomendada: A.** Coloca AWS y Terraform al inicio para mejorar la coincidencia con búsquedas de infraestructura en AWS, y conserva CI/CD y Kubernetes como evidencia del alcance DevOps. Las métricas de mejora funcionan mejor en Acerca de y Experiencia, donde tienen suficiente contexto. Elegir una opción por idioma.
+**Recomendada: A.** Coloca AWS y Terraform al inicio para mejorar la coincidencia con búsquedas de infraestructura en AWS, y conserva CI/CD y Kubernetes como evidencia del alcance DevOps. Las métricas de mejora funcionan mejor en Acerca de y Experiencia, donde tienen suficiente contexto. Para una posición de **AI Engineer** la opción a usar es **D**, que es la que corresponde al perfil `AI Engineer` del CV. Elegir una opción por idioma.
 
 ### A. DevOps y entrega de software
 
 Español:
 
 ```text
-DevOps Engineer | AWS y Terraform | CI/CD para 70 microservicios | 9 clústeres Kubernetes/OpenShift | Helm, Ansible y Azure DevOps
+DevOps Engineer | AWS y Terraform | CI/CD para 70 microservicios | 21 clústeres de preproducción | Helm, Ansible y Azure DevOps
 ```
 
 English:
 
 ```text
-DevOps Engineer | AWS and Terraform | CI/CD for 70 microservices | 9 Kubernetes/OpenShift clusters | Helm, Ansible and Azure DevOps
+DevOps Engineer | AWS and Terraform | CI/CD for 70 microservices | 21 pre-production clusters | Helm, Ansible and Azure DevOps
 ```
 
 ### B. AWS e infraestructura como código
@@ -52,22 +52,38 @@ English:
 DevOps Engineer | AWS, Terraform and Kubernetes | Java/Spring Cloud background | CI/CD, observability and infrastructure as code
 ```
 
+### D. IA aplicada y tooling agéntico
+
+Español:
+
+```text
+AI Engineer | Plugin de Claude Code para la plataforma | 4 skills que enrutan intención a scripts | IA aplicada sobre Kubernetes y OpenShift
+```
+
+English:
+
+```text
+AI Engineer | Claude Code plugin for the platform | 4 skills routing intent to scripts | Applied AI over Kubernetes and OpenShift
+```
+
 ## 2. Acerca de
 
 ### Español
 
 ```text
 Si tu equipo necesita aprovisionar infraestructura en AWS, automatizar entregas y operar microservicios en producción, puedo aportar experiencia con Terraform, CI/CD y Kubernetes.
-En Veradat reduje de 6 horas a 1 hora el tiempo de despliegue del conjunto completo de 70 microservicios mediante CI/CD para 3 equipos.
-
-Aprovisioné infraestructura en AWS y Azure con Terraform: EC2, S3, VPC, Security Groups, IAM, RDS, CloudWatch y Route 53 en AWS, junto con máquinas virtuales, balanceadores y gestión de secretos en ambas nubes. Implementé y operé controles ISO 27001 en Veradat y en Banamex.
-
-También administro 9 clústeres: 8 Kubernetes y 1 OpenShift. Implementé monitoreo y alertas con Elastic Stack y reduje el tiempo de detección de incidentes de 60 a 30 minutos. Además, promoví charts de Helm como estándar de despliegue del equipo y generé la matriz de imágenes Docker que permite a cada microservicio cambiar de tecnología.
-
-Coordino la interlocución técnica con stakeholders del cliente, incluido el reporte formal de seguridad que recibe su área de seguridad, y entre los 3 equipos (frontend, backend, QA) a través de dashboards y boards de Azure DevOps y una wiki compartida como canal asincrónico.
-
-Acompaño a ingenieros de los equipos de frontend, backend y QA: revisiones de código y diseño, decisiones técnicas e incorporación de nuevos miembros. Vengo del desarrollo de software; empecé en 2017.
-
+En Veradat reduje de 6 horas a 1 hora el despliegue del conjunto completo de 70 microservicios mediante CI/CD para 3 equipos.
+Administro 21 clústeres de preproducción: 9 en QA sobre Kubernetes, 4 en DEV y 4 en INTGR sobre OpenShift, 4 en Certificación.
+Elastic Stack en los 9 de QA cortó la detección de incidentes de 60 a 30 minutos.
+Promoví charts de Helm como estándar de despliegue del equipo.
+Construí el plugin de Claude Code de la plataforma: 4 skills que leen una petición en lenguaje natural y la ejecutan con scripts deterministas en Python, sobre 35 scripts y unas 3,200 líneas de SKILL.md.
+No es un modelo.
+Es el enrutado de una intención a una operación reproducible.
+Aprovisioné AWS y Azure con Terraform.
+También implementé y operé controles ISO 27001 en Veradat y Banamex.
+Coordino la interlocución técnica con el cliente y entre los 3 equipos.
+Acompaño a ingenieros de los equipos de frontend, backend y QA: revisiones de código y diseño, decisiones técnicas y nuevos miembros.
+Empecé en 2017, en desarrollo de software.
 Si estás incorporando un DevOps Engineer o liderando remediación de deuda técnica y estándares, conversemos por LinkedIn.
 ```
 
@@ -75,16 +91,18 @@ Si estás incorporando un DevOps Engineer o liderando remediación de deuda téc
 
 ```text
 If your team needs to provision AWS infrastructure, automate delivery, and run microservices in production, I bring experience with Terraform, CI/CD, and Kubernetes.
-At Veradat, I cut the time to deploy the complete set of 70 microservices from 6 hours to 1 hour through CI/CD for 3 teams.
-
-I provisioned AWS and Azure infrastructure using Terraform: EC2, S3, VPC, Security Groups, IAM, RDS, CloudWatch, and Route 53 on AWS, along with virtual machines, load balancers, and secrets management across both clouds. I implemented and operated ISO 27001 controls at Veradat and at Banamex.
-
-I also manage 9 clusters: 8 Kubernetes and 1 OpenShift. I implemented Elastic Stack monitoring and alerts, cutting incident detection time from 60 to 30 minutes. I promoted Helm charts as the team's deployment standard and produced the Docker image matrix that lets each microservice swap its technology.
-
-I coordinate technical communication with client stakeholders, including the formal security reporting the client's security team receives, and across the 3 teams (frontend, backend, QA) through Azure DevOps dashboards and boards and a shared wiki as an asynchronous channel.
-
-I mentor engineers across the frontend, backend and QA teams: code and design reviews, technical decision-making, and onboarding. I come from software development; I started in 2017.
-
+At Veradat, I cut the deployment of the complete set of 70 microservices from 6 hours to 1 hour through CI/CD for 3 teams.
+I manage 21 pre-production clusters: 9 in QA on Kubernetes, 4 in DEV and 4 in INTGR on OpenShift, and 4 in Certificación.
+Elastic Stack on the 9 QA clusters cut incident detection from 60 to 30 minutes.
+I promoted Helm charts as the team's deployment standard.
+I built the Claude Code plugin for the platform: 4 skills that read a request in natural language and dispatch it to deterministic Python scripts, across 35 scripts and about 3,200 lines of SKILL.md.
+It is not a model.
+It is the routing of an intent to a repeatable operation.
+I provisioned AWS and Azure with Terraform.
+I also implemented and operated ISO 27001 controls at Veradat and at Banamex.
+I coordinate technical communication with the client and across the 3 teams.
+I mentor engineers across the frontend, backend and QA teams: code and design reviews, technical decision-making, and onboarding.
+I started in 2017, in software development.
 If you're hiring a DevOps Engineer or leading technical debt remediation and standards, let's connect here on LinkedIn.
 ```
 
@@ -99,13 +117,14 @@ Usar el empleador en el campo Empresa y señalar al cliente en la descripción. 
 Español:
 
 ```text
-Aprovisioné infraestructura en AWS y Azure con Terraform: EC2, S3, VPC, Security Groups, IAM, RDS, CloudWatch y Route 53 en AWS, junto con máquinas virtuales, balanceadores y gestión de secretos en ambas nubes. También administro 9 clústeres de producción: 8 Kubernetes y 1 OpenShift.
+Aprovisioné infraestructura en AWS y Azure con Terraform: EC2, S3, VPC, Security Groups, IAM, RDS, CloudWatch y Route 53 en AWS, junto con máquinas virtuales, balanceadores y gestión de secretos en ambas nubes. Administro 21 clústeres de preproducción: 9 en QA sobre Kubernetes, 4 en DEV y 4 en INTGR sobre OpenShift, y 4 en Certificación.
 
 - Diseñé y mantuve 10 pipelines de CI/CD en Azure DevOps para 3 equipos: frontend, backend y QA. El tiempo de despliegue del conjunto completo de 70 microservicios pasó de 6 horas a 1 hora: aproximadamente un 83% menos. Desarrollé y promoví charts de Helm como estándar de despliegue del equipo.
+- Construí el plugin de Claude Code de la plataforma: 4 skills que leen una petición en lenguaje natural, detectan la intención y la ejecutan con un script determinista en Python. Son 35 scripts y unas 3,200 líneas de SKILL.md, con un script que genera automáticamente el índice de capacidades. Las skills parsean el YAML y el JSON de la propia plataforma y ejecutan operaciones reales: validar el estado de releases y work items, verificar builds contra su rama, redesplegar un nodo con las versiones que ya corre, auditar la configuración del nodo contra el manual de la plataforma, leer secretos de aplicación en AWS Secrets Manager y reportar vulnerabilidades de Snyk.
 - Revisé la arquitectura hexagonal del equipo, que desacopla cada microservicio de sus dependencias tecnológicas (PostgreSQL, Oracle, RabbitMQ, Kafka, IBM MQ y SQS), y generé la imagen Docker para cada combinación tecnológica que cada microservicio requiere.
 - Implementé y operé controles ISO 27001 en gestión de secretos, control de acceso en nube y escaneo de dependencias. Remedié vulnerabilidades críticas y altas detectadas por SonarQube Cloud, Snyk y Mend mediante actualizaciones de paquetes del sistema operativo y dependencias Maven.
 - Acompaño a ingenieros de los equipos de frontend, backend y QA: revisiones de código y diseño, decisiones técnicas e incorporación de nuevos miembros al equipo.
-- Implementé monitoreo y alertas con Elastic Stack en los 9 clústeres y reduje el tiempo de detección de incidentes de 60 a 30 minutos. Incorporé readiness/liveness probes para controlar la incorporación de instancias al tráfico y su recuperación durante actualizaciones progresivas. Cubro guardia para incidentes en producción dentro del horario laboral.
+- Implementé monitoreo y alertas con Elastic Stack en los 9 clústeres de QA y reduje el tiempo de detección de incidentes de 60 a 30 minutos. Incorporé readiness/liveness probes para controlar la incorporación de instancias al tráfico y su recuperación durante actualizaciones progresivas. Cubro guardia para incidentes en producción dentro del horario laboral.
 - Automaticé la configuración con Ansible en servidores Linux. Aprovisionar el conjunto de 10 servidores pasó de tomar 2 horas a 20 minutos.
 - Realicé backups y rollbacks de bases de datos PostgreSQL y Oracle que respaldan los 70 microservicios, asegurando la recuperabilidad de los datos durante despliegues y respuesta a incidentes.
 - Coordiné la interlocución técnica con stakeholders del cliente, incluido el reporte formal de seguridad que recibe su área de seguridad, y entre los 3 equipos (frontend, backend, QA) mediante dashboards y boards de Azure DevOps y una wiki compartida como canal asincrónico. El equipo trabaja con Scrum, en el que participo como miembro.
@@ -114,13 +133,14 @@ Aprovisioné infraestructura en AWS y Azure con Terraform: EC2, S3, VPC, Securit
 English:
 
 ```text
-I provisioned AWS and Azure infrastructure using Terraform: EC2, S3, VPC, Security Groups, IAM, RDS, CloudWatch, and Route 53 on AWS, along with virtual machines, load balancers, and secrets management across both clouds. I also manage 9 production clusters: 8 Kubernetes and 1 OpenShift.
+I provisioned AWS and Azure infrastructure using Terraform: EC2, S3, VPC, Security Groups, IAM, RDS, CloudWatch, and Route 53 on AWS, along with virtual machines, load balancers, and secrets management across both clouds. I manage 21 pre-production clusters: 9 in QA on Kubernetes, 4 in DEV and 4 in INTGR on OpenShift, and 4 in Certificación.
 
 - Designed and maintained 10 Azure DevOps CI/CD pipelines for 3 teams: frontend, backend and QA. The time to deploy the complete set of 70 microservices fell from 6 hours to 1 hour: approximately 83% less time. Built and promoted Helm charts as the team's deployment standard.
+- Built the Claude Code plugin for the platform: 4 skills that read a request in natural language, detect the intent, and dispatch it to a deterministic Python script. That is 35 scripts and about 3,200 lines of SKILL.md, plus a script that auto-generates the capability index. The skills parse the platform's own YAML and JSON and act on real operations: validating release and work-item state, checking builds against their branch, redeploying a node at its running versions, auditing node configuration against the platform manual, reading application secrets from AWS Secrets Manager, and reporting Snyk vulnerabilities.
 - Reviewed the team's hexagonal architecture, which decouples each microservice from its technology dependencies (PostgreSQL, Oracle, RabbitMQ, Kafka, IBM MQ and SQS), and produced the Docker image for every technology combination each microservice requires.
 - Implemented and operated ISO 27001 controls across secret management, cloud access control and dependency scanning. Remediated critical and high-severity vulnerabilities identified by SonarQube Cloud, Snyk and Mend through OS package and Maven dependency updates.
 - Mentor engineers across the frontend, backend and QA teams: code and design reviews, technical decision-making, and onboarding new team members.
-- Implemented Elastic Stack monitoring and alerts across all 9 clusters, cutting incident detection time from 60 to 30 minutes. Added readiness/liveness probes to control when instances receive traffic and trigger recovery during rolling updates. Carried on-call for production incidents within working hours.
+- Implemented Elastic Stack monitoring and alerts across the 9 QA clusters, cutting incident detection time from 60 to 30 minutes. Added readiness/liveness probes to control when instances receive traffic and trigger recovery during rolling updates. Carried on-call for production incidents within working hours.
 - Automated configuration with Ansible on Linux servers, cutting provisioning time for the entire set of 10 servers from 2 hours to 20 minutes.
 - Performed backups and rollbacks of PostgreSQL and Oracle databases supporting the 70 microservices, ensuring data recoverability during deployments and incident response.
 - Coordinated technical communication with client stakeholders, including the formal security reporting the client's security team receives, and across the 3 teams (frontend, backend, QA) through Azure DevOps dashboards and boards and a shared wiki as an asynchronous channel. The team works in Scrum, in which I participate as a team member.
@@ -138,7 +158,7 @@ Desarrollo full stack y CI/CD para aplicaciones bancarias internas de Banamex, a
 - Desarrollé y mantuve 10 microservicios Java/Spring Cloud para flujos de trabajo de ejecutivos bancarios. Esos flujos atendían aproximadamente 1,000 transacciones diarias por sucursal.
 - Estandaricé los microservicios con un POM padre multimódulo de Maven y gestión compartida de dependencias, garantizando un versionado consistente y reduciendo el esfuerzo de actualización en todos los servicios.
 - Me apegaba a los controles ISO 27001 en ese entorno bancario durante toda mi colaboración.
-- Construí pipelines de CI/CD con Azure DevOps y Jenkins para automatizar compilaciones y despliegues. Desarrollé funcionalidades frontend con React, Node.js y TypeScript, y administré esquemas Oracle.
+- Construí pipelines de CI/CD con Jenkins para automatizar compilaciones y despliegues. Desarrollé funcionalidades frontend con React, Node.js y TypeScript, y administré esquemas Oracle.
 - Atendí incidentes del entorno de QA, con un tiempo promedio de resolución de 2 a 3 horas; los casos complejos podían tomar hasta una semana. Monitoreé producción con Splunk y resolví tickets de infraestructura en ServiceNow conforme a un SLA de 1 día.
 ```
 
@@ -150,7 +170,7 @@ Full stack development and CI/CD for internal banking applications at Banamex, t
 - Developed and maintained 10 Java/Spring Cloud microservices for banking-executive workflows. Those workflows handled approximately 1,000 transactions per day per branch.
 - Standardised the microservices through a multi-module Maven POM parent and shared dependency management, ensuring consistent versioning and reducing upgrade effort across all services.
 - Adhered to the ISO 27001 controls in that banking environment throughout the engagement.
-- Built Azure DevOps and Jenkins CI/CD pipelines to automate builds and deployments. Developed frontend features with React, Node.js, and TypeScript, and administered Oracle schemas.
+- Built Jenkins CI/CD pipelines to automate builds and deployments. Developed frontend features with React, Node.js, and TypeScript, and administered Oracle schemas.
 - Handled QA environment incidents with an average resolution time of 2 to 3 hours; complex cases could take up to one week. Monitored production with Splunk and resolved infrastructure tickets in ServiceNow under a 1-day SLA.
 ```
 
@@ -213,9 +233,10 @@ Complementarias: Continuous Integration and Continuous Delivery (CI/CD), Azure D
 | Prioridad | Pieza y texto sugerido | Estado |
 | --- | --- | --- |
 | 1 | **Despliegue completo de 70 microservicios: de 6 horas a 1 hora.** Caso técnico sobre pipelines de Azure DevOps y estandarización con Helm. | Por preparar. Documentar decisiones y alcance antes de desarrollar el caso. |
-| 2 | **Arquitectura hexagonal y matriz de imágenes Docker.** Caso técnico sobre cómo desacoplar un microservicio de sus dependencias tecnológicas (PostgreSQL, Oracle, RabbitMQ, Kafka, IBM MQ, SQS) y generar una imagen por combinación. | Por preparar. Documentar la decisión de arquitectura y su efecto operativo, sin código del empleador. |
-| 3 | **Infraestructura reproducible en AWS con Terraform.** Demostración pública con Route 53 e IAM, README y pasos reproducibles, sin datos ni código de empleadores. | Por crear; documentar arquitectura, decisiones y controles de seguridad. |
-| 4 | **Alan Rincón Vieyra · DevOps Engineer.** CV actualizado con datos de contacto. | Usar el PDF generado desde la versión actual de `main.tex` (queda en `out/` tras `make all`). Para roles de liderazgo, usar el perfil `out/Resume_DevOpsLead_AFRV_{EN,ES}.pdf`. |
+| 2 | **Plugin de Claude Code: 4 skills que enrutan intención a scripts.** La pieza de prueba más fuerte para roles de IA. Demostración con el índice de capacidades autogenerado, un caso real de una petición en lenguaje natural y la salida del script. | Por preparar. El código del plugin es privado; hace falta una versión pública o una demostración grabada. |
+| 3 | **Arquitectura hexagonal y matriz de imágenes Docker.** Caso técnico sobre cómo desacoplar un microservicio de sus dependencias tecnológicas (PostgreSQL, Oracle, RabbitMQ, Kafka, IBM MQ, SQS) y generar una imagen por combinación. | Por preparar. Documentar la decisión de arquitectura y su efecto operativo, sin código del empleador. |
+| 4 | **Infraestructura reproducible en AWS con Terraform.** Demostración pública con Route 53 e IAM, README y pasos reproducibles, sin datos ni código de empleadores. | Por crear; documentar arquitectura, decisiones y controles de seguridad. |
+| 5 | **Alan Rincón Vieyra · DevOps Engineer.** CV actualizado con datos de contacto. | Usar el PDF generado desde la versión actual de `main.tex` (queda en `out/` tras `make all`). Para roles de liderazgo, usar el perfil `out/Resume_DevOpsLead_AFRV_{EN,ES}.pdf`; para roles de IA, `out/Resume_AIEngineer_AFRV_{EN,ES}.pdf`. |
 
 El repositorio del proyecto de Grupo de la Parra es privado, según el CV original. Su descripción puede servir como evidencia de alcance; no se presenta como demostración pública disponible. Cuando haya publicaciones y métricas propias, se podrá elegir una publicación para Destacado con base en esos resultados.
 
@@ -235,9 +256,38 @@ AWS, CI/CD and Kubernetes for production platforms
 alan.vieyra376@gmail.com
 ```
 
-Usar una frase legible y el contacto, con espacio para la foto de perfil. La imagen del banner queda por producir.
+Usar una frase legible y el contacto, con espacio para la foto de perfil. La imagen del banner queda por producir. Para posiciones de **AI Engineer**, la variante es:
 
-## 6. Proyecto e información adicional
+```text
+IA aplicada: skills de Claude Code sobre Kubernetes y OpenShift
+alan.vieyra376@gmail.com
+```
+
+## 6. Proyectos independientes
+
+En el CV estos dos proyectos viven en **una sola sección**, con dos sub-entradas tituladas por el tipo de proyecto y no por el nombre del proyecto. La sub-entrada móvil está delimitada por los marcadores `<!-- mobile-begin -->` / `<!-- mobile-end -->`: son los que acotan la única mención permitida de runbooks, que son los 12 del contrato de entrega móvil.
+
+### Aplicaciones móviles (React Native)
+
+**Modalidad:** freelance e independiente · **Periodo:** 2023 - 2026 · **Alcance:** dirección técnica y contrato de entrega.
+
+<!-- mobile-begin -->
+
+Español:
+
+```text
+Definí la dirección técnica y el contrato de entrega de apps para clientes en React Native y Expo, expresado como un artefacto ejecutable: 12 ADRs, 20 specs y 12 runbooks, un git worktree por slice con su propia base de datos y un GitHub issue tracker numerado alimentado por commits convencionales.
+- Establecí las puertas de release que el trabajo tiene que atravesar: 6 workflows de GitHub Actions con jobs de prueba fragmentados sobre 95 archivos de prueba, una puerta de promoción entre staging y producción, un despliegue a producción con aprobación y canales de EAS Update, sobre un monorepo con Bun workspaces, Turborepo y Biome.
+```
+
+English:
+
+```text
+I defined the technical direction and the delivery contract for client apps on React Native and Expo, expressed as an executable artefact: 12 ADRs, 20 specs and 12 runbooks, a git worktree per slice with its own database, and a numbered GitHub issue tracker fed by conventional commits.
+- I set the release gates the work has to pass: 6 GitHub Actions workflows with sharded test jobs over 95 test files, a promotion gate between staging and production, an approval-gated production deploy, and EAS Update channels, on a monorepo with Bun workspaces, Turborepo and Biome.
+```
+
+<!-- mobile-end -->
 
 ### Sistema de Gestión de Cumplimiento de la Ley de Subcontratación
 
@@ -263,7 +313,7 @@ Los 5,000 empleados describen la fuerza laboral cubierta por el sistema, sin afi
 | --- | --- | --- | --- |
 | IPN - Escuela Superior de Cómputo (ESCOM) | Ingeniería en Sistemas Computacionales. | B.Sc. in Computer Systems Engineering. | 2014 - 2018 |
 
-CINVESTAV - IPN (maestría en Ciencias de la Computación, área de Inteligencia Artificial, 2019-2020) se retiró de los tres perfiles del CV: el programa no se concluyó y no se obtuvo grado. Si la cuenta de LinkedIn aún lo muestra como `2019-Present`, sustituir ese periodo por **2019-2020** y decidir con cuidado si se conserva: en el CV ya no aparece.
+CINVESTAV - IPN (maestría en Ciencias de la Computación, área de Inteligencia Artificial, 2019-2020) se retiró de los cuatro perfiles del CV: el programa no se concluyó y no se obtuvo grado. Si la cuenta de LinkedIn aún lo muestra como `2019-Present`, sustituir ese periodo por **2019-2020** y decidir con cuidado si se conserva: en el CV ya no aparece.
 
 ### Certificación, idiomas y reconocimientos
 
@@ -286,15 +336,17 @@ Se mantienen los criterios pertinentes de los 11 skills `li-*` revisados en la p
 
 La evaluación del perfil publicado sigue pendiente para foto, banner, Destacado, recomendaciones, validaciones de aptitudes y actividad reciente. Las puntuaciones de la versión anterior describían aquella redacción; esta revisión prioriza la correspondencia entre CV y LinkedIn y no reutiliza esas cifras como una evaluación nueva.
 
-- Los 20 bloques para copiar se revisaron con `humanize.py` en la revisión del 6 de octubre. Los bloques añadidos o reescritos en la homologación del 14 de octubre (Acercade de, experiencia de Veradat y Banamex, proyecto freelance, certificaciones y reconocimientos) **no se han vuelto a pasar por `humanize.py`**: conviene hacerlo antes de publicar.
-- Caracteres de los titulares, español / inglés: **A 130 / 131**, **B 136 / 138**, **C 134 / 128**. Todos quedan por debajo de 220.
-- Acerca de tras la homologación: **1,206 caracteres en español** y **1,142 en inglés**, incluidos espacios y saltos de línea, por debajo del objetivo editorial de 1,400.
+- Los 25 bloques para copiar se revisan con `humanize.py` (limpieza mecánica) y `detect.py` (puntuación de estilo) el 19 de octubre de 2026. `humanize.py` no encuentra artefactos de máquina en ninguno de los 25: 0 caracteres invisibles, 0 em dash, 0 comillas tipográficas, 0 términos de relleno. El único problema estructural que señala es la **longitud uniforme de las frases del Acerca de**, que se corrigió a mano partiendo frases largas y añadiendo cortas.
+- Caracteres de los titulares, español / inglés: **A 127 / 126**, **B 136 / 138**, **C 134 / 128**, **D 140 / 129**. Todos quedan por debajo de 220.
+- Acerca de tras la homologación: **1,340 caracteres en español** y **1,320 en inglés**, incluidos espacios y saltos de línea, por debajo del objetivo editorial de 1,400. Se recortó detalle (matriz de imágenes Docker, enumeración de servicios de AWS, balanceadores y wiki) que sigue íntegro en la sección de Experiencia, para poder meter el bloque de IA y el desglose de clústeres.
 
-`detect.py`, comparando Acerca de con la propuesta del 6 de octubre:
+`detect.py` sobre el bloque de Acerca de:
 
-| Idioma | Antes | Ahora |
+| Idioma | Antes (6 de octubre) | Ahora (19 de octubre) |
 | --- | --- | --- |
-| Español | 60.0, REVIEW | pendiente de re-ejecutar |
-| English | 77.2, PASS | pendiente de re-ejecutar |
+| Español | 60.0, REVIEW | **59.3, REVIEW** (variación de longitud 0.63, antes 0.32) |
+| English | 77.2, PASS | **75.4, PASS** (variación de longitud 0.56, antes 0.33) |
 
-Estas son heurísticas locales, no una prueba de autoría. Las reglas de pronombres y contracciones están orientadas al inglés, por lo que la puntuación de voz no sirve para evaluar español. La revisión manual prioriza claridad, naturalidad y fidelidad a la experiencia.
+La variación de longitud era el único defecto medible y está corregida. En español, la nota sigue en REVIEW porque el indicador más débil es **VOICE (30.0)**: las reglas de pronombres y contracciones del detector están orientadas al inglés, y un texto en español en primera persona ("puedo aportar", "reduje") no se contabiliza como voz. Es un **falso positivo**, no un defecto de redacción, y la única forma de subir esa cifra sería escribir en inglés o en tercera persona, lo que no corresponde a un perfil de LinkedIn. El resto de indicadores está en 100 (especificidad, léxico y huella tipográfica).
+
+Estas son heurísticas locales, no una prueba de autoría. La revisión manual prioriza claridad, naturalidad y fidelidad a la experiencia.

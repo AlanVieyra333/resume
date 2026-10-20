@@ -1,14 +1,14 @@
 # FACTS — fuente única de verdad de los perfiles del CV
 
 Este archivo es la referencia para **qué es cierto** y **qué no se puede afirmar** en
-los seis archivos de contenido del CV. Los perfiles lo citan en su cabecera.
+los ocho archivos de contenido del CV. Los perfiles lo citan en su cabecera.
 
 Cuando cambies un dato, actualízalo aquí **primero** y luego en los perfiles.
 `scripts/check-profiles.sh` verifica mecánicamente varios de estos invariantes.
 
 ---
 
-## 1. Empleadores y fechas (invariante — idéntico en los 3 perfiles × 2 idiomas)
+## 1. Empleadores y fechas (invariante — idéntico en los 4 perfiles × 2 idiomas)
 
 | Empleador | Cliente | Rol | Fechas | Ubicación |
 |---|---|---|---|---|
@@ -16,7 +16,7 @@ Cuando cambies un dato, actualízalo aquí **primero** y luego en los perfiles.
 | IDS Comercial S.A. de C.V. | Banamex | Fullstack + DevOps Engineer | Ene 2021 – Ago 2024 | México, remoto |
 | Proyecto continuo (GLOBAL HITSS → Everis) | Telcel | Fullstack Software Engineer | Jul 2018 – Dic 2020 | Ciudad de México |
 | GDP administración S de RL de CV (Grupo de la Parra) | — | Freelance, líder técnico | Jun 2021 – Dic 2021 | Ciudad de México |
-| Proyectos freelance e independientes | — | React Native Developer / Mobile Project Lead | Ago 2026 – Actualidad | Ciudad de México |
+| Proyectos freelance e independientes | — | React Native Developer / Mobile Project Lead | 2023 – 2026 | Ciudad de México |
 
 > **El freelance se solapa con IDS Comercial (Ene 2021 – Ago 2024).** Fechas confirmadas por
 > Alan el 2026-10: junio–diciembre de 2021. Fue trabajo paralelo mientras estaba contratado
@@ -25,13 +25,18 @@ Cuando cambies un dato, actualízalo aquí **primero** y luego en los perfiles.
 
 > **El desarrollo móvil freelance se solapa con Veradat (Ago 2024 – Oct 2026).** Alan confirmó
 > el 2026-10 que el trabajo móvil corre en paralelo a la relación laboral con Veradat. Se publica
-> como una sección propia, "Freelance & Independent Mobile Development", y **no** se fusiona con
-> Veradat ni se presenta como un puesto employed. Es trabajo paralelo, declarado como tal.
+> dentro de la sección de **proyectos independientes** ("Selected & Independent Projects" /
+> "Proyectos Destacados e Independientes"), y **no** se fusiona con Veradat ni se presenta como un
+> puesto employed. Es trabajo paralelo, declarado como tal.
+>
+> **Periodo del trabajo móvil: 2023 – 2026, solo con años.** Alan confirmó el 2026-10-19 que lleva
+> usando React Native desde años anteriores, y pidió que el bloque se feche **sin meses**
+> (`2023 -- 2026`, idéntico en EN y ES). Antes se publicaba como "Ago 2026 – Actualidad".
 
 > **GLOBAL HITSS: Jul 2018 – Sep 2019; Everis: Sep 2019 – Dic 2020.**
 > Cambio de consultora a mitad del proyecto continuo.
 
-Eliminado de los tres perfiles en la revisión 2026-10: **Nova Solutions / Banco Multiva**
+Eliminado de los cuatro perfiles en la revisión 2026-10: **Nova Solutions / Banco Multiva**
 (Frontend Jr., Mar 2017 – May 2018) y **CINVESTAV** (maestría no concluida, sin grado).
 
 ---
@@ -51,6 +56,7 @@ Eliminado de los tres perfiles en la revisión 2026-10: **Nova Solutions / Banco
 | Aprovisionamiento | 2 h → 20 min (≈83 %) | Veradat |
 | Experiencia Python / Go | confirmada (años no publicados) | Veradat |
 | Experiencia Claude Code | confirmada (tiempo no publicado) | Veradat |
+| Plugin de Claude Code para la plataforma | 4 skills · 35 scripts Python (~10,800 líneas) · ~3,200 líneas de `SKILL.md` | Veradat |
 | Microservicios en producción | 10 | Banamex |
 | Transacciones diarias por sucursal | ≈1,000 | Banamex |
 | Resolución de incidentes QA | 2–3 h promedio; hasta 1 semana en casos complejos | Banamex |
@@ -58,7 +64,7 @@ Eliminado de los tres perfiles en la revisión 2026-10: **Nova Solutions / Banco
 | Fuerza laboral cubierta por el sistema | 5,000 empleados | Freelance |
 | Contrato de entrega del trabajo móvil | 12 ADRs, 20 specs, 12 runbooks | Freelance móvil |
 | Workflows de CI/CD del trabajo móvil | 6 (GitHub Actions) | Freelance móvil |
-| Archivos de prueba del trabajo móvil | 95 (Lead/DevOps) · 124 (Full Stack) | Freelance móvil |
+| Archivos de prueba del trabajo móvil | 95 (Lead/DevOps/AI) · 124 (Full Stack) | Freelance móvil |
 | Cobertura de pruebas (Full Stack) | 85.9 % sentencias · 95.2 % funciones | Freelance móvil |
 | Pasos del pipeline de estimación (Ley 73) | 8 funciones puras | Freelance móvil |
 | Semanas cotizadas promediadas | 250 últimas | Freelance móvil |
@@ -69,7 +75,7 @@ Eliminado de los tres perfiles en la revisión 2026-10: **Nova Solutions / Banco
 
 ### Veradat
 - Diseñó y mantiene 10 pipelines de CI/CD en Azure DevOps para 3 equipos.
-- Charts de Helmtablendo como **estándar de despliegue**, adoptado por los 3 equipos.
+- Charts de Helm como **estándar de despliegue**, adoptado por los 3 equipos.
 - Administra **21 clústeres de preproducción**, todos de preproducción (ninguno de producción):
   - **9 en QA sobre Kubernetes**
   - **4 en DEV sobre OpenShift**
@@ -92,6 +98,22 @@ Eliminado de los tres perfiles en la revisión 2026-10: **Nova Solutions / Banco
   pidió en 2026-10 mantener ese mismo formato para no destacar Python/Go/Claude Code con un
   baremo distinto al resto.)
 - Claude Code como asistente de desarrollo.
+- **Plugin de Claude Code para la plataforma Veradat** (confirmado por Alan el 2026-10-19 y
+  verificado sobre el código de la suite):
+  - **4 skills**: `devops-ado` (Azure DevOps), `devops-aws` (AWS Secrets Manager y Security
+    Groups), `devops-k8s` (operación de Kubernetes/OpenShift) y `devops-snyk` (reportes de
+    vulnerabilidades de Snyk).
+  - **35 scripts en Python** (~10,800 líneas) y **~3,200 líneas de documentación `SKILL.md`**,
+    más un script que **genera automáticamente el índice de capacidades** a partir del frontmatter.
+  - Cada skill **detecta la intención en lenguaje natural** y la ejecuta con un script
+    determinista: es enrutado de peticiones a scripts, no una llamada a un modelo.
+  - Operaciones reales de plataforma ejecutadas con ellos: validación de releases, creación de
+    work items, gestión de tags, redespliegues de nodos, regeneración de imágenes base, obtención
+    de secretos, auditorías de configuración y reportes de Snyk.
+  - **El número de capacidades no se publica**: el índice autogenerado dice 17 y el frontmatter
+    del `SKILL.md` dice 18; no hay una cifra única verificable.
+  - Los identificadores internos de esa suite (board, wiki, bastiones, orgs y nombres de
+    agentes) se generalizan según la §4c: se publica la función, no el artefacto.
 - Remediación de vulnerabilidades con SonarQube Cloud, Snyk y Mend.
 - **Arquitectura hexagonal: la REVISÓ. No la implementó.** Desacopla cada microservicio de
   Postgres, Oracle, RabbitMQ, Kafka, IBM MQ y SQS.
@@ -154,8 +176,9 @@ Eliminado de los tres perfiles en la revisión 2026-10: **Nova Solutions / Banco
 ### Desarrollo móvil freelance (React Native) — agregado 2026-10
 
 Trabajo paralelo y propio: proyectos pequeños para terceros, en React Native. Se publica como
-**una sola sección** en los tres perfiles ("Freelance & Independent Mobile Development" /
-"Desarrollo Móvil Freelance e Independiente"), **sin nombres de proyecto**.
+**una sub-entrada** dentro de la sección única de proyectos independientes ("Selected & Independent
+Projects" / "Proyectos Destacados e Independientes"), junto con la plataforma de cumplimiento de
+Grupo de la Parra, **sin nombres de proyecto**.
 
 **Proyectos cubiertos (descritos, nunca nombrados):**
 - Un marketplace de dos lados (el de "find a friend").
@@ -201,6 +224,8 @@ Jest / jest-expo / @testing-library/react-native; EAS Update; GitHub Actions.
 - **DevOps** — entrega y despliegue: GitHub Actions, puertas de release, EAS Update.
 - **Lead** — liderazgo: dirección técnica, monorepo, contrato de entrega, puertas de release.
 - **Full Stack** — implementación: navegación, theming, pipeline del estimador, validación y pruebas.
+- **AI Engineer** — entrega agéntica: contrato de entrega ejecutable (ADRs, specs, runbooks,
+  worktree por slice) y puertas de release. Sin afirmar autoría de código.
 
 ### Educación y certificaciones
 - IPN – ESCOM, B.Sc. Computer Systems Engineering, 2014–2018.
@@ -209,7 +234,7 @@ Jest / jest-expo / @testing-library/react-native; EAS Update; GitHub Actions.
   número de versión junto al nombre porque al lado de una certificación de 2013 leería como
   desfase. La cifra queda aquí para responder con precisión si un reclutador pregunta.
 - Scrum Fundamentals – SCRUMstudy (2018).
-- Inglés B2 (upper intermediate). Declarado honestamente en los tres perfiles.
+- Inglés B2 (upper intermediate). Declarado honestamente en los cuatro perfiles.
 
 ---
 
@@ -221,7 +246,9 @@ Verificado como **no confirmado**. `check-profiles.sh` falla si aparece en cualq
 |---|---|
 | SLO, error budgets, objetivos de disponibilidad | Solo se confirmó guardia/on-call |
 | Postmortems, RCA | No confirmados |
-| Runbooks **en la experiencia laboral** | No confirmados. Los runbooks que sí existen son los 12 del contrato de entrega móvil (§3); `check-profiles.sh` los valida solo dentro de esa sección |
+| **Entrenamiento de modelos, fine-tuning, RAG, embeddings, bases vectoriales, MLOps o serving de modelos** | Ese trabajo no existe. Su IA es **aplicada**: skills de Claude Code que enrutan una petición en lenguaje natural a un script determinista (§3). El perfil IA lo declara así, sin insinuar ML |
+| **Integración con APIs de LLM, "ingeniería de prompts a escala" o autoría de código generado por IA** | La suite no hace llamadas a modelos: es enrutado a scripts. Y la autoría del código del marketplace está bajo la cuenta del cliente (§3): no se publica como propia |
+| Runbooks **en la experiencia laboral** | No confirmados. Los runbooks que sí existen son los 12 del contrato de entrega móvil (§3); `check-profiles.sh` los valida solo dentro de la sub-entrada móvil |
 | Guardia 24/7 o en rotación | La guardia fue dentro del horario laboral y sin rotación |
 | **"Implementó arquitectura hexagonal"** | La revisó; la implementación fue de otra persona |
 | Liderar Scrum, priorizar backlog del equipo, facilitar ceremonias | Era miembro del equipo |
@@ -232,7 +259,7 @@ Verificado como **no confirmado**. `check-profiles.sh` falla si aparece en cualq
 **Confirmado y publicado:**
 - ACM–ICPC (selección de etapa, 2015–2017) y Google Code Jam (2019). Verificados en el CV
   pre-reescritura (`git show 59f3351~1:cv.tex`) y confirmados por Alan; reemplazan a los premios de
-  Coding Rush (2014) y Olimpiada Mexicana (2013), que se retiraron de los tres perfiles.
+  Coding Rush (2014) y Olimpiada Mexicana (2013), que se retiraron de los cuatro perfiles.
   Desde la revisión 2026-10 se publican bajo el rótulo **"Competitive Programming" /
   "Programación competitiva"**, no "Awards": son credenciales de concurso de programación, y
   llamarlas premios corporativos las subestimaba. El nombre de la categoría está en la lista de
@@ -245,16 +272,26 @@ Verificado como **no confirmado**. `check-profiles.sh` falla si aparece en cualq
 - *"Stratified Docker image strategy"* (separar librerías comunes del código de cada microservicio)
   se eliminó de los perfiles: describía un patrón de build de Banamex que no corresponde a lo
   que realmente se hizo. Lo que hay en Veradat es la matriz de imágenes por combinación tecnológica.
-- Gestión de stakeholders: **confirmada y publicada** en los seis archivos de contenido a partir
+- Gestión de stakeholders: **confirmada y publicada** en los ocho archivos de contenido a partir
   de la revisión 2026-10. Ver sección 3.
 
 ---
 
 ## 4b. Texto publicable en LinkedIn
 
-[LinkedIn_perfil_AFRV_propuesta.md](LinkedIn_perfil_AFRV_propuesta.md) contiene bloques ```text
-destinados a publicarse. `scripts/check-profiles.sh` los escanea con las mismas guardarraíles que
-los perfiles, salvo el chequeo de skills huérfanas (no aplica: no hay filas de skills).
+[LinkedIn_perfil_AFRV_propuesta.md](LinkedIn_perfil_AFRV_propuesta.md) contiene **25 bloques
+```text** destinados a publicarse. `scripts/check-profiles.sh` los escanea con las mismas
+guardarraíles que los perfiles, salvo el chequeo de skills huérfanas (no aplica: no hay filas de
+skills).
+
+El bloque móvil va delimitado por los marcadores `<!-- mobile-begin -->` / `<!-- mobile-end -->`,
+que quedan **fuera** de las vallas ```text: son los que acotan la mención de los 12 runbooks y
+no deben acabar en el texto que se pega en LinkedIn. El bloque de IA (plugin de Claude Code) es
+una viñeta más de la experiencia de Veradat, con el mismo alcance que en los perfiles.
+
+Para editarlo: el copy se mide con `humanize.py` y `detect.py` (bloque a bloque, nunca sobre un
+`.tex`) y el procedimiento completo está en [AGENTS.md](AGENTS.md) §8. La calificación de los
+cuatro perfiles está en [RECRUITER_REVIEW.md](RECRUITER_REVIEW.md).
 
 ---
 
@@ -282,13 +319,14 @@ describe capacidad, herramienta de mercado o dominio, se conserva.
 > tabla de hallazgo, plan de remediación y firma — Snyk, área de seguridad del cliente")
 > describía el formato de un documento interno: o se pasa por alto, o se lee como texto
 > copiado del manual de operaciones del cliente. `scripts/check-profiles.sh` sigue exigiendo
-> la cadena "dashboards and boards" / "dashboards y boards" en los seis perfiles.
+> la cadena "dashboards and boards" / "dashboards y boards" en los ocho perfiles.
 
 **Lo que NO se generaliza** (sí aporta a quien contrata):
 
 - Herramientas de mercado yversión: Azure DevOps, Terraform, Kubernetes, Snyk, Splunk, ServiceNow.
 - Regulatory bodies del dominio: SAT, IMSS, INFONAVIT, STPS, CFDI. Dan profundidad de sector.
-- Métricas: 70 microservicios, 9 clústeres, 6 h → 1 h, 1,000 transacciones/día, 5,000 empleados.
+- Métricas: 70 microservicios, 21 clústeres de preproducción, 6 h → 1 h, 1,000 transacciones/día,
+  5,000 empleados.
 - Empleadores y clientelas: Veradat, IDS Comercial, GLOBAL HITSS, Everis, Banamex, Telcel.
 - Integraciones con productos de terceros en el proyecto freelance (p. ej. **Contpaqi**): evidencia
   de trabajo real con sistemas externos.
@@ -299,16 +337,17 @@ describe capacidad, herramienta de mercado o dominio, se conserva.
 
 Cada perfil conserva su propio foco sobre los mismos hechos. **No contradecirse.**
 
-| | DevOps | DevOps/SRE Lead | Full Stack |
-|---|---|---|---|
-| Título | DevOps Engineer · AWS, K8s, CI/CD | DevOps/SRE Engineer Lead · Debt Remediation | Senior Full Stack Software Engineer |
-| Abre con | Provisioning AWS/Terraform, velocidad de despliegue | Deuda técnica, ISO 27001, liderazgo, gobernanza | Ownership de entrega, arquitectura de microservicios |
-| Hexagonal + imágenes | Una línea (ángulo infra) | Protagonista (revisión + gobernanza) | Una línea (ángulo arquitectura) |
-| ISO 27001 | Una línea | Protagonista, ambas empresas | Una línea |
-| Mentoring / guardia | Se omite | Protagonista | Se omite |
-| POM padre Maven | Promovido (deuda técnica) | Promovido (estándar) | Se mantiene |
-| Proyecto freelance | 3 bullets, comprimido | 3 bullets, elevado (compliance) | 5 bullets, completo |
-| Sección de desarrollo móvil (una sola, sin nombres de proyecto) | 2 bullets — **énfasis en despliegue**: GitHub Actions, puertas de release, EAS Update, producción | 2 bullets — **énfasis en liderazgo**: dirección técnica, monorepo, contrato de entrega, puertas de release | 3 bullets — **éntesis en implementación**: navegación, theming, pipeline del estimador, validación y pruebas |
+| | DevOps | DevOps/SRE Lead | Full Stack | AI Engineer |
+|---|---|---|---|---|
+| Título | DevOps Engineer · AWS, K8s, CI/CD | DevOps/SRE Engineer Lead · Debt Remediation | Senior Full Stack Software Engineer | AI Engineer · Claude Code & Agent Skills |
+| Abre con | Provisioning AWS/Terraform, velocidad de despliegue | Deuda técnica, ISO 27001, liderazgo, gobernanza | Ownership de entrega, arquitectura de microservicios | Tooling agéntico: plugin de Claude Code, 4 skills, enrutado intención→script |
+| Hexagonal + imágenes | Una línea (ángulo infra) | Protagonista (revisión + gobernanza) | Una línea (ángulo arquitectura) | Una línea (revisada) |
+| ISO 27001 | Una línea | Protagonista, ambas empresas | Una línea | Una línea |
+| Mentoring / guardia | Se omite | Protagonista | Se omite | Se omite |
+| POM padre Maven | Promovido (deuda técnica) | Promovido (estándar) | Se mantiene | Se mantiene |
+| Proyecto freelance (cumplimiento) | 3 bullets, comprimido | 3 bullets, elevado (compliance) | 5 bullets, completo | 2 bullets, elevado (compliance + motor de auditoría) |
+| Sub-entrada móvil (sin nombres de proyecto) | 2 bullets — **énfasis en despliegue**: GitHub Actions, puertas de release, EAS Update, producción | 2 bullets — **énfasis en liderazgo**: dirección técnica, monorepo, contrato de entrega, puertas de release | 3 bullets — **éntesis en implementación**: navegación, theming, pipeline del estimador, validación y pruebas | 2 bullets — **énfasis en entrega agéntica**: contrato de entrega (ADRs, specs, runbooks, worktree por slice) y puertas de release |
+| Bloque de IA (plugin de Claude Code) | Una línea (asistente de desarrollo) | Una línea | Una línea | **Protagonista**: 4 skills, 35 scripts Python (~10,800 líneas), ~3,200 líneas de `SKILL.md`, índice autogenerado |
 
 ---
 
@@ -322,11 +361,21 @@ Comprueba: fechas y empleadores consistentes, métricas iguales entre EN y ES, a
 términos prohibidos, sin herramientas huérfanas en las filas de skills, y cero ocurrencias de
 `Citibanamex` (el nombre correcto es **Banamex**).
 
-Además, desde la revisión 2026-10 comprueba también la **sección móvil**: exactamente una
-sección freelance por perfil, con React Native y Expo, fechada Ago 2026 – Actualidad, **sin
-nombres de proyecto**, y **sin afirmaciones de publicación en tiendas, usuarios ni ingresos**.
-Los runbooks solo se aceptan dentro del contrato de entrega móvil, nunca en la experiencia
-laboral.
+Además, desde la revisión 2026-10 comprueba también la **sección de proyectos independientes**:
+exactamente una sección por perfil, con las dos sub-entradas (móvil y cumplimiento), la sub-entrada
+móvil con React Native y Expo fechada **2023 – 2026** (solo años), **sin nombres de proyecto**, y
+**sin afirmaciones de publicación en tiendas, usuarios ni ingresos**. Los runbooks solo se aceptan
+dentro del contrato de entrega móvil, nunca en la experiencia laboral: el rango se delimita con los
+marcadores `% mobile-begin` / `% mobile-end`.
 
 Además, todos los PDFs deben quedar en **2 páginas** — es el criterio de aceptación de layout.
-Los seis perfiles ATS y los seis diseñados (12 PDF) quedan hoy en 2 páginas.
+Los ocho perfiles ATS y los ocho diseñados (16 PDF) quedan hoy en 2 páginas.
+
+En la variante con diseño, la barra lateral es una caja que no se parte entre páginas: si su
+contenido no cabe, **se pierde en silencio**. Hay que medirla (`pdftotext -bbox` y la
+coordenada `yMax` de la última palabra de la barra) después de tocarla. El marco de texto
+termina en **766.5 pt** (792 − 25.5 de margen inferior). Hoy las ocho barras caben: la más
+ajustada es la del perfil Full Stack ES, en 764.4 pt.
+
+El procedimiento completo de edición y homologación —qué tocar al cambiar cada dato, el
+checklist de cierre y las convenciones de commit— está en [AGENTS.md](AGENTS.md).

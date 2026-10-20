@@ -2,7 +2,7 @@
 #
 # check-profiles.sh -- invariant checks across every resume profile.
 #
-# The repo compiles the same career facts into six content files (3 profiles x
+# The repo compiles the same career facts into eight content files (4 profiles x
 # EN/ES) that must never contradict each other. This script verifies the
 # mechanical invariants so drift is caught by `make check` instead of by a
 # recruiter. See FACTS.md for the source of truth behind every rule here.
@@ -16,8 +16,8 @@ FAIL=0
 pass() { printf '  \033[32mok\033[0m   %s\n' "$1"; }
 fail() { printf '  \033[31mFAIL\033[0m %s\n' "$1"; FAIL=1; }
 
-EN_FILES="lang/en.tex lang/fullstack/en.tex lang/lead/en.tex"
-ES_FILES="lang/es.tex lang/fullstack/es.tex lang/lead/es.tex"
+EN_FILES="lang/en.tex lang/fullstack/en.tex lang/lead/en.tex lang/ai/en.tex"
+ES_FILES="lang/es.tex lang/fullstack/es.tex lang/lead/es.tex lang/ai/es.tex"
 ALL_FILES="$EN_FILES $ES_FILES"
 # Copy-paste blocks that get published verbatim -- same claim rules apply.
 PUBLISHED="LinkedIn_perfil_AFRV_propuesta.md"
@@ -25,13 +25,22 @@ PUBLISHED="LinkedIn_perfil_AFRV_propuesta.md"
 # Profile pairs: EN and ES must agree on employers, dates and metrics.
 PAIRS="lang/en.tex:lang/es.tex
 lang/fullstack/en.tex:lang/fullstack/es.tex
-lang/lead/en.tex:lang/lead/es.tex"
+lang/lead/en.tex:lang/lead/es.tex
+lang/ai/en.tex:lang/ai/es.tex"
 
 # For .md, scan only the fenced ```text blocks (the copy-paste content).
 # Editorial prose outside them discusses the rules; it is not a claim.
+# The mobile markers are kept in the stream even though they live outside the
+# fences: they are what scopes the runbook check, and they must not reach the
+# copy the user pastes into LinkedIn.
 published_body() {
     if [ "${1##*.}" = "md" ]; then
-        awk '/^```text$/{f=1;next} /^```$/{f=0;next} f' "$1"
+        awk '
+            /^```text$/ {f=1; next}
+            /^```$/     {f=0; next}
+            f {print; next}
+            /<!-- mobile-(begin|end) -->/ {print}
+        ' "$1"
     else
         cat "$1"
     fi
@@ -45,7 +54,7 @@ done
 echo
 echo "== Forbidden employer name =="
 # Citibanamex -> Banamex was a deliberate rename. The old name must be gone.
-# Scope: the six content files only. FACTS.md documents this rename on purpose.
+# Scope: the eight content files only. FACTS.md documents this rename on purpose.
 if grep -n "Citibanamex" $ALL_FILES $PUBLISHED 2>/dev/null | grep -v "el nombre correcto"; then
     fail "Citibanamex still present in CV content -- the correct name is Banamex"
 else
@@ -93,21 +102,43 @@ for f in $ALL_FILES $PUBLISHED; do
 done
 pass "no SLO/SLI, error budget or postmortem claims"
 
-# The freelance mobile section is stripped out before the runbook check: the
-# runbook claim is legitimate THERE and nowhere else.
+echo
+echo "== No profile may imply machine learning =="
+# The AI work is applied/agentic: skills that route a natural-language request
+# to a deterministic script. There is no model training, no RAG, no vector store,
+# no MLOps and no LLM API in the career facts (FACTS.md section 4), so no
+# profile and no published block may hint at one.
+FORBIDDEN_ML="fine-?tun|\bRAG\b|embeddings?|vector (database|store)|MLOps|model training|machine learning|deep learning|foundation model|modelo de lenguaje|modelo fundacional|entrenamiento de modelos|entren[oó] un modelo|aprendizaje autom[aá]tico|redes neuronales|API de LLM|APIs de LLM"
+for f in $ALL_FILES $PUBLISHED; do
+    [ -f "$f" ] || continue
+    if [ "${f##*.}" = "md" ]; then
+        hits=$(published_body "$f" | grep -oiE "$FORBIDDEN_ML" | sort -u | tr '\n' ' ')
+    else
+        # LaTeX comments are source documentation, not published text: the AI
+        # profile's header comment names the excluded terms ON PURPOSE, to
+        # document the boundary for whoever edits it next. The ban applies to
+        # what the reader actually sees.
+        hits=$(sed -e 's/^[[:space:]]*%.*$//' "$f" | grep -oiE "$FORBIDDEN_ML" | sort -u | tr '\n' ' ')
+    fi
+    [ -n "$hits" ] && fail "$f implies ML work that does not exist: $hits"
+done
+pass "no model training, RAG, embeddings, MLOps or LLM API claims"
+
+# The freelance mobile sub-entry is stripped out before the runbook check: the
+# runbook claim is legitimate THERE and nowhere else. The sub-entry is
+# delimited by explicit markers, because it now shares a section with the
+# compliance platform -- a heading can no longer scope it.
 strip_mobile_section() {
-    awk '
-        /Independent Mobile Development/ { in_mobile = 1; next }
-        /Desarrollo Móvil Freelance e Independiente/ { in_mobile = 1; next }
-        in_mobile && /^\\section/ { in_mobile = 0 }
-        !in_mobile { print }
-    ' "$1"
+    case "${1##*.}" in
+        md) awk '/<!-- mobile-begin -->/{m=1;next} /<!-- mobile-end -->/{m=0;next} !m{print}' ;;
+        *)  awk '/^% mobile-begin/{m=1;next} /^% mobile-end/{m=0;next} !m{print}' ;;
+    esac
 }
 runbook_fail=0
 for f in $ALL_FILES $PUBLISHED; do
     [ -f "$f" ] || continue
     if [ "${f##*.}" = "md" ]; then
-        hits=$(published_body "$f" | grep -oiE "\brunbooks?\b" | sort -u | tr '\n' ' ')
+        hits=$(published_body "$f" | strip_mobile_section "$f" | grep -oiE "\brunbooks?\b" | sort -u | tr '\n' ' ')
     else
         hits=$(strip_mobile_section "$f" | grep -oiE "\brunbooks?\b" | sort -u | tr '\n' ' ')
     fi
@@ -193,30 +224,45 @@ check_metric "2h -> 20 min provisioning"   "2 hours to 20 minutes"    "2 horas a
 check_metric "~1,000 transactions/day"     "1(,|\\{,\\})000 transactions" "1(,|\\{,\\})000 transacciones"
 check_metric "5,000 employees"             "5(,|\\{,\\})000 employees" "5(,|\\{,\\})000 empleados"
 check_metric "1-day ServiceNow SLA"        "1-day (ServiceNow )?SLA"   "SLA de 1 día"
-pass "core metrics consistent across all six profiles"
+pass "core metrics consistent across all eight profiles"
 
 echo
-echo "== Freelance mobile section: one section, React Native, no project names =="
-# The three small mobile engagements (a two-sided marketplace, an IMSS Ley 73
-# pension estimator and a retired prototype) are presented as ONE freelance
-# section per profile -- never one section per app, and never by project name.
-MOBILE_EN="Independent Mobile Development"
-MOBILE_ES="Desarrollo Móvil Freelance e Independiente"
+echo "== Independent projects: one section, two sub-entries, mobile dated 2023-2026 =="
+# The freelance mobile work and the compliance platform are both independent
+# projects, so they share ONE section per profile with two sub-entries -- never
+# one section per project, and never by project name. The sub-entries are
+# delimited by explicit markers, which is also what scopes the runbook check.
+MOBILE_TITLE_EN="Mobile App Development (React Native)"
+MOBILE_TITLE_ES="Desarrollo de Aplicaciones Móviles (React Native)"
+COMPLIANCE_TITLE_EN="Subcontracting Law Compliance Management System"
+COMPLIANCE_TITLE_ES="Sistema de Gestión de Cumplimiento de la Ley de Subcontratación"
 for f in $EN_FILES; do
-    grep -qF "$MOBILE_EN" "$f" || fail "$f has no freelance mobile section"
+    n=$(grep -cE "^.section.*Independent Projects" "$f")
+    [ "$n" = "1" ] || fail "$f has $n independent-projects sections -- expected exactly one"
+    grep -qF "$MOBILE_TITLE_EN" "$f" || fail "$f has no mobile sub-entry"
+    grep -qF "$COMPLIANCE_TITLE_EN" "$f" || fail "$f has no compliance sub-entry"
     grep -q "React Native" "$f" || fail "$f does not mention React Native"
     grep -q "Expo" "$f" || fail "$f does not mention Expo"
-    grep -q "Aug 2026 -- Present" "$f" || fail "$f does not date the mobile section"
+    grep -qF "2023 -- 2026" "$f" || fail "$f does not date the mobile sub-entry as 2023 -- 2026"
+    grep -q "^% mobile-begin" "$f" || fail "$f is missing the % mobile-begin marker"
+    grep -q "^% mobile-end" "$f" || fail "$f is missing the % mobile-end marker"
 done
 for f in $ES_FILES; do
-    grep -qF "$MOBILE_ES" "$f" || fail "$f has no freelance mobile section"
+    n=$(grep -cE "^.section.*Proyectos Destacados e Independientes" "$f")
+    [ "$n" = "1" ] || fail "$f has $n independent-projects sections -- expected exactly one"
+    grep -qF "$MOBILE_TITLE_ES" "$f" || fail "$f has no mobile sub-entry"
+    grep -qF "$COMPLIANCE_TITLE_ES" "$f" || fail "$f has no compliance sub-entry"
     grep -q "React Native" "$f" || fail "$f does not mention React Native"
     grep -q "Expo" "$f" || fail "$f does not mention Expo"
-    grep -q "Ago 2026 -- Actualidad" "$f" || fail "$f does not date the mobile section"
+    grep -qF "2023 -- 2026" "$f" || fail "$f does not date the mobile sub-entry as 2023 -- 2026"
+    grep -q "^% mobile-begin" "$f" || fail "$f is missing the % mobile-begin marker"
+    grep -q "^% mobile-end" "$f" || fail "$f is missing the % mobile-end marker"
 done
-for f in $ALL_FILES; do
-    n=$(grep -cE "^.section.*(Independent Mobile Development|Desarrollo Móvil Freelance)" "$f")
-    [ "$n" = "1" ] || fail "$f has $n mobile sections -- expected exactly one"
+# The old, month-level dating of the mobile work is gone for good.
+for f in $ALL_FILES $PUBLISHED; do
+    [ -f "$f" ] || continue
+    hits=$(published_body "$f" | grep -oE "Aug 2026 -- Present|Ago 2026 -- Actualidad" | sort -u | tr '\n' ' ')
+    [ -n "$hits" ] && fail "$f still dates the mobile work with months: $hits"
 done
 # The section must not name the individual projects.
 MOBILE_NAMES="findafriend|find a friend|mi-prension|random.?binary"
@@ -225,7 +271,7 @@ for f in $ALL_FILES $PUBLISHED; do
     hits=$(published_body "$f" | grep -oiE "$MOBILE_NAMES" | sort -u | tr '\n' ' ')
     [ -n "$hits" ] && fail "$f names individual mobile projects: $hits"
 done
-pass "one mobile section per profile, React Native + Expo, no project names"
+pass "one independent-projects section per profile, two sub-entries, React Native + Expo, 2023-2026, no project names"
 
 echo
 echo "== Mobile section does not overclaim =="
@@ -247,6 +293,26 @@ for f in $ALL_FILES $PUBLISHED; do
     [ -n "$hits" ] && fail "$f ties ISO 27001 to audit/certification -- his role was implementing controls"
 done
 pass "no audit/certification claim attached to ISO 27001"
+
+echo
+echo "== AI profile: the Claude Code plugin is published with its real numbers =="
+# The plugin is the whole point of the AI profile, and its figures come from
+# the suite itself: 4 skills, 35 Python scripts, about 3,200 lines of SKILL.md.
+AI_FILES="lang/ai/en.tex lang/ai/es.tex"
+for f in $AI_FILES; do
+    grep -qF "Claude Code" "$f" || fail "$f does not mention Claude Code"
+    grep -qF "SKILL.md" "$f" || fail "$f does not document the skills"
+    grep -qE "4 skills" "$f" || fail "$f does not state the number of skills"
+    grep -qE "35 scripts" "$f" || fail "$f does not state the number of scripts"
+done
+# The number of capabilities is NOT published: the generated index says 17 and
+# the frontmatter says 18, so no single figure is verifiable (FACTS.md 3).
+for f in $ALL_FILES $PUBLISHED; do
+    [ -f "$f" ] || continue
+    hits=$(published_body "$f" | grep -oiE "\b[0-9]+ (capacit|capabilit)" | sort -u | tr '\n' ' ')
+    [ -n "$hits" ] && fail "$f publishes a capability count -- there is no single verifiable figure: $hits"
+done
+pass "AI profile publishes the plugin with its real numbers and no capability count"
 
 echo
 echo "== No skill is listed without evidence in the body =="

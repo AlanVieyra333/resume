@@ -17,6 +17,7 @@
 % Profile defaults: devops (uses lang/<lang>.tex).
 %   fullstack  -- Senior Full Stack Developer profile (lang/fullstack/<lang>.tex).
 %   lead       -- DevOps/SRE Engineer Lead profile (lang/lead/<lang>.tex).
+%   ai         -- AI Engineer profile (lang/ai/<lang>.tex).
 
 \providecommand{\profile}{devops}
 \providecommand{\lang}{en} % default
@@ -45,7 +46,11 @@
     \ifdefstring{\profile}{lead}{%
         \designinput{lang/lead/\lang.tex}%
     }{%
-        \designinput{lang/\lang.tex}%
+        \ifdefstring{\profile}{ai}{%
+            \designinput{lang/ai/\lang.tex}%
+        }{%
+            \designinput{lang/\lang.tex}%
+        }%
     }%
 }
 

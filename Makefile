@@ -5,17 +5,21 @@
 #   devops      Original DevOps Engineer CV         -> out/Resume_DevOps_AFRV_{EN,ES}.pdf
 #   fullstack   Senior Full Stack Developer CV      -> out/Resume_FullStack_AFRV_{EN,ES}.pdf
 #   lead        DevOps/SRE Engineer Lead CV         -> out/Resume_DevOpsLead_AFRV_{EN,ES}.pdf
+#   ai          AI Engineer CV                      -> out/Resume_AIEngineer_AFRV_{EN,ES}.pdf
 #
 # Common targets:
-#   make                default: builds the devops profile, both languages
+#   make                default: builds the first target of `all` (fullstack), both languages
 #   make all            builds every profile, every language
 #   make devops         builds only the devops profile (both languages)
 #   make fullstack      builds only the fullstack profile (both languages)
 #   make lead           builds only the lead profile (both languages)
+#   make ai             builds only the AI Engineer profile (both languages)
 #   make fullstack-en   builds fullstack profile, English only
 #   make fullstack-es   builds fullstack profile, Spanish only
 #   make lead-en        builds lead profile, English only
 #   make lead-es        builds lead profile, Spanish only
+#   make ai-en          builds AI Engineer profile, English only
+#   make ai-es          builds AI Engineer profile, Spanish only
 #   make devops-en      builds devops profile, English only
 #   make devops-es      builds devops profile, Spanish only
 #   make docker         builds every PDF inside the texlive Docker image
@@ -28,7 +32,7 @@
 #
 #   DESIGN can be combined with any target: `make DESIGN=1 devops-es` builds only
 #   the designed Spanish DevOps CV. `make design` is shorthand for building all
-#   six with DESIGN=1; both variants can therefore live side by side in out/.
+#   eight with DESIGN=1; both variants can therefore live side by side in out/.
 #
 # Output layout: every per-target rule writes its PDF to $(OUTDIR) (default
 # `out/`) via `latexmk -outdir`. Intermediate files produced by latexmk in the
@@ -43,8 +47,8 @@ PROFILE ?= devops
 
 # Every source a PDF depends on. Do NOT use a `**/*.tex` glob here: GNU Make
 # expands `**` like a single `*`, so `**/*.tex` resolves only to lang/*.tex and
-# silently misses lang/fullstack/*.tex and lang/lead/*.tex -- editing those
-# files would then produce a stale PDF with no error.
+# silently misses lang/fullstack/*.tex, lang/lead/*.tex and lang/ai/*.tex --
+# editing those files would then produce a stale PDF with no error.
 TEXSOURCES := main.tex $(wildcard lang/*.tex lang/*/*.tex styles/*.tex) style.cls profile.jpg
 
 # Layout variant. Command-line variables are set before this file is read, so
@@ -65,20 +69,20 @@ endif
 OUTDIR := out
 
 .PHONY: all devops devops-en devops-es fullstack fullstack-en fullstack-es \
-        lead lead-en lead-es design design-docker docker check clean
+        lead lead-en lead-es ai ai-en ai-es design design-docker docker check clean
 
 #-----------------------------------------------------------------------
 # Default and aggregate targets
 #-----------------------------------------------------------------------
 
-all: fullstack lead devops
+all: fullstack lead devops ai
 
 #-----------------------------------------------------------------------
 # Per-profile compilation
 #
 # Each profile/language triple is generated from the same source tree by
 # setting `\profile` and `\lang` for that single pdflatex run. The PROFILE_RULE
-# template expands into the six PDF rules below; adding a seventh profile is
+# template expands into the eight PDF rules below; adding a ninth profile is
 # one new `$(call PROFILE_RULE,...)` line.
 #
 # Args: (1) profile id (lowercase, used inside `\def\profile{...}` and in the
@@ -120,6 +124,8 @@ $(eval $(call PROFILE_RULE,lead,en,DevOpsLead,EN))
 $(eval $(call PROFILE_RULE,lead,es,DevOpsLead,ES))
 $(eval $(call PROFILE_RULE,devops,en,DevOps,EN))
 $(eval $(call PROFILE_RULE,devops,es,DevOps,ES))
+$(eval $(call PROFILE_RULE,ai,en,AIEngineer,EN))
+$(eval $(call PROFILE_RULE,ai,es,AIEngineer,ES))
 
 #-----------------------------------------------------------------------
 # Phony per-profile convenience targets
@@ -128,6 +134,7 @@ $(eval $(call PROFILE_RULE,devops,es,DevOps,ES))
 fullstack: $(OUTDIR)/Resume_FullStack_AFRV_EN$(PDFSUF).pdf $(OUTDIR)/Resume_FullStack_AFRV_ES$(PDFSUF).pdf
 lead:      $(OUTDIR)/Resume_DevOpsLead_AFRV_EN$(PDFSUF).pdf $(OUTDIR)/Resume_DevOpsLead_AFRV_ES$(PDFSUF).pdf
 devops:    $(OUTDIR)/Resume_DevOps_AFRV_EN$(PDFSUF).pdf   $(OUTDIR)/Resume_DevOps_AFRV_ES$(PDFSUF).pdf
+ai:        $(OUTDIR)/Resume_AIEngineer_AFRV_EN$(PDFSUF).pdf $(OUTDIR)/Resume_AIEngineer_AFRV_ES$(PDFSUF).pdf
 
 fullstack-en: $(OUTDIR)/Resume_FullStack_AFRV_EN$(PDFSUF).pdf
 fullstack-es: $(OUTDIR)/Resume_FullStack_AFRV_ES$(PDFSUF).pdf
@@ -135,6 +142,8 @@ lead-en:      $(OUTDIR)/Resume_DevOpsLead_AFRV_EN$(PDFSUF).pdf
 lead-es:      $(OUTDIR)/Resume_DevOpsLead_AFRV_ES$(PDFSUF).pdf
 devops-en:    $(OUTDIR)/Resume_DevOps_AFRV_EN$(PDFSUF).pdf
 devops-es:    $(OUTDIR)/Resume_DevOps_AFRV_ES$(PDFSUF).pdf
+ai-en:        $(OUTDIR)/Resume_AIEngineer_AFRV_EN$(PDFSUF).pdf
+ai-es:        $(OUTDIR)/Resume_AIEngineer_AFRV_ES$(PDFSUF).pdf
 
 #-----------------------------------------------------------------------
 # Designed layout (two-column, recruiter-facing)

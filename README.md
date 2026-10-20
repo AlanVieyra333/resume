@@ -1,6 +1,6 @@
 # Resume — Alan Fernando Rincón Vieyra
 
-Repositorio LaTeX que genera el CV de **Alan Fernando Rincón Vieyra** en **tres perfiles profesionales y dos idiomas**, en **dos variantes de diseño** (12 PDFs en total).
+Repositorio LaTeX que genera el CV de **Alan Fernando Rincón Vieyra** en **cuatro perfiles profesionales y dos idiomas**, en **dos variantes de diseño** (16 PDFs en total).
 
 El mismo contenido se compila de dos formas, porque son dos lecturas distintas del mismo currículum:
 
@@ -20,12 +20,13 @@ Ambas variantes salen del **mismo contenido** (`lang/*.tex`); lo único que camb
 | **DevOps Engineer** | Cloud e infraestructura: AWS, Terraform, CI/CD | [Resume_DevOps_AFRV_EN.pdf](out/Resume_DevOps_AFRV_EN.pdf) | [Resume_DevOps_AFRV_ES.pdf](out/Resume_DevOps_AFRV_ES.pdf) |
 | **DevOps/SRE Engineer Lead** | Deuda técnica, estándares y cumplimiento | [Resume_DevOpsLead_AFRV_EN.pdf](out/Resume_DevOpsLead_AFRV_EN.pdf) | [Resume_DevOpsLead_AFRV_ES.pdf](out/Resume_DevOpsLead_AFRV_ES.pdf) |
 | **Senior Full Stack Software Engineer** | Ownership de entrega y arquitectura de microservicios | [Resume_FullStack_AFRV_EN.pdf](out/Resume_FullStack_AFRV_EN.pdf) | [Resume_FullStack_AFRV_ES.pdf](out/Resume_FullStack_AFRV_ES.pdf) |
+| **AI Engineer** | IA aplicada y tooling agéntico: plugin de Claude Code, skills que enrutan intención a scripts | [Resume_AIEngineer_AFRV_EN.pdf](out/Resume_AIEngineer_AFRV_EN.pdf) | [Resume_AIEngineer_AFRV_ES.pdf](out/Resume_AIEngineer_AFRV_ES.pdf) |
 
-Cada PDF se compila desde el mismo `main.tex` con un `\def\profile{...}\def\lang{...}` distinto, lo que permite mantener una sola clase (`style.cls`) y seis bloques de contenido aislados (3 perfiles × 2 idiomas). Añadiendo `\def\design{1}` se obtiene la variante con diseño, cuyo nombre lleva el sufijo `_DESIGN` y convive en `out/` con la ATS.
+Cada PDF se compila desde el mismo `main.tex` con un `\def\profile{...}\def\lang{...}` distinto, lo que permite mantener una sola clase (`style.cls`) y ocho bloques de contenido aislados (4 perfiles × 2 idiomas). Añadiendo `\def\design{1}` se obtiene la variante con diseño, cuyo nombre lleva el sufijo `_DESIGN` y convive en `out/` con la ATS.
 
 ## Las dos variantes de diseño
 
-Ambas se construyen desde los mismos seis archivos de `lang/`. El contenido se marca con dos envoltorios que no hacen nada en la variante ATS:
+Ambas se construyen desde los mismos ocho archivos de `lang/`. El contenido se marca con dos envoltorios que no hacen nada en la variante ATS:
 
 ```latex
 \sidecol{ ... }   % barra lateral gris (con diseño) / texto normal (ATS)
@@ -43,7 +44,7 @@ Dos detalles que conviene conocer antes de tocar ese archivo:
 
 ```
 .
-├── main.tex                    # Punto de entrada: enruta a lang/{es,en}.tex, lang/lead/ o lang/fullstack/
+├── main.tex                    # Punto de entrada: enruta a lang/{es,en}.tex, lang/lead/, lang/fullstack/ o lang/ai/
 ├── style.cls                   # Clase base (ATS single column) + opción de clase `design`
 ├── styles/
 │   └── styledesign.tex         # Variante con diseño (banda, barra lateral, línea de tiempo)
@@ -51,9 +52,11 @@ Dos detalles que conviene conocer antes de tocar ese archivo:
 ├── profile.jpg                 # Foto de perfil (solo se usa en la variante con diseño)
 ├── out/                        # PDFs generados (gitignored; poblado por `make all`)
 ├── FACTS.md                    # Fuente única de verdad: hechos confirmados, métricas y límites de lo declarable
+├── AGENTS.md                   # Manual operativo: qué tocar al cambiar cada dato y checklist de cierre
+├── RECRUITER_REVIEW.md         # Calificación de cada perfil como reclutador senior, con las correcciones aplicadas
 ├── LICENSE                     # MIT (template original)
 ├── scripts/
-│   └── check-profiles.sh       # Verifica invariantes entre los 6 perfiles (make check)
+│   └── check-profiles.sh       # Verifica invariantes entre los 8 perfiles (make check)
 ├── LinkedIn_perfil_AFRV_propuesta.md
 │                               # Borrador de copy para LinkedIn (no se compila)
 ├── lang/
@@ -62,9 +65,12 @@ Dos detalles que conviene conocer antes de tocar ese archivo:
 │   ├── lead/
 │   │   ├── es.tex              # Perfil DevOps/SRE Lead, español
 │   │   └── en.tex              # Perfil DevOps/SRE Lead, inglés
-│   └── fullstack/
-│       ├── es.tex              # Perfil Full Stack, español
-│       └── en.tex              # Perfil Full Stack, inglés
+│   ├── fullstack/
+│   │   ├── es.tex              # Perfil Full Stack, español
+│   │   └── en.tex              # Perfil Full Stack, inglés
+│   └── ai/
+│       ├── es.tex              # Perfil AI Engineer, español
+│       └── en.tex              # Perfil AI Engineer, inglés
 └── .github/workflows/
     └── build-resume.yml        # CI: build + release por Conventional Commits
 ```
@@ -80,13 +86,14 @@ Dos detalles que conviene conocer antes de tocar ese archivo:
 
 | Comando | Resultado |
 | --- | --- |
-| `make` | Compila el perfil por defecto (`devops`) en ambos idiomas. |
-| `make all` | Compila los seis PDFs ATS (DevOps + DevOps Lead + Fullstack, ES + EN). |
-| `make design` | Compila los seis PDFs **con diseño** (sufijo `_DESIGN`). |
+| `make` | Compila el primer target de `all` (Full Stack) en ambos idiomas. |
+| `make all` | Compila los ocho PDFs ATS (DevOps + DevOps Lead + Full Stack + AI Engineer, ES + EN). |
+| `make design` | Compila los ocho PDFs **con diseño** (sufijo `_DESIGN`). |
 | `make DESIGN=1 <target>` | Compila ese target concreto con diseño (p. ej. `make DESIGN=1 devops-es`). |
 | `make devops` / `make devops-es` / `make devops-en` | Solo el perfil DevOps. |
 | `make lead` / `make lead-es` / `make lead-en` | Solo el perfil DevOps/SRE Lead. |
 | `make fullstack` / `make fullstack-es` / `make fullstack-en` | Solo el perfil Full Stack. |
+| `make ai` / `make ai-es` / `make ai-en` | Solo el perfil AI Engineer. |
 | `make docker` | Compila todo (ATS) dentro del contenedor `texlive/texlive:TL2025-historic`, sin instalar TeX localmente. |
 | `make design-docker` | Igual, pero con la variante con diseño. |
 | `make check` | Verifica los invariantes entre perfiles sin compilar. |
@@ -98,7 +105,7 @@ Dos detalles que conviene conocer antes de tocar ese archivo:
 # Solo el CV DevOps en español
 make devops-es
 
-# Los seis PDFs, sin TeX local (Docker)
+# Los ocho PDFs, sin TeX local (Docker)
 make docker
 
 # Limpiar artefactos antes de un commit
@@ -107,18 +114,22 @@ make clean
 
 ## Homologación entre perfiles
 
-Los seis archivos de contenido cuentan **los mismos hechos con énfasis distinto**, y no deben contradecirse. La fuente de verdad es [FACTS.md](FACTS.md): empleadores, fechas, métricas exactas, qué está confirmado y qué no se puede declarar.
+Los ocho archivos de contenido cuentan **los mismos hechos con énfasis distinto**, y no deben contradecirse. La fuente de verdad es [FACTS.md](FACTS.md): empleadores, fechas, métricas exactas, qué está confirmado y qué no se puede declarar.
 
 `scripts/check-profiles.sh` (también en el CI, antes de compilar) falla si algún perfil:
 
 - usa `Citibanamex` en lugar de `Banamex`;
 - declara SLO/SLI, error budgets, postmortems o runbooks (no confirmados);
+- insinúa trabajo de machine learning (entrenamiento, RAG, embeddings, MLOps, APIs de LLM) que no existe: la IA del CV es aplicada y agéntica;
 - afirma haber **implementado** la arquitectura hexagonal (la revisó);
 - vincula ISO 27001 con auditorías o certificaciones (su rol fue implementar y operar controles);
 - lista una herramienta en las skills que no aparece respaldada en la experiencia;
-- cambia una fecha o una métrica respecto a su hermano del otro idioma.
+- cambia una fecha o una métrica respecto a su hermano del otro idioma;
+- abre una sección de proyectos independientes distinta de la única que existe, o fecha el bloque móvil con meses en lugar de `2023 -- 2026`.
 
-Cuando cambies un dato, actualiza **FACTS.md primero** y después los perfiles. Cada PDF ATS debe quedar en **2 páginas**; los de la variante con diseño pueden llegar a 3.
+Cuando cambies un dato, actualiza **FACTS.md primero** y después los perfiles. Los dieciséis PDFs deben quedar en **2 páginas**: es el criterio de aceptación del layout. El procedimiento completo —qué archivo tocar al cambiar cada tipo de dato y el checklist de cierre— está en [AGENTS.md](AGENTS.md).
+
+La **calificación de cada perfil como lo vería un reclutador senior** —puntuación, fortalezas, debilidades, objeciones de screening con la respuesta preparada y qué PDF enviar a cada tipo de vacante— está en [RECRUITER_REVIEW.md](RECRUITER_REVIEW.md).
 
 ## Cómo editar el contenido
 
@@ -129,6 +140,7 @@ Cuando cambies un dato, actualiza **FACTS.md primero** y después los perfiles. 
 - [lang/es.tex](lang/es.tex) y [lang/en.tex](lang/en.tex) — perfil DevOps, español e inglés.
 - [lang/lead/es.tex](lang/lead/es.tex) y [lang/lead/en.tex](lang/lead/en.tex) — perfil DevOps/SRE Lead, español e inglés.
 - [lang/fullstack/es.tex](lang/fullstack/es.tex) y [lang/fullstack/en.tex](lang/fullstack/en.tex) — perfil Full Stack, español e inglés.
+- [lang/ai/es.tex](lang/ai/es.tex) y [lang/ai/en.tex](lang/ai/en.tex) — perfil AI Engineer, español e inglés.
 
 Cada archivo sigue la misma estructura (`\resumesummary`, `\skillrow`, `\resumeentry`, secciones con `\section*{...}`). Cuando actualices métricas o descripciones, mantén las cifras y el alcance alineados entre los dos idiomas — el CI no valida este detalle y un desajuste se nota rápido en una entrevista.
 
@@ -142,7 +154,7 @@ Las macros que vas a usar:
 | `\sidecol{...}` / `\maincol{...}` | Envolturas de columna. En la variante ATS son no-ops; con diseño mandan el bloque a la barra lateral o a la columna principal. |
 | `\resumesummaryheading{Título}` | Encabezado del resumen en la barra lateral (`About`, `Sobre mí`). No-op en ATS. |
 
-Los proyectos destacados pueden usar el mismo `\resumeentry` que las posiciones de experiencia, lo que les da el mismo tratamiento tipográfico (fechas y ubicación alineadas a la derecha).
+Los proyectos independientes (trabajo móvil freelance y plataforma de cumplimiento) viven en **una sola sección** por perfil, `Selected & Independent Projects` / `Proyectos Destacados e Independientes`, con dos `\resumeentry` dentro. Cada `\resumeentry` puede usar el mismo tratamiento tipográfico que las posiciones de experiencia (fechas y ubicación alineadas a la derecha). El bloque móvil está delimitado por los marcadores `% mobile-begin` / `% mobile-end` (y `<!-- mobile-begin -->` / `<!-- mobile-end -->` en el `.md`): son los que acotan la única afirmación permitida sobre runbooks — los 12 del contrato de entrega móvil.
 
 ## Versionado y releases
 

@@ -1,0 +1,90 @@
+% English AI Engineer profile.
+%
+% SCOPE (see FACTS.md sections 3 and 4): applied AI and agentic tooling. The
+% Claude Code plugin he built for the platform he operated routes a request in
+% natural language to a DETERMINISTIC script -- it is not model training, not
+% RAG, not MLOps and it calls no LLM API. Never let the wording imply otherwise.
+%
+% The plugin's real numbers (4 skills, 35 Python scripts of about 10,800 lines,
+% about 3,200 lines of SKILL.md) come from the suite itself. The number of
+% capabilities is NOT published: the generated index says 17 and the frontmatter
+% says 18, and there is no single verifiable figure. Internal identifiers
+% (boards, wikis, bastions, orgs, agent names) are generalised per FACTS.md 4c.
+%
+% Keep metrics, employers and scope aligned with lang/ai/es.tex and with the
+% other profiles; FACTS.md is the source of truth for every claim.
+
+\resumeaddress{Mexico City, Mexico \textbar\ UTC-6 (US Central)}
+\resumejobtitle{AI Engineer \textbar\ Claude Code \& Agent Skills}
+\resumesummary{AI Engineer with a software development background since 2017, focused on applied AI and agentic tooling over production infrastructure. Built the \textbf{Claude Code plugin} for the platform: \textbf{4 skills} that read a request in natural language, detect the intent and dispatch it to \textbf{35 deterministic Python scripts}, documented in about \textbf{3{,}200 lines of SKILL.md}. The unit of work is the executable contract between intent and script -- release validation, node redeploys, configuration audits, secret lookups and vulnerability reports, run against the real platform. Before that, \textbf{10 CI/CD pipelines} for \textbf{3 teams} and \textbf{21 pre-production clusters}.}
+\resumesummaryheading{About}
+\makeheader
+
+% Sidebar column. In the ATS layout \sidecol is a no-op and this prints inline.
+\sidecol{%
+\section*{Technical Skills}
+\skillrow{AI \& Agentic Tooling}{Claude Code, SKILL.md, Python, Bash, YAML, JSON}
+\skillrow{Platform \& Orchestration}{Kubernetes, OpenShift, Docker, Helm}
+\skillrow{Cloud \& Infrastructure as Code}{AWS (EC2, S3, VPC, Security Groups, IAM, RDS, CloudWatch, Route~53), Azure, Terraform, Ansible, Linux}
+\skillrow{CI/CD \& Delivery}{Azure DevOps, Jenkins, GitHub Actions, Nexus, GitHub, Maven, Microsoft Project}
+\skillrow{Data \& Messaging}{Oracle, PostgreSQL, Kafka, RabbitMQ, IBM~MQ}
+\skillrow{Development}{Java, Spring Cloud, JPA, REST APIs, TypeScript, React, React Native, Expo}
+\skillrow{Observability, Security \& Compliance}{Elastic Stack (ELK), Splunk, ServiceNow, ISO 27001 (control implementation and operations), SonarQube Cloud, Snyk, Mend}
+}
+
+% Main column.
+\maincol{%
+\section*{Professional Experience}
+
+\resumeentry{DevOps Engineer}{Veradat Smart Network S.A. de C.V.}{Aug 2024 -- Oct 2026}{Mexico City}
+\begin{itemize}
+    \item Designed and maintained \textbf{10 Azure DevOps CI/CD pipelines} for \textbf{3 teams} (frontend, backend, QA), cutting deployment of \textbf{70 microservices} from \textbf{6 hours to 1 hour} (83\% less time). Built the \textbf{Helm charts} all three teams adopted as their deployment standard, and tracked infrastructure work in \textbf{Microsoft Project} per sprint.
+    \item Built the \textbf{Claude Code plugin} for the platform: \textbf{4 skills} that read a request in natural language, detect the intent and dispatch it to a \textbf{deterministic Python script} -- \textbf{35 scripts, about 10{,}800 lines} -- documented in about \textbf{3{,}200 lines of SKILL.md}, with a script that auto-generates the capability index. The skills parse the platform's own \textbf{YAML} and \textbf{JSON} and act on real operations: validating release and work-item state, checking builds against their branch, redeploying a node at its running versions, auditing node configuration against the platform manual, reading application secrets from AWS Secrets Manager, and reporting Snyk vulnerabilities.
+    \item Reviewed the team's \textbf{hexagonal architecture}, which decouples each microservice from its technology dependencies (PostgreSQL, Oracle, RabbitMQ, Kafka, IBM~MQ, SQS), and produced the \textbf{Docker image for every technology combination} each microservice requires.
+    \item Manage \textbf{21 pre-production clusters}: \textbf{9 in QA on Kubernetes}, \textbf{4 in DEV and 4 in INTGR on OpenShift}, \textbf{4 in Certificación on Kubernetes}, with readiness/liveness probes that control traffic during rolling updates and trigger recovery, and \textbf{Elastic Stack} monitoring that cut \textbf{QA incident detection time from 60 to 30 minutes} (50\% reduction).
+    \item Provisioned \textbf{AWS and Azure infrastructure with Terraform} (EC2, S3, VPC, Security Groups, IAM, RDS, CloudWatch, Route~53), including virtual machines, load balancers and secrets management, automated \textbf{10 Linux servers with Ansible} (provisioning from \textbf{2 hours to 20 minutes}, 83\% less time), and ran \textbf{backups and rollbacks of the PostgreSQL and Oracle databases} supporting the 70 microservices, ensuring data recoverability during deployments and incident response.
+    \item \textbf{Implemented and operated ISO 27001 controls} across secret management, cloud access control and dependency scanning, and remediated critical and high-severity vulnerabilities found by SonarQube Cloud, Snyk and Mend through OS package and Maven dependency updates.
+    \item \textbf{Coordinated technical communication} with client stakeholders, including the formal security reporting the client's security team receives, and across the \textbf{3 teams} (frontend, backend, QA), through \textbf{Azure DevOps dashboards and boards} and a \textbf{shared wiki} as an asynchronous channel.
+\end{itemize}
+
+\resumeentry{Fullstack + DevOps Engineer}{IDS Comercial S.A. de C.V. \textbar\ Client: Banamex}{Jan 2021 -- Aug 2024}{Mexico, remote}
+\begin{itemize}
+    \item Developed and maintained \textbf{10 Java/Spring Cloud microservices} for banking-executive workflows handling approximately \textbf{1{,}000 transactions per day per branch}, and \textbf{standardised them through a multi-module Maven POM parent} with shared dependency management, ensuring consistent versioning and reducing upgrade effort across all services.
+    \item \textbf{Maintained compliance with ISO 27001 controls} in this banking environment throughout the engagement, and built \textbf{Jenkins} CI/CD pipelines to automate banking application builds and deployments.
+    \item Developed frontend features with React, Node.js and TypeScript, and administered Oracle databases.
+    \item Handled \textbf{ServiceNow infrastructure tickets} under a \textbf{1-day SLA}, reviewing logs for troubleshooting and \textbf{escalating incidents to the corresponding area}. Monitored production with Splunk and supported QA environment incidents (average resolution 2--3 hours; complex cases up to one week).
+\end{itemize}
+
+\resumeentry{Fullstack Software Engineer}{Continuous Telcel project through GLOBAL HITSS and Everis}{Jul 2018 -- Dec 2020}{Mexico City}
+\textit{GLOBAL HITSS: Jul 2018 -- Sep 2019; Everis: Sep 2019 -- Dec 2020.}\par\vspace{3pt}
+\begin{itemize}
+    \item Migrated \textbf{microservices from a Tomcat application server to OpenShift}, containerising the integration layer built with \textbf{Java, Spring Cloud, and JPA} that translated legacy telecom protocols into REST APIs, connecting existing systems with modern services.
+    \item Implemented CI/CD pipelines and containerised the service with \textbf{Docker on Kubernetes}. Automated operational processes with Bash and managed code and artifact repositories with GitHub and Nexus.
+\end{itemize}
+
+\section*{Selected \& Independent Projects}
+
+% mobile-begin
+\resumeentry{Mobile App Development (React Native)}{Freelance and independent projects}{2023 -- 2026}{Mexico City}
+\begin{itemize}
+    \item Own the delivery contract for client apps on \textbf{React Native} and Expo, expressed as an executable artefact: \textbf{12 ADRs, 20 specs and 12 runbooks}, a \textbf{git worktree per slice} with its own database, and a numbered \textbf{GitHub issue tracker} fed by \textbf{conventional commits}.
+    \item Set the release gates the work has to pass: \textbf{6 GitHub Actions workflows} with sharded test jobs over \textbf{95 test files}, a \textbf{promotion gate} between staging and production, an \textbf{approval-gated production deploy} and \textbf{EAS Update} channels, on a \textbf{monorepo} with \textbf{Bun workspaces}, \textbf{Turborepo} and \textbf{Biome}.
+\end{itemize}
+% mobile-end
+
+\resumeentry{Subcontracting Law Compliance Management System}{GDP administration S de RL de CV (Grupo de la Parra)}{Jun 2021 -- Dec 2021}{Mexico City}
+\begin{itemize}
+    \item Led the end-to-end technical design and architecture, as technical lead, of a production platform managing compliance with Mexico's \textbf{Federal Labor Law on Subcontracting}, covering a subcontracted workforce of \textbf{5{,}000 employees} across multiple supplier and recipient companies, and mentored the client team through the design.
+    \item Built a \textbf{compliance audit engine} validating regulatory rules (CFDI per employee vs. payment dates, IMSS/INFONAVIT/withholding receipts vs. filing calendar, employer registry with the Labor Ministry) and emitting \textbf{automated alerts} for contract expirations and information-delivery deadlines, delivered with a \textbf{compliance BI dashboard} (\textbf{SAT, IMSS, INFONAVIT, STPS}) and KPI tiles for the legal and antifraud teams.
+\end{itemize}
+}
+
+% Back to the sidebar.
+\sidecol{%
+\educationentry{Education}{IPN -- Escuela Superior de C\'omputo (ESCOM)}{B.Sc. in Computer Systems Engineering}{2014 -- 2018}{Mexico City}
+
+\section*{Certification, Languages \& Programming}
+\skillrow{Certification}{Java SE -- Oracle, Certified Associate (2013). \href{https://www.youracclaim.com/badges/583548b1-06fa-4dbf-889d-419e6c6c2ec1/public_url}{Credential}; Scrum Fundamentals -- SCRUMstudy (2018).}
+\skillrow{Languages}{Spanish: native; English: B2 (upper intermediate)}
+\skillrow{Competitive Programming}{Google Code Jam participant (2019); ACM-ICPC stage-selection team (2015--2017).}
+}
