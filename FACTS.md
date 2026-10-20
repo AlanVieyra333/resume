@@ -46,6 +46,9 @@ Eliminado de los cuatro perfiles en la revisión 2026-10: **Nova Solutions / Ban
 | Métrica | Valor | Dónde |
 |---|---|---|
 | Pipelines de CI/CD mantenidos | 20 | Veradat |
+| Procesos automatizados con shell scripting | 20 | Veradat |
+| Procesos automatizados con shell scripting | 10 | IDS Comercial (Banamex) |
+| Total de procesos automatizados con shell scripting | 30 (20 + 10) | Veradat + IDS Comercial |
 | Equipos atendidos por esos pipelines | 3 (frontend, backend, QA) | Veradat |
 | Despliegue del conjunto completo | 70 microservicios | Veradat |
 | Reducción de tiempo de despliegue | 6 h → 1 h (≈83 %) | Veradat |
@@ -96,6 +99,10 @@ Eliminado de los cuatro perfiles en la revisión 2026-10: **Nova Solutions / Ban
   asegurando la recuperabilidad durante despliegues y respuesta a incidentes. *(Confirmado por Alan el
   2026-10-16.)*
 - Automatización con Ansible en servidores Linux.
+- **Automatizó 20 procesos con shell scripting** (scripts de shell para tareas de operación).
+  *(Confirmado por Alan el 2026-10-19. El total es de 30 procesos: 20 en Veradat y 10 en
+  IDS Comercial. En el banner se publica como "+30" porque las cifras se redondean hacia abajo
+  a múltiplo de diez.)*
 - Scripts de automatización/integración en Python y Go. (Los años de uso no se publican en
   el CV: el resto de herramientas se lista solo por nombre, sin tiempo de experiencia, y Alan
   pidió en 2026-10 mantener ese mismo formato para no destacar Python/Go/Claude Code con un
@@ -152,6 +159,8 @@ Eliminado de los cuatro perfiles en la revisión 2026-10: **Nova Solutions / Ban
 - Pipelines con **Jenkins** (no usó Azure DevOps en este puesto; Azure DevOps es la plataforma de
   CI/CD de Veradat). React/Node.js/TypeScript; esquemas Oracle.
 - Splunk en producción; **atención principal de tickets de infraestructura en ServiceNow bajo SLA de 1 día, con revisión de logs (troubleshooting) y escalamiento de incidentes al área correspondiente**.
+- **Automatizó 10 procesos con shell scripting** (scripts de shell para tareas de operación).
+  *(Confirmado por Alan el 2026-10-19.)*
 - Scrum se usó mínimamente; el trabajo fue mayoritariamente operativo (tickets, logs, incidentes).
 - **No usó Microsoft Project** en este puesto. Microsoft Project aplica solo a Veradat.
 
@@ -282,7 +291,7 @@ Verificado como **no confirmado**. `check-profiles.sh` falla si aparece en cualq
 
 ## 4b. Texto publicable en LinkedIn
 
-[LinkedIn_perfil_AFRV_propuesta.md](LinkedIn_perfil_AFRV_propuesta.md) contiene **25 bloques
+[linkedin/perfil.md](linkedin/perfil.md) contiene **25 bloques
 ```text** destinados a publicarse. `scripts/check-profiles.sh` los escanea con las mismas
 guardarraíles que los perfiles, salvo el chequeo de skills huérfanas (no aplica: no hay filas de
 skills).

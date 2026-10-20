@@ -58,9 +58,8 @@ Dos detalles que conviene conocer antes de tocar ese archivo:
 ├── scripts/
 │   └── check-profiles.sh       # Verifica invariantes entre los 8 perfiles (make check)
 ├── linkedin/
+│   ├── perfil.md               # Copy publicable de LinkedIn (titular, acerca de, experiencia, banner)
 │   └── banner/                 # Banner de LinkedIn del perfil DevOps (HTML fuente + PNG/JPG)
-├── LinkedIn_perfil_AFRV_propuesta.md
-│                               # Borrador de copy para LinkedIn (no se compila)
 ├── lang/
 │   ├── es.tex                  # Perfil DevOps, español
 │   ├── en.tex                  # Perfil DevOps, inglés

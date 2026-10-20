@@ -57,7 +57,7 @@ en `styles/styledesign.tex`):
 | 2 | `lang/{es,en}.tex`, `lang/lead/{es,en}.tex`, `lang/fullstack/{es,en}.tex`, `lang/ai/{es,en}.tex` | El contenido de los cuatro perfiles | Cuando cambia un hecho o una métrica |
 | 3 | `scripts/check-profiles.sh` | Los invariantes mecánicos | Cuando cambia una regla, un nombre o un número |
 | 4 | `README.md` | Estructura, targets, criterios | Cuando cambia la estructura del repo o el número de perfiles |
-| 5 | `LinkedIn_perfil_AFRV_propuesta.md` | El copy publicable de LinkedIn (bloques ```text) | Cuando cambia un hecho que también se publica en LinkedIn |
+| 5 | `linkedin/perfil.md` | El copy publicable de LinkedIn (bloques ```text) | Cuando cambia un hecho que también se publica en LinkedIn |
 | 6 | `.github/workflows/build-resume.yml` | CI: validación de commits, build, release | Cuando cambia el nombre de un PDF o se agrega un perfil |
 
 Nunca al revés: si un perfil dice algo que `FACTS.md` no respalda, **el perfil está mal**, no
@@ -99,16 +99,16 @@ contenido** salvo donde se indica.
 | Cambio | Dónde se registra | Qué hay que actualizar |
 | --- | --- | --- |
 | **Fecha** de un empleador o proyecto | `FACTS.md` §1 | Los 8 archivos de contenido (`\resumeentry`), con paridad EN/ES; el bloque `check_pair` de `check-profiles.sh` la verifica |
-| **Métrica** (6 h → 1 h, 21 clústeres, 70 microservicios, 1,000 transacciones, 5,000 empleados…) | `FACTS.md` §2 | Los 8 archivos con el **mismo valor** en EN y ES; el `check_metric` correspondiente en `check-profiles.sh`; el bloque equivalente en `LinkedIn_perfil_AFRV_propuesta.md` |
-| **Empleador** nuevo o cambio de rol | `FACTS.md` §1 y §3 | `\resumeentry` en los 8 perfiles; la lista de empleadores en `check-profiles.sh`; la sección de Experiencia de `LinkedIn_perfil_AFRV_propuesta.md` |
+| **Métrica** (6 h → 1 h, 21 clústeres, 70 microservicios, 1,000 transacciones, 5,000 empleados…) | `FACTS.md` §2 | Los 8 archivos con el **mismo valor** en EN y ES; el `check_metric` correspondiente en `check-profiles.sh`; el bloque equivalente en `linkedin/perfil.md` |
+| **Empleador** nuevo o cambio de rol | `FACTS.md` §1 y §3 | `\resumeentry` en los 8 perfiles; la lista de empleadores en `check-profiles.sh`; la sección de Experiencia de `linkedin/perfil.md` |
 | **Herramienta nueva** (skill) | `FACTS.md` §3 | La fila de `\skillrow` correspondiente **y** al menos una mención en el cuerpo del perfil: una skill sin evidencia en el cuerpo se detecta como "huérfana" |
 | **Hecho nuevo** (p. ej. el plugin de Claude Code) | `FACTS.md` §3 | Los 8 perfiles con el ángulo que le toca según la matriz de `FACTS.md` §5, **y** la matriz de énfasis si cambia el reparto entre perfiles |
 | **Prohibición nueva** (algo que ya no se puede decir) | `FACTS.md` §4 | La tabla de `check-profiles.sh` (`FORBIDDEN`, `FORBIDDEN_ML`, `MOBILE_OVERCLAIM`, …) |
 | **Perfil nuevo** | `FACTS.md` §1, §5 y §6 | Ver §6 de este documento |
 | **Idioma nuevo** | — | Ver §7 de este documento |
 | **Sección de proyectos independientes** | `FACTS.md` §3 (movil) | La sección y sus dos sub-entradas en los 8 perfiles, los marcadores `% mobile-begin` / `% mobile-end`, y el bloque equivalente de `check-profiles.sh` |
-| **Copy de LinkedIn** | `FACTS.md` §4b | Los bloques ```text de `LinkedIn_perfil_AFRV_propuesta.md`; los marcadores `<!-- mobile-begin -->` / `<!-- mobile-end -->` delimitan el bloque móvil |
-| **Métrica del banner** | `FACTS.md` §2 | `linkedin/banner/banner-devops-en.html` (las cifras que salen en las tarjetas) y el bloque "Texto para el banner" de `LinkedIn_perfil_AFRV_propuesta.md` §5 |
+| **Copy de LinkedIn** | `FACTS.md` §4b | Los bloques ```text de `linkedin/perfil.md`; los marcadores `<!-- mobile-begin -->` / `<!-- mobile-end -->` delimitan el bloque móvil |
+| **Métrica del banner** | `FACTS.md` §2 | `linkedin/banner/banner-devops-en.html` (las cifras que salen en las tarjetas) y el bloque "Texto para el banner" de `linkedin/perfil.md` §5 |
 | **Nombre de un PDF** | — | `Makefile` (regla y target phony), `.github/workflows/build-resume.yml` (lista de compilación **y** lista de release), `README.md` (tabla de perfiles y de targets) |
 | **Sección de skills** (nueva fila) | `FACTS.md` §5 | La `\skillrow` en los 8 perfiles, con la evidencia en el cuerpo |
 | **Layout / tipografía** | — | `styles/styledesign.tex` o `style.cls`; después hay que **medir la barra lateral** (§8) y volver a comprobar las 2 páginas |
@@ -134,7 +134,7 @@ Los 16 PDFs deben decir **2**. Checklist completo:
 - [ ] `FACTS.md` está actualizado **antes** que los perfiles.
 - [ ] No hay identificadores internos ni afirmaciones prohibidas (§2).
 - [ ] Toda skill listada en un `\skillrow` está respaldada en el cuerpo del perfil.
-- [ ] Los bloques ```text de `LinkedIn_perfil_AFRV_propuesta.md` se han vuelto a pasar por
+- [ ] Los bloques ```text de `linkedin/perfil.md` se han vuelto a pasar por
       `humanize.py` / `detect.py` (§8) y la tabla de resultados del documento está al día.
 - [ ] `git status` no muestra artefactos: `out/` está en `.gitignore`, y no se suben `.aux`,
       `.log`, `.out`, `.fls` ni `.fdb_latexmk`.
@@ -188,7 +188,7 @@ Siete puntos. El ejemplo es el perfil `ai` (AI Engineer), que es el último que 
 6. **`README.md` y `FACTS.md`** — tabla de perfiles, árbol del repo, tabla de targets, número de
    PDFs; y en `FACTS.md`: §1 (perfil y fechas), §5 (columna de la matriz de énfasis) y §6
    (el número de PDFs).
-7. **`LinkedIn_perfil_AFRV_propuesta.md`** — el titular correspondiente y, si el perfil tiene
+7. **`linkedin/perfil.md`** — el titular correspondiente y, si el perfil tiene
    contenido publicable propio, su bloque.
 
 Criterio de aceptación del perfil nuevo: **sus 4 PDFs en 2 páginas** y `make check` en verde.
@@ -226,7 +226,7 @@ interpola en la ruta del archivo (`lang/<perfil>/<idioma>.tex`).
 
 - **`humanize.py` no se pasa nunca por un `.tex`**: reescribiría LaTeX (`---` → coma, comillas
   tipográficas, etc.). Sobre `.tex` solo se usa `detect.py` como medidor.
-- Sobre `LinkedIn_perfil_AFRV_propuesta.md` sí se usa el limpiador, pero **bloque a bloque**:
+- Sobre `linkedin/perfil.md` sí se usa el limpiador, pero **bloque a bloque**:
   se extraen los bloques ```text, se revisa cada cambio a mano y se aplican solo los que no
   alteren el significado ni el tono.
 - No se persiguen contracciones ni pronombres en primera persona: en un currículum en tercera
@@ -252,7 +252,7 @@ resumen o las filas de skills de ese perfil.
 | `lang/ai/es.tex`, `lang/ai/en.tex` | Perfil AI Engineer |
 | `FACTS.md` | **Fuente única de verdad**: hechos, métricas, frontera de lo declarable, matriz de énfasis |
 | `scripts/check-profiles.sh` | Los invariantes mecánicos entre los 8 perfiles |
-| `LinkedIn_perfil_AFRV_propuesta.md` | Copy publicable de LinkedIn (bloques ```text) |
+| `linkedin/perfil.md` | Copy publicable de LinkedIn (bloques ```text) |
 | `linkedin/banner/` | Banner de LinkedIn del perfil DevOps: HTML fuente, PNG/JPG y `render.sh` (`make banner`) |
 | `RECRUITER_REVIEW.md` | Calificación de cada perfil como reclutador senior, con las correcciones aplicadas |
 | `Makefile` | Targets de compilación local y vía Docker |

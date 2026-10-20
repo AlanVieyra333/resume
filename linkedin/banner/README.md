@@ -38,21 +38,27 @@ with CI/CD and Kubernetes
 
 AWS · Kubernetes · Terraform · Helm · Ansible · Azure DevOps
 
-+70  microservices deployed | +20  pre-production clusters | +20  CI/CD pipelines
++70  microservices deployed | +20  Kubernetes clusters | +20  CI/CD pipelines | +30  shell scripts automated
 ```
 
 **El "+" significa "al menos".** Las cifras del banner se redondean **hacia abajo a múltiplo
 de diez** y se prefijan con "+", porque las cantidades reales son aproximadas. El CV conserva
-las cifras exactas: `FACTS.md` §2 dice 70 microservicios, 21 clústeres de preproducción y
-~20 pipelines de CI/CD, así que "+20 clústeres" y "+20 pipelines" son flooring conservador,
-no una contradicción. Si alguna vez una cifra del CV baja de un múltiplo de diez, el "+" del
-banner deja de ser cierto y hay que recalcularlo.
+las cifras exactas: `FACTS.md` §2 dice 70 microservicios, 21 clústeres de preproducción,
+~20 pipelines de CI/CD y 30 procesos automatizados con shell scripting (20 en Veradat y 10 en
+IDS Comercial), así que "+20 clústeres", "+20 pipelines" y "+30 scripts" son flooring
+conservador, no una contradicción. Si alguna vez una cifra del CV baja de un múltiplo de diez,
+el "+" del banner deja de ser cierto y hay que recalcularlo.
+
+**"Kubernetes clusters" y no "pre-production clusters"** (decisión del 2026-10-19): OpenShift
+es una distribución de Kubernetes, así que los 21 clústeres de preproducción que administra en
+Veradat (13 sobre Kubernetes y 8 sobre OpenShift) se cuentan como clústeres de Kubernetes. El
+CV sí publica el desglose por entorno.
 
 El banner **no lleva correo**: la decisión es del 2026-10-19, y el contacto vive en el titular
-y en la sección "Acerca de" de `LinkedIn_perfil_AFRV_propuesta.md`.
+y en la sección "Acerca de" de `linkedin/perfil.md`.
 
 Si el copy cambia, hay que actualizar también el bloque "Texto para el banner" de
-[`LinkedIn_perfil_AFRV_propuesta.md`](../../LinkedIn_perfil_AFRV_propuesta.md) (§5).
+[`linkedin/perfil.md`](../perfil.md) (§5).
 
 ## Por qué estos colores
 

@@ -20,7 +20,7 @@ EN_FILES="lang/en.tex lang/fullstack/en.tex lang/lead/en.tex lang/ai/en.tex"
 ES_FILES="lang/es.tex lang/fullstack/es.tex lang/lead/es.tex lang/ai/es.tex"
 ALL_FILES="$EN_FILES $ES_FILES"
 # Copy-paste blocks that get published verbatim -- same claim rules apply.
-PUBLISHED="LinkedIn_perfil_AFRV_propuesta.md"
+PUBLISHED="linkedin/perfil.md"
 
 # Profile pairs: EN and ES must agree on employers, dates and metrics.
 PAIRS="lang/en.tex:lang/es.tex
@@ -212,6 +212,10 @@ check_metric() {
 }
 check_metric "70 microservices"            "70 microservices"        "70 microservicios"
 check_metric "20 CI/CD pipelines"          "20 Azure DevOps CI/CD"   "20 pipelines de CI/CD"
+# Shell scripting automation is split by employer: 20 processes at Veradat and
+# 10 at IDS Comercial, 30 in total. Each profile carries both figures.
+check_metric "20 shell-scripted processes (Veradat)" "20 infrastructure processes with shell scripting" "20 procesos de infraestructura con shell scripting"
+check_metric "10 shell-scripted processes (IDS)"    "10 infrastructure processes with shell scripting" "10 procesos de infraestructura con shell scripting"
 check_metric "6h -> 1h deployment"         "6 hours to 1 hour"        "6 horas a 1 hora"
 check_metric "9 QA clusters"               "9 in QA on Kubernetes"    "9 en QA sobre Kubernetes"
 # The pre-production estate was consolidated to 21 clusters (9 QA, 4 DEV,

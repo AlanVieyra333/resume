@@ -6,7 +6,7 @@ adaptada a currículum, más una lectura de lo que un filtro automático y una e
 screening pueden objetar de cada perfil.
 
 **Alcance de esta revisión:** los 16 PDFs (4 perfiles × 2 idiomas × 2 variantes) y el copy de
-`LinkedIn_perfil_AFRV_propuesta.md`. Hechos y cifras: `FACTS.md`. Procedimiento de edición:
+`linkedin/perfil.md`. Hechos y cifras: `FACTS.md`. Procedimiento de edición:
 `AGENTS.md`.
 
 ---
@@ -67,7 +67,7 @@ perfil publicado, no el del CV: `featured` (8), `banner` (6), `photo` (6),
 | headline | 7/12 | El encabezado es solo el título; la prueba vive en el resumen, una línea más abajo. |
 | about_open | 8/10 | Abre con "DevOps engineer with a software development background since 2017": es contexto, no el problema de quien lee. |
 | about_body | 10 | Ofrece (aprovisionar, operar, automatizar) con prueba. Sin cierre de "qué sigue". |
-| current_role | 9/10 | Veradat: 20 pipelines, 70 microservicios, 6 h → 1 h, 21 clústeres, 60 → 30 min, 2 h → 20 min. |
+| current_role | 9/10 | Veradat: 20 pipelines, 70 microservicios, 6 h → 1 h, 21 clústeres, 60 → 30 min, 2 h → 20 min, 30 procesos automatizados con shell scripting. |
 | experience_depth | 8/8 | Banamex y Telcel con detalle; Nova Solutions y CINVESTAV fuera. |
 | skills | 5/6 | Las tres primeras (AWS, Terraform, Kubernetes) son las correctas; el resto diluye. |
 | proyectos | 6/8 | Los 12 runbooks y las puertas de release son prueba real, sin resultado publicado. |
@@ -228,7 +228,7 @@ perfil publicado, no el del CV: `featured` (8), `banner` (6), `photo` (6),
 | headline | 10/12 | "AI Engineer \| Claude Code & Agent Skills": dice el rol y el método, y el resumen abre con el plugin y sus cifras. |
 | about_open | 9/10 | Abre declarando el alcance ("applied AI and agentic tooling") y luego la prueba. |
 | about_body | 8/10 | El resumen cierra con "antes, 20 pipelines y 21 clústeres": no es un perfil de IA puro, y eso es una decisión, no un descuido. |
-| current_role | 9/10 | El plugin es el protagonista, y la base de infraestructura (20 pipelines, 21 clústeres, Terraform, ISO 27001) sostiene que las skills corrieron contra la plataforma real. |
+| current_role | 9/10 | El plugin es el protagonista, y la base de infraestructura (20 pipelines, 21 clústeres, 30 procesos automatizados con shell scripting, Terraform, ISO 27001) sostiene que las skills corrieron contra la plataforma real. |
 | experience_depth | 8/8 | Los tres empleadores, el bloque móvil en clave de entrega agéntica y la plataforma de cumplimiento. |
 | skills | 6/6 | La primera fila es exactamente "AI & Agentic Tooling: Claude Code, SKILL.md, Python, Bash, YAML, JSON". Es el único perfil cuya lista de skills empieza por lo que quiere que le contraten. |
 | proyectos | 6/8 | El plugin es privado: no hay repositorio público, ni enlace, ni captura. La prueba existe pero no se puede verificar desde fuera. |
@@ -329,7 +329,7 @@ Reglas de envío:
 
 Esta parte **no la arregla un texto**: necesita recomendaciones de colegas y clientes, un
 banner producido y un pie de foto de perfil actualizado. Lo que sí hizo esta revisión fue dejar
-los bloques de copy listos (`LinkedIn_perfil_AFRV_propuesta.md`, 25 bloques), con el titular de
+los bloques de copy listos (`linkedin/perfil.md`, 25 bloques), con el titular de
 IA incluido y los cuatro titulares medidos por debajo de 220 caracteres.
 
 ---
@@ -343,14 +343,14 @@ Cambios de texto hechos sobre la base de la evaluación, no solo señalados:
 | 1 | **Una sola sección de proyectos independientes**, con dos sub-entradas tituladas por el tipo de proyecto (móvil y plataforma de cumplimiento) en lugar de dos secciones separadas. | Los 8 archivos de `lang/` |
 | 2 | **Nuevo perfil de AI Engineer** (EN/ES), sin nada inventado: el plugin de Claude Code con sus cifras reales y una declaración explícita de que la IA es aplicada, no ML. | `lang/ai/en.tex`, `lang/ai/es.tex` |
 | 3 | El bloque móvil del perfil IA cambió de "construcción de apps" a **entrega agéntica** (contrato de entrega ejecutable), sin afirmar autoría del código del marketplace. | `lang/ai/{en,es}.tex` |
-| 4 | "Administro 9 clústeres: 8 Kubernetes y 1 OpenShift" → **21 clústeres de preproducción** con el desglose real (9 QA, 4 DEV, 4 INTGR, 4 Certificación). | `LinkedIn_perfil_AFRV_propuesta.md` |
-| 5 | "9 clústeres de producción" → **21 de preproducción**; "en los 9 clústeres" → **en los 9 de QA** (Elastic Stack solo corre en QA). | `LinkedIn_perfil_AFRV_propuesta.md` |
-| 6 | Banamex: "pipelines con Azure DevOps y Jenkins" → **solo Jenkins** (Azure DevOps es la plataforma de Veradat). | `LinkedIn_perfil_AFRV_propuesta.md` |
-| 7 | Viñeta de **Claude Code** añadida a la experiencia de Veradat (ES y EN) con el alcance real. | `LinkedIn_perfil_AFRV_propuesta.md` |
-| 8 | **Sub-entrada móvil** añadida al copy de LinkedIn, delimitada por `<!-- mobile-begin -->` / `<!-- mobile-end -->`. | `LinkedIn_perfil_AFRV_propuesta.md` |
-| 9 | Titular de **AI Engineer** como cuarta opción del perfil de LinkedIn. | `LinkedIn_perfil_AFRV_propuesta.md` |
-| 10 | **Acerca de** reescrito con ritmo de frase variado (variación de longitud 0.32 → 0.63 en español y 0.33 → 0.56 en inglés) y **recortado a 1,340 / 1,320 caracteres**, por debajo del objetivo editorial de 1,400. | `LinkedIn_perfil_AFRV_propuesta.md` |
-| 11 | PDF del perfil IA añadido a la tabla de Destacado, junto con el plugin como pieza de prueba. | `LinkedIn_perfil_AFRV_propuesta.md` |
+| 4 | "Administro 9 clústeres: 8 Kubernetes y 1 OpenShift" → **21 clústeres de preproducción** con el desglose real (9 QA, 4 DEV, 4 INTGR, 4 Certificación). | `linkedin/perfil.md` |
+| 5 | "9 clústeres de producción" → **21 de preproducción**; "en los 9 clústeres" → **en los 9 de QA** (Elastic Stack solo corre en QA). | `linkedin/perfil.md` |
+| 6 | Banamex: "pipelines con Azure DevOps y Jenkins" → **solo Jenkins** (Azure DevOps es la plataforma de Veradat). | `linkedin/perfil.md` |
+| 7 | Viñeta de **Claude Code** añadida a la experiencia de Veradat (ES y EN) con el alcance real. | `linkedin/perfil.md` |
+| 8 | **Sub-entrada móvil** añadida al copy de LinkedIn, delimitada por `<!-- mobile-begin -->` / `<!-- mobile-end -->`. | `linkedin/perfil.md` |
+| 9 | Titular de **AI Engineer** como cuarta opción del perfil de LinkedIn. | `linkedin/perfil.md` |
+| 10 | **Acerca de** reescrito con ritmo de frase variado (variación de longitud 0.32 → 0.63 en español y 0.33 → 0.56 en inglés) y **recortado a 1,340 / 1,320 caracteres**, por debajo del objetivo editorial de 1,400. | `linkedin/perfil.md` |
+| 11 | PDF del perfil IA añadido a la tabla de Destacado, junto con el plugin como pieza de prueba. | `linkedin/perfil.md` |
 | 12 | Tríada "React, TypeScript, and Node.js" corregida a "React, TypeScript and Node.js" en el perfil Full Stack EN. | `lang/fullstack/en.tex` |
 | 13 | Puesto en inglés dentro del archivo en español: "DevOps Engineer" → **"Ingeniero DevOps"**. | `lang/lead/es.tex` |
 | 14 | `check-profiles.sh` ampliado: sección única de proyectos independientes, fechas `2023 -- 2026`, marcadores móviles, **prohibición de contenido de ML**, cifras del plugin obligatorias en el perfil IA y prohibición del conteo de capacidades. | `scripts/check-profiles.sh` |

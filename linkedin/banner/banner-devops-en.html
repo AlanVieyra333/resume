@@ -86,22 +86,23 @@
     color:var(--ink-3);
   }
   .metrics{
-    margin-top:30px;display:flex;gap:14px;
+    margin-top:26px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;width:780px;
   }
   .metric{
-    padding:14px 22px 16px;border-radius:12px;
+    padding:13px 16px 15px;border-radius:12px;
     background:rgba(255,255,255,.055);
     border:1px solid rgba(125,211,252,.24);
     box-shadow:0 1px 0 rgba(255,255,255,.05) inset;
   }
   .metric .num{
-    display:block;font-size:42px;line-height:1;font-weight:700;letter-spacing:-.02em;color:var(--ink);
+    display:block;font-size:36px;line-height:1;font-weight:700;letter-spacing:-.02em;color:var(--ink);
   }
   /* the "+" means "at least": the figures are rounded down to a multiple of ten */
   .metric .plus{color:var(--accent);font-weight:500;font-size:.78em;vertical-align:.12em;margin-right:.04em}
   .metric .lab{
     display:block;margin-top:7px;
-    font-size:15px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);
+    font-size:13px;font-weight:600;letter-spacing:.06em;line-height:1.3;
+    text-transform:uppercase;color:var(--ink-3);
   }
 </style>
 </head>
@@ -129,8 +130,9 @@
     <div class="tools">AWS · Kubernetes · Terraform · Helm · Ansible · Azure DevOps</div>
     <div class="metrics">
       <div class="metric"><span class="num"><span class="plus">+</span>70</span><span class="lab">Microservices deployed</span></div>
-      <div class="metric"><span class="num"><span class="plus">+</span>20</span><span class="lab">Pre-production clusters</span></div>
+      <div class="metric"><span class="num"><span class="plus">+</span>20</span><span class="lab">Kubernetes clusters</span></div>
       <div class="metric"><span class="num"><span class="plus">+</span>20</span><span class="lab">CI/CD pipelines</span></div>
+      <div class="metric"><span class="num"><span class="plus">+</span>30</span><span class="lab">Shell scripts automated</span></div>
     </div>
   </div>
 

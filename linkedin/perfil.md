@@ -125,7 +125,7 @@ Aprovisioné infraestructura en AWS y Azure con Terraform: EC2, S3, VPC, Securit
 - Implementé y operé controles ISO 27001 en gestión de secretos, control de acceso en nube y escaneo de dependencias. Remedié vulnerabilidades críticas y altas detectadas por SonarQube Cloud, Snyk y Mend mediante actualizaciones de paquetes del sistema operativo y dependencias Maven.
 - Acompaño a ingenieros de los equipos de frontend, backend y QA: revisiones de código y diseño, decisiones técnicas e incorporación de nuevos miembros al equipo.
 - Implementé monitoreo y alertas con Elastic Stack en los 9 clústeres de QA y reduje el tiempo de detección de incidentes de 60 a 30 minutos. Incorporé readiness/liveness probes para controlar la incorporación de instancias al tráfico y su recuperación durante actualizaciones progresivas. Cubro guardia para incidentes en producción dentro del horario laboral.
-- Automaticé la configuración con Ansible en servidores Linux. Aprovisionar el conjunto de 10 servidores pasó de tomar 2 horas a 20 minutos.
+- Automaticé la configuración con Ansible en servidores Linux. Aprovisionar el conjunto de 10 servidores pasó de tomar 2 horas a 20 minutos. Además automatizé 20 procesos de infraestructura con shell scripting.
 - Realicé backups y rollbacks de bases de datos PostgreSQL y Oracle que respaldan los 70 microservicios, asegurando la recuperabilidad de los datos durante despliegues y respuesta a incidentes.
 - Coordiné la interlocución técnica con stakeholders del cliente, incluido el reporte formal de seguridad que recibe su área de seguridad, y entre los 3 equipos (frontend, backend, QA) mediante dashboards y boards de Azure DevOps y una wiki compartida como canal asincrónico. El equipo trabaja con Scrum, en el que participo como miembro.
 ```
@@ -141,7 +141,7 @@ I provisioned AWS and Azure infrastructure using Terraform: EC2, S3, VPC, Securi
 - Implemented and operated ISO 27001 controls across secret management, cloud access control and dependency scanning. Remediated critical and high-severity vulnerabilities identified by SonarQube Cloud, Snyk and Mend through OS package and Maven dependency updates.
 - Mentor engineers across the frontend, backend and QA teams: code and design reviews, technical decision-making, and onboarding new team members.
 - Implemented Elastic Stack monitoring and alerts across the 9 QA clusters, cutting incident detection time from 60 to 30 minutes. Added readiness/liveness probes to control when instances receive traffic and trigger recovery during rolling updates. Carried on-call for production incidents within working hours.
-- Automated configuration with Ansible on Linux servers, cutting provisioning time for the entire set of 10 servers from 2 hours to 20 minutes.
+- Automated configuration with Ansible on Linux servers, cutting provisioning time for the entire set of 10 servers from 2 hours to 20 minutes. Also automated 20 infrastructure processes with shell scripting.
 - Performed backups and rollbacks of PostgreSQL and Oracle databases supporting the 70 microservices, ensuring data recoverability during deployments and incident response.
 - Coordinated technical communication with client stakeholders, including the formal security reporting the client's security team receives, and across the 3 teams (frontend, backend, QA) through Azure DevOps dashboards and boards and a shared wiki as an asynchronous channel. The team works in Scrum, in which I participate as a team member.
 ```
@@ -159,7 +159,7 @@ Desarrollo full stack y CI/CD para aplicaciones bancarias internas de Banamex, a
 - Estandaricé los microservicios con un POM padre multimódulo de Maven y gestión compartida de dependencias, garantizando un versionado consistente y reduciendo el esfuerzo de actualización en todos los servicios.
 - Me apegaba a los controles ISO 27001 en ese entorno bancario durante toda mi colaboración.
 - Construí pipelines de CI/CD con Jenkins para automatizar compilaciones y despliegues. Desarrollé funcionalidades frontend con React, Node.js y TypeScript, y administré esquemas Oracle.
-- Atendí incidentes del entorno de QA, con un tiempo promedio de resolución de 2 a 3 horas; los casos complejos podían tomar hasta una semana. Monitoreé producción con Splunk y resolví tickets de infraestructura en ServiceNow conforme a un SLA de 1 día.
+- Atendí incidentes del entorno de QA, con un tiempo promedio de resolución de 2 a 3 horas; los casos complejos podían tomar hasta una semana. Monitoreé producción con Splunk y resolví tickets de infraestructura en ServiceNow conforme a un SLA de 1 día. Automatizé 10 procesos de infraestructura con shell scripting.
 ```
 
 English:
@@ -171,7 +171,7 @@ Full stack development and CI/CD for internal banking applications at Banamex, t
 - Standardised the microservices through a multi-module Maven POM parent and shared dependency management, ensuring consistent versioning and reducing upgrade effort across all services.
 - Adhered to the ISO 27001 controls in that banking environment throughout the engagement.
 - Built Jenkins CI/CD pipelines to automate builds and deployments. Developed frontend features with React, Node.js, and TypeScript, and administered Oracle schemas.
-- Handled QA environment incidents with an average resolution time of 2 to 3 hours; complex cases could take up to one week. Monitored production with Splunk and resolved infrastructure tickets in ServiceNow under a 1-day SLA.
+- Handled QA environment incidents with an average resolution time of 2 to 3 hours; complex cases could take up to one week. Monitored production with Splunk and resolved infrastructure tickets in ServiceNow under a 1-day SLA. Automated 10 infrastructure processes with shell scripting.
 ```
 
 ### Ingeniero de Software Fullstack / Fullstack Software Engineer
@@ -250,7 +250,7 @@ la prueba que un reclutador escaneando en dos segundos necesita.
 ```text
 Scale cloud infrastructure with CI/CD and Kubernetes
 
-+70 microservices deployed · +20 pre-production clusters · +20 CI/CD pipelines
++70 microservices deployed · +20 Kubernetes clusters · +20 CI/CD pipelines · +30 shell scripts automated
 ```
 
 Español (texto listo, imagen pendiente):
@@ -258,13 +258,20 @@ Español (texto listo, imagen pendiente):
 ```text
 Escalo infraestructura cloud con CI/CD y Kubernetes
 
-+70 microservicios desplegados · +20 clústeres de preproducción · +20 pipelines de CI/CD
++70 microservicios desplegados · +20 clústeres Kubernetes · +20 pipelines de CI/CD · +30 scripts de shell automatizados
 ```
 
 El "+" del banner significa "al menos": las cifras se redondean hacia abajo a múltiplo de diez
 porque las cantidades reales son aproximadas (el CV publica las exactas: 70 microservicios,
-21 clústeres, ~20 pipelines). Si una cifra del CV baja de un múltiplo de diez, hay que
-recalcular el "+" del banner.
+21 clústeres, ~20 pipelines, 30 procesos automatizados con shell scripting: 20 en Veradat y 10
+en IDS Comercial). Si una cifra del CV baja de un múltiplo de diez, hay que recalcular el "+"
+del banner.
+
+El banner dice **"+20 Kubernetes clusters"** y no "clústeres de preproducción" por decisión del
+2026-10-19: OpenShift es una distribución de Kubernetes, así que los 21 clústeres que administra
+en Veradat (13 sobre Kubernetes y 8 sobre OpenShift) se pueden contar como clústeres de
+Kubernetes. El desglose por entorno sí aparece en el CV y en la sección de Experiencia de
+LinkedIn.
 
 El diseño deja libre la franja izquierda (x 0–460 px de los 1584 px) porque LinkedIn monta
 la foto de perfil encima. Para posiciones de **AI Engineer**, la variante de copy es:
@@ -349,6 +356,12 @@ La evaluación del perfil publicado sigue pendiente para foto, banner, Destacado
 
 - Los 25 bloques para copiar se revisan con `humanize.py` (limpieza mecánica) y `detect.py` (puntuación de estilo) el 19 de octubre de 2026. `humanize.py` no encuentra artefactos de máquina en ninguno de los 25: 0 caracteres invisibles, 0 em dash, 0 comillas tipográficas, 0 términos de relleno. El único problema estructural que señala es la **longitud uniforme de las frases del Acerca de**, que se corrigió a mano partiendo frases largas y añadiendo cortas.
 - Caracteres de los titulares, español / inglés: **A 127 / 126**, **B 136 / 138**, **C 134 / 128**, **D 140 / 129**. Todos quedan por debajo de 220.
+- Revisión del 19 de octubre de 2026 tras añadir la métrica de shell scripting: los cuatro bloques
+  de Experiencia tocados (Veradat ES/EN, IDS ES/EN) salen **CLEAN** en `humanize.py` — 0
+  artefactos de máquina, 0 tells estructurales. Los dos bloques de texto del banner solo tienen
+  el aviso del punto medio, que **se conserva a mano**: es el separador deliberado de la línea
+  de métricas del banner, no un artefacto. El bloque de Acerca de no se tocó: sigue en **1,340
+  caracteres en español** y **1,320 en inglés**.
 - Acerca de tras la homologación: **1,340 caracteres en español** y **1,320 en inglés**, incluidos espacios y saltos de línea, por debajo del objetivo editorial de 1,400. Se recortó detalle (matriz de imágenes Docker, enumeración de servicios de AWS, balanceadores y wiki) que sigue íntegro en la sección de Experiencia, para poder meter el bloque de IA y el desglose de clústeres.
 
 `detect.py` sobre el bloque de Acerca de:
