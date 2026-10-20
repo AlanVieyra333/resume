@@ -248,7 +248,11 @@ de métricas; el correo no va en el banner (decisión del 2026-10-19), porque la
 la prueba que un reclutador escaneando en dos segundos necesita.
 
 ```text
+DEVOPS ENGINEER
+
 Scale cloud infrastructure with CI/CD and Kubernetes
+
+AWS · Terraform · Docker · Linux · Ansible · Jenkins · Azure DevOps
 
 +70 microservices deployed · +20 Kubernetes clusters · +20 CI/CD pipelines · +30 shell scripts automated
 ```
@@ -256,7 +260,11 @@ Scale cloud infrastructure with CI/CD and Kubernetes
 Español (texto listo, imagen pendiente):
 
 ```text
+DEVOPS ENGINEER
+
 Escalo infraestructura cloud con CI/CD y Kubernetes
+
+AWS · Terraform · Docker · Linux · Ansible · Jenkins · Azure DevOps
 
 +70 microservicios desplegados · +20 clústeres Kubernetes · +20 pipelines de CI/CD · +30 scripts de shell automatizados
 ```
@@ -272,6 +280,13 @@ El banner dice **"+20 Kubernetes clusters"** y no "clústeres de preproducción"
 en Veradat (13 sobre Kubernetes y 8 sobre OpenShift) se pueden contar como clústeres de
 Kubernetes. El desglose por entorno sí aparece en el CV y en la sección de Experiencia de
 LinkedIn.
+
+La cinta de herramientas del banner dice **Azure DevOps, no Azure**: el footprint de Azure
+cloud es fino (máquinas virtuales, balanceadores y gestión de secretos, con Terraform) frente
+a los ocho servicios de AWS que sí se nombran, y una palabra mal puesta en la banda mete a
+entrevistas que no quieres. El multi-nube real se publica en el CV, que ya lo pondera con
+honestidad. La evidencia de cada palabra de la cinta está en
+[`linkedin/banner/README.md`](banner/README.md).
 
 El diseño deja libre la franja izquierda (x 0–460 px de los 1584 px) porque LinkedIn monta
 la foto de perfil encima. Para posiciones de **AI Engineer**, la variante de copy es:

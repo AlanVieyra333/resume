@@ -36,7 +36,7 @@ DEVOPS ENGINEER
 Scale cloud infrastructure
 with CI/CD and Kubernetes
 
-AWS · Docker · Terraform · Helm · Ansible · Azure DevOps
+AWS · Terraform · Docker · Linux · Ansible · Jenkins · Azure DevOps
 
 +70  microservices deployed | +20  Kubernetes clusters | +20  CI/CD pipelines | +30  shell scripts automated
 ```
@@ -54,11 +54,44 @@ es una distribución de Kubernetes, así que los 21 clústeres de preproducción
 Veradat (13 sobre Kubernetes y 8 sobre OpenShift) se cuentan como clústeres de Kubernetes. El
 CV sí publica el desglose por entorno.
 
-**La cinta de herramientas dice "Docker", no "Kubernetes"** (decisión del 2026-10-20): con
-"Kubernetes" repetido en el titular y en la cinta, la palabra de mayor peso del banner se
-gastaba dos veces en 396 px. Docker ya está en la fila de skills del perfil DevOps y con
-evidencia en el cuerpo, así que el cambio suma información en vez de repetirla. Kubernetes
-sigue presente en el titular y en la tarjeta de métrica, donde es el dato que sí cuenta.
+### La cinta de herramientas
+
+**Regla:** a la cinta solo entra lo que se puede defender veinte minutos en una entrevista, en
+el nivel de "esto lo hice yo, a esta escala". El banner no es una lista: es una promesa de
+screening, y una palabra mal puesta te mete a una entrevista que no quieres.
+
+Orden actual (decisión del 2026-10-20), leído como cadena: **nubes → cómo se define → cómo se
+empaqueta → sobre qué corre → el "y además" → las dos plataformas de entrega**.
+
+| Palabra | Evidencia en `FACTS.md` |
+| --- | --- |
+| AWS | §3: EC2, S3, VPC, Security Groups, IAM, RDS, CloudWatch, Route 53 |
+| Terraform | §3: aprovisionamiento en AWS y Azure con Terraform |
+| Docker | §3: imagen Docker por combinación tecnológica; contenedores sobre Kubernetes |
+| Linux | §3: automatización con Ansible sobre servidores Linux (10 servidores) |
+| Ansible | §3: configuración automatizada, 2 h → 20 min |
+| Jenkins | §3: pipelines de CI/CD de la aplicación bancaria (IDS Comercial / Banamex) |
+| Azure DevOps | §3: 20 pipelines de CI/CD para 3 equipos (Veradat) |
+
+**"Azure DevOps", no "Azure"** (decisión del 2026-10-20): el footprints de Azure cloud es
+real pero fino (máquinas virtuales, balanceadores y gestión de secretos, con Terraform), frente
+a los ocho servicios de AWS que sí se nombran. Poner "Azure" en la banda hace que un
+reclutador de una empresa Azure lo lea como "multi-cloud engineer" y te pregunte por AKS,
+Entra ID, ARM y Landing Zones: un filtro al que uno entra por la puerta de atrás. "Azure
+DevOps" es un producto de Microsoft que corre sobre cualquier nube, es lo que se opera hoy, y
+conserva la palabra "Azure" para el ojo que filtra por ella. El multi-nube real se publica en
+el CV, que ya lo pondera con honestidad.
+
+**"Docker", no "Kubernetes", en la cinta** (decisión del 2026-10-20): con "Kubernetes"
+repetido en el titular y en la cinta, la palabra de mayor peso del banner se gastaba dos veces
+en 396 px. Kubernetes sigue presente en el titular y en la tarjeta de métrica, donde es el dato
+que sí cuenta.
+
+**Palabras que no están y por qué:** Prometheus, Grafana, ArgoCD, GitLab CI, Vault, EKS y
+service mesh no están confirmadas en `FACTS.md` y no se pueden publicar. El equivalente
+empresarial que sí se tiene es ELK + Splunk, que en banca y empresa latinoamericana se busca
+más que Prometheus. Ese hueco (GitOps y observabilidad) es un objetivo de aprendizaje, no una
+edición de banner.
 
 El banner **no lleva correo**: la decisión es del 2026-10-19, y el contacto vive en el titular
 y en la sección "Acerca de" de `linkedin/perfil.md`.
