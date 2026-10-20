@@ -113,6 +113,7 @@ contenido** salvo donde se indica.
 | **Nombre de un PDF** | — | `Makefile` (regla y target phony), `.github/workflows/build-resume.yml` (lista de compilación **y** lista de release), `README.md` (tabla de perfiles y de targets) |
 | **Sección de skills** (nueva fila) | `FACTS.md` §5 | La `\skillrow` en los 8 perfiles, con la evidencia en el cuerpo |
 | **Layout / tipografía** | — | `styles/styledesign.tex` o `style.cls`; después hay que **medir la barra lateral** (§8) y volver a comprobar las 2 páginas |
+| **Negritas (énfasis)** | `FACTS.md` §5 | La misma decisión de negrita en el par EN/ES de cada viñeta; máximo ~3 negritas por viñeta; nunca negrita en una herramienta que ya está en la barra lateral |
 
 ---
 

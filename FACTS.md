@@ -361,6 +361,17 @@ Cada perfil conserva su propio foco sobre los mismos hechos. **No contradecirse.
 | Sub-entrada móvil (sin nombres de proyecto) | 2 bullets — **énfasis en despliegue**: GitHub Actions, puertas de release, EAS Update, producción | 2 bullets — **énfasis en liderazgo**: dirección técnica, monorepo, contrato de entrega, puertas de release | 3 bullets — **éntesis en implementación**: navegación, theming, pipeline del estimador, validación y pruebas | 2 bullets — **énfasis en entrega agéntica**: contrato de entrega (ADRs, specs, runbooks, worktree por slice) y puertas de release |
 | Bloque de IA (plugin de Claude Code) | Una línea (asistente de desarrollo) | Una línea | Una línea | **Protagonista**: 4 skills, 35 scripts Python (~10,800 líneas), ~3,200 líneas de `SKILL.md`, índice autogenerado |
 
+**Negritas.** La negrita marca lo que un reclutador debe leer primero en cada perfil: la métrica
+(los números de §2), el entregable que construyó y el tema del perfil según la matriz de arriba.
+Reglas:
+
+- Máximo **~3 negritas por viñeta** (1–2 es lo ideal). Una viñeta sin negrita es válida.
+- **Nunca** se pone en negrita una herramienta que ya aparece en la barra lateral: el lector ya
+  la tiene a la vista y la negrita sólo añade ruido.
+- EN y ES toman **exactamente la misma decisión** en la viñeta correspondiente.
+- La negrita no cambia lo que se afirma: si una frase se puede poner en negrita, es porque el
+  texto ya dice algo que la sostiene.
+
 ---
 
 ## 6. Verificación
