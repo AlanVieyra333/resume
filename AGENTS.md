@@ -108,6 +108,7 @@ contenido** salvo donde se indica.
 | **Idioma nuevo** | — | Ver §7 de este documento |
 | **Sección de proyectos independientes** | `FACTS.md` §3 (movil) | La sección y sus dos sub-entradas en los 8 perfiles, los marcadores `% mobile-begin` / `% mobile-end`, y el bloque equivalente de `check-profiles.sh` |
 | **Copy de LinkedIn** | `FACTS.md` §4b | Los bloques ```text de `linkedin/perfil.md`; los marcadores `<!-- mobile-begin -->` / `<!-- mobile-end -->` delimitan el bloque móvil |
+| **Foto de perfil** | `linkedin/foto-perfil.md` | `python3 scripts/retouch_profile.py` regenera `profile.jpg` (1086×1086, la del CV) y `linkedin/profile-linkedin.jpg` (1200×1200). El original `profile-original.jpg` no se toca. Después hay que recompilar y volver a comprobar las 2 páginas |
 | **Métrica del banner** | `FACTS.md` §2 | `linkedin/banner/banner-devops-en.html` (las cifras que salen en las tarjetas) y el bloque "Texto para el banner" de `linkedin/perfil.md` §5 |
 | **Nombre de un PDF** | — | `Makefile` (regla y target phony), `.github/workflows/build-resume.yml` (lista de compilación **y** lista de release), `README.md` (tabla de perfiles y de targets) |
 | **Sección de skills** (nueva fila) | `FACTS.md` §5 | La `\skillrow` en los 8 perfiles, con la evidencia en el cuerpo |
@@ -252,7 +253,10 @@ resumen o las filas de skills de ese perfil.
 | `lang/ai/es.tex`, `lang/ai/en.tex` | Perfil AI Engineer |
 | `FACTS.md` | **Fuente única de verdad**: hechos, métricas, frontera de lo declarable, matriz de énfasis |
 | `scripts/check-profiles.sh` | Los invariantes mecánicos entre los 8 perfiles |
+| `scripts/retouch_profile.py` | Retoque y recomposición de la foto de perfil (`profile-original.jpg` → `profile.jpg`) |
+| `profile-original.jpg` | La foto sin retocar: **no se edita a mano**, es la entrada del script de retoque |
 | `linkedin/perfil.md` | Copy publicable de LinkedIn (bloques ```text) |
+| `linkedin/foto-perfil.md` | Qué se corrigió en la foto y guion para la próxima sesión de fotos |
 | `linkedin/banner/` | Banner de LinkedIn del perfil DevOps: HTML fuente, PNG/JPG y `render.sh` (`make banner`) |
 | `RECRUITER_REVIEW.md` | Calificación de cada perfil como reclutador senior, con las correcciones aplicadas |
 | `Makefile` | Targets de compilación local y vía Docker |

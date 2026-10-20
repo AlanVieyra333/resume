@@ -49,16 +49,20 @@ Dos detalles que conviene conocer antes de tocar ese archivo:
 ├── styles/
 │   └── styledesign.tex         # Variante con diseño (banda, barra lateral, línea de tiempo)
 ├── Makefile                    # Targets de compilación local y vía Docker
-├── profile.jpg                 # Foto de perfil (solo se usa en la variante con diseño)
+├── profile.jpg                 # Foto de perfil retocada (solo se usa en la variante con diseño)
+├── profile-original.jpg        # Foto original, sin retocar: fuente de scripts/retouch_profile.py
 ├── out/                        # PDFs generados (gitignored; poblado por `make all`)
 ├── FACTS.md                    # Fuente única de verdad: hechos confirmados, métricas y límites de lo declarable
 ├── AGENTS.md                   # Manual operativo: qué tocar al cambiar cada dato y checklist de cierre
 ├── RECRUITER_REVIEW.md         # Calificación de cada perfil como reclutador senior, con las correcciones aplicadas
 ├── LICENSE                     # MIT (template original)
 ├── scripts/
-│   └── check-profiles.sh       # Verifica invariantes entre los 8 perfiles (make check)
+│   ├── check-profiles.sh       # Verifica invariantes entre los 8 perfiles (make check)
+│   └── retouch_profile.py      # Retoque y recomposición de la foto de perfil
 ├── linkedin/
 │   ├── perfil.md               # Copy publicable de LinkedIn (titular, acerca de, experiencia, banner)
+│   ├── foto-perfil.md          # Qué se corrigió en la foto y guion para la próxima sesión
+│   ├── profile-linkedin.jpg    # Foto de perfil para subir a LinkedIn (1200x1200)
 │   └── banner/                 # Banner de LinkedIn del perfil DevOps (HTML fuente + PNG/JPG)
 ├── lang/
 │   ├── es.tex                  # Perfil DevOps, español
