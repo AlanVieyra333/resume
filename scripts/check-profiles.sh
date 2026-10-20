@@ -211,7 +211,7 @@ check_metric() {
     done
 }
 check_metric "70 microservices"            "70 microservices"        "70 microservicios"
-check_metric "10 CI/CD pipelines"          "10 Azure DevOps CI/CD"   "10 pipelines de CI/CD"
+check_metric "20 CI/CD pipelines"          "20 Azure DevOps CI/CD"   "20 pipelines de CI/CD"
 check_metric "6h -> 1h deployment"         "6 hours to 1 hour"        "6 horas a 1 hora"
 check_metric "9 QA clusters"               "9 in QA on Kubernetes"    "9 en QA sobre Kubernetes"
 # The pre-production estate was consolidated to 21 clusters (9 QA, 4 DEV,

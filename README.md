@@ -57,6 +57,8 @@ Dos detalles que conviene conocer antes de tocar ese archivo:
 ├── LICENSE                     # MIT (template original)
 ├── scripts/
 │   └── check-profiles.sh       # Verifica invariantes entre los 8 perfiles (make check)
+├── linkedin/
+│   └── banner/                 # Banner de LinkedIn del perfil DevOps (HTML fuente + PNG/JPG)
 ├── LinkedIn_perfil_AFRV_propuesta.md
 │                               # Borrador de copy para LinkedIn (no se compila)
 ├── lang/
@@ -97,6 +99,7 @@ Dos detalles que conviene conocer antes de tocar ese archivo:
 | `make docker` | Compila todo (ATS) dentro del contenedor `texlive/texlive:TL2025-historic`, sin instalar TeX localmente. |
 | `make design-docker` | Igual, pero con la variante con diseño. |
 | `make check` | Verifica los invariantes entre perfiles sin compilar. |
+| `make banner` | Renderiza el banner de LinkedIn (`linkedin/banner/`) a PNG a 2×. |
 | `make clean` | Borra `out/`, los PDFs generados, y los intermedios de LaTeX (`.log`, `.aux`, `.out`, `.fls`, `.fdb_latexmk`). |
 
 ### Ejemplos rápidos

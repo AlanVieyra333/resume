@@ -119,7 +119,7 @@ Español:
 ```text
 Aprovisioné infraestructura en AWS y Azure con Terraform: EC2, S3, VPC, Security Groups, IAM, RDS, CloudWatch y Route 53 en AWS, junto con máquinas virtuales, balanceadores y gestión de secretos en ambas nubes. Administro 21 clústeres de preproducción: 9 en QA sobre Kubernetes, 4 en DEV y 4 en INTGR sobre OpenShift, y 4 en Certificación.
 
-- Diseñé y mantuve 10 pipelines de CI/CD en Azure DevOps para 3 equipos: frontend, backend y QA. El tiempo de despliegue del conjunto completo de 70 microservicios pasó de 6 horas a 1 hora: aproximadamente un 83% menos. Desarrollé y promoví charts de Helm como estándar de despliegue del equipo.
+- Diseñé y mantuve 20 pipelines de CI/CD en Azure DevOps para 3 equipos: frontend, backend y QA. El tiempo de despliegue del conjunto completo de 70 microservicios pasó de 6 horas a 1 hora: aproximadamente un 83% menos. Desarrollé y promoví charts de Helm como estándar de despliegue del equipo.
 - Construí el plugin de Claude Code de la plataforma: 4 skills que leen una petición en lenguaje natural, detectan la intención y la ejecutan con un script determinista en Python. Son 35 scripts y unas 3,200 líneas de SKILL.md, con un script que genera automáticamente el índice de capacidades. Las skills parsean el YAML y el JSON de la propia plataforma y ejecutan operaciones reales: validar el estado de releases y work items, verificar builds contra su rama, redesplegar un nodo con las versiones que ya corre, auditar la configuración del nodo contra el manual de la plataforma, leer secretos de aplicación en AWS Secrets Manager y reportar vulnerabilidades de Snyk.
 - Revisé la arquitectura hexagonal del equipo, que desacopla cada microservicio de sus dependencias tecnológicas (PostgreSQL, Oracle, RabbitMQ, Kafka, IBM MQ y SQS), y generé la imagen Docker para cada combinación tecnológica que cada microservicio requiere.
 - Implementé y operé controles ISO 27001 en gestión de secretos, control de acceso en nube y escaneo de dependencias. Remedié vulnerabilidades críticas y altas detectadas por SonarQube Cloud, Snyk y Mend mediante actualizaciones de paquetes del sistema operativo y dependencias Maven.
@@ -135,7 +135,7 @@ English:
 ```text
 I provisioned AWS and Azure infrastructure using Terraform: EC2, S3, VPC, Security Groups, IAM, RDS, CloudWatch, and Route 53 on AWS, along with virtual machines, load balancers, and secrets management across both clouds. I manage 21 pre-production clusters: 9 in QA on Kubernetes, 4 in DEV and 4 in INTGR on OpenShift, and 4 in Certificación.
 
-- Designed and maintained 10 Azure DevOps CI/CD pipelines for 3 teams: frontend, backend and QA. The time to deploy the complete set of 70 microservices fell from 6 hours to 1 hour: approximately 83% less time. Built and promoted Helm charts as the team's deployment standard.
+- Designed and maintained 20 Azure DevOps CI/CD pipelines for 3 teams: frontend, backend and QA. The time to deploy the complete set of 70 microservices fell from 6 hours to 1 hour: approximately 83% less time. Built and promoted Helm charts as the team's deployment standard.
 - Built the Claude Code plugin for the platform: 4 skills that read a request in natural language, detect the intent, and dispatch it to a deterministic Python script. That is 35 scripts and about 3,200 lines of SKILL.md, plus a script that auto-generates the capability index. The skills parse the platform's own YAML and JSON and act on real operations: validating release and work-item state, checking builds against their branch, redeploying a node at its running versions, auditing node configuration against the platform manual, reading application secrets from AWS Secrets Manager, and reporting Snyk vulnerabilities.
 - Reviewed the team's hexagonal architecture, which decouples each microservice from its technology dependencies (PostgreSQL, Oracle, RabbitMQ, Kafka, IBM MQ and SQS), and produced the Docker image for every technology combination each microservice requires.
 - Implemented and operated ISO 27001 controls across secret management, cloud access control and dependency scanning. Remediated critical and high-severity vulnerabilities identified by SonarQube Cloud, Snyk and Mend through OS package and Maven dependency updates.
@@ -242,21 +242,32 @@ El repositorio del proyecto de Grupo de la Parra es privado, según el CV origin
 
 ### Texto para el banner
 
-Español:
+**Banner DevOps (producido, en inglés):** [`linkedin/banner/banner-devops-en.png`](linkedin/banner/banner-devops-en.png)
+— diseño de 1584 × 396 px, exportado a 3168 × 792 px. Una línea de posicionamiento y una fila
+de métricas; el correo no va en el banner (decisión del 2026-10-19), porque las métricas son
+la prueba que un reclutador escaneando en dos segundos necesita.
 
 ```text
-AWS, CI/CD y Kubernetes para plataformas de producción
-alan.vieyra376@gmail.com
+Scale cloud infrastructure with CI/CD and Kubernetes
+
++70 microservices deployed · +20 pre-production clusters · +20 CI/CD pipelines
 ```
 
-English:
+Español (texto listo, imagen pendiente):
 
 ```text
-AWS, CI/CD and Kubernetes for production platforms
-alan.vieyra376@gmail.com
+Escalo infraestructura cloud con CI/CD y Kubernetes
+
++70 microservicios desplegados · +20 clústeres de preproducción · +20 pipelines de CI/CD
 ```
 
-Usar una frase legible y el contacto, con espacio para la foto de perfil. La imagen del banner queda por producir. Para posiciones de **AI Engineer**, la variante es:
+El "+" del banner significa "al menos": las cifras se redondean hacia abajo a múltiplo de diez
+porque las cantidades reales son aproximadas (el CV publica las exactas: 70 microservicios,
+21 clústeres, ~20 pipelines). Si una cifra del CV baja de un múltiplo de diez, hay que
+recalcular el "+" del banner.
+
+El diseño deja libre la franja izquierda (x 0–460 px de los 1584 px) porque LinkedIn monta
+la foto de perfil encima. Para posiciones de **AI Engineer**, la variante de copy es:
 
 ```text
 IA aplicada: skills de Claude Code sobre Kubernetes y OpenShift

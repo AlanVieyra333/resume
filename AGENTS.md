@@ -108,6 +108,7 @@ contenido** salvo donde se indica.
 | **Idioma nuevo** | — | Ver §7 de este documento |
 | **Sección de proyectos independientes** | `FACTS.md` §3 (movil) | La sección y sus dos sub-entradas en los 8 perfiles, los marcadores `% mobile-begin` / `% mobile-end`, y el bloque equivalente de `check-profiles.sh` |
 | **Copy de LinkedIn** | `FACTS.md` §4b | Los bloques ```text de `LinkedIn_perfil_AFRV_propuesta.md`; los marcadores `<!-- mobile-begin -->` / `<!-- mobile-end -->` delimitan el bloque móvil |
+| **Métrica del banner** | `FACTS.md` §2 | `linkedin/banner/banner-devops-en.html` (las cifras que salen en las tarjetas) y el bloque "Texto para el banner" de `LinkedIn_perfil_AFRV_propuesta.md` §5 |
 | **Nombre de un PDF** | — | `Makefile` (regla y target phony), `.github/workflows/build-resume.yml` (lista de compilación **y** lista de release), `README.md` (tabla de perfiles y de targets) |
 | **Sección de skills** (nueva fila) | `FACTS.md` §5 | La `\skillrow` en los 8 perfiles, con la evidencia en el cuerpo |
 | **Layout / tipografía** | — | `styles/styledesign.tex` o `style.cls`; después hay que **medir la barra lateral** (§8) y volver a comprobar las 2 páginas |
@@ -252,6 +253,7 @@ resumen o las filas de skills de ese perfil.
 | `FACTS.md` | **Fuente única de verdad**: hechos, métricas, frontera de lo declarable, matriz de énfasis |
 | `scripts/check-profiles.sh` | Los invariantes mecánicos entre los 8 perfiles |
 | `LinkedIn_perfil_AFRV_propuesta.md` | Copy publicable de LinkedIn (bloques ```text) |
+| `linkedin/banner/` | Banner de LinkedIn del perfil DevOps: HTML fuente, PNG/JPG y `render.sh` (`make banner`) |
 | `RECRUITER_REVIEW.md` | Calificación de cada perfil como reclutador senior, con las correcciones aplicadas |
 | `Makefile` | Targets de compilación local y vía Docker |
 | `.github/workflows/build-resume.yml` | CI: valida commits, compila, publica la release con los 16 PDFs |

@@ -69,7 +69,8 @@ endif
 OUTDIR := out
 
 .PHONY: all devops devops-en devops-es fullstack fullstack-en fullstack-es \
-        lead lead-en lead-es ai ai-en ai-es design design-docker docker check clean
+        lead lead-en lead-es ai ai-en ai-es design design-docker docker check clean \
+        banner
 
 #-----------------------------------------------------------------------
 # Default and aggregate targets
@@ -178,6 +179,17 @@ docker: $(TEXSOURCES)
 
 check:
 	@bash scripts/check-profiles.sh
+
+#-----------------------------------------------------------------------
+# LinkedIn banner (linkedin/banner/)
+#
+# Renders the banner HTML to PNG at 2x (3168 x 792 px) with a headless
+# Chromium browser. Needs a Chromium-based browser: Brave by default,
+# override with CHROME=/path/to/browser.
+#-----------------------------------------------------------------------
+
+banner:
+	@bash linkedin/banner/render.sh
 
 #-----------------------------------------------------------------------
 # Cleanup

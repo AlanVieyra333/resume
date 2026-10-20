@@ -67,7 +67,7 @@ perfil publicado, no el del CV: `featured` (8), `banner` (6), `photo` (6),
 | headline | 7/12 | El encabezado es solo el título; la prueba vive en el resumen, una línea más abajo. |
 | about_open | 8/10 | Abre con "DevOps engineer with a software development background since 2017": es contexto, no el problema de quien lee. |
 | about_body | 10 | Ofrece (aprovisionar, operar, automatizar) con prueba. Sin cierre de "qué sigue". |
-| current_role | 9/10 | Veradat: 10 pipelines, 70 microservicios, 6 h → 1 h, 21 clústeres, 60 → 30 min, 2 h → 20 min. |
+| current_role | 9/10 | Veradat: 20 pipelines, 70 microservicios, 6 h → 1 h, 21 clústeres, 60 → 30 min, 2 h → 20 min. |
 | experience_depth | 8/8 | Banamex y Telcel con detalle; Nova Solutions y CINVESTAV fuera. |
 | skills | 5/6 | Las tres primeras (AWS, Terraform, Kubernetes) son las correctas; el resto diluye. |
 | proyectos | 6/8 | Los 12 runbooks y las puertas de release son prueba real, sin resultado publicado. |
@@ -116,7 +116,7 @@ perfil publicado, no el del CV: `featured` (8), `banner` (6), `photo` (6),
 | Ítem | Puntos | Nota |
 | --- | --- | --- |
 | headline | 8/12 | El título declara el ángulo (deuda técnica) y es preciso. |
-| about_open | 9/10 | Abre con "Leads technical debt remediation across 10 CI/CD pipelines serving three teams": nombra el problema. |
+| about_open | 9/10 | Abre con "Leads technical debt remediation across 20 CI/CD pipelines serving three teams": nombra el problema. |
 | about_body | 8/10 | Buen cuerpo; le falta el "a qué sigue". |
 | current_role | 9/10 | Hexagonal + matriz de imágenes como protagonistas, ISO 27001, mentoría de 10 ingenieros. |
 | experience_depth | 8/8 | Los tres empleadores, con el bloque de standards en su lugar. |
@@ -227,8 +227,8 @@ perfil publicado, no el del CV: `featured` (8), `banner` (6), `photo` (6),
 | --- | --- | --- |
 | headline | 10/12 | "AI Engineer \| Claude Code & Agent Skills": dice el rol y el método, y el resumen abre con el plugin y sus cifras. |
 | about_open | 9/10 | Abre declarando el alcance ("applied AI and agentic tooling") y luego la prueba. |
-| about_body | 8/10 | El resumen cierra con "antes, 10 pipelines y 21 clústeres": no es un perfil de IA puro, y eso es una decisión, no un descuido. |
-| current_role | 9/10 | El plugin es el protagonista, y la base de infraestructura (10 pipelines, 21 clústeres, Terraform, ISO 27001) sostiene que las skills corrieron contra la plataforma real. |
+| about_body | 8/10 | El resumen cierra con "antes, 20 pipelines y 21 clústeres": no es un perfil de IA puro, y eso es una decisión, no un descuido. |
+| current_role | 9/10 | El plugin es el protagonista, y la base de infraestructura (20 pipelines, 21 clústeres, Terraform, ISO 27001) sostiene que las skills corrieron contra la plataforma real. |
 | experience_depth | 8/8 | Los tres empleadores, el bloque móvil en clave de entrega agéntica y la plataforma de cumplimiento. |
 | skills | 6/6 | La primera fila es exactamente "AI & Agentic Tooling: Claude Code, SKILL.md, Python, Bash, YAML, JSON". Es el único perfil cuya lista de skills empieza por lo que quiere que le contraten. |
 | proyectos | 6/8 | El plugin es privado: no hay repositorio público, ni enlace, ni captura. La prueba existe pero no se puede verificar desde fuera. |

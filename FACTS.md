@@ -45,7 +45,7 @@ Eliminado de los cuatro perfiles en la revisión 2026-10: **Nova Solutions / Ban
 
 | Métrica | Valor | Dónde |
 |---|---|---|
-| Pipelines de CI/CD mantenidos | 10 | Veradat |
+| Pipelines de CI/CD mantenidos | 20 | Veradat |
 | Equipos atendidos por esos pipelines | 3 (frontend, backend, QA) | Veradat |
 | Despliegue del conjunto completo | 70 microservicios | Veradat |
 | Reducción de tiempo de despliegue | 6 h → 1 h (≈83 %) | Veradat |
@@ -74,7 +74,10 @@ Eliminado de los cuatro perfiles en la revisión 2026-10: **Nova Solutions / Ban
 ## 3. Hechos confirmados por RECORD (no deducidos)
 
 ### Veradat
-- Diseñó y mantiene 10 pipelines de CI/CD en Azure DevOps para 3 equipos.
+- Diseñó y mantiene 20 pipelines de CI/CD en Azure DevOps para 3 equipos.
+  - **Corrección 2026-10-19 (confirmada por Alan):** la cifra real es de **~20 pipelines**
+    (publicada como 20); las versiones anteriores declaraban 10. Los tres equipos y las demás
+    métricas del puesto no cambian.
 - Charts de Helm como **estándar de despliegue**, adoptado por los 3 equipos.
 - Administra **21 clústeres de preproducción**, todos de preproducción (ninguno de producción):
   - **9 en QA sobre Kubernetes**
