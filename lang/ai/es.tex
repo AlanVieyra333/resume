@@ -13,12 +13,24 @@
 % (boards, wikis, bastiones, orgs, nombres de agentes) se generalizan según la
 % §4c de FACTS.md.
 %
+% El stack de desarrollo agéntico (Superpowers, Matt Pocock Skills, Ponytail,
+% Karpathy Guidelines, Codebase Memory MCP) se publica como USADO, nunca como
+% construido: las cinco herramientas son proyectos públicos de terceros (§3 de
+% FACTS.md). El servidor MCP indexa el repositorio en un grafo de conocimiento
+% persistente con análisis estático local y no lleva ningún modelo dentro: nunca
+% debe describirse como almacén de embeddings, base vectorial o búsqueda
+% semántica (§4 de FACTS.md).
+%
+% El stack es de la entrega MÓVIL. Lo que construyó en Veradat es otra cosa:
+% skills propias para las tareas de la organización, especializadas en automatizar
+% procesos DevOps. Los dos conjuntos no se mezclan (§4 de FACTS.md).
+%
 % Mantener cifras, empleadores y alcance alineados con lang/ai/en.tex y con
 % los demás perfiles; FACTS.md es la fuente de verdad de cada afirmación.
 
 \resumeaddress{Ciudad de México, México \textbar\ UTC-6 (US Central)}
-\resumejobtitle{Ingeniero de IA \textbar\ Claude Code y skills de agentes}
-\resumesummary{Ingeniero de IA con trayectoria en desarrollo de software desde 2017, enfocado en IA aplicada y herramientas agénticas sobre infraestructura en producción. Construí el \textbf{plugin de Claude Code} de la plataforma: \textbf{4 skills} que leen una petición en lenguaje natural, detectan la intención y la ejecutan con \textbf{35 scripts deterministas en Python}, documentados en cerca de \textbf{3{,}200 líneas de SKILL.md}. La unidad de trabajo es el contrato ejecutable entre la intención y el script: validación de releases, redespliegues de nodos, auditorías de configuración, consulta de secretos y reportes de vulnerabilidades, ejecutados contra la plataforma real. Antes, 20 pipelines de CI/CD para tres equipos y \textbf{21 clústeres de preproducción}.}
+\resumejobtitle{Ingeniero de IA \textbar\ Claude Code, skills de agentes y desarrollo agéntico}
+\resumesummary{Ingeniero de IA con trayectoria en desarrollo de software desde 2017, enfocado en IA aplicada y herramientas agénticas sobre infraestructura en producción. Construí el \textbf{plugin de Claude Code} de la plataforma: \textbf{4 skills} que leen una petición en lenguaje natural, detectan la intención y la ejecutan con \textbf{35 scripts deterministas en Python}, documentados en cerca de \textbf{3{,}200 líneas de SKILL.md}. La unidad de trabajo es el contrato ejecutable entre la intención y el script. En su propio trabajo de entrega, el código se escribe con agentes de IA, sobre un flujo dirigido por specs. Antes, 20 pipelines de CI/CD para tres equipos y \textbf{21 clústeres de preproducción}.}
 \resumesummaryheading{Sobre mí}
 \makeheader
 
@@ -41,7 +53,7 @@
 \resumeentry{Ingeniero DevOps}{Veradat Smart Network S.A. de C.V.}{Ago 2024 -- Oct 2026}{Ciudad de México}
 \begin{itemize}
     \item Diseñé y mantuve \textbf{20 pipelines de CI/CD en Azure DevOps} para 3 equipos (frontend, backend y QA), reduciendo el tiempo de despliegue de 70 microservicios de \textbf{6 horas a 1 hora} (83\% menos tiempo). Desarrollé los charts de Helm que los tres equipos adoptaron como estándar de despliegue, y registré el trabajo de infraestructura en Microsoft Project por sprint.
-    \item Construí el \textbf{plugin de Claude Code} de la plataforma: \textbf{4 skills} que leen una petición en lenguaje natural, detectan la intención y la ejecutan con un script determinista en Python -- \textbf{35 scripts, unas 10{,}800 líneas} -- documentados en unas \textbf{3{,}200 líneas de SKILL.md}, con un script que genera automáticamente el índice de capacidades. Las skills parsean el YAML y el JSON de la propia plataforma y ejecutan operaciones reales: validar el estado de releases y work items, verificar builds contra su rama, redesplegar un nodo con las versiones que ya corre, auditar la configuración del nodo contra el manual de la plataforma, leer secretos de aplicación en AWS Secrets Manager y reportar vulnerabilidades de Snyk.
+    \item Construí \textbf{skills custom de Claude Code} para las tareas de la organización, especializadas en automatizar procesos DevOps: \textbf{4 skills} que leen una petición en lenguaje natural, detectan la intención y la ejecutan con un script determinista en Python -- \textbf{35 scripts, unas 10{,}800 líneas} -- documentados en unas \textbf{3{,}200 líneas de SKILL.md}, con un script que genera automáticamente el índice de capacidades. Las skills parsean el YAML y el JSON de la propia plataforma y ejecutan operaciones reales: validar el estado de releases y work items, verificar builds contra su rama, redesplegar un nodo con las versiones que ya corre, auditar la configuración del nodo contra el manual de la plataforma, leer secretos de aplicación en AWS Secrets Manager y reportar vulnerabilidades de Snyk.
     \item Revisé la arquitectura hexagonal del equipo, que desacopla cada microservicio de sus dependencias tecnológicas (PostgreSQL, Oracle, RabbitMQ, Kafka, IBM~MQ, SQS), y generé la imagen Docker para cada combinación tecnológica que cada microservicio requiere.
     \item Administro \textbf{21 clústeres de preproducción}: 9 en QA sobre Kubernetes, 4 en DEV y 4 en INTGR sobre OpenShift, 4 en Certificación sobre Kubernetes, con sondas readiness/liveness que controlan el tráfico en actualizaciones progresivas y disparan la recuperación, y monitoreo y alertas con Elastic Stack que redujeron el \textbf{tiempo de detección de incidentes de QA de 60 a 30 minutos} (50\% menos tiempo).
     \item Aprovisioné infraestructura en \textbf{AWS y Azure con Terraform} (EC2, S3, VPC, Security Groups, IAM, RDS, CloudWatch y Route~53), junto con máquinas virtuales, balanceadores de carga y gestión de secretos en ambas nubes, automaticé la configuración de 10 servidores Linux con Ansible, reduciendo el aprovisionamiento de \textbf{2 horas a 20 minutos} (83\% menos tiempo), y automatizé \textbf{20 procesos de infraestructura con shell scripting}. Realicé además backups y rollbacks de las bases de datos PostgreSQL y Oracle que respaldan los 70 microservicios, asegurando la recuperabilidad de los datos durante despliegues y respuesta a incidentes.
@@ -71,6 +83,7 @@
 \begin{itemize}
     \item Defino el contrato de entrega de apps para clientes en React Native y Expo, expresado como un artefacto ejecutable: \textbf{12 ADRs, 20 specs y 12 runbooks}, un \textbf{git worktree por slice} con su propia base de datos y un GitHub issue tracker numerado alimentado por commits convencionales.
     \item Establezco las puertas de release que el trabajo tiene que atravesar: \textbf{6 workflows de GitHub Actions} con jobs de prueba fragmentados sobre \textbf{95 archivos de prueba}, una \textbf{puerta de promoción} entre staging y producción, un \textbf{despliegue a producción con aprobación} y canales de EAS Update, sobre un monorepo con Bun workspaces, Turborepo y Biome.
+    \item Construí esa entrega con agentes de IA sobre un flujo dirigido por specs: metodología \textbf{Superpowers} (spec, plan, TDD, subagentes, revisión), \textbf{Matt Pocock} Skills, \textbf{Ponytail}, \textbf{Karpathy} Guidelines y un grafo del repositorio con \textbf{Codebase Memory MCP}.
 \end{itemize}
 % mobile-end
 

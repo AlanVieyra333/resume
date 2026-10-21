@@ -85,6 +85,15 @@ no cae en la columna "No afirmar". Lo que **no** se puede afirmar:
   se publica **la función**, no el artefacto.
 - Nombres de los proyectos móviles, tienda de aplicaciones, descargas, usuarios, ingresos o
   pagos en producción.
+- **El stack de desarrollo agéntico** (Superpowers, Matt Pocock Skills, Ponytail, Karpathy,
+  Codebase Memory MCP) se publica como **usado, nunca como construido**: son cinco proyectos
+  públicos de terceros. El grafo de Codebase Memory MCP es un índice de estructura del código
+  hecho localmente por análisis estático: **no** es una base vectorial, ni embeddings, ni
+  "búsqueda semántica", y el servidor no lleva ningún modelo dentro.
+- **El stack agéntico solo aparece en la entrega móvil.** En Veradat lo que se publica son
+  **skills propias** para las tareas de la organización, especializadas en automatizar procesos
+  DevOps. Mezclar ambos conjuntos es el error que `check-profiles.sh` bloquea: el stack de
+  terceros no puede salir de los marcadores `% mobile-begin` / `% mobile-end`.
 
 `scripts/check-profiles.sh` convierte la mayoría de estas reglas en un fallo automático, pero
 no todas: la honestidad editorial es responsabilidad de quien edita.
@@ -103,6 +112,8 @@ contenido** salvo donde se indica.
 | **Empleador** nuevo o cambio de rol | `FACTS.md` §1 y §3 | `\resumeentry` en los 8 perfiles; la lista de empleadores en `check-profiles.sh`; la sección de Experiencia de `linkedin/perfil.md` |
 | **Herramienta nueva** (skill) | `FACTS.md` §3 | La fila de `\skillrow` correspondiente **y** al menos una mención en el cuerpo del perfil: una skill sin evidencia en el cuerpo se detecta como "huérfana" |
 | **Hecho nuevo** (p. ej. el plugin de Claude Code) | `FACTS.md` §3 | Los 8 perfiles con el ángulo que le toca según la matriz de `FACTS.md` §5, **y** la matriz de énfasis si cambia el reparto entre perfiles |
+| **Stack de desarrollo agéntico** (Superpowers, Matt Pocock Skills, Ponytail, Karpathy, Codebase Memory MCP) | `FACTS.md` §3 | **Solo dentro de la sub-entrada móvil** de los 8 perfiles (`check-profiles.sh` lo exige: dentro de los marcadores `% mobile-begin` / `% mobile-end` y en ningún otro sitio) |
+| **Skills propias de la plataforma** (Veradat) | `FACTS.md` §3 | La viñeta de Veradat de los 8 perfiles: skills custom de Claude Code para las tareas de la organización, especializadas en automatizar procesos DevOps |
 | **Prohibición nueva** (algo que ya no se puede decir) | `FACTS.md` §4 | La tabla de `check-profiles.sh` (`FORBIDDEN`, `FORBIDDEN_ML`, `MOBILE_OVERCLAIM`, …) |
 | **Perfil nuevo** | `FACTS.md` §1, §5 y §6 | Ver §6 de este documento |
 | **Idioma nuevo** | — | Ver §7 de este documento |

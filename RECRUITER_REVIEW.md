@@ -225,7 +225,7 @@ perfil publicado, no el del CV: `featured` (8), `banner` (6), `photo` (6),
 
 | Ítem | Puntos | Nota |
 | --- | --- | --- |
-| headline | 10/12 | "AI Engineer \| Claude Code & Agent Skills": dice el rol y el método, y el resumen abre con el plugin y sus cifras. |
+| headline | 10/12 | "AI Engineer \| Claude Code, Agent Skills & Agentic Development": dice el rol y el método, y el resumen abre con el plugin y sus cifras. |
 | about_open | 9/10 | Abre declarando el alcance ("applied AI and agentic tooling") y luego la prueba. |
 | about_body | 8/10 | El resumen cierra con "antes, 20 pipelines y 21 clústeres": no es un perfil de IA puro, y eso es una decisión, no un descuido. |
 | current_role | 9/10 | El plugin es el protagonista, y la base de infraestructura (20 pipelines, 21 clústeres, 30 procesos automatizados con shell scripting, Terraform, ISO 27001) sostiene que las skills corrieron contra la plataforma real. |
@@ -251,6 +251,15 @@ perfil publicado, no el del CV: `featured` (8), `banner` (6), `photo` (6),
 - **El CV declara su propia frontera.** Dice "IA aplicada y agéntica" y "no entrena modelos".
   Un reclutador de IA que filtra por ML ve la frontera declarada y no se siente engañado; un
   reclutador que quiere un ingeniero de tooling ve un perfil con criterio.
+- **El stack de desarrollo agéntico está nombrado, no insinuado.** Superpowers, Matt Pocock
+  Skills, Ponytail, Karpathy Guidelines y Codebase Memory MCP aparecen en la entrega móvil, con
+  el proceso que gobiernan: spec, plan, TDD, subagentes y revisión. Es la diferencia entre
+  "usa IA" y "tiene un proceso de ingeniería para usarla": es exactamente lo que se le pregunta
+  a un ingeniero de IA en la primera media hora.
+- **Las skills de la plataforma son propias y ya son un producto.** "Skills custom de Claude
+  Code para las tareas de la organización, especializadas en automatizar procesos DevOps" es
+  una frase que se sostiene sola en una entrevista: no es un wrapper de prompts, es un
+  inventario de 4 skills, 35 scripts y ~3.200 líneas de `SKILL.md` con un índice autogenerado.
 
 ### Debilidades
 
@@ -355,6 +364,7 @@ Cambios de texto hechos sobre la base de la evaluación, no solo señalados:
 | 13 | Puesto en inglés dentro del archivo en español: "DevOps Engineer" → **"Ingeniero DevOps"**. | `lang/lead/es.tex` |
 | 14 | `check-profiles.sh` ampliado: sección única de proyectos independientes, fechas `2023 -- 2026`, marcadores móviles, **prohibición de contenido de ML**, cifras del plugin obligatorias en el perfil IA y prohibición del conteo de capacidades. | `scripts/check-profiles.sh` |
 | 15 | `AGENTS.md` creado: manual de homologación, matriz de qué tocar al cambiar cada dato, checklist de cierre y convenciones de commit. | `AGENTS.md` |
+| 16 | **Stack de desarrollo agéntico añadido** (Superpowers, Matt Pocock Skills, Ponytail, Karpathy Guidelines, Codebase Memory MCP), **solo dentro de la entrega móvil** en los ocho perfiles, y el bloque móvil del copy de LinkedIn. En Veradat, en cambio, la viñeta pasó de "asistente de desarrollo" a **"skills custom de Claude Code para las tareas de la organización, especializadas en automatizar procesos DevOps"**. Se publica como **usado**, nunca como construido; el grafo de Codebase Memory MCP se describe como índice de estructura del código, no como base vectorial; y `check-profiles.sh` verifica que el stack no salga de los marcadores de la sub-entrada móvil. | `FACTS.md` §3, §4 y §5, los 8 archivos de `lang/`, `linkedin/perfil.md`, `scripts/check-profiles.sh` |
 
 ---
 

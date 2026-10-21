@@ -2,7 +2,7 @@
 
 Revisión: 19 de octubre de 2026. Homologada con [main.tex](main.tex) y los ocho perfiles de contenido: [lang/es.tex](lang/es.tex), [lang/en.tex](lang/en.tex), [lang/lead/es.tex](lang/lead/es.tex), [lang/lead/en.tex](lang/lead/en.tex), [lang/fullstack/es.tex](lang/fullstack/es.tex), [lang/fullstack/en.tex](lang/fullstack/en.tex), [lang/ai/es.tex](lang/ai/es.tex) y [lang/ai/en.tex](lang/ai/en.tex).
 
-Objetivo: oportunidades de DevOps, Cloud Engineering y Platform Engineering con énfasis en AWS, roles de liderazgo técnico (DevOps/SRE Lead) donde pesa la remediación de deuda técnica, los estándares y el cumplimiento, y posiciones de **AI Engineer** donde la señal es el uso de IA aplicada y agéntica sobre la plataforma que ya operaba (plugin de Claude Code con skills propias). El posicionamiento combina infraestructura como código, operación de producción, automatización de entregas, gobierno técnico y experiencia previa en desarrollo. Los cargos, las fechas y las cifras proceden del CV; las notas de revisión no forman parte del texto para publicar.
+Objetivo: oportunidades de DevOps, Cloud Engineering y Platform Engineering con énfasis en AWS, roles de liderazgo técnico (DevOps/SRE Lead) donde pesa la remediación de deuda técnica, los estándares y el cumplimiento, y posiciones de **AI Engineer** donde la señal es el uso de IA aplicada y agéntica: **skills propias de Claude Code** para las tareas de la organización y la automatización de procesos DevOps, y el stack de desarrollo agéntico con el que construye la entrega móvil (Superpowers, Matt Pocock Skills, Ponytail, Karpathy y Codebase Memory MCP). El posicionamiento combina infraestructura como código, operación de producción, automatización de entregas, gobierno técnico y experiencia previa en desarrollo. Los cargos, las fechas y las cifras proceden del CV; las notas de revisión no forman parte del texto para publicar.
 
 La fuente de verdad de los hechos, las métricas y **los límites de lo declarable** está en [FACTS.md](FACTS.md). Cualquier texto de este documento debe respetar esa frontera: no se afirma SLOs ni error budgets, ni postmortems, ni runbooks **en la experiencia laboral** (los 12 runbooks que sí existen son del contrato de entrega del trabajo móvil), ni que se implementara la arquitectura hexagonal (se revisó), ni auditoría o certificación ISO 27001 (el rol fue implementar y operar controles). Tampoco se insinúa machine learning: no hay entrenamiento de modelos, RAG, embeddings, MLOps ni llamadas a APIs de LLM — la IA aquí es aplicada, y se publica como tal. Las métricas de despliegue y aprovisionamiento incorporan las aclaraciones del usuario: conjunto completo de 70 microservicios y conjunto de 10 servidores, respectivamente.
 
@@ -57,13 +57,13 @@ DevOps Engineer | AWS, Terraform and Kubernetes | Java/Spring Cloud background |
 Español:
 
 ```text
-AI Engineer | Plugin de Claude Code para la plataforma | 4 skills que enrutan intención a scripts | IA aplicada sobre Kubernetes y OpenShift
+AI Engineer | Plugin de Claude Code para la plataforma | 4 skills que enrutan intención a scripts | Desarrollo agéntico con agentes de IA
 ```
 
 English:
 
 ```text
-AI Engineer | Claude Code plugin for the platform | 4 skills routing intent to scripts | Applied AI over Kubernetes and OpenShift
+AI Engineer | Claude Code plugin for the platform | 4 skills routing intent to scripts | Agentic development with AI coding agents
 ```
 
 ## 2. Acerca de
@@ -73,13 +73,13 @@ AI Engineer | Claude Code plugin for the platform | 4 skills routing intent to s
 ```text
 Si tu equipo necesita aprovisionar infraestructura en AWS, automatizar entregas y operar microservicios en producción, puedo aportar experiencia con Terraform, CI/CD y Kubernetes.
 En Veradat reduje de 6 horas a 1 hora el despliegue del conjunto completo de 70 microservicios mediante CI/CD para 3 equipos.
-Administro 21 clústeres de preproducción: 9 en QA sobre Kubernetes, 4 en DEV y 4 en INTGR sobre OpenShift, 4 en Certificación.
+Administro 21 clústeres de preproducción: 9 en QA sobre Kubernetes, 4 en DEV, 4 en INTGR sobre OpenShift y 4 en Certificación.
 Elastic Stack en los 9 de QA cortó la detección de incidentes de 60 a 30 minutos.
-Promoví charts de Helm como estándar de despliegue del equipo.
-Construí el plugin de Claude Code de la plataforma: 4 skills que leen una petición en lenguaje natural y la ejecutan con scripts deterministas en Python, sobre 35 scripts y unas 3,200 líneas de SKILL.md.
+Promoví charts de Helm como estándar de despliegue.
+Construí skills custom de Claude Code para las tareas de la organización, especializadas en automatizar procesos DevOps: 4 skills que leen una petición en lenguaje natural y la ejecutan con scripts deterministas en Python, sobre 35 scripts y 3,200 líneas de SKILL.md.
 No es un modelo.
 Es el enrutado de una intención a una operación reproducible.
-Aprovisioné AWS y Azure con Terraform.
+Escribo el código con agentes de IA.
 También implementé y operé controles ISO 27001 en Veradat y Banamex.
 Coordino la interlocución técnica con el cliente y entre los 3 equipos.
 Acompaño a ingenieros de los equipos de frontend, backend y QA: revisiones de código y diseño, decisiones técnicas y nuevos miembros.
@@ -95,10 +95,10 @@ At Veradat, I cut the deployment of the complete set of 70 microservices from 6 
 I manage 21 pre-production clusters: 9 in QA on Kubernetes, 4 in DEV and 4 in INTGR on OpenShift, and 4 in Certificación.
 Elastic Stack on the 9 QA clusters cut incident detection from 60 to 30 minutes.
 I promoted Helm charts as the team's deployment standard.
-I built the Claude Code plugin for the platform: 4 skills that read a request in natural language and dispatch it to deterministic Python scripts, across 35 scripts and about 3,200 lines of SKILL.md.
+I built custom Claude Code skills for the organization's tasks, specialized in automating DevOps processes: 4 skills that read a request in natural language and dispatch it to deterministic Python scripts, across 35 scripts and about 3,200 lines of SKILL.md.
 It is not a model.
 It is the routing of an intent to a repeatable operation.
-I provisioned AWS and Azure with Terraform.
+I write the code with AI agents.
 I also implemented and operated ISO 27001 controls at Veradat and at Banamex.
 I coordinate technical communication with the client and across the 3 teams.
 I mentor engineers across the frontend, backend and QA teams: code and design reviews, technical decision-making, and onboarding.
@@ -120,7 +120,7 @@ Español:
 Aprovisioné infraestructura en AWS y Azure con Terraform: EC2, S3, VPC, Security Groups, IAM, RDS, CloudWatch y Route 53 en AWS, junto con máquinas virtuales, balanceadores y gestión de secretos en ambas nubes. Administro 21 clústeres de preproducción: 9 en QA sobre Kubernetes, 4 en DEV y 4 en INTGR sobre OpenShift, y 4 en Certificación.
 
 - Diseñé y mantuve 20 pipelines de CI/CD en Azure DevOps para 3 equipos: frontend, backend y QA. El tiempo de despliegue del conjunto completo de 70 microservicios pasó de 6 horas a 1 hora: aproximadamente un 83% menos. Desarrollé y promoví charts de Helm como estándar de despliegue del equipo.
-- Construí el plugin de Claude Code de la plataforma: 4 skills que leen una petición en lenguaje natural, detectan la intención y la ejecutan con un script determinista en Python. Son 35 scripts y unas 3,200 líneas de SKILL.md, con un script que genera automáticamente el índice de capacidades. Las skills parsean el YAML y el JSON de la propia plataforma y ejecutan operaciones reales: validar el estado de releases y work items, verificar builds contra su rama, redesplegar un nodo con las versiones que ya corre, auditar la configuración del nodo contra el manual de la plataforma, leer secretos de aplicación en AWS Secrets Manager y reportar vulnerabilidades de Snyk.
+- Construí skills custom de Claude Code para las tareas de la organización, especializadas en automatizar procesos DevOps: 4 skills que leen una petición en lenguaje natural, detectan la intención y la ejecutan con un script determinista en Python. Son 35 scripts y unas 3,200 líneas de SKILL.md, con un script que genera automáticamente el índice de capacidades. Las skills parsean el YAML y el JSON de la propia plataforma y ejecutan operaciones reales: validar el estado de releases y work items, verificar builds contra su rama, redesplegar un nodo con las versiones que ya corre, auditar la configuración del nodo contra el manual de la plataforma, leer secretos de aplicación en AWS Secrets Manager y reportar vulnerabilidades de Snyk.
 - Revisé la arquitectura hexagonal del equipo, que desacopla cada microservicio de sus dependencias tecnológicas (PostgreSQL, Oracle, RabbitMQ, Kafka, IBM MQ y SQS), y generé la imagen Docker para cada combinación tecnológica que cada microservicio requiere.
 - Implementé y operé controles ISO 27001 en gestión de secretos, control de acceso en nube y escaneo de dependencias. Remedié vulnerabilidades críticas y altas detectadas por SonarQube Cloud, Snyk y Mend mediante actualizaciones de paquetes del sistema operativo y dependencias Maven.
 - Acompaño a ingenieros de los equipos de frontend, backend y QA: revisiones de código y diseño, decisiones técnicas e incorporación de nuevos miembros al equipo.
@@ -136,7 +136,7 @@ English:
 I provisioned AWS and Azure infrastructure using Terraform: EC2, S3, VPC, Security Groups, IAM, RDS, CloudWatch, and Route 53 on AWS, along with virtual machines, load balancers, and secrets management across both clouds. I manage 21 pre-production clusters: 9 in QA on Kubernetes, 4 in DEV and 4 in INTGR on OpenShift, and 4 in Certificación.
 
 - Designed and maintained 20 Azure DevOps CI/CD pipelines for 3 teams: frontend, backend and QA. The time to deploy the complete set of 70 microservices fell from 6 hours to 1 hour: approximately 83% less time. Built and promoted Helm charts as the team's deployment standard.
-- Built the Claude Code plugin for the platform: 4 skills that read a request in natural language, detect the intent, and dispatch it to a deterministic Python script. That is 35 scripts and about 3,200 lines of SKILL.md, plus a script that auto-generates the capability index. The skills parse the platform's own YAML and JSON and act on real operations: validating release and work-item state, checking builds against their branch, redeploying a node at its running versions, auditing node configuration against the platform manual, reading application secrets from AWS Secrets Manager, and reporting Snyk vulnerabilities.
+- Built custom Claude Code skills for the organization's tasks, specialized in automating DevOps processes: 4 skills that read a request in natural language, detect the intent, and dispatch it to a deterministic Python script. That is 35 scripts and about 3,200 lines of SKILL.md, plus a script that auto-generates the capability index. The skills parse the platform's own YAML and JSON and act on real operations: validating release and work-item state, checking builds against their branch, redeploying a node at its running versions, auditing node configuration against the platform manual, reading application secrets from AWS Secrets Manager, and reporting Snyk vulnerabilities.
 - Reviewed the team's hexagonal architecture, which decouples each microservice from its technology dependencies (PostgreSQL, Oracle, RabbitMQ, Kafka, IBM MQ and SQS), and produced the Docker image for every technology combination each microservice requires.
 - Implemented and operated ISO 27001 controls across secret management, cloud access control and dependency scanning. Remediated critical and high-severity vulnerabilities identified by SonarQube Cloud, Snyk and Mend through OS package and Maven dependency updates.
 - Mentor engineers across the frontend, backend and QA teams: code and design reviews, technical decision-making, and onboarding new team members.
@@ -224,7 +224,7 @@ First stage of the telecom systems development and integration project for Telce
 
 Priorizar **Amazon Web Services (AWS)**, **Terraform** y **Kubernetes**. Asociarlas con la experiencia de Veradat y solicitar validaciones de personas que hayan trabajado directamente contigo en esas áreas.
 
-Complementarias: Continuous Integration and Continuous Delivery (CI/CD), Azure DevOps, OpenShift, Helm, Ansible, Elastic Stack, Microsoft Azure, Docker, Jenkins, Linux, Java y Spring Cloud. Para roles de liderazgo técnico, sumar **Information Security Management (ISO 27001)**, **hexagonal architecture**, **Scrum** y **Microsoft Project**. La experiencia en desarrollo respalda el enfoque DevOps; no hace falta trasladar todas las herramientas del CV al titular.
+Complementarias: Continuous Integration and Continuous Delivery (CI/CD), Azure DevOps, OpenShift, Helm, Ansible, Elastic Stack, Microsoft Azure, Docker, Jenkins, Linux, Java y Spring Cloud. Para roles de liderazgo técnico, sumar **Information Security Management (ISO 27001)**, **hexagonal architecture**, **Scrum** y **Microsoft Project**. Para posiciones de IA, sumar el stack agéntico: **Superpowers**, **Matt Pocock Skills**, **Ponytail**, **Karpathy** y **Codebase Memory MCP**, más **Claude Code** y **MCP**. La experiencia en desarrollo respalda el enfoque DevOps; no hace falta trasladar todas las herramientas del CV al titular.
 
 ## 5. Destacado y banner
 
@@ -311,6 +311,7 @@ Español:
 ```text
 Definí la dirección técnica y el contrato de entrega de apps para clientes en React Native y Expo, expresado como un artefacto ejecutable: 12 ADRs, 20 specs y 12 runbooks, un git worktree por slice con su propia base de datos y un GitHub issue tracker numerado alimentado por commits convencionales.
 - Establecí las puertas de release que el trabajo tiene que atravesar: 6 workflows de GitHub Actions con jobs de prueba fragmentados sobre 95 archivos de prueba, una puerta de promoción entre staging y producción, un despliegue a producción con aprobación y canales de EAS Update, sobre un monorepo con Bun workspaces, Turborepo y Biome.
+- El código lo ejecutan agentes de IA sobre ese contrato, con la metodología Superpowers, las skills de Matt Pocock, Ponytail, las guidelines de Karpathy y el grafo de conocimiento del código de Codebase Memory MCP.
 ```
 
 English:
@@ -318,6 +319,7 @@ English:
 ```text
 I defined the technical direction and the delivery contract for client apps on React Native and Expo, expressed as an executable artefact: 12 ADRs, 20 specs and 12 runbooks, a git worktree per slice with its own database, and a numbered GitHub issue tracker fed by conventional commits.
 - I set the release gates the work has to pass: 6 GitHub Actions workflows with sharded test jobs over 95 test files, a promotion gate between staging and production, an approval-gated production deploy, and EAS Update channels, on a monorepo with Bun workspaces, Turborepo and Biome.
+- AI agents execute the code against that contract, with the Superpowers methodology, Matt Pocock Skills, Ponytail, the Karpathy Guidelines and the codebase knowledge graph of Codebase Memory MCP.
 ```
 
 <!-- mobile-end -->
@@ -369,22 +371,26 @@ Se mantienen los criterios pertinentes de los 11 skills `li-*` revisados en la p
 
 La evaluación del perfil publicado sigue pendiente para foto, banner, Destacado, recomendaciones, validaciones de aptitudes y actividad reciente. Las puntuaciones de la versión anterior describían aquella redacción; esta revisión prioriza la correspondencia entre CV y LinkedIn y no reutiliza esas cifras como una evaluación nueva.
 
-- Los 25 bloques para copiar se revisan con `humanize.py` (limpieza mecánica) y `detect.py` (puntuación de estilo) el 19 de octubre de 2026. `humanize.py` no encuentra artefactos de máquina en ninguno de los 25: 0 caracteres invisibles, 0 em dash, 0 comillas tipográficas, 0 términos de relleno. El único problema estructural que señala es la **longitud uniforme de las frases del Acerca de**, que se corrigió a mano partiendo frases largas y añadiendo cortas.
-- Caracteres de los titulares, español / inglés: **A 127 / 126**, **B 136 / 138**, **C 134 / 128**, **D 140 / 129**. Todos quedan por debajo de 220.
+- Los 25 bloques para copiar se revisan con `humanize.py` (limpieza mecánica) y `detect.py` (puntuación de estilo) el 19 de octubre de 2026, y otra vez el **21 de octubre de 2026** tras añadir el stack de desarrollo agéntico (Superpowers, Matt Pocock Skills, Ponytail, Karpathy y Codebase Memory MCP) a la entrega móvil y de las skills propias de la plataforma al bloque de Veradat. `humanize.py` no encuentra artefactos de máquina en ninguno de los 25: 0 caracteres invisibles, 0 em dash, 0 comillas tipográficas, 0 términos de relleno. El único problema estructural que señala es la **longitud uniforme de las frases del Acerca de**, que se corrigió a mano partiendo frases largas y añadiendo cortas.
+- Caracteres de los titulares, español / inglés: **A 127 / 126**, **B 136 / 138**, **C 134 / 128**, **D 137 / 130**. Todos quedan por debajo de 220.
 - Revisión del 19 de octubre de 2026 tras añadir la métrica de shell scripting: los cuatro bloques
   de Experiencia tocados (Veradat ES/EN, IDS ES/EN) salen **CLEAN** en `humanize.py` — 0
   artefactos de máquina, 0 tells estructurales. Los dos bloques de texto del banner solo tienen
   el aviso del punto medio, que **se conserva a mano**: es el separador deliberado de la línea
-  de métricas del banner, no un artefacto. El bloque de Acerca de no se tocó: sigue en **1,340
-  caracteres en español** y **1,320 en inglés**.
-- Acerca de tras la homologación: **1,340 caracteres en español** y **1,320 en inglés**, incluidos espacios y saltos de línea, por debajo del objetivo editorial de 1,400. Se recortó detalle (matriz de imágenes Docker, enumeración de servicios de AWS, balanceadores y wiki) que sigue íntegro en la sección de Experiencia, para poder meter el bloque de IA y el desglose de clústeres.
+  de métricas del banner, no un artefacto.
+- Revisión del 21 de octubre de 2026 tras añadir el stack agéntico: los ocho bloques tocados
+  (titular D ES/EN, Acerca de ES/EN, Veradat ES/EN, móvil ES/EN) salen **CLEAN** en
+  `humanize.py` — 0 artefactos de máquina, 0 tells estructurales.
+- Acerca de tras la homologación: **1,390 caracteres en español** y **1,367 en inglés**, incluidos espacios y saltos de línea, por debajo del objetivo editorial de 1,400. Se recortó detalle (matriz de imágenes Docker, enumeración de servicios de AWS, balanceadores y wiki) que sigue íntegro en la sección de Experiencia, para poder meter el bloque de IA y el desglose de clústeres.
 
 `detect.py` sobre el bloque de Acerca de:
 
-| Idioma | Antes (6 de octubre) | Ahora (19 de octubre) |
-| --- | --- | --- |
-| Español | 60.0, REVIEW | **59.3, REVIEW** (variación de longitud 0.63, antes 0.32) |
-| English | 77.2, PASS | **75.4, PASS** (variación de longitud 0.56, antes 0.33) |
+| Idioma | Antes (6 de octubre) | 19 de octubre | Ahora (21 de octubre) |
+| --- | --- | --- | --- |
+| Español | 60.0, REVIEW | 59.3, REVIEW (variación de longitud 0.63, antes 0.32) | **61.1, REVIEW** (variación 0.60, 14 frases) |
+| English | 77.2, PASS | 75.4, PASS (variación de longitud 0.56, antes 0.33) | **81.7, PASS** (variación 0.56, 14 frases) |
+
+La variación de longitud era el único defecto medible y está corregida. La frase corta "Escribo el código con agentes de IA" / "I write the code with AI agents" se añadió al Acerca de como frase independiente, y no como enumeración de herramientas: en una sola frase larga la variación de longitud bajaba y el inglés pasaba de PASS a REVIEW. En español, la nota sigue en REVIEW porque el indicador más débil es **VOICE (30.0)**: las reglas de pronombres y contracciones del detector están orientadas al inglés, y un texto en español en primera persona ("puedo aportar", "reduje") no se contabiliza como voz. Es un **falso positivo**, no un defecto de redacción, y la única forma de subir esa cifra sería escribir en inglés o en tercera persona, lo que no corresponde a un perfil de LinkedIn. El resto de indicadores está en 100 (especificidad, léxico y huella tipográfica).
 
 La variación de longitud era el único defecto medible y está corregida. En español, la nota sigue en REVIEW porque el indicador más débil es **VOICE (30.0)**: las reglas de pronombres y contracciones del detector están orientadas al inglés, y un texto en español en primera persona ("puedo aportar", "reduje") no se contabiliza como voz. Es un **falso positivo**, no un defecto de redacción, y la única forma de subir esa cifra sería escribir en inglés o en tercera persona, lo que no corresponde a un perfil de LinkedIn. El resto de indicadores está en 100 (especificidad, léxico y huella tipográfica).
 

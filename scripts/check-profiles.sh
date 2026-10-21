@@ -108,7 +108,7 @@ echo "== No profile may imply machine learning =="
 # to a deterministic script. There is no model training, no RAG, no vector store,
 # no MLOps and no LLM API in the career facts (FACTS.md section 4), so no
 # profile and no published block may hint at one.
-FORBIDDEN_ML="fine-?tun|\bRAG\b|embeddings?|vector (database|store)|MLOps|model training|machine learning|deep learning|foundation model|modelo de lenguaje|modelo fundacional|entrenamiento de modelos|entren[oó] un modelo|aprendizaje autom[aá]tico|redes neuronales|API de LLM|APIs de LLM"
+FORBIDDEN_ML="fine-?tun|\bRAG\b|embeddings?|vector (database|store)|MLOps|model training|machine learning|deep learning|foundation model|modelo de lenguaje|modelo fundacional|entrenamiento de modelos|entren[oó] un modelo|aprendizaje autom[aá]tico|redes neuronales|API de LLM|APIs de LLM|semantic search|b[uú]squeda sem[aá]ntica"
 for f in $ALL_FILES $PUBLISHED; do
     [ -f "$f" ] || continue
     if [ "${f##*.}" = "md" ]; then
@@ -130,8 +130,13 @@ pass "no model training, RAG, embeddings, MLOps or LLM API claims"
 # compliance platform -- a heading can no longer scope it.
 strip_mobile_section() {
     case "${1##*.}" in
+        # The .md branch reads STDIN, because what has to be scanned there is
+        # the published stream (the ```text blocks), not the whole file.
         md) awk '/<!-- mobile-begin -->/{m=1;next} /<!-- mobile-end -->/{m=0;next} !m{print}' ;;
-        *)  awk '/^% mobile-begin/{m=1;next} /^% mobile-end/{m=0;next} !m{print}' ;;
+        # The .tex branch reads the FILE. It used to read stdin as well, which
+        # meant it scanned nothing at all (stdin was at EOF) and hung whenever
+        # stdin stayed open.
+        *)  awk '/^% mobile-begin/{m=1;next} /^% mobile-end/{m=0;next} !m{print}' "$1" ;;
     esac
 }
 runbook_fail=0
@@ -317,6 +322,44 @@ for f in $ALL_FILES $PUBLISHED; do
     [ -n "$hits" ] && fail "$f publishes a capability count -- there is no single verifiable figure: $hits"
 done
 pass "AI profile publishes the plugin with its real numbers and no capability count"
+
+echo
+echo "== Agentic development stack: only inside the mobile delivery =="
+# Superpowers, Matt Pocock Skills, Ponytail, Karpathy Guidelines and Codebase
+# Memory MCP are third-party tools Alan USES in his own delivery work. They
+# are NOT what he builds at Veradat: there he builds custom skills of his own
+# for the organization's DevOps tasks (FACTS.md section 3). The stack therefore
+# lives inside the mobile sub-entry and nowhere else -- the check is strict,
+# because mixing the two is exactly the confusion this rule exists to prevent.
+AGENTIC_TOOLS="Superpowers|Matt Pocock|Ponytail|Karpathy|Codebase Memory MCP"
+
+# The stream that is scanned: the published copy of the .md (its ```text
+# blocks only) or the whole .tex file with its comments stripped. The mobile
+# markers are rewritten first, because in the .tex files they ARE comments and
+# would be stripped with the rest.
+ag_stream() {
+    case "${1##*.}" in
+        md) published_body "$1" \
+             | sed -e 's/<!-- mobile-begin -->/@@MOB_BEGIN@@/' \
+                   -e 's/<!-- mobile-end -->/@@MOB_END@@/' ;;
+        *)  sed -e 's/^% mobile-begin$/@@MOB_BEGIN@@/' \
+                -e 's/^% mobile-end$/@@MOB_END@@/' \
+                -e 's/^[[:space:]]*%.*$//' "$1" ;;
+    esac
+}
+for f in $ALL_FILES $PUBLISHED; do
+    [ -f "$f" ] || continue
+    stream=$(ag_stream "$f")
+    inside=$(printf '%s\n' "$stream" \
+        | awk '/@@MOB_BEGIN@@/{m=1;next} /@@MOB_END@@/{m=0;next} m{print}' \
+        | grep -oE "$AGENTIC_TOOLS" | sort -u | wc -l | tr -d ' ')
+    outside=$(printf '%s\n' "$stream" \
+        | awk '/@@MOB_BEGIN@@/{m=1;next} /@@MOB_END@@/{m=0;next} !m{print}' \
+        | grep -oE "$AGENTIC_TOOLS" | sort -u | wc -l | tr -d ' ')
+    [ "$inside" = "5" ] || fail "$f names only $inside of the 5 agentic tools inside the mobile delivery"
+    [ "$outside" = "0" ] || fail "$f names the agentic tools outside the mobile delivery"
+done
+pass "the five agentic tools live in the mobile delivery and nowhere else"
 
 echo
 echo "== No skill is listed without evidence in the body =="

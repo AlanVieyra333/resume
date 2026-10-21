@@ -239,6 +239,35 @@ Jest / jest-expo / @testing-library/react-native; EAS Update; GitHub Actions.
 - **AI Engineer** — entrega agéntica: contrato de entrega ejecutable (ADRs, specs, runbooks,
   worktree por slice) y puertas de release. Sin afirmar autoría de código.
 
+### Agentes de IA para desarrollo de software (stack de skills y plugins)
+
+**Confirmado por Alan el 2026-10-21.** El desarrollo de software se hace **con agentes de IA**
+(Claude Code) y un stack de skills y plugins que gobierna el proceso. Esto **no** es una
+afirmación de ML: son **reglas y skills que un agente ejecuta**, más un servidor MCP local que
+indexa el repositorio. La frontera de §4 sigue vigente: nada de esto es entrenamiento de
+modelos, fine-tuning, RAG, embeddings, bases vectoriales, MLOps ni llamadas a APIs de LLM.
+
+> **Dónde se usa este stack: solo en la entrega móvil.** Es el stack con el que Alan construye
+> y mantiene sus aplicaciones de React Native (el monorepo con un worktree por slice). En
+> Veradat se publica **otra cosa**: skills propias, escritas para las tareas de la organización
+> y especializadas en automatizar procesos DevOps (el plugin de §3). Los dos conjuntos no se
+> mezclan ni se atribuyen el uno al otro.
+
+| Herramienta | Qué es | Qué aporta al proceso |
+|---|---|---|
+| **Superpowers** | Metodología de desarrollo para agentes de código, construida sobre skills composables | De la idea a la spec, de la spec al plan, del plan a TDD (rojo/verde), implementación por subagentes, revisión y verificación; un worktree por slice |
+| **Matt Pocock Skills** | Skills de ingeniería componibles: `to-spec`, `to-tickets`, `implement-spec`, `tdd`, `grilling`, `codebase-design`, `domain-modeling`, `code-review`, `diagnosing-bugs`, `prototype`, `research`, `writing-for-agents` | Enunciar el trabajo antes de codificar: spec y tickets primero, y revisión con criterios explícitos |
+| **Ponytail** | Disciplina de solución mínima (YAGNI, biblioteca estándar antes que código propio, plataforma nativa antes que dependencias), con revisión y auditoría de sobre-ingeniería y registro de la deuda deliberada | Que el cambio sea el más pequeño que resuelve el problema, y que lo que se aplaza quede anotado en vez de pudrirse |
+| **Karpathy Skills** (`karpathy-guidelines`) | Principios de codificación: supuestos explícitos, simplicidad, cambios quirúrgicos, resultados verificables | Que cada diff sea revisable y que cada resultado se pueda comprobar |
+| **Codebase Memory MCP** | Servidor MCP local que indexa el repositorio en un grafo de conocimiento persistente (símbolos, quién llama a qué y qué llama a qué) | Que el agente resuelva la estructura del código y su impacto con una fracción del contexto que cuesta recorrer el árbol entero |
+
+- El servidor MCP **no lleva un modelo dentro**: es análisis estructural local (el
+  razonamiento lo hace el agente anfitrión). No es una base vectorial ni un almacén de
+  embeddings.
+- El stack se usa **en la entrega móvil**, que es el trabajo de código propio de Alan.
+- **Las cinco herramientas son de terceros**: se publica que las usa, nunca que las construyó.
+  Y nunca se publica como si fueran las skills del plugin de la plataforma.
+
 ### Educación y certificaciones
 - IPN – ESCOM, B.Sc. Computer Systems Engineering, 2014–2018.
 - Java SE – Oracle Certified Associate (2013), con credencial pública.
@@ -260,6 +289,9 @@ Verificado como **no confirmado**. `check-profiles.sh` falla si aparece en cualq
 | Postmortems, RCA | No confirmados |
 | **Entrenamiento de modelos, fine-tuning, RAG, embeddings, bases vectoriales, MLOps o serving de modelos** | Ese trabajo no existe. Su IA es **aplicada**: skills de Claude Code que enrutan una petición en lenguaje natural a un script determinista (§3). El perfil IA lo declara así, sin insinuar ML |
 | **Integración con APIs de LLM, "ingeniería de prompts a escala" o autoría de código generado por IA** | La suite no hace llamadas a modelos: es enrutado a scripts. Y la autoría del código del marketplace está bajo la cuenta del cliente (§3): no se publica como propia |
+| **Presentar el grafo de Codebase Memory MCP como base vectorial, embeddings, "búsqueda semántica" o RAG** | Es un grafo de estructura de código que se construye localmente por análisis estático; el MCP no incluye modelo (§3) |
+| **Afirmar que construyó Superpowers, Ponytail, las skills de Matt Pocock o las de Karpathy** | Las usa: son proyectos públicos de terceros (§3). Publicar uso, no autoría |
+| **Atribuir el stack de terceros (Superpowers, Ponytail, Matt Pocock, Karpathy, Codebase Memory MCP) al trabajo de Veradat, o las skills propias del plugin al trabajo móvil** | Son dos conjuntos distintos: el stack de terceros se usa en la entrega móvil; en Veradat se construyen skills propias para automatizar procesos DevOps (§3). `check-profiles.sh` lo verifica: el stack solo puede aparecer dentro de la sub-entrada móvil |
 | Runbooks **en la experiencia laboral** | No confirmados. Los runbooks que sí existen son los 12 del contrato de entrega móvil (§3); `check-profiles.sh` los valida solo dentro de la sub-entrada móvil |
 | Guardia 24/7 o en rotación | La guardia fue dentro del horario laboral y sin rotación |
 | **"Implementó arquitectura hexagonal"** | La revisó; la implementación fue de otra persona |
@@ -359,7 +391,8 @@ Cada perfil conserva su propio foco sobre los mismos hechos. **No contradecirse.
 | POM padre Maven | Promovido (deuda técnica) | Promovido (estándar) | Se mantiene | Se mantiene |
 | Proyecto freelance (cumplimiento) | 3 bullets, comprimido | 3 bullets, elevado (compliance) | 5 bullets, completo | 2 bullets, elevado (compliance + motor de auditoría) |
 | Sub-entrada móvil (sin nombres de proyecto) | 2 bullets — **énfasis en despliegue**: GitHub Actions, puertas de release, EAS Update, producción | 2 bullets — **énfasis en liderazgo**: dirección técnica, monorepo, contrato de entrega, puertas de release | 3 bullets — **éntesis en implementación**: navegación, theming, pipeline del estimador, validación y pruebas | 2 bullets — **énfasis en entrega agéntica**: contrato de entrega (ADRs, specs, runbooks, worktree por slice) y puertas de release |
-| Bloque de IA (plugin de Claude Code) | Una línea (asistente de desarrollo) | Una línea | Una línea | **Protagonista**: 4 skills, 35 scripts Python (~10,800 líneas), ~3,200 líneas de `SKILL.md`, índice autogenerado |
+| Bloque de IA (skills custom de Claude Code) | Una línea (skills propias para automatizar procesos DevOps) | Una línea | Una línea | **Protagonista**: skills propias para las tareas de la organización, 4 skills, 35 scripts Python (~10,800 líneas), ~3,200 líneas de `SKILL.md`, índice autogenerado |
+| Agentes de IA para desarrollo (Superpowers, Matt Pocock Skills, Ponytail, Karpathy Guidelines, Codebase Memory MCP) | Solo en la entrega móvil, enfoque en entrega | Solo en la entrega móvil, enfoque en proceso y revisión | Solo en la entrega móvil, enfoque en implementación | Solo en la entrega móvil, **en detalle**: la metodología agéntica completa y el grafo de conocimiento del código |
 
 **Negritas.** La negrita marca lo que un reclutador debe leer primero en cada perfil: la métrica
 (los números de §2), el entregable que construyó y el tema del perfil según la matriz de arriba.
@@ -398,7 +431,16 @@ En la variante con diseño, la barra lateral es una caja que no se parte entre p
 contenido no cabe, **se pierde en silencio**. Hay que medirla (`pdftotext -bbox` y la
 coordenada `yMax` de la última palabra de la barra) después de tocarla. El marco de texto
 termina en **766.5 pt** (792 − 25.5 de margen inferior). Hoy las ocho barras caben: la más
-ajustada es la del perfil Full Stack ES, en 764.4 pt.
+ajustada es la del perfil Full Stack ES, en 763 pt.
+
+> `pdftotext -bbox` **no sirve para medir el final de una viñeta**: cada viñeta va envuelta en
+> un span `/ActualText` (`styles/actualtext.tex`) y el extractor devuelve una caja por viñeta
+> cuya posición no es la de los glifos. Para medir de verdad hay que renderizar la página
+> (`pdftoppm -r 72`) y buscar la última fila con tinta dentro de la región del marco, en
+> blanco y en la barra lateral (x < 195 pt).
+
+Y la columna principal de los ocho perfiles con diseño también cabe: los más ajustados son el
+Full Stack ES (756 pt) y el DevOps/SRE Lead ES (749 pt) contra los 766.5 pt del marco.
 
 El procedimiento completo de edición y homologación —qué tocar al cambiar cada dato, el
 checklist de cierre y las convenciones de commit— está en [AGENTS.md](AGENTS.md).

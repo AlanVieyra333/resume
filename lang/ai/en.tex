@@ -11,12 +11,23 @@
 % says 18, and there is no single verifiable figure. Internal identifiers
 % (boards, wikis, bastions, orgs, agent names) are generalised per FACTS.md 4c.
 %
+% The agentic-development stack (Superpowers, Matt Pocock Skills, Ponytail,
+% Karpathy Guidelines, Codebase Memory MCP) is published as USED, never as built:
+% all five are third-party projects (FACTS.md section 3). The MCP server indexes
+% the repository into a persistent knowledge graph by local static analysis and
+% carries no model of its own -- never describe it as an embedding store, a
+% vector database or semantic search (FACTS.md section 4).
+%
+% The stack belongs to the MOBILE delivery only. What he built at Veradat is a
+% different thing: his own custom skills for the organization's tasks, specialized
+% in automating DevOps processes. Never mix the two (FACTS.md section 4).
+%
 % Keep metrics, employers and scope aligned with lang/ai/es.tex and with the
 % other profiles; FACTS.md is the source of truth for every claim.
 
 \resumeaddress{Mexico City, Mexico \textbar\ UTC-6 (US Central)}
-\resumejobtitle{AI Engineer \textbar\ Claude Code \& Agent Skills}
-\resumesummary{AI Engineer with a software development background since 2017, focused on applied AI and agentic tooling over production infrastructure. Built the \textbf{Claude Code plugin} for the platform: \textbf{4 skills} that read a request in natural language, detect the intent and dispatch it to \textbf{35 deterministic Python scripts}, documented in about \textbf{3{,}200 lines of SKILL.md}. The unit of work is the executable contract between intent and script -- release validation, node redeploys, configuration audits, secret lookups and vulnerability reports, run against the real platform. Before that, 20 CI/CD pipelines for three teams and \textbf{21 pre-production clusters}.}
+\resumejobtitle{AI Engineer \textbar\ Claude Code, Agent Skills \& Agentic Development}
+\resumesummary{AI Engineer with a software development background since 2017, focused on applied AI and agentic tooling over production infrastructure. Built the \textbf{Claude Code plugin} for the platform: \textbf{4 skills} that read a request in natural language, detect the intent and dispatch it to \textbf{35 deterministic Python scripts}, documented in about \textbf{3{,}200 lines of SKILL.md}. The unit of work is the executable contract between intent and script. In his own delivery work, the code is written with AI agents, on a spec-driven workflow. Before that, 20 CI/CD pipelines for three teams and \textbf{21 pre-production clusters}.}
 \resumesummaryheading{About}
 \makeheader
 
@@ -39,7 +50,7 @@
 \resumeentry{DevOps Engineer}{Veradat Smart Network S.A. de C.V.}{Aug 2024 -- Oct 2026}{Mexico City}
 \begin{itemize}
     \item Designed and maintained \textbf{20 Azure DevOps CI/CD pipelines} for 3 teams (frontend, backend, QA), cutting deployment of 70 microservices from \textbf{6 hours to 1 hour} (83\% less time). Built the Helm charts all three teams adopted as their deployment standard, and tracked infrastructure work in Microsoft Project per sprint.
-    \item Built the \textbf{Claude Code plugin} for the platform: \textbf{4 skills} that read a request in natural language, detect the intent and dispatch it to a deterministic Python script -- \textbf{35 scripts, about 10{,}800 lines} -- documented in about \textbf{3{,}200 lines of SKILL.md}, with a script that auto-generates the capability index. The skills parse the platform's own YAML and JSON and act on real operations: validating release and work-item state, checking builds against their branch, redeploying a node at its running versions, auditing node configuration against the platform manual, reading application secrets from AWS Secrets Manager, and reporting Snyk vulnerabilities.
+    \item Built \textbf{custom Claude Code skills} for the organization's tasks, specialized in automating DevOps processes: \textbf{4 skills} that read a request in natural language, detect the intent and dispatch it to a deterministic Python script -- \textbf{35 scripts, about 10{,}800 lines} -- documented in about \textbf{3{,}200 lines of SKILL.md}, with a script that auto-generates the capability index. The skills parse the platform's own YAML and JSON and act on real operations: validating release and work-item state, checking builds against their branch, redeploying a node at its running versions, auditing node configuration against the platform manual, reading application secrets from AWS Secrets Manager, and reporting Snyk vulnerabilities.
     \item Reviewed the team's hexagonal architecture, which decouples each microservice from its technology dependencies (PostgreSQL, Oracle, RabbitMQ, Kafka, IBM~MQ, SQS), and produced the Docker image for every technology combination each microservice requires.
     \item Manage \textbf{21 pre-production clusters}: 9 in QA on Kubernetes, 4 in DEV and 4 in INTGR on OpenShift, 4 in Certificación on Kubernetes, with readiness/liveness probes that control traffic during rolling updates and trigger recovery, and Elastic Stack monitoring that cut \textbf{QA incident detection time from 60 to 30 minutes} (50\% reduction).
     \item Provisioned \textbf{AWS and Azure infrastructure with Terraform} (EC2, S3, VPC, Security Groups, IAM, RDS, CloudWatch, Route~53), including virtual machines, load balancers and secrets management, automated 10 Linux servers with Ansible (provisioning from \textbf{2 hours to 20 minutes}, 83\% less time), automated \textbf{20 infrastructure processes with shell scripting}, and ran backups and rollbacks of the PostgreSQL and Oracle databases supporting the 70 microservices, ensuring data recoverability during deployments and incident response.
@@ -69,6 +80,7 @@
 \begin{itemize}
     \item Own the delivery contract for client apps on React Native and Expo, expressed as an executable artefact: \textbf{12 ADRs, 20 specs and 12 runbooks}, a \textbf{git worktree per slice} with its own database, and a numbered GitHub issue tracker fed by conventional commits.
     \item Set the release gates the work has to pass: \textbf{6 GitHub Actions workflows} with sharded test jobs over \textbf{95 test files}, a \textbf{promotion gate} between staging and production, an \textbf{approval-gated production deploy} and EAS Update channels, on a monorepo with Bun workspaces, Turborepo and Biome.
+    \item Built that delivery with AI agents on a spec-driven workflow: a \textbf{Superpowers} methodology (spec, plan, TDD, subagents, review), \textbf{Matt Pocock} Skills, \textbf{Ponytail}, \textbf{Karpathy} Guidelines and a repository graph with \textbf{Codebase Memory MCP}.
 \end{itemize}
 % mobile-end
 
