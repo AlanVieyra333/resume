@@ -377,6 +377,53 @@ describe capacidad, herramienta de mercado o dominio, se conserva.
 
 ---
 
+## 4d. Superficies públicas
+
+Además de los ocho perfiles y del copy de LinkedIn, hay **tres superficies públicas** que
+declaran los mismos hechos. Se registran aquí para que ninguna se contradiga con las otras.
+
+| Superficie | Dónde | Qué declara |
+|---|---|---|
+| **Sitio del portafolio** | `alanvieyra333.github.io` (repo `AlanVieyra333/AlanVieyra333.github.io`) | Perfil, experiencia, stack, proyectos abiertos y credenciales. Bilingüe es-MX / en-US. |
+| **README del perfil de GitHub** | `AlanVieyra333/AlanVieyra333` | Rol, cifras destacadas, repositorios abiertos, stack y formación. |
+| **Showcase abierto** | `VieyraLabs/mi-pension-mx` | El estimador de pensión: motor auditable en 8 pasos, 116 pruebas, sin backend ni telemetría. |
+
+### Reglas de las superficies públicas
+
+1. **Heredan la frontera de §4 sin excepciones.** El sitio aplica `FACTS.md` §4 de forma
+   mecánica (`npm run editorial:check` en el repo del sitio, que falla si el texto afirma
+   trabajo de ML, métricas de fiabilidad no confirmadas, guardia 24/7, la implementación de
+   la arquitectura hexagonal, o nombra los proyectos móviles).
+2. **Cada superficie declara sus propias cifras, y son distintas.** El CV y el README del
+   perfil declaran el contrato de entrega del engagement con el cliente (**12 ADRs, 20
+   specs, 12 runbooks**, 6 workflows, 95 archivos de prueba). El showcase abierto declara las
+   suyas (**10 ADRs, 9 specs, 6 runbooks**, 5 workflows, 116 casos de prueba). No es una
+   contradicción: son contratos distintos, sobre bases de código distintas. El sitio
+   **no** publica las cifras del engagement con el cliente.
+3. **El cliente freelance no se nombra en las superficies públicas.** El puesto se describe
+   como "Consultoría freelance de cumplimiento". Es una convención de confidencialidad: el
+   nombre no aparece en ningún archivo de los repositorios públicos, ni siquiera en los
+   patrones de un guard, porque un guard que lo buscara lo escribiría en su propio código.
+   El CV sí lo nombra, porque es un documento que se envía a un empleador concreto.
+4. **Los nombres de los proyectos móviles no se nombran.** El repositorio del estimador es
+   público con su nombre —decisión editorial explícita—, pero el texto del CV y del sitio
+   no lo nombran. La URL del repositorio sí lo lleva.
+5. **La paridad EN/ES es mecánica.** Cada superficie bilingüe valida la paridad de claves y
+   de interpolaciones entre sus dos idiomas (`npm run i18n:check`).
+
+### Curaduría de repositorios
+
+La cuenta personal `AlanVieyra333` tiene **tres repositorios públicos**: `resume` (el CV),
+`AlanVieyra333` (el README del perfil) y `AlanVieyra333.github.io` (el sitio). Todo lo demás
+—trabajos escolares de 2016–2021, forks de terceros, prototipos triviales y repositorios
+vacíos— está **privado**. No se borra nada: la visibilidad se puede revertir.
+
+Regla para no reintroducir ruido: **un repositorio no vuelve a ser público por ser
+interesante**, sino por ser **representativo**. Si un proyecto no ayuda a explicar cómo
+trabaja Alan, no es un activo de portfolio.
+
+---
+
 ## 5. Matriz de énfasis por perfil
 
 Cada perfil conserva su propio foco sobre los mismos hechos. **No contradecirse.**
