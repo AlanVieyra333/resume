@@ -119,6 +119,7 @@ contenido** salvo donde se indica.
 | **Idioma nuevo** | — | Ver §7 de este documento |
 | **Sección de proyectos independientes** | `FACTS.md` §3 (movil) | La sección y sus dos sub-entradas en los 8 perfiles, los marcadores `% mobile-begin` / `% mobile-end`, y el bloque equivalente de `check-profiles.sh` |
 | **Copy de LinkedIn** | `FACTS.md` §4b | Los bloques ```text de `linkedin/perfil.md`; los marcadores `<!-- mobile-begin -->` / `<!-- mobile-end -->` delimitan el bloque móvil |
+| **Hecho público nuevo** (una cifra o un proyecto que aparece en el CV) | `FACTS.md` §4d | Las superficies públicas —sitio del portafolio (`alanvieyra333.github.io`), README del perfil de GitHub y el showcase abierto—: el mismo valor y la misma fecha. Cada superficie declara **sus propias** cifras, que pueden ser distintas de las del CV |
 | **Foto de perfil** | `linkedin/foto-perfil.md` | `python3 scripts/retouch_profile.py` regenera `profile.jpg` (1086×1086, la del CV) y `linkedin/profile-linkedin.jpg` (1200×1200). El original `profile-original.jpg` no se toca. Después hay que recompilar y volver a comprobar las 2 páginas |
 | **Métrica del banner** | `FACTS.md` §2 | `linkedin/banner/banner-devops-en.html` (las cifras que salen en las tarjetas) y el bloque "Texto para el banner" de `linkedin/perfil.md` §5 |
 | **Nombre de un PDF** | — | `Makefile` (regla y target phony), `.github/workflows/build-resume.yml` (lista de compilación **y** lista de release), `README.md` (tabla de perfiles y de targets) |
@@ -149,6 +150,8 @@ Los 16 PDFs deben decir **2**. Checklist completo:
 - [ ] Toda skill listada en un `\skillrow` está respaldada en el cuerpo del perfil.
 - [ ] Los bloques ```text de `linkedin/perfil.md` se han vuelto a pasar por
       `humanize.py` / `detect.py` (§8) y la tabla de resultados del documento está al día.
+- [ ] Las superficies públicas están homologadas: si cambió una cifra o una fecha del CV,
+      el sitio del portafolio y el README del perfil de GitHub declaran lo mismo (`FACTS.md` §4d).
 - [ ] `git status` no muestra artefactos: `out/` está en `.gitignore`, y no se suben `.aux`,
       `.log`, `.out`, `.fls` ni `.fdb_latexmk`.
 - [ ] El diff se ha leído completo: los 8 perfiles narran los mismos hechos.
