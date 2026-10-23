@@ -283,13 +283,23 @@
 
 % hyperref colours links with the ATS navy, which is unreadable on the dark
 % band, so the link colours are overridden to match the band palette.
+%
+% The contact grid is TWO rows of THREE cells, not three rows of two: the band
+% has no vertical room to spare. The contact block ends 0.3pt above the bottom
+% edge of the band (measured: last row yMax 108.9pt, band bottom 109.2pt), so
+% a third row would spill the location onto the grey panel. Reading order is
+% the recruiter's: how to reach him (phone, email, location) on the first row,
+% where to see his work (GitHub, portfolio) on the second. The location keeps
+% the right edge of the band, flush as it was before.
 \newcommand{\designcontactrow}{%
 	{\hypersetup{urlcolor=designbandtext,linkcolor=designbandtext}%
-	\begin{tabularx}{\linewidth}{@{}X l@{}}%
+	\begin{tabularx}{\linewidth}{@{}l@{\hspace{8pt}}l@{\hspace{8pt}}>{\raggedleft\arraybackslash}X@{}}%
 		\faIcon{phone}\ \resumenumberphonevalue
-			& \faIcon{github}\ \href{https://\resumegithubvalue}{\resumegithubvalue}\\[3pt]
-		\faIcon{envelope}\ \href{mailto:\resumemailvalue}{\resumemailvalue}
-			& \faIcon{map-marker-alt}\ \resumeaddressvalue
+			& \faIcon{envelope}\ \href{mailto:\resumemailvalue}{\resumemailvalue}
+			& \faIcon{map-marker-alt}\ \resumeaddressvalue\\[3pt]
+		\faIcon{github}\ \href{https://\resumegithubvalue}{\resumegithubvalue}
+			& \faIcon{globe}\ \href{https://\resumeportfoliovalue}{\resumeportfoliovalue}
+			&
 	\end{tabularx}}%
 }
 

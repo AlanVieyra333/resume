@@ -183,6 +183,7 @@
 \newcommand{\resumemail}[1]{\def\resumemailvalue{#1}}
 \newcommand{\resumelinkedin}[1]{\def\resumelinkedinvalue{#1}}
 \newcommand{\resumegithub}[1]{\def\resumegithubvalue{#1}}
+\newcommand{\resumeportfolio}[1]{\def\resumeportfoliovalue{#1}}
 \newcommand{\resumesummary}[1]{\def\resumesummaryvalue{#1}}
 
 \def\resumenamevalue{}
@@ -192,6 +193,7 @@
 \def\resumemailvalue{}
 \def\resumelinkedinvalue{}
 \def\resumegithubvalue{}
+\def\resumeportfoliovalue{}
 \def\resumesummaryvalue{}
 
 % Prints the header block: name, job title, one-line plain-text contact
@@ -205,6 +207,11 @@
 			\\[3pt]
 			\ifthenelse{\equal{\resumelinkedinvalue}{}}{}{\mbox{\href{https://\resumelinkedinvalue}{\resumelinkedinvalue}}}%
 			\ifthenelse{\equal{\resumegithubvalue}{}}{}{~\textbar~\mbox{\href{https://\resumegithubvalue}{\resumegithubvalue}}}%
+			% The portfolio carries a word label: the ATS layout has no icons to
+			% carry the meaning, and `alanvieyra333.github.io` on its own reads
+			% like one more GitHub link. The designed layout uses a globe icon
+			% instead, because there the icon IS the label.
+			\ifthenelse{\equal{\resumeportfoliovalue}{}}{}{~\textbar~\mbox{\href{https://\resumeportfoliovalue}{Portfolio: \resumeportfoliovalue}}}%
 		}
 	\end{center}
 	\ifthenelse{\equal{\resumesummaryvalue}{}}{}{%

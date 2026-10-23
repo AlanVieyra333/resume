@@ -384,7 +384,7 @@ declaran los mismos hechos. Se registran aquí para que ninguna se contradiga co
 
 | Superficie | Dónde | Qué declara |
 |---|---|---|
-| **Sitio del portafolio** | `alanvieyra333.github.io` (repo `AlanVieyra333/AlanVieyra333.github.io`) | Perfil, experiencia, stack, proyectos abiertos y credenciales. Bilingüe es-MX / en-US. |
+| **Sitio del portafolio** | `alanvieyra333.github.io` (repo `AlanVieyra333/AlanVieyra333.github.io`) | Perfil, experiencia, stack, proyectos abiertos y credenciales. Bilingüe es-MX / en-US. Es además el **enlace de portafolio del CV**: la cabecera de contacto de los 16 PDFs lo publica. |
 | **README del perfil de GitHub** | `AlanVieyra333/AlanVieyra333` | Rol, cifras destacadas, repositorios abiertos, stack y formación. |
 | **Showcase abierto** | `VieyraLabs/mi-pension-mx` | El estimador de pensión: motor auditable en 8 pasos, 116 pruebas, sin backend ni telemetría. |
 
@@ -410,6 +410,32 @@ declaran los mismos hechos. Se registran aquí para que ninguna se contradiga co
    no lo nombran. La URL del repositorio sí lo lleva.
 5. **La paridad EN/ES es mecánica.** Cada superficie bilingüe valida la paridad de claves y
    de interpolaciones entre sus dos idiomas (`npm run i18n:check`).
+
+### Canales de contacto del CV
+
+La cabecera de contacto es **única para los cuatro perfiles** y está definida en `main.tex`
+(`\resumeaddress`, `\resumenumberphone`, `\resumemail`, `\resumelinkedin`, `\resumegithub`,
+`\resumeportfolio`), con la excepción de la ubicación, que cada perfil redefine en su archivo
+de idioma (`\resumeaddress{... | UTC-6 (US Central)}` en los perfiles Lead y AI).
+
+| Canal | Dónde se declara | Cómo se muestra |
+|---|---|---|
+| Teléfono, correo, LinkedIn, GitHub, portafolio | `main.tex` | ATS: línea de texto con separadores `\|`. Con diseño: banda oscura con iconos. |
+| Ubicación | `lang/<perfil>/<idioma>.tex` | ATS: primera línea de contacto. Con diseño: banda, extremo derecho. |
+
+Reglas de la banda con diseño (`styles/styledesign.tex`):
+
+- La rejilla de contacto son **dos filas de tres celdas**, no tres filas de dos: el bloque de
+  contacto termina 0.3pt por encima del borde inferior de la banda (medido: `yMax` 108.9pt,
+  banda 109.2pt), así que una tercera fila desbordaría la ubicación sobre el panel gris.
+- La fila 1 es **cómo contactarlo** (teléfono, correo, ubicación) y la fila 2 es **dónde ver
+  su trabajo** (GitHub, portafolio). La ubicación conserva el borde derecho de la banda.
+- El portafolio se identifica con **un icono de globo**, no con la palabra: en la banda no
+  cabe la etiqueta `Portfolio:` y el icono hace ese trabajo. En la variante ATS, que no tiene
+  iconos, la etiqueta sí se escribe (`Portfolio: alanvieyra333.github.io`), porque el dominio
+  `*.github.io` suelto se lee como un enlace más de GitHub.
+- La URL del portafolio es `alanvieyra333.github.io` en los dieciséis PDFs. No se abrevia ni
+  se cambia de forma entre variantes.
 
 ### Curaduría de repositorios
 
