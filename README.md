@@ -4,10 +4,12 @@ Repositorio LaTeX que genera el CV de **Alan Fernando Rincón Vieyra** en **cuat
 
 El mismo contenido se compila de dos formas, porque son dos lecturas distintas del mismo currículum:
 
-| Variante | Para qué | Cómo se genera |
-| --- | --- | --- |
-| **ATS** (por defecto) | Portales de empleo y Applicant Tracking Systems. Una columna, sin gráficos de maquetación, texto seleccionable. | `make` |
-| **Con diseño** (`DESIGN=1`) | Reclutador senior leyendo en pantalla. Banda oscura con foto, barra lateral gris y columna principal con línea de tiempo. | `make design` |
+| Variante | Para qué | Cómo se genera | Nombre del PDF |
+| --- | --- | --- | --- |
+| **Con diseño** (por defecto) | Reclutador senior leyendo en pantalla. Banda oscura con foto, barra lateral gris y columna principal con línea de tiempo. | `make design` | `Resume_*_AFRV_{EN,ES}.pdf` |
+| **ATS** (`DESIGN=0`) | Portales de empleo y Applicant Tracking Systems. Una columna, sin gráficos de maquetación, texto seleccionable. | `make ats` | `Resume_*_AFRV_{EN,ES}_ATS.pdf` |
+
+El **CV principal es el que lleva el diseño** (sin sufijo): es el que se manda por correo o mensaje a un reclutador. La variante ATS conserva su propio nombre, con el sufijo `_ATS`, para no confundirse con la principal.
 
 Ambas variantes salen del **mismo contenido** (`lang/*.tex`); lo único que cambia es la capa visual. No hay que mantener dos currículums.
 
@@ -22,7 +24,9 @@ Ambas variantes salen del **mismo contenido** (`lang/*.tex`); lo único que camb
 | **Senior Full Stack Software Engineer** | Ownership de entrega y arquitectura de microservicios | [Resume_FullStack_AFRV_EN.pdf](out/Resume_FullStack_AFRV_EN.pdf) | [Resume_FullStack_AFRV_ES.pdf](out/Resume_FullStack_AFRV_ES.pdf) |
 | **AI Engineer** | IA aplicada y tooling agéntico: plugin de Claude Code, skills que enrutan intención a scripts | [Resume_AIEngineer_AFRV_EN.pdf](out/Resume_AIEngineer_AFRV_EN.pdf) | [Resume_AIEngineer_AFRV_ES.pdf](out/Resume_AIEngineer_AFRV_ES.pdf) |
 
-Cada PDF se compila desde el mismo `main.tex` con un `\def\profile{...}\def\lang{...}` distinto, lo que permite mantener una sola clase (`style.cls`) y ocho bloques de contenido aislados (4 perfiles × 2 idiomas). Añadiendo `\def\design{1}` se obtiene la variante con diseño, cuyo nombre lleva el sufijo `_DESIGN` y convive en `out/` con la ATS.
+Los enlaces de arriba son los **CV principales (con diseño)**. La variante ATS de cada uno lleva el sufijo `_ATS`: `out/Resume_DevOps_AFRV_EN_ATS.pdf`, `out/Resume_DevOps_AFRV_ES_ATS.pdf`, etc.
+
+Cada PDF se compila desde el mismo `main.tex` con un `\def\profile{...}\def\lang{...}` distinto, lo que permite mantener una sola clase (`style.cls`) y ocho bloques de contenido aislados (4 perfiles × 2 idiomas). Añadiendo `\def\design{1}` se obtiene la variante con diseño (la principal, sin sufijo); la variante ATS convive en `out/` con el sufijo `_ATS`.
 
 ## Las dos variantes de diseño
 
@@ -91,16 +95,18 @@ Dos detalles que conviene conocer antes de tocar ese archivo:
 
 | Comando | Resultado |
 | --- | --- |
-| `make` | Compila el primer target de `all` (Full Stack) en ambos idiomas. |
-| `make all` | Compila los ocho PDFs ATS (DevOps + DevOps Lead + Full Stack + AI Engineer, ES + EN). |
-| `make design` | Compila los ocho PDFs **con diseño** (sufijo `_DESIGN`). |
-| `make DESIGN=1 <target>` | Compila ese target concreto con diseño (p. ej. `make DESIGN=1 devops-es`). |
-| `make devops` / `make devops-es` / `make devops-en` | Solo el perfil DevOps. |
+| `make` | Compila los dieciséis PDFs (los ocho con diseño y los ocho ATS). |
+| `make all` | Igual que `make`: los ocho CV principales (con diseño) y los ocho ATS. |
+| `make design` | Compila solo los ocho PDFs **con diseño** (los principales, sin sufijo). |
+| `make ats` | Compila solo los ocho PDFs **ATS** (sufijo `_ATS`). |
+| `make DESIGN=0 <target>` | Compila ese target concreto en ATS (p. ej. `make DESIGN=0 devops-es`). |
+| `make devops` / `make devops-es` / `make devops-en` | Solo el perfil DevOps (con diseño). |
 | `make lead` / `make lead-es` / `make lead-en` | Solo el perfil DevOps/SRE Lead. |
 | `make fullstack` / `make fullstack-es` / `make fullstack-en` | Solo el perfil Full Stack. |
 | `make ai` / `make ai-es` / `make ai-en` | Solo el perfil AI Engineer. |
-| `make docker` | Compila todo (ATS) dentro del contenedor `texlive/texlive:TL2025-historic`, sin instalar TeX localmente. |
-| `make design-docker` | Igual, pero con la variante con diseño. |
+| `make docker` | Compila todo dentro del contenedor `texlive/texlive:TL2025-historic`, sin instalar TeX localmente. |
+| `make design-docker` | Igual, pero solo la variante con diseño. |
+| `make ats-docker` | Igual, pero solo la variante ATS. |
 | `make check` | Verifica los invariantes entre perfiles sin compilar. |
 | `make banner` | Renderiza el banner de LinkedIn (`linkedin/banner/`) a PNG a 2×. |
 | `make clean` | Borra `out/`, los PDFs generados, y los intermedios de LaTeX (`.log`, `.aux`, `.out`, `.fls`, `.fdb_latexmk`). |
@@ -108,10 +114,13 @@ Dos detalles que conviene conocer antes de tocar ese archivo:
 ### Ejemplos rápidos
 
 ```bash
-# Solo el CV DevOps en español
+# Solo el CV DevOps en español (con diseño)
 make devops-es
 
-# Los ocho PDFs, sin TeX local (Docker)
+# Solo la variante ATS del CV DevOps en español
+make DESIGN=0 devops-es
+
+# Los dieciséis PDFs, sin TeX local (Docker)
 make docker
 
 # Limpiar artefactos antes de un commit

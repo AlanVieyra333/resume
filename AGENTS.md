@@ -17,10 +17,10 @@ Si una regla de este documento y el contenido del repositorio se contradicen, ma
 (DevOps, DevOps/SRE Lead, Full Stack, AI Engineer), **dos idiomas** (EN/ES) y **dos variantes
 de diseño**:
 
-| Variante | Para qué | Cómo se genera |
-| --- | --- | --- |
-| **ATS** (por defecto) | Portales de empleo y ATS. Una columna, sin gráficos, texto seleccionable. | `make all` |
-| **Con diseño** (`DESIGN=1`) | Reclutador senior leyendo en pantalla. Banda oscura con foto, barra lateral gris y columna principal con línea de tiempo. | `make design` |
+| Variante | Para qué | Cómo se genera | Nombre del PDF |
+| --- | --- | --- | --- |
+| **Con diseño** (por defecto) | Reclutador senior leyendo en pantalla. Banda oscura con foto, barra lateral gris y columna principal con línea de tiempo. | `make design` | `Resume_*_AFRV_{EN,ES}.pdf` (CV principal) |
+| **ATS** (`DESIGN=0`) | Portales de empleo y ATS. Una columna, sin gráficos, texto seleccionable. | `make ats` | `Resume_*_AFRV_{EN,ES}_ATS.pdf` |
 
 **Criterio de aceptación del layout: los 16 PDFs (4 perfiles × 2 idiomas × 2 variantes) deben
 quedar en 2 páginas.** Es el motivo por el que el texto se recorta antes de añadirlo, y por el
@@ -133,15 +133,16 @@ contenido** salvo donde se indica.
 
 ```bash
 make check          # invariantes: debe salir verde
-make docker         # los 8 PDFs ATS
-make design-docker  # los 8 PDFs con diseño
+make docker         # los 16 PDFs (8 con diseño + 8 ATS)
+make design-docker  # solo los 8 PDFs con diseño (los principales)
+make ats-docker     # solo los 8 PDFs ATS
 for f in out/*.pdf; do echo "$f: $(pdfinfo "$f" | awk '/^Pages/{print $2}')"; done
 ```
 
 Los 16 PDFs deben decir **2**. Checklist completo:
 
 - [ ] `make check` en verde: *"All profile invariants hold."*
-- [ ] `make docker` y `make design-docker` compilan sin errores.
+- [ ] `make docker` (o `make design-docker` y `make ats-docker`) compila sin errores.
 - [ ] Los **16 PDFs** están en 2 páginas (`pdfinfo`).
 - [ ] La **barra lateral** de los 8 PDFs con diseño no está recortada (ver §8).
 - [ ] EN y ES de cada par dicen **las mismas cifras y las mismas fechas**.
@@ -232,7 +233,7 @@ interpola en la ruta del archivo (`lang/<perfil>/<idioma>.tex`).
 | Para qué | Herramienta |
 | --- | --- |
 | Validar invariantes | `make check` (`scripts/check-profiles.sh`) |
-| Compilar sin TeX local | `make docker`, `make design-docker` (imagen `texlive/texlive:TL2025-historic`) |
+| Compilar sin TeX local | `make docker`, `make design-docker`, `make ats-docker` (imagen `texlive/texlive:TL2025-historic`) |
 | Ver páginas | `pdfinfo out/<pdf>.pdf \| grep Pages` |
 | Medir el relleno de página | `pdftotext -bbox` y la coordenada `yMax` de la última palabra; en el layout con diseño, el ancho de columna del sidebar (~190 pt) distingue la barra lateral de la columna principal |
 | Revisar estilo del copy publicable | `li-human`: `humanize.py <bloque>.txt --report` (limpia y muestra qué cambió) y `detect.py <antes>.txt <después>.txt` (puntúa cinco señales) |

@@ -7,9 +7,15 @@
 #   lead        DevOps/SRE Engineer Lead CV         -> out/Resume_DevOpsLead_AFRV_{EN,ES}.pdf
 #   ai          AI Engineer CV                      -> out/Resume_AIEngineer_AFRV_{EN,ES}.pdf
 #
+# The names above are the MAIN CVs (designed layout, the ones to send by mail
+# or message to a recruiter). The ATS variant of the same content carries the
+# `_ATS` suffix: out/Resume_*_AFRV_{EN,ES}_ATS.pdf
+#
 # Common targets:
-#   make                default: builds the first target of `all` (fullstack), both languages
-#   make all            builds every profile, every language
+#   make                default: same as `make all` (every PDF, both variants)
+#   make all            builds every profile, every language, both variants
+#   make design         builds only the main CVs (designed layout, 8 PDFs)
+#   make ats            builds only the ATS CVs (_ATS suffix, 8 PDFs)
 #   make devops         builds only the devops profile (both languages)
 #   make fullstack      builds only the fullstack profile (both languages)
 #   make lead           builds only the lead profile (both languages)
@@ -27,12 +33,12 @@
 #   make clean          removes out/ and every build artefact
 #
 # Layout variant (two axes):
-#   DESIGN=0 (default)  ATS-friendly single column -> out/Resume_*_AFRV_{EN,ES}.pdf
-#   DESIGN=1            designed two-column layout  -> out/Resume_*_AFRV_{EN,ES}_DESIGN.pdf
+#   DESIGN=1 (default)  designed two-column layout  -> out/Resume_*_AFRV_{EN,ES}.pdf
+#   DESIGN=0            ATS-friendly single column  -> out/Resume_*_AFRV_{EN,ES}_ATS.pdf
 #
-#   DESIGN can be combined with any target: `make DESIGN=1 devops-es` builds only
-#   the designed Spanish DevOps CV. `make design` is shorthand for building all
-#   eight with DESIGN=1; both variants can therefore live side by side in out/.
+#   DESIGN can be combined with any target: `make DESIGN=0 devops-es` builds only
+#   the ATS Spanish DevOps CV. `make design` / `make ats` are shorthands for
+#   building all eight of one variant; both live side by side in out/.
 #
 # Output layout: every per-target rule writes its PDF to $(OUTDIR) (default
 # `out/`) via `latexmk -outdir`. Intermediate files produced by latexmk in the
@@ -52,15 +58,17 @@ PROFILE ?= devops
 TEXSOURCES := main.tex $(wildcard lang/*.tex lang/*/*.tex styles/*.tex) style.cls profile.jpg
 
 # Layout variant. Command-line variables are set before this file is read, so
-# `make DESIGN=1 <target>` resolves the _DESIGN names here rather than needing
-# a second set of rules.
-DESIGN ?= 0
+# `make DESIGN=0 <target>` resolves the _ATS names here rather than needing
+# a second set of rules. The designed layout is the default because those are
+# the CVs meant to be sent to a recruiter; the ATS ones are the explicit
+# variant for job portals.
+DESIGN ?= 1
 ifeq ($(DESIGN),1)
 	DESIGNDEF := \def\design{1}
-	PDFSUF    := _DESIGN
+	PDFSUF    :=
 else
 	DESIGNDEF :=
-	PDFSUF    :=
+	PDFSUF    := _ATS
 endif
 
 # Final PDFs land in this directory. `latexmk -outdir=$(OUTDIR)` writes the
@@ -68,15 +76,22 @@ endif
 # then deletes the LaTeX intermediates that latexmk left in the repo root.
 OUTDIR := out
 
-.PHONY: all devops devops-en devops-es fullstack fullstack-en fullstack-es \
-        lead lead-en lead-es ai ai-en ai-es design design-docker docker check clean \
+.PHONY: all profiles design ats devops devops-en devops-es fullstack fullstack-en fullstack-es \
+        lead lead-en lead-es ai ai-en ai-es design-docker ats-docker docker check clean \
         banner
 
 #-----------------------------------------------------------------------
 # Default and aggregate targets
+#
+# `all` builds the sixteen PDFs: the eight main CVs (designed layout, no
+# suffix) plus the eight ATS ones (`_ATS` suffix). `design` and `ats` build
+# one variant each; both are recursive makes, because DESIGN has to be set
+# before the file is read (it renames both the jobname and the target).
 #-----------------------------------------------------------------------
 
-all: fullstack lead devops ai
+all: design ats
+
+profiles: fullstack lead devops ai
 
 #-----------------------------------------------------------------------
 # Per-profile compilation
@@ -147,18 +162,25 @@ ai-en:        $(OUTDIR)/Resume_AIEngineer_AFRV_EN$(PDFSUF).pdf
 ai-es:        $(OUTDIR)/Resume_AIEngineer_AFRV_ES$(PDFSUF).pdf
 
 #-----------------------------------------------------------------------
-# Designed layout (two-column, recruiter-facing)
+# Layout variants (two-column recruiter-facing / ATS single column)
 #
 # A recursive make rather than a parallel set of rules: DESIGN has to be set
 # before the file is read, because it renames both the jobname and the target.
 #-----------------------------------------------------------------------
 
 design:
-	@$(MAKE) --no-print-directory DESIGN=1 all
+	@$(MAKE) --no-print-directory DESIGN=1 profiles
+
+ats:
+	@$(MAKE) --no-print-directory DESIGN=0 profiles
 
 design-docker: $(TEXSOURCES)
 	docker run -i --rm --user $(shell id -u):$(shell id -g) \
-		-v `pwd`:/app -w /app texlive/texlive:TL2025-historic make DESIGN=1 all
+		-v `pwd`:/app -w /app texlive/texlive:TL2025-historic make design
+
+ats-docker: $(TEXSOURCES)
+	docker run -i --rm --user $(shell id -u):$(shell id -g) \
+		-v `pwd`:/app -w /app texlive/texlive:TL2025-historic make ats
 
 #-----------------------------------------------------------------------
 # Build inside the texlive Docker image used by CI

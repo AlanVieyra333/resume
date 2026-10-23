@@ -313,10 +313,10 @@ perfil publicado, no el del CV: `featured` (8), `banner` (6), `photo` (6),
 
 Reglas de envío:
 
-- **Variante ATS** (`make all`) para portales y ATS: una columna, texto seleccionable, sin
-  gráficos que rompan el parser.
-- **Variante con diseño** (`make design`) para una persona: banda con foto, barra lateral y
-  línea de tiempo.
+- **Variante ATS** (`make ats`, sufijo `_ATS`) para portales y ATS: una columna, texto
+  seleccionable, sin gráficos que rompan el parser.
+- **Variante con diseño** (`make design`, sin sufijo) para una persona: banda con foto, barra
+  lateral y línea de tiempo. Es el CV principal y el que se manda por correo o mensaje.
 - **Idioma**: `_ES` para vacantes en México y Latinoamérica, `_EN` para el resto y para vacantes
   en inglés. Los dos idiomas son equivalentes en cifras y fechas: no hay ventaja de uno sobre
   otro.
