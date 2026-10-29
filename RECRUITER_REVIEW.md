@@ -116,7 +116,7 @@ perfil publicado, no el del CV: `featured` (8), `banner` (6), `photo` (6),
 | Ítem | Puntos | Nota |
 | --- | --- | --- |
 | headline | 8/12 | El título declara el ángulo (deuda técnica) y es preciso. |
-| about_open | 9/10 | Abre con "Leads technical debt remediation across 20 CI/CD pipelines serving three teams": nombra el problema. |
+| about_open | 9/10 | Abre con "Has led technical debt remediation across 20 CI/CD pipelines serving three teams": nombra el problema. |
 | about_body | 8/10 | Buen cuerpo; le falta el "a qué sigue". |
 | current_role | 9/10 | Hexagonal + matriz de imágenes como protagonistas, ISO 27001, mentoría de 10 ingenieros. |
 | experience_depth | 8/8 | Los tres empleadores, con el bloque de standards en su lugar. |
